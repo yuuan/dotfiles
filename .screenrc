@@ -1,0 +1,20 @@
+defencoding utf8
+
+altscreen on
+defscrollback 10000
+startup_message off
+autodetach on
+hardstatus alwayslastline "%{= yK}%`%-w%{= dy}%n %t%{-}%+w"
+bind w windowlist -
+
+#bindkey "^[[C" next	# Ctrl + Right
+#bindkey "^[[D" prev	# Ctrl + Left
+bindkey "^[^[OC" next	# Alt + Right
+bindkey "^[^[OD" prev	# Alt + Left
+bindkey "^[[1;3C" next	# Alt + Right at xterm
+bindkey "^[[1;3D" next	# Alt + Left at xterm
+
+termcapinfo xterm* ti@:te@
+termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
+#termcapinfo xterm* "ks=\E[?1l\E:ku=\E[A:kd=\E[B:kl=\E[D:kr=\E[C"
+
