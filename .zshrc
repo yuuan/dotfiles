@@ -82,20 +82,19 @@ PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
 PROMPT2="%F{blue}%_> %f"
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
 
-#alias rm='rm -i'
-#alias cp='cp -i'
-alias mv='mv -i'
+#alias rm="rm -i"
+#alias cp="cp -i"
+alias mv="mv -i"
 
-alias ls='ls -F --color=tty'
-alias la='ls -a'
-alias ll='ls -l'
-alias lal='ls -al'
-alias lv='lv -c'
-alias hist='history | grep'
-alias service='sudo /sbin/service'
-alias ..='cd ..'
-alias tmux='tmux -2'
-#alias color='. /usr/local/bin/hostcolor.sh'
+alias ls="ls -F --color=auto"
+alias la="ls -a"
+alias ll="ls -l"
+alias lal="ls -al"
+alias lv="lv -c"
+alias hist="history | grep"
+alias service="sudo /sbin/service"
+alias ..="cd .."
+alias tmux="tmux -2"
 
 export EDITOR='/usr/bin/vim'
 
@@ -107,7 +106,7 @@ bindkey "^R" history-incremental-search-backward
 
 setopt noflowcontrol
 bindkey "^S" history-incremental-search-forward
-bindkey '^Q' push-line-or-edit
+bindkey "^Q" push-line-or-edit
 stty stop undef
 
 #

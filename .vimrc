@@ -81,24 +81,15 @@ nnoremap + bve
 map <PageUp> <C-U>
 map <PageDown> <C-D>
 
-"Shift + 矢印でVisual modeが始まる 
-nnoremap <S-Up> v<Up>
-nnoremap <S-Down> v<Down>
-nnoremap <S-Left> v<Left>
-nnoremap <S-Right> v<Right>
-
-"Visual mode中のShift + 矢印は範囲選択
-vnoremap <S-Up> k
-vnoremap <S-Down> j
-vnoremap <S-Left> b
-vnoremap <S-Right> e
-
 "インデントした後も範囲選択を残す
 vnoremap < <gv
 vnoremap > >gv
 
 "gf で相対パスなどでも開けるようにする
 autocmd FileType html setlocal includeexpr=substitute(v:fname,'^\\/','','') | setlocal path+=;/
+
+" .tファイルをPerlファイルとして認識
+au BufNewFile,BufRead *.t set filetype=perl
 
 "UTF-8の□や○でカーソル位置がずれないようにする
 if exists("&ambiwidth")
@@ -119,6 +110,7 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -129,6 +121,9 @@ NeoBundle 'ocim/htmljinja.vim'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv.git'
+
+"powerline
+let g:Powerline_symbols = 'fancy'
 
 "jinja
 autocmd BufNewFile,BufRead *.tpl set filetype=htmljinja
@@ -158,7 +153,7 @@ inoremap <silent> <C-r> <ESC>:<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
 inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer<CR>
 nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
-inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
+"inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
 
 let g:unite_enable_start_insert = 1
 
