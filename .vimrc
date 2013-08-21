@@ -110,7 +110,6 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -121,9 +120,6 @@ NeoBundle 'ocim/htmljinja.vim'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv.git'
-
-"powerline
-let g:Powerline_symbols = 'fancy'
 
 "jinja
 autocmd BufNewFile,BufRead *.tpl set filetype=htmljinja
@@ -192,3 +188,4 @@ let g:solarized_termcolors=16
 "let g:solarized_termtrans=1
 colorscheme solarized
 
+source ~/.vimrc-local
