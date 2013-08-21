@@ -137,4 +137,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 setopt auto_resume
 setopt autopushd
 
-source ~/.zshrc-local
+if [ -f "~/.zshrc-local" ]; then
+	source ~/.zshrc-local
+fi
+
