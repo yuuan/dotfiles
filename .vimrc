@@ -151,11 +151,8 @@ inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
 
 "Unite
 nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-inoremap <silent> <C-f> <ESC>:<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> <C-r> :<C-u>Unite buffer file_mru<CR>
-inoremap <silent> <C-r> <ESC>:<C-u>Unite buffer file_mru<CR>
+nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
-inoremap <silent> <C-b> <ESC>:<C-u>Unite buffer<CR>
 nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
 "inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
 
