@@ -3,7 +3,7 @@ set number
 set ts=4 sts=4 sw=4 noet
 
 set encoding=utf-8
-set fileencodings=ucs-bom,euc-jp,sjis,iso-2022-jp
+set fileencodings=utf-8,ucs-bom,euc-jp,sjis,iso-2022-jp
 
 set hid
 set showmatch
