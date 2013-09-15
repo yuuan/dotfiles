@@ -110,6 +110,7 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'molokai'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -192,5 +193,6 @@ set background=dark
 let g:solarized_termcolors=16
 "let g:solarized_termtrans=1
 colorscheme solarized
+highlight SpecialKey ctermfg=236 ctermbg=8
 
 source ~/.vimrc-local
