@@ -140,11 +140,11 @@ autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
 let g:syntastic_perl_lib_path = 'lib'
 
 "neocomplete
-let g:neocomplete_enable_at_startup = 1
-let g:neocomplete_disable_auto_complete = 0
-let g:neocomplete_enable_smart_case = 1
-let g:neocomplete_enable_auto_select = 1
-let g:neocomplete_min_syntax_length = 3
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#disable_auto_complete = 0
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#min_syntax_length = 3
 inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
 inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
 inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
