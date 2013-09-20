@@ -96,7 +96,7 @@ alias service='sudo /sbin/service'
 alias ..="cd .."
 alias tmux='tmux -2'
 
-export EDITOR='/usr/bin/vim'
+export EDITOR='vim'
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
