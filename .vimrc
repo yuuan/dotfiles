@@ -150,6 +150,13 @@ inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
 inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
 inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
 
+"Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 "Unite
 nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
