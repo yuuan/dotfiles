@@ -107,7 +107,7 @@ endif
 
 NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'molokai'
@@ -139,15 +139,15 @@ autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
 "syntastic
 let g:syntastic_perl_lib_path = 'lib'
 
-"neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_disable_auto_complete = 0
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_auto_select = 1
-let g:neocomplcache_min_syntax_length = 3
-inoremap <expr><Up> neocomplcache#smart_close_popup() . "\<Up>"
-inoremap <expr><Down> neocomplcache#smart_close_popup() . "\<Down>"
-inoremap <expr><CR> pumvisible() ? neocomplcache#smart_close_popup() : "\<CR>"
+"neocomplete
+let g:neocomplete_enable_at_startup = 1
+let g:neocomplete_disable_auto_complete = 0
+let g:neocomplete_enable_smart_case = 1
+let g:neocomplete_enable_auto_select = 1
+let g:neocomplete_min_syntax_length = 3
+inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
+inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
+inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
 inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
 
 "Unite
@@ -170,8 +170,8 @@ map <C-Right> <ESC>:tabn<CR>
 map <C-Left> <ESC>:tabp<CR>
 cnoremap <C-Right> tabn
 cnoremap <C-Left> tabp
-inoremap <expr><C-Right> pumvisible() ? neocomplcache#smart_close_popup() : "\<ESC>:tabn\<CR>"
-inoremap <expr><C-Left> pumvisible() ? neocomplcache#smart_close_popup() : "\<ESC>:tabp\<CR>"
+inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
+inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
 
 "Ctrl + 上下キーでスクロール
 noremap <C-Up> <C-Y>
