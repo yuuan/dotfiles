@@ -82,21 +82,21 @@ PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
 PROMPT2="%F{blue}%_> %f"
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
 
-#alias rm='rm -i'
-#alias cp='cp -i'
-alias mv='mv -i'
+#alias rm="rm -i"
+#alias cp="cp -i"
+alias mv="mv -i"
 
-alias ls='ls -F --color=auto'
-alias la='ls -a'
-alias ll='ls -l'
-alias lal='ls -al'
-alias lv='lv -c'
-alias hist='history | grep'
-alias service='sudo /sbin/service'
+alias ls="ls -F --color=auto"
+alias la="ls -a"
+alias ll="ls -l"
+alias lal="ls -al"
+alias lv="lv -c"
+alias hist="history | grep"
+alias service="sudo /sbin/service"
 alias ..="cd .."
-alias tmux='tmux -2'
+alias tmux="tmux -2"
 
-export EDITOR='/usr/bin/vim'
+export EDITOR='/usr/local/bin/vim'
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
@@ -129,6 +129,7 @@ compinit
 setopt auto_list
 setopt auto_menu
 setopt auto_param_slash
+setopt list_types
 setopt mark_dirs
 setopt print_eight_bit
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
@@ -136,6 +137,9 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 setopt auto_resume
 setopt autopushd
+setopt magic_equal_subst
+zstyle ':completion:*' use-cache true
+
 
 if [ -f ~/.zshrc-local ]; then
 	source ~/.zshrc-local
