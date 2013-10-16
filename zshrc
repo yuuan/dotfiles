@@ -43,16 +43,16 @@ colors
 # Pronpt
 #
 
-case ${UID} in
-0)
+if [ ${UID} = 0 ]; then
 	PROMPT="%F{red}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{red}%_> %f"
-	;;
-*)
+elif [[ -n `hostname | grep "dti"` ]]; then
+	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
+	PROMPT2="%F{cyan}%_> %f"
+else
 	PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{blue}%_> %f"
-	;;
-esac
+fi
 
 
 #
