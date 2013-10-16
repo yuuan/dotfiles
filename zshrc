@@ -35,8 +35,25 @@ setopt COMPLETE_IN_WORD
 ## disable mail checking
 #MAILCHECK=0
 
-# autoload -U colors
-#colors
+autoload -U colors
+colors
+
+
+#
+# Pronpt
+#
+
+case ${UID} in
+0)
+	PROMPT="%F{red}[%n@%m]%(!.#.$) %f"
+	PROMPT2="%F{red}%_> %f"
+	;;
+*)
+	PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
+	PROMPT2="%F{blue}%_> %f"
+	;;
+esac
+
 
 #
 # Show branch name in Zsh's right prompt
@@ -76,10 +93,6 @@ function rprompt-git-current-branch {
 
 RPROMPT='[`rprompt-git-current-branch`%~]'
 
-autoload colors
-colors
-PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
-PROMPT2="%F{blue}%_> %f"
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
 
 #alias rm="rm -i"
@@ -96,7 +109,7 @@ alias service="sudo /sbin/service"
 alias ..="cd .."
 alias tmux="tmux -2"
 
-export EDITOR='/usr/local/bin/vim'
+export EDITOR='vim'
 
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
@@ -124,8 +137,6 @@ setopt hist_ignore_dups
 #setopt hist_reduce_blanks
 setopt hist_ignore_space
 
-autoload -U compinit
-compinit
 setopt auto_list
 setopt auto_menu
 setopt auto_param_slash
