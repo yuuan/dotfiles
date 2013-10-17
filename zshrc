@@ -151,7 +151,32 @@ setopt autopushd
 setopt magic_equal_subst
 zstyle ':completion:*' use-cache true
 
+#
+# sudo.vim
+#
+function _vimsudo {
+	local LAST="${words[$#words[*]]}"
+	case "${LAST}" in
+		sudo:*)
+			local BASEDIR="${LAST##sudo:}"
+			BASEDIR="${~BASEDIR}"
+			[ -d "${BASEDIR}" ] && BASEDIR="${BASEDIR%%/}/"
+			compadd -P 'sudo:' -f $(print ${BASEDIR}*) \
+			&& return 0
+			;;
+		*)
+			_vim && return 0
+			;;
+		esac
 
+	return 1
+}
+
+compdef _vimsudo vim
+
+#
+# load local setting
+#
 if [ -f ~/.zshrc-local ]; then
 	source ~/.zshrc-local
 fi
