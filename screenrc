@@ -18,3 +18,6 @@ termcapinfo xterm* ti@:te@
 termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
 #termcapinfo xterm* "ks=\E[?1l\E:ku=\E[A:kd=\E[B:kl=\E[D:kr=\E[C"
 
+# window size
+termcapinfo xterm* is=¥E[r¥E[m¥E[2J¥E[H¥E[?7h¥E[?1;4;6l
+
