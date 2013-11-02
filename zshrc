@@ -49,6 +49,9 @@ if [ ${UID} = 0 ]; then
 elif [[ -n `hostname | grep "dti"` ]]; then
 	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{cyan}%_> %f"
+elif [[ -n `hostname | grep "v157-7-154-240"` ]]; then
+	PROMPT="%F{yellow}[%n@%m]%(!.#.$) %f"
+	PROMPT2="%F{yellow}%_> %f"
 else
 	PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{blue}%_> %f"
