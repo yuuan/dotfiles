@@ -120,14 +120,16 @@ NeoBundle 'Jinja'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv.git'
+NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'cocopon/lightline-hybrid.vim'
 
 NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-  \ },
+	\ 'build' : {
+		\ 'windows' : 'make -f make_mingw32.mak',
+		\ 'cygwin'  : 'make -f make_cygwin.mak',
+		\ 'mac'     : 'make -f make_mac.mak',
+		\ 'unix'    : 'make -f make_unix.mak',
+	\ },
 \ }
 
 "jinja
@@ -168,7 +170,7 @@ let g:unite_enable_start_insert = 1
 
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-	imap <buffer> <C-w> <Plug>(unite_delete_backward_path
+	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 	imap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
 
@@ -201,5 +203,78 @@ let g:solarized_termcolors=16
 "let g:solarized_termtrans=1
 colorscheme solarized
 highlight SpecialKey ctermfg=236 ctermbg=8
+
+"lightline
+let g:lightline = {
+	\ 'colorscheme': 'powerline',
+	\ 'mode_map': { 'c': 'NORMAL' },
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+	\   'right': [
+	\     [ 'lineinfo' ],
+	\     [ 'percent' ],
+	\     [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype']
+	\   ]
+	\ },
+	\ 'component_function': {
+	\   'modified': 'MyModified',
+	\   'readonly': 'MyReadonly',
+	\   'fugitive': 'MyFugitive',
+	\   'filename': 'MyFilename',
+	\   'fileformat': 'MyFileformat',
+	\   'filetype': 'MyFiletype',
+	\   'fileencoding': 'MyFileencoding',
+	\   'mode': 'MyMode',
+	\ },
+	\ 'separator': { 'left': "\ue0b0", 'right': "" },
+	\ 'subseparator': { 'left': "\u00bb", 'right': "\u22ee" },
+	\ 'tabline_separator': { 'left': '', 'right': '' },
+	\ 'tabline_subseparator': { 'left': '', 'right': '' }
+	\ }
+
+function! MyModified()
+	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+endfunction
+
+function! MyFilename()
+	return ('' != MyReadonly() ? MyReadonly() . "\ue0a2" : '') .
+		\ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
+		\  &ft == 'unite' ? unite#get_status_string() : 
+		\  &ft == 'vimshell' ? vimshell#get_status_string() :
+		\ '' != expand('%:f') ? expand('%:f') : '[No Name]') .
+		\ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+	if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
+		let _ = fugitive#head()
+		return strlen(_) ? "\ue0a0 "._ : ''
+	endif
+	return ''
+endfunction
+
+function! MyFileformat()
+	return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+	return &ft == 'unite' ? 'Unite' : 
+				\ &ft == 'vimfiler' ? 'VimFiler' : 
+				\ &ft == 'vimshell' ? 'VimShell' : 
+				\ winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
 
 source ~/.vimrc-local
