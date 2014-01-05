@@ -194,8 +194,10 @@ function! s:unite_my_settings()
 endfunction
 
 "Ctrl + 左右キーでタブを切り替え
-map <C-Right> <ESC>:tabn<CR>
-map <C-Left> <ESC>:tabp<CR>
+nnoremap <C-Right> :tabn<CR>
+nnoremap <C-Left> :tabp<CR>
+inoremap <C-Right> <ESC>:tabn<CR>
+inoremap <C-Left> <ESC>:tabp<CR>
 cnoremap <C-Right> tabn
 cnoremap <C-Left> tabp
 inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
