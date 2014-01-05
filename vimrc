@@ -114,10 +114,17 @@ NeoBundle 'vim-scripts/sudo.vim.git'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'AndrewRadev/switch.vim'
 
+"Colorscheme
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'molokai'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'sjl/badwolf'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'nanotech/jellybeans.vim'
+
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -202,18 +209,25 @@ noremap <C-Down> <C-E>
 inoremap <expr><C-Up> pumvisible() ? "\<C-P>" : "\<Up>"
 inoremap <expr><C-Down> pumvisible() ? "\<C-N>" : "\<Down>"
 
-"ターミナルタイプによるカラー設定
-if &term =~ "xterm-256color" || &term =~ "screen-256color"
-	set t_Co=256
-else
-	set t_Co=16
-endif
+"表示色設定
+set t_Co=256
+
+"switch.vim
+nnoremap - :Switch<cr>
 
 "solarized
 set background=dark
 let g:solarized_termcolors=16
 "let g:solarized_termtrans=1
-colorscheme solarized
+
+"Bad Wolf
+let g:badwolf_html_link_underline = 0
+let g:badwolf_css_props_highlight = 1
+
+"カラースキーム選択
+colorscheme badwolf
+
+"タブの色
 highlight SpecialKey ctermfg=236 ctermbg=8
 
 "lightline
