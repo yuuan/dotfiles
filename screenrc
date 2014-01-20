@@ -14,15 +14,18 @@ bindkey "^[^[OD" prev	# Alt + Left
 bindkey "^[[1;3C" next	# Alt + Right at xterm
 bindkey "^[[1;3D" next	# Alt + Left at xterm
 
-defbce "on"
+# 256 color
+termcapinfo xterm*|kterm*|screen* Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm
+defbce on
 term screen-256color
-termcapinfo xterm* ti@:te@
-termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
+
+# mouse scroll
+termcapinfo xterm*|kterm*|screen* ti@:te@
 
 # window size
-termcapinfo xterm* is=¥E[r¥E[m¥E[2J¥E[H¥E[?7h¥E[?1;4;6l
+termcapinfo xterm*|kterm*|screen* is=¥E[r¥E[m¥E[2J¥E[H¥E[?7h¥E[?1;4;6l
 
 # use function key
-termcapinfo xterm* 'k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~'
+termcapinfo xterm*|kterm*|screen* k1=\E[11~:k2=\E[12~:k3=\E[13~:k4=\E[14~
 #termcapinfo xterm* "ks=\E[?1l\E:ku=\E[A:kd=\E[B:kl=\E[D:kr=\E[C"
 
