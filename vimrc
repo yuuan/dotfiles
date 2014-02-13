@@ -125,13 +125,15 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'nanotech/jellybeans.vim'
 
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'scrooloose/syntastic'
+"Syntacs
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'Jinja'
+NeoBundle 'Glench/Vim-Jinja2-Syntax'
 NeoBundle 'vim-perl/vim-perl'
+
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv.git'
 NeoBundle 'itchyny/lightline.vim'
@@ -150,8 +152,9 @@ NeoBundle 'Shougo/vimproc', {
 autocmd BufNewFile,BufRead *.phtml set filetype=php
 
 "jinja
-autocmd BufNewFile,BufRead *.tpl set filetype=htmljinja
-autocmd BufNewFile,BufRead *.volt set filetype=htmljinja
+autocmd BufNewFile,BufRead *.tpl set filetype=jinja
+autocmd BufNewFile,BufRead *.twig set filetype=jinja
+autocmd BufNewFile,BufRead *.volt set filetype=jinja
 
 "TT2 syntax
 autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
@@ -172,7 +175,7 @@ inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
 inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
 
 "HTMLでの曖昧検索を無効（たぶん）
-autocmd FileType html,htmljinja,tt2html let g:neocomplete#enable_fuzzy_completion=0
+autocmd FileType html,jinja,tt2html let g:neocomplete#enable_fuzzy_completion=0
 
 "Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
