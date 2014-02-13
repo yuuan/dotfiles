@@ -146,8 +146,12 @@ NeoBundle 'Shougo/vimproc', {
 	\ },
 \ }
 
+"php-template
+autocmd BufNewFile,BufRead *.phtml set filetype=php
+
 "jinja
 autocmd BufNewFile,BufRead *.tpl set filetype=htmljinja
+autocmd BufNewFile,BufRead *.volt set filetype=htmljinja
 
 "TT2 syntax
 autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
