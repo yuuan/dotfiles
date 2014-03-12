@@ -111,6 +111,7 @@ if has('vim_starting')
 endif
 
 NeoBundle 'vim-scripts/sudo.vim.git'
+NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/unite.vim.git'
@@ -162,7 +163,9 @@ autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
 "syntastic
 let g:syntastic_perl_lib_path = 'lib'
 
-"neocomplete
+
+"neocomplete {{{
+
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#disable_auto_complete = 0
 let g:neocomplete#min_syntax_length = 3
@@ -185,8 +188,40 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"Unite
-nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+"}}}
+
+
+"VimFiler {{{
+
+"vimデフォルトのエクスプローラをvimfilerで置き換える
+let g:vimfiler_as_default_explorer = 1
+"セーフモードを無効にした状態で起動する
+let g:vimfiler_safe_mode_by_default = 0
+"新しいタブで編集する
+let g:vimfiler_edit_action = 'tabopen'
+"現在開いているバッファのディレクトリを開く
+"nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
+"現在開いているバッファをIDE風に開く
+"nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <C-f> :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+
+"デフォルトのキーマッピングを変更
+augroup vimrc
+	autocmd FileType vimfiler call s:vimfiler_my_settings()
+augroup END
+function! s:vimfiler_my_settings()
+	nmap <buffer> q <Plug>(vimfiler_exit)
+	nmap <buffer> Q <Plug>(vimfiler_hide)
+	nmap <buffer> <Tab> <Plug>(vimfiler_choose_action)
+	nmap <buffer> <ESC> <Plug>(vimfiler_switch_to_other_window)
+endfunction
+
+"}}}
+
+
+"Unite {{{
+
+"nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
 nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
@@ -199,6 +234,9 @@ function! s:unite_my_settings()
 	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 	imap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
+
+"}}}
+
 
 "Ctrl + 左右キーでタブを切り替え
 nnoremap <C-Right> :tabn<CR>
@@ -217,6 +255,9 @@ noremap <C-Down> <C-E>
 "Ctrl + 上下キーで候補を移動
 inoremap <expr><C-Up> pumvisible() ? "\<C-P>" : "\<Up>"
 inoremap <expr><C-Down> pumvisible() ? "\<C-N>" : "\<Down>"
+
+
+"カラースキーマ {{{
 
 "表示色設定
 set t_Co=256
@@ -239,7 +280,11 @@ colorscheme badwolf
 "タブの色
 highlight SpecialKey ctermfg=236 ctermbg=8
 
-"lightline
+"}}}
+
+
+"lightline {{{
+
 let g:lightline = {
 	\ 'colorscheme': 'powerline',
 	\ 'mode_map': { 'c': 'NORMAL' },
@@ -311,5 +356,6 @@ function! MyMode()
 				\ winwidth(0) > 60 ? lightline#mode() : ''
 endfunction
 
+"}}}
 
 source ~/.vimrc-local
