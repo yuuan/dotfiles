@@ -203,7 +203,7 @@ let g:vimfiler_edit_action = 'tabopen'
 "nnoremap <silent> <Leader>fe :<C-u>VimFilerBufferDir -quit<CR>
 "現在開いているバッファをIDE風に開く
 "nnoremap <silent> <Leader>fi :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-nnoremap <silent> <C-f> :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
+nnoremap <silent> <C-f> :<C-u>VimFilerBufferDir -split -simple -winwidth=35<CR>
 
 "デフォルトのキーマッピングを変更
 augroup vimrc
@@ -221,7 +221,7 @@ endfunction
 
 "Unite {{{
 
-"nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
 nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
@@ -232,8 +232,12 @@ let g:unite_enable_start_insert = 1
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
 	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-	imap <buffer> <ESC> <Plug>(unite_exit)
+	imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
+	nmap <buffer> <F4> <Plug>(unite_exit)
+	nmap <buffer> <ESC> <Plug>(unite_exit)
 endfunction
+
+call unite#custom#default_action('file', 'tabopen')
 
 "}}}
 
