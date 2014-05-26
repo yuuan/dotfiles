@@ -46,7 +46,9 @@ function current-branch () {
 	if [[ -n "$vcs_info_msg_1_" ]]; then
 		repository="$vcs_info_msg_0_"
 		branch="$vcs_info_msg_2_"
-		action="$vcs_info_msg_5_"
+		if [[ -n "$vcs_info_msg_5_" ]]; then
+			action="($vcs_info_msg_5_)"
+		fi
 
 		if is-at-least 4.3.10; then
 			if [[ -n "$vcs_info_msg_6_" ]]; then
