@@ -91,10 +91,10 @@ autocmd FileType php setlocal includeexpr=substitute(substitute(v:fname,'_','/',
 	\ | setlocal path+=;vender/;src/;lib/ | setlocal suffixesadd=.php,.inc
 
 " .tファイルをPerlファイルとして認識
-au BufNewFile,BufRead *.t set filetype=perl
+autocmd BufNewFile,BufRead *.t set filetype=perl
 
 "PHPで<>を対応する括弧として認識させない
-au FileType php set matchpairs-=<:>
+autocmd FileType php set matchpairs-=<:>
 
 "UTF-8の□や○でカーソル位置がずれないようにする
 if exists("&ambiwidth")
