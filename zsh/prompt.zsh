@@ -21,39 +21,66 @@ fi
 # Show branch name in Zsh's right prompt
 #
 
-autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
+autoload -Uz vcs_info
 
-setopt prompt_subst
-#setopt re_match_pcre
+zstyle ':vcs_info:*' enable git svn hg
+zstyle ':vcs_info:*' max-exports 7
 
-function rprompt-git-current-branch {
-	local name st color gitdir action
-	if [[ -n `echo "$PWD" | grep "/\.git(/.*)?$"` ]]; then
-		return
+zstyle ':vcs_info:*' formats '%R' '%S' '%b' '' '%s'
+zstyle ':vcs_info:*' actionformats '%R' '%S' '%b' '%a' '%s'
+
+autoload -Uz is-at-least
+if is-at-least 4.3.10; then
+	zstyle ':vcs_info:*' check-for-changes true
+	zstyle ':vcs_info:*' formats '%R' '%S' '%b' '' '%s' '%c' '%u'
+	zstyle ':vcs_info:*' actionformats '%R' '%S' '%b' '(%a)' '%s' '%c' '%u'
+fi
+
+zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
+zstyle ':vcs_info:bzr:*' use-simple true
+
+function current-branch () {
+	local repository branch action st color
+
+	STY= LANG=en_US.UTF-8 vcs_info
+	if [[ -n "$vcs_info_msg_1_" ]]; then
+		repository="$vcs_info_msg_0_"
+		branch="$vcs_info_msg_2_"
+		if [[ -n "$vcs_info_msg_5_" ]]; then
+			action="($vcs_info_msg_5_)"
+		fi
+
+		if is-at-least 4.3.10; then
+			if [[ -n "$vcs_info_msg_6_" ]]; then
+				color="%F{yellow}"
+			elif [[ -n "$vcs_info_msg_5_" ]]; then
+				color="%F{red}"
+			else
+				color="%F{blue}"
+			fi
+		else
+			if [[ -z `echo "$PWD" | grep -E -i "/\.git(/.*)?$"` ]]; then
+				st=`git status 2> /dev/null`
+				if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+					color="%F{blue}"
+				elif [[ -n `echo "$st" | grep "^no changes "` ]]; then
+					color="%F{yellow}"
+				elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
+					color="%B%F{red}"
+				else
+					color="%F{red}"
+				fi
+			fi
+		fi
+
+		print -n "$color$branch$action%f%b "
 	fi
-	name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-	if [[ -z $name ]]; then
-		return
-	fi
-
-	gitdir=`git rev-parse --git-dir 2> /dev/null`
-	action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
-
-	st=`git status 2> /dev/null`
-	if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-		color=%F{blue}
-	elif [[ -n `echo "$st" | grep "^no changes "` ]]; then
-		color=%F{yellow}
-	elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
-		color=%B%F{red}
-	else
-		color=%F{red}
-	fi
-
-	echo "$color$name$action%f%b "
 }
 
-RPROMPT='[`rprompt-git-current-branch`%~]'
+
+setopt prompt_subst
+
+RPROMPT='[`current-branch`%~]'
 
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
 
