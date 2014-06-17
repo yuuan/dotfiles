@@ -29,10 +29,19 @@ set nocursorline
 " 挿入モードの時のみ、カーソル行をハイライトする
 autocmd InsertEnter,InsertLeave * set cursorline!
 
-set backup
 set backupdir=$HOME/.vim/backup
-set swapfile
+set backup
+
 set directory=$HOME/.vim/swp
+set swapfile
+
+if has('persistent_undo')
+	set undodir=$HOME/.vim/undo
+	set undofile
+endif
+
+" ファイルを開いたときカーソル位置を復元
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\""
 
 "Ctrl + Arrow Key
 map [A <C-Up>
