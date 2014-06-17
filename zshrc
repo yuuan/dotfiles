@@ -42,7 +42,15 @@ colors
 #alias cp="cp -i"
 alias mv="mv -i"
 
-alias ls="ls -F --color=auto"
+case ${OSTYPE} in
+	darwin*)
+		alias ls="ls -FG"
+		;;
+	linux*)
+		alias ls="ls -F --color=auto"
+		;;
+esac
+
 alias la="ls -a"
 alias ll="ls -l"
 alias lal="ls -al"
