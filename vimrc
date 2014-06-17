@@ -16,6 +16,7 @@ set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}%=%l\,%c%
 set bs=indent,eol,start
 set wildmenu
 set mouse=a
+set ttymouse=xterm2
 set tabpagemax=30
 set showtabline=2
 set ttyfast
