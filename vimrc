@@ -95,7 +95,7 @@ nnoremap + bve
 map <PageUp> <C-U>
 map <PageDown> <C-D>
 
-vnoremap # <Plug>(caw:i:toggle)
+vmap # <Plug>(caw:i:toggle)
 
 "インデントした後も範囲選択を残す
 vnoremap < <gv
