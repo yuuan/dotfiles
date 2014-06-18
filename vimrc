@@ -294,6 +294,11 @@ colorscheme badwolf
 "タブの色
 highlight SpecialKey ctermfg=236 ctermbg=8
 
+if has('gui_macvim')
+	set background=light
+	colorscheme solarized
+endif
+
 "}}}
 
 
