@@ -78,6 +78,10 @@ map OB <C-E>
 map [A <C-Y>
 map [B <C-E>
 
+"HomeとEnd
+map <C-A> <Home>
+map <C-E> <End>
+
 "検索後にESCキー連打でハイライトを消す
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
@@ -90,6 +94,8 @@ nnoremap + bve
 "PageUp/Downの幅を半分に
 map <PageUp> <C-U>
 map <PageDown> <C-D>
+
+vnoremap # <Plug>(caw:i:toggle)
 
 "インデントした後も範囲選択を残す
 vnoremap < <gv
@@ -127,6 +133,7 @@ NeoBundle 'Shougo/neocomplete.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'AndrewRadev/switch.vim'
+NeoBundle 'tyru/caw.vim.git'
 
 "Colorscheme
 NeoBundle 'altercation/vim-colors-solarized'
