@@ -294,21 +294,10 @@ colorscheme badwolf
 "タブの色
 highlight SpecialKey ctermfg=236 ctermbg=8
 
-"MacVimのカラースキーマ
-if has('gui_macvim')
+"GUIでのカラースキーマ
+if has('gui_running')
 	set background=light
 	colorscheme solarized
-endif
-
-"}}}
-
-
-"MacVim GUI {{{
-
-if has('gui_macvim')
-	set transparency=10
-	set antialias
-	set guifont=Ricty\ Regular\ for\ Powerline:h14
 endif
 
 "}}}
