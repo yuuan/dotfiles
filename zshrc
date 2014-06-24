@@ -104,7 +104,7 @@ setopt autopushd
 setopt magic_equal_subst
 zstyle ':completion:*' use-cache true
 
-ZSHHOME="${HOME}/.zsh"
+export ZSHHOME="${HOME}/.zsh"
 
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 		-x $ZSHHOME ]; then
