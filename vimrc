@@ -299,7 +299,7 @@ let g:badwolf_css_props_highlight = 1
 colorscheme badwolf
 
 "タブの色
-highlight SpecialKey ctermfg=236 ctermbg=8
+highlight SpecialKey ctermfg=8 ctermbg=0
 
 "GUIでのカラースキーマ
 if has('gui_running')
