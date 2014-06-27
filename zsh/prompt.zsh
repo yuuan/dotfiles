@@ -52,9 +52,9 @@ function current-branch () {
 
 		if is-at-least 4.3.10; then
 			if [[ -n "$vcs_info_msg_6_" ]]; then
-				color="%F{yellow}"
-			elif [[ -n "$vcs_info_msg_5_" ]]; then
 				color="%F{red}"
+			elif [[ -n "$vcs_info_msg_5_" ]]; then
+				color="%F{yellow}"
 			else
 				color="%F{blue}"
 			fi
