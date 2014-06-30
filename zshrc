@@ -52,8 +52,8 @@ case ${OSTYPE} in
 esac
 
 alias la="ls -a"
-alias ll="ls -l"
-alias lal="ls -al"
+alias ll="ls -lh"
+alias lal="ls -alh"
 alias lv="lv -c"
 alias hist="history | grep"
 alias service="sudo /sbin/service"
