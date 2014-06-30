@@ -14,6 +14,9 @@ bindkey "^[^[OD" prev	# Alt + Left
 bindkey "^[[1;3C" next	# Alt + Right at xterm
 bindkey "^[[1;3D" next	# Alt + Left at xterm
 
+bindkey "^[^[[C" next	# Alt + Right for Mac
+bindkey "^[^[[D" prev	# Alt + Left for Mac
+
 # 256 color
 termcapinfo xterm*|kterm*|screen* Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm
 defbce on
