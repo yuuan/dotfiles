@@ -43,7 +43,7 @@
 
 
 " 特殊キー登録 {{{
-	"Ctrl + カーソルキー
+	" Ctrl + カーソルキー
 	map <ESC>[A <C-Up>
 	map <ESC>[B <C-Down>
 	map <ESC>[C <C-Right>
@@ -53,17 +53,17 @@
 	map! <ESC>[C <C-Right>
 	map! <ESC>[D <C-Left>
 
-	"Ctrl + スペースキー
+	" Ctrl + スペースキー
 	map <Nul> <C-Space>
 	map! <Nul> <C-Space>
 
-	"Alt + 上下キー
+	" Alt + 上下キー
 	map <ESC><ESC>OA <M-Up>
 	map <ESC><ESC>OB <M-Down>
 	map <ESC><ESC>[A <M-Up>
 	map <ESC><ESC>[B <M-Down>
 
-	"Alt + 英数字キー
+	" Alt + 英数字キー
 	if has('unix') && !has('gui_running')
 		" Use meta keys in console.
 		function! s:use_meta_keys()  " {{{
