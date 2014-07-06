@@ -455,7 +455,7 @@ nnoremap <M-D> :nohlsearch<CR>
 cnoremap <C-P> <C-R>"
 
 " 単語を選択
-nnoremap + bve
+nnoremap + viw
 
 " インデントした後も範囲選択を残す
 vnoremap < <gv
