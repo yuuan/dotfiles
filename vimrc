@@ -437,9 +437,15 @@
 " }}}
 
 
-" HomeとEnd
-map <C-A> <Home>
-map <C-E> <End>
+" emacs 的な文字列操作 {{{
+	" HomeとEnd
+	map <C-A> <Home>
+	map <C-E> <End>
+	" Ctrl + k で行末まで削除
+	inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
+	cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+" }}}
+
 
 " 検索後にESCキー連打でハイライトを消す
 nnoremap <ESC><ESC> :nohlsearch<CR>
