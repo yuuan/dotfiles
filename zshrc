@@ -58,7 +58,6 @@ alias lv="lv -c"
 alias hist="history | grep"
 alias service="sudo /sbin/service"
 alias ..="cd .."
-alias tmux="tmux -2"
 alias st="git status"
 
 export EDITOR='vim'
