@@ -11,6 +11,9 @@ elif [[ -n `hostname | grep "dti"` ]]; then
 elif [[ -n `hostname | grep "v157-7-154-240"` ]]; then
 	PROMPT="%F{yellow}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{yellow}%_> %f"
+elif [[ -n `uname -sr | grep "CYGWIN"` ]]; then
+	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
+	PROMPT2="%F{cyan}%_> %f"
 else
 	PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{blue}%_> %f"
