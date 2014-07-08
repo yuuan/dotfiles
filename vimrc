@@ -21,10 +21,12 @@
 	set tabpagemax=30
 	set showtabline=2
 	set ttyfast
-	set timeoutlen=50
 	set list
 	set listchars=tab:▸\ ,trail:~
 	set textwidth=0
+
+	" コマンドの次の文字の入力待ち時間
+"	set timeoutlen=50
 " }}}
 
 
@@ -95,14 +97,13 @@
 		filetype indent on
 	endif
 
-	NeoBundle 'vim-scripts/sudo.vim.git'
-	NeoBundle 'Shougo/vimfiler.git'
+	"NeoBundle
 	NeoBundle 'Shougo/neobundle.vim'
-	NeoBundle 'Shougo/neocomplete.git'
+
+	"Unite
 	NeoBundle 'Shougo/unite.vim.git'
 	NeoBundle 'ujihisa/unite-colorscheme'
-	NeoBundle 'AndrewRadev/switch.vim'
-	NeoBundle 'tyru/caw.vim.git'
+	NeoBundle 'kmnk/vim-unite-giti.git'
 
 	"Colorscheme
 	NeoBundle 'altercation/vim-colors-solarized'
@@ -112,19 +113,30 @@
 	NeoBundle 'vim-scripts/Wombat'
 	NeoBundle 'nanotech/jellybeans.vim'
 
+	"Lightline
+	NeoBundle 'itchyny/lightline.vim'
+	NeoBundle 'cocopon/lightline-hybrid.vim'
+
 	"Syntacs
+	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hail2u/vim-css3-syntax'
 	NeoBundle 'othree/html5.vim'
 	NeoBundle 'pangloss/vim-javascript'
 	NeoBundle 'Glench/Vim-Jinja2-Syntax'
 	NeoBundle 'vim-perl/vim-perl'
 
-	NeoBundle 'vim-jp/vimdoc-ja'
-	NeoBundle 'scrooloose/syntastic'
+	"Git
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv.git'
-	NeoBundle 'itchyny/lightline.vim'
-	NeoBundle 'cocopon/lightline-hybrid.vim'
+
+	NeoBundle 'vim-scripts/sudo.vim.git'
+	NeoBundle 'Shougo/vimfiler.git'
+	NeoBundle 'Shougo/neocomplete.git'
+
+	NeoBundle 'AndrewRadev/switch.vim'
+	NeoBundle 'tyru/caw.vim.git'
+
+	NeoBundle 'vim-jp/vimdoc-ja'
 
 	NeoBundle 'Shougo/vimproc', {
 		\ 'build' : {
@@ -254,7 +266,7 @@
 	nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
 	nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
 	"inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
-
+	
 	let g:unite_enable_start_insert = 1
 
 	autocmd FileType unite call s:unite_my_settings()
@@ -265,6 +277,7 @@
 		nmap <buffer> <ESC> <Plug>(unite_exit)
 	endfunction
 
+	"ファイルを開くとき新しいタブで開く
 	call unite#custom#default_action('file', 'tabopen')
 " }}}
 
@@ -276,6 +289,20 @@
 		let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
 		let g:unite_source_grep_recursive_opt = ''
 	endif
+" }}}
+
+
+" Giti {{{
+	nnoremap [git] <Nop>
+	nmap <C-g> [git]
+
+	nnoremap <silent> [git]<C-g> :<C-u>Unite giti/status<CR>
+	nnoremap <silent> [git]b :<C-u>Unite giti/branch_all<CR>
+	nnoremap <silent> [git]c :<C-u>Unite giti/config<CR>
+	nnoremap <silent> [git]l :<C-u>Unite giti/log<CR>
+	nnoremap <silent> [git]r :<C-u>Unite giti/remote<CR>
+	nnoremap <silent> [git]s :<C-u>Unite giti/status<CR>
+	nnoremap <silent> [git]<C-w> :<C-u>Gwrite<CR>
 " }}}
 
 
