@@ -409,12 +409,12 @@
 
 " 画面操作 {{{
 	"Ctrl + 左右キーでタブを切り替え
-	nnoremap <C-Right> :tabn<CR>
-	nnoremap <C-Left> :tabp<CR>
+	nnoremap <C-Right> :<C-u>tabn<CR>
+	nnoremap <C-Left> :<C-u>tabp<CR>
 	inoremap <C-Right> <ESC>:tabn<CR>
 	inoremap <C-Left> <ESC>:tabp<CR>
-	cnoremap <C-Right> tabn
-	cnoremap <C-Left> tabp
+	cnoremap <C-Right> <C-u>tabn
+	cnoremap <C-Left> <C-u>tabp
 	inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
 	inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
 
