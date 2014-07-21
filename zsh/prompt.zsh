@@ -29,14 +29,14 @@ autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn hg
 zstyle ':vcs_info:*' max-exports 7
 
-zstyle ':vcs_info:*' formats '%R' '%S' '%b' '' '%s'
-zstyle ':vcs_info:*' actionformats '%R' '%S' '%b' '%a' '%s'
-
 autoload -Uz is-at-least
 if is-at-least 4.3.10; then
 	zstyle ':vcs_info:*' check-for-changes true
 	zstyle ':vcs_info:*' formats '%R' '%S' '%b' '' '%s' '%c' '%u'
 	zstyle ':vcs_info:*' actionformats '%R' '%S' '%b' '(%a)' '%s' '%c' '%u'
+else
+	zstyle ':vcs_info:*' formats '%R' '%S' '%b' '' '%s'
+	zstyle ':vcs_info:*' actionformats '%R' '%S' '%b' '%a' '%s'
 fi
 
 zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
