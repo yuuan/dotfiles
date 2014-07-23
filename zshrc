@@ -46,7 +46,7 @@ case ${OSTYPE} in
 	darwin*)
 		alias ls="ls -FG"
 		;;
-	linux*)
+	linux* | cygwin*)
 		alias ls="ls -F --color=auto"
 		;;
 esac
