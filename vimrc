@@ -26,7 +26,7 @@
 	set textwidth=0
 
 	" コマンドの次の文字の入力待ち時間
-"	set timeoutlen=50
+	set timeoutlen=300
 " }}}
 
 
@@ -275,6 +275,7 @@
 		imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
 		nmap <buffer> <F4> <Plug>(unite_exit)
 		nmap <buffer> <ESC> <Plug>(unite_exit)
+		nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
 	endfunction
 
 	"ファイルを開くとき新しいタブで開く
