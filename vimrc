@@ -261,7 +261,7 @@
 
 
 " Unite {{{
-	nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+	nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
 	nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
 	nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
 	nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
