@@ -24,9 +24,12 @@
 	set list
 	set listchars=tab:▸\ ,trail:~
 	set textwidth=0
+	set timeout
 
 	" コマンドの次の文字の入力待ち時間
-	set timeoutlen=300
+	set timeoutlen=1000
+	" キーコード待ちの時間
+	set ttimeoutlen=75
 " }}}
 
 
