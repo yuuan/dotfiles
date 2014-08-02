@@ -49,15 +49,10 @@
 
 " 特殊キー登録 {{{
 	" Ctrl + カーソルキー
-	map <ESC>[A <C-Up>
-	map <ESC>[B <C-Down>
-	map <ESC>[C <C-Right>
-	map <ESC>[D <C-Left>
-	map! <ESC>[A <C-Up>
-	map! <ESC>[B <C-Down>
-	map! <ESC>[C <C-Right>
-	map! <ESC>[D <C-Left>
-	" ↑この定義の仕方を変えれば<ESC>の反応が早くなる
+	set <S-Up>=[A
+	set <S-Down>=[B
+	set <C-Right>=[C
+	set <C-Left>=[D
 
 	" Ctrl + スペースキー
 	map <Nul> <C-Space>
@@ -196,8 +191,8 @@
 	inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
 
 	"Ctrl + 上下キーで候補を移動
-	inoremap <expr><C-Up> pumvisible() ? "\<C-P>" : "\<Up>"
-	inoremap <expr><C-Down> pumvisible() ? "\<C-N>" : "\<Down>"
+	inoremap <expr><S-Up> pumvisible() ? "\<C-P>" : "\<Up>"
+	inoremap <expr><S-Down> pumvisible() ? "\<C-N>" : "\<Down>"
 
 	"Enable omni completion.
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -394,9 +389,9 @@
 	inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
 	inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
 
-	"Ctrl + 上下キーでスクロール
-	noremap <C-Up> <C-Y>
-	noremap <C-Down> <C-E>
+	"Shift + 上下キーでスクロール
+	noremap <S-Up> <C-Y>
+	noremap <S-Down> <C-E>
 
 	"Alt + 上下キーでスクロール
 	map <M-Up> <C-Y>
