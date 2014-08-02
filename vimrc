@@ -22,7 +22,7 @@
 	set showtabline=2
 	set ttyfast
 	set list
-	set listchars=tab:▸\ ,trail:~
+	set listchars=tab:›\ ,trail:~
 	set textwidth=0
 	set timeout
 
@@ -187,7 +187,7 @@
 	colorscheme badwolf
 
 	"タブの色
-	highlight SpecialKey ctermfg=8 ctermbg=0
+	highlight SpecialKey ctermfg=236 ctermbg=16
 
 	"GUIでのカラースキーマ
 	if has('gui_running')
