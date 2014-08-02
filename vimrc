@@ -57,37 +57,11 @@
 	map! <ESC>[B <C-Down>
 	map! <ESC>[C <C-Right>
 	map! <ESC>[D <C-Left>
+	" ↑この定義の仕方を変えれば<ESC>の反応が早くなる
 
 	" Ctrl + スペースキー
 	map <Nul> <C-Space>
 	map! <Nul> <C-Space>
-
-	" Alt + 上下キー
-	map <ESC><ESC>OA <M-Up>
-	map <ESC><ESC>OB <M-Down>
-	map <ESC><ESC>[A <M-Up>
-	map <ESC><ESC>[B <M-Down>
-
-	" Alt + 英数字キー
-	if has('unix') && !has('gui_running')
-		" Use meta keys in console.
-		function! s:use_meta_keys()  " {{{
-			for i in map(
-						\   range(char2nr('a'), char2nr('z'))
-						\ + range(char2nr('A'), char2nr('Z'))
-						\ + range(char2nr('0'), char2nr('9'))
-						\ , 'nr2char(v:val)')
-				" <ESC>O はカーソルキーが使っているのでマップしない
-				if i != 'O'
-					execute 'nmap <ESC>' . i '<M-' . i . '>'
-				endif
-			endfor
-		endfunction  " }}}
-
-		call s:use_meta_keys()
-		map <NUL> <C-Space>
-		map! <NUL> <C-Space>
-	endif
 " }}}
 
 
@@ -276,7 +250,6 @@
 		imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
 		nmap <buffer> <F4> <Plug>(unite_exit)
 		nmap <buffer> <ESC> <Plug>(unite_exit)
-		nmap <buffer> <ESC><ESC> <Plug>(unite_exit)
 	endfunction
 
 	"ファイルを開くとき新しいタブで開く
@@ -477,9 +450,8 @@
 " }}}
 
 
-" 検索後にESCキー連打でハイライトを消す
-nnoremap <ESC><ESC> :nohlsearch<CR>
-nnoremap <M-D> :nohlsearch<CR>
+" 検索後にESCキーでハイライトを消す
+"nmap <ESC> :nohlsearch<CR>
 
 " コマンドラインモードでCtrl + Pで貼り付け
 cnoremap <C-P> <C-R>"
