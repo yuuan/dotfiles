@@ -209,6 +209,7 @@
 	let g:neocomplete#enable_auto_select = 0
 	let g:neocomplete#enable_smart_case = 0
 	let g:neocomplete#enable_camel_case_completion = 0
+	let g:neocomplete#enable_fuzzy_completion = 0
 
 	"上下キーで開かないように
 	inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
@@ -224,12 +225,9 @@
 	inoremap <expr><C-Up> pumvisible() ? "\<C-P>" : "\<Up>"
 	inoremap <expr><C-Down> pumvisible() ? "\<C-N>" : "\<Down>"
 
-	"HTMLでの曖昧検索を無効（たぶん）
-	autocmd FileType html,jinja,tt2html let g:neocomplete#enable_fuzzy_completion=0
-
 	"Enable omni completion.
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
