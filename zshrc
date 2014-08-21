@@ -54,11 +54,13 @@ esac
 alias la="ls -a"
 alias ll="ls -lh"
 alias lal="ls -alh"
-alias lv="lv -c"
-alias hist="history | grep"
-alias service="sudo /sbin/service"
-alias ..="cd .."
-alias st="git status"
+
+alias hist='history | grep'
+alias service='sudo /sbin/service'
+alias ..='cd ..'
+
+alias st='git status'
+alias gb='git branch -a'
 
 export EDITOR='vim'
 
