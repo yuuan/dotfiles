@@ -47,7 +47,7 @@ case ${OSTYPE} in
 		alias ls="ls -FG"
 		;;
 	linux* | cygwin*)
-		alias ls="ls -F --color=auto"
+		alias ls='ls -F --time-style=+"%Y/%m/%d %H:%M:%S" --color=auto'
 		;;
 esac
 
