@@ -59,9 +59,6 @@ alias hist='history | grep'
 alias service='sudo /sbin/service'
 alias ..='cd ..'
 
-alias st='git status'
-alias gb='git branch -a'
-
 export EDITOR='vim'
 
 bindkey "^[[1~" beginning-of-line
