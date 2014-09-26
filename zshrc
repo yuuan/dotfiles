@@ -78,6 +78,8 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 	done
 fi
 
+export EDITOR='vim'
+
 #
 # load local setting
 #
