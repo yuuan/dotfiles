@@ -4,3 +4,6 @@
 [submodule "zsh/dircolors-solarized"]
 	path = zsh/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
+[submodule "zsh/autojump"]
+	path = zsh/autojump
+	url = git://github.com/joelthelion/autojump.git
