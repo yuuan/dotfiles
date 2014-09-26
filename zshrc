@@ -38,40 +38,6 @@ setopt COMPLETE_IN_WORD
 autoload -U colors
 colors
 
-#alias rm="rm -i"
-#alias cp="cp -i"
-alias mv="mv -i"
-
-case ${OSTYPE} in
-	darwin*)
-		alias ls="ls -FG"
-		;;
-	linux* | cygwin*)
-		alias ls='ls -F --time-style=+"%Y/%m/%d %H:%M:%S" --color=auto'
-		;;
-esac
-
-alias la="ls -a"
-alias ll="ls -lh"
-alias lal="ls -alh"
-
-alias hist='history | grep'
-alias service='sudo /sbin/service'
-alias ..='cd ..'
-
-export EDITOR='vim'
-
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[4~" end-of-line
-bindkey "^[[3~" delete-char
-bindkey "^[[Z" reverse-menu-complete
-bindkey "^R" history-incremental-search-backward
-bindkey "^K" kill-line
-
-setopt noflowcontrol
-bindkey "^S" history-incremental-search-forward
-bindkey "^Q" push-line-or-edit
-stty stop undef
 
 #
 # History
