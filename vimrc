@@ -62,12 +62,28 @@
 
 " NeoBundle.vim {{{
 	if has('vim_starting')
-		set runtimepath+=~/.vim/bundle/neobundle.vim
-		call neobundle#rc(expand('~/.vim/bundle/'))
-		filetype off
-		filetype plugin on
-		filetype indent on
+		set nocompatible " Be iMproved
+
+		" Required:
+		set runtimepath+=~/.vim/bundle/neobundle.vim/
 	endif
+
+	" Required:
+	call neobundle#begin(expand('~/.vim/bundle/'))
+
+	" Let NeoBundle manage NeoBundle
+	" Required:
+	NeoBundleFetch 'Shougo/neobundle.vim'
+
+	call neobundle#end()
+
+	" Required:
+	filetype plugin indent on
+
+	" If there are uninstalled bundles found on startup,
+	" this will conveniently prompt you to install them.
+	NeoBundleCheck
+
 
 	"NeoBundle
 	NeoBundle 'Shougo/neobundle.vim'
