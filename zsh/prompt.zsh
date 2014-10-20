@@ -5,7 +5,7 @@
 if [ ${UID} = 0 ]; then
 	PROMPT="%F{red}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{red}%_> %f"
-elif [[ -n `hostname | grep "dti"` ]]; then
+elif [[ -n `hostname | grep "feoh"` ]]; then
 	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{cyan}%_> %f"
 elif [[ -n `hostname | grep "v157-7-154-240"` ]]; then
