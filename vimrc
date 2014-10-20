@@ -107,6 +107,7 @@
 	NeoBundle 'Shougo/vimfiler.git'
 	NeoBundle 'Shougo/neocomplete.git'
 
+	NeoBundle 'kana/vim-smartinput.git'
 	NeoBundle 'AndrewRadev/switch.vim'
 	NeoBundle 'tyru/caw.vim.git'
 
