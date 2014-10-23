@@ -109,7 +109,6 @@
 	"Syntacs
 	NeoBundle 'scrooloose/syntastic'
 	NeoBundle 'hail2u/vim-css3-syntax'
-	NeoBundle 'othree/html5.vim'
 	NeoBundle 'pangloss/vim-javascript'
 	NeoBundle 'jiangmiao/simple-javascript-indenter'
 	NeoBundle 'Glench/Vim-Jinja2-Syntax'
