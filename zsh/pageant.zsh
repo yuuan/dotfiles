@@ -2,9 +2,7 @@
 
 LOCAL_TMP_DIR=$HOME/.ssh-agent
 
-if [ -d $LOCAL_TMP_DIR ]; then
-	mkdir -p $LOCAL_TMP_DIR
-fi
+mkdir -p $LOCAL_TMP_DIR
 
 agent="$LOCAL_TMP_DIR/ssh-agent-$USER"
 if [ -S "$SSH_AUTH_SOCK" ]; then
