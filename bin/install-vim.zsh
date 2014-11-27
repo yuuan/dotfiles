@@ -7,6 +7,7 @@ mkdir -p $HOME/.vim/undo/
 
 dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 
+ln -sni $dotfiles/vimrc $HOME/.vimrc
 ln -sni $dotfiles/vim/ftplugin $HOME/.vim/ftplugin
 
 
