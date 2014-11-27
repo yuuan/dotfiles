@@ -8,7 +8,7 @@ if [ ${UID} = 0 ]; then
 elif [[ -n `hostname | grep "feoh"` ]]; then
 	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{cyan}%_> %f"
-elif [[ -n `hostname | grep "v157-7-154-240"` ]]; then
+elif [[ -n `hostname | grep "conoha"` ]]; then
 	PROMPT="%F{yellow}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{yellow}%_> %f"
 elif [[ -n `uname -sr | grep "CYGWIN"` ]]; then
