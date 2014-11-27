@@ -8,7 +8,7 @@ if [ ${UID} = 0 ]; then
 elif [[ -n `hostname | grep "feoh"` ]]; then
 	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{cyan}%_> %f"
-elif [[ -n `hostname | grep "v157-7-154-240"` ]]; then
+elif [[ -n `hostname | grep "conoha"` ]]; then
 	PROMPT="%F{yellow}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{yellow}%_> %f"
 elif [[ -n `uname -sr | grep "CYGWIN"` ]]; then
@@ -45,7 +45,7 @@ zstyle ':vcs_info:bzr:*' use-simple true
 function current-branch () {
 	local repository branch action st color
 
-	STY= LANG=en_US.UTF-8 vcs_info
+	STY= LANG=en_US.UTF-8 vcs_info 2> /dev/null
 	if [[ -n "$vcs_info_msg_1_" ]]; then
 		repository="$vcs_info_msg_0_"
 		branch="$vcs_info_msg_2_"
