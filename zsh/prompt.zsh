@@ -45,7 +45,7 @@ zstyle ':vcs_info:bzr:*' use-simple true
 function current-branch () {
 	local repository branch action st color
 
-	STY= LANG=en_US.UTF-8 vcs_info
+	STY= LANG=en_US.UTF-8 vcs_info 2> /dev/null
 	if [[ -n "$vcs_info_msg_1_" ]]; then
 		repository="$vcs_info_msg_0_"
 		branch="$vcs_info_msg_2_"
