@@ -30,6 +30,11 @@
 	set timeoutlen=1000
 	" キーコード待ちの時間
 	set ttimeoutlen=75
+
+	" Windows では CP932 を使う
+	if (has("win32") || has("win64"))
+		set termencoding=cp932
+	endif
 " }}}
 
 
