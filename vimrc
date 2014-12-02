@@ -31,9 +31,13 @@
 	" キーコード待ちの時間
 	set ttimeoutlen=75
 
-	" Windows では CP932 を使う
+	" Windows での設定
 	if (has("win32") || has("win64"))
+		" Windows では CP932 を使う
 		set termencoding=cp932
+
+		" 256 色表示ができないのでひとまず Wombat にする
+		colorscheme wombat
 	endif
 " }}}
 
