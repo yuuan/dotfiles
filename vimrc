@@ -31,13 +31,9 @@
 	" キーコード待ちの時間
 	set ttimeoutlen=75
 
-	" Windows での設定
+	" Windows では CP932 を使う
 	if (has("win32") || has("win64"))
-		" Windows では CP932 を使う
 		set termencoding=cp932
-
-		" 256 色表示ができないのでひとまず Wombat にする
-		colorscheme wombat
 	endif
 " }}}
 
@@ -181,6 +177,11 @@
 
 	"カラースキーム選択
 	colorscheme badwolf
+
+	" Windows で 256 色表示ができないのでひとまず Wombat にする
+	if (has("win32") || has("win64"))
+		colorscheme wombat
+	endif
 
 	"タブの色
 	highlight SpecialKey ctermfg=236 ctermbg=16
