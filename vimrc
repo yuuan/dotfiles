@@ -95,6 +95,7 @@
 
 	"Unite
 	NeoBundle 'Shougo/unite.vim.git'
+	NeoBundle 'Shougo/neomru.vim.git'
 	NeoBundle 'ujihisa/unite-colorscheme'
 	NeoBundle 'kmnk/vim-unite-giti.git'
 	NeoBundle 'Shougo/unite-session'
