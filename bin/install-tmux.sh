@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -eu
 
 [[ ! -d $HOME/.tmux ]] && mkdir -p $HOME/.tmux/
 [[ ! -d $HOME/.tmux/plugins ]] && mkdir -p $HOME/.tmux/plugins/

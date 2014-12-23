@@ -1,8 +1,8 @@
-#!/bin/zsh
+#!/bin/zsh -eu
 
-mkdir -p $HOME/.vim/backup/
-mkdir -p $HOME/.vim/swp/
-mkdir -p $HOME/.vim/undo/
+[[ ! -d $HOME/.vim/backup ]] && mkdir -p $HOME/.vim/backup/
+[[ ! -d $HOME/.vim/swp ]] && mkdir -p $HOME/.vim/swp/
+[[ ! -d $HOME/.vim/undo ]] && mkdir -p $HOME/.vim/undo/
 
 
 dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"

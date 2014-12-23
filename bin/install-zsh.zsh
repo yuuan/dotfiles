@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/zsh -eu
 
 function cyan-echo {
 	echo -e "\e[32m$*\e[m"
