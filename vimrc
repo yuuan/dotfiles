@@ -312,6 +312,13 @@
 " }}}
 
 
+" emmet.vim {{{
+	let g:user_emmet_settings = {
+		\   'lang' : 'ja'
+	\ }
+" }}}
+
+
 " switch.vim {{{
 	nnoremap - :Switch<cr>
 " }}}
