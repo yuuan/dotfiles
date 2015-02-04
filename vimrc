@@ -263,13 +263,8 @@
 
 
 " Unite {{{
-	nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
-	nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
-	nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
-	nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
-	"inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
-	
 	let g:unite_enable_start_insert = 1
+	let g:unite_source_history_yank_enable = 1
 
 	autocmd FileType unite call s:unite_my_settings()
 	function! s:unite_my_settings()
@@ -281,6 +276,14 @@
 
 	"ファイルを開くとき新しいタブで開く
 	call unite#custom#default_action('file', 'tabopen')
+
+	"キーの割り当て
+	nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
+	nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
+	nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
+	nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
+	"inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
+	nnoremap <silent> <C-p> :<C-u>Unite history/yank<CR>
 " }}}
 
 
