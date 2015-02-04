@@ -128,6 +128,7 @@
 	NeoBundle 'Shougo/vimfiler.git'
 	NeoBundle 'Shougo/neocomplete.git'
 	NeoBundle 'tpope/vim-surround'
+	NeoBundle 'mattn/emmet-vim'
 
 	NeoBundle 'kana/vim-smartinput.git'
 	NeoBundle 'AndrewRadev/switch.vim'
