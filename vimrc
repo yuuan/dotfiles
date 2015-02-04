@@ -408,6 +408,21 @@
 " }}}
 
 
+" 行番号表示切り替え {{{
+	function SwitchNumber()
+		if &number
+			setlocal nonumber
+			setlocal nolist
+		else
+			setlocal number
+			setlocal list
+		endif
+	endfunction
+
+	nnoremap <silent> !! :<C-u>call SwitchNumber()<CR>
+" }}}
+
+
 " 画面操作 {{{
 	"Ctrl + 左右キーでタブを切り替え
 	nnoremap <C-Right> :<C-u>tabn<CR>
