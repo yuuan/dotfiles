@@ -284,6 +284,7 @@
 	nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
 	"inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
 	nnoremap <silent> <C-p> :<C-u>Unite history/yank<CR>
+	"inoremap <silent> <C-p> <ESC>:<C-u>Unite history/yank<CR>
 " }}}
 
 
