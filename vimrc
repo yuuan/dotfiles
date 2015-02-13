@@ -161,6 +161,9 @@
 	"TT2 syntax
 	autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
 
+	"CoffeeScript
+	autocmd BufNewFile,BufRead,BufReadPre *.coffee set filetype=coffee
+
 	"PHPで<>を対応する括弧として認識させない
 	autocmd FileType php set matchpairs-=<:>
 " }}}
