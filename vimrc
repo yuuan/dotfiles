@@ -119,6 +119,7 @@
 	NeoBundle 'jiangmiao/simple-javascript-indenter'
 	NeoBundle 'Glench/Vim-Jinja2-Syntax'
 	NeoBundle 'vim-perl/vim-perl'
+	NeoBundle 'kchmck/vim-coffee-script'
 
 	"Git
 	NeoBundle 'tpope/vim-fugitive'
