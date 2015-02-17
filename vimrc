@@ -138,12 +138,14 @@
 
 	NeoBundle 'vim-jp/vimdoc-ja'
 
-	NeoBundle 'Shougo/vimproc', {
-		\ 'build' : {
-			\ 'mac'     : 'make -f make_mac.mak',
-			\ 'unix'    : 'make -f make_unix.mak',
-		\ },
-	\ }
+	if (! (has("win32") || has("win64")) )
+		NeoBundle 'Shougo/vimproc', {
+			\ 'build' : {
+				\ 'mac'     : 'make -f make_mac.mak',
+				\ 'unix'    : 'make -f make_unix.mak',
+			\ },
+		\ }
+	endif
 " }}}
 
 
@@ -444,7 +446,7 @@
 
 
 " 行番号表示切り替え {{{
-	function SwitchNumber()
+	function! SwitchNumber()
 		if &number
 			setlocal nonumber
 			setlocal nolist
