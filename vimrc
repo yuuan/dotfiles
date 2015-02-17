@@ -120,6 +120,7 @@
 	NeoBundle 'Glench/Vim-Jinja2-Syntax'
 	NeoBundle 'vim-perl/vim-perl'
 	NeoBundle 'kchmck/vim-coffee-script'
+	NeoBundle 'plasticboy/vim-markdown'
 
 	"Git
 	NeoBundle 'tpope/vim-fugitive'
@@ -149,23 +150,31 @@
 
 
 " FileTypes {{{
-	"php-template
-	autocmd BufNewFile,BufRead *.phtml set filetype=php
-	autocmd BufNewFile,BufRead *.ctp set filetype=php
+	augroup FileTypes
+		"二重に登録されるのを防止する
+		autocmd!
 
-	"jinja
-	autocmd BufNewFile,BufRead *.tpl set filetype=jinja
-	autocmd BufNewFile,BufRead *.twig set filetype=jinja
-	autocmd BufNewFile,BufRead *.volt set filetype=jinja
+		"php-template
+		autocmd BufNewFile,BufRead *.phtml set filetype=php
+		autocmd BufNewFile,BufRead *.ctp set filetype=php
 
-	"TT2 syntax
-	autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
+		"jinja
+		autocmd BufNewFile,BufRead *.tpl set filetype=jinja
+		autocmd BufNewFile,BufRead *.twig set filetype=jinja
+		autocmd BufNewFile,BufRead *.volt set filetype=jinja
 
-	"CoffeeScript
-	autocmd BufNewFile,BufRead,BufReadPre *.coffee set filetype=coffee
+		"CoffeeScript
+		autocmd BufNewFile,BufRead,BufReadPre *.coffee set filetype=coffee
 
-	"PHPで<>を対応する括弧として認識させない
-	autocmd FileType php set matchpairs-=<:>
+		"TT2 syntax
+		autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
+
+		"Markdown
+		autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=mkd
+
+		"PHPで<>を対応する括弧として認識させない
+		autocmd FileType php set matchpairs-=<:>
+	augroup END
 " }}}
 
 
@@ -203,6 +212,15 @@
 
 " syntastic {{{
 	let g:syntastic_perl_lib_path = 'lib'
+" }}}
+
+
+" vim-markdown {{{
+	" 折りたたまない
+	let g:vim_markdown_folding_disabled = 1
+
+	" デフォルトのキーマップを無効
+	let g:vim_markdown_no_default_key_mappings = 1
 " }}}
 
 
