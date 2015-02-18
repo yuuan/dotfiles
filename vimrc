@@ -121,6 +121,7 @@
 	NeoBundle 'vim-perl/vim-perl'
 	NeoBundle 'kchmck/vim-coffee-script'
 	NeoBundle 'plasticboy/vim-markdown'
+	NeoBundle 'xsbeats/vim-blade'
 
 	"Git
 	NeoBundle 'tpope/vim-fugitive'
