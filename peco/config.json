@@ -4,5 +4,14 @@
 		"C-n": "peco.SelectNext",
 		"C-c": "peco.Cancel",
 		"Tab": "peco.RotateMatcher"
+	},
+	"Style": {
+		"Selected": [
+			"black",
+			"on_blue"
+		],
+		"Matched": [
+			"red"
+		]
 	}
 }
