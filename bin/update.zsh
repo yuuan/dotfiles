@@ -1,0 +1,10 @@
+#!/bin/zsh -eu
+
+dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
+
+pushd $dotfiles
+git submodule update --init
+popd
+
+rm -f ~/.zcompdump; compinit
+
