@@ -123,6 +123,9 @@
 	NeoBundle 'plasticboy/vim-markdown'
 	NeoBundle 'xsbeats/vim-blade'
 
+	"vim-ref
+	NeoBundle 'thinca/vim-ref'
+
 	"Git
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv.git'
@@ -213,6 +216,13 @@
 
 " syntastic {{{
 	let g:syntastic_perl_lib_path = 'lib'
+" }}}
+
+
+" vim-ref {{{
+	if isdirectory($HOME . '/.vim/docs/php-chunked-xhtml')
+		let g:ref_phpmanual_path = $HOME . '/.vim/docs/php-chunked-xhtml'
+	endif
 " }}}
 
 
