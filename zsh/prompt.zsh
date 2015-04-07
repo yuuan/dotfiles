@@ -14,6 +14,12 @@ elif [[ -n `hostname | grep "conoha"` ]]; then
 elif [[ -n `uname -sr | grep "CYGWIN"` ]]; then
 	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{cyan}%_> %f"
+elif [[ -n `hostname | grep "^ip-[0-9]{1,3}-[0-9]{1,3}-[0-9]{1,3}-[0-9]{1,3}$"` ]];then
+	if [[ -n "$HOST_SCREEN_NAME" ]]; then
+		HOST_SCREEN_NAME="%m"
+	fi
+	PROMPT="%F{green}[%n@$HOST_SCREEN_NAME]%(!.#.$) %f"
+	PROMPT2="%F{green}%_> %f"
 else
 	PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
 	PROMPT2="%F{blue}%_> %f"
