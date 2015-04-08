@@ -374,17 +374,18 @@
 		\ 'colorscheme': 'powerline',
 		\ 'mode_map': { 'c': 'NORMAL' },
 		\ 'active': {
-		\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+		\   'left': [ [ 'mode', 'paste' ], [ 'filename' ] ],
 		\   'right': [
 		\     [ 'lineinfo' ],
 		\     [ 'percent' ],
-		\     [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype']
+		\     [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype', 'fugitiveicon']
 		\   ]
 		\ },
 		\ 'component_function': {
 		\   'modified': 'MyModified',
 		\   'readonly': 'MyReadonly',
 		\   'fugitive': 'MyFugitive',
+		\   'fugitiveicon': 'MyFugitiveicon',
 		\   'filename': 'MyFilename',
 		\   'fileformat': 'MyFileformat',
 		\   'filetype': 'MyFiletype',
@@ -414,12 +415,13 @@
 			\ ('' != MyModified() ? ' ' . MyModified() : '')
 	endfunction
 
+	function! MyFugitiveicon()
+		let head = exists("*fugitive#head") ? fugitive#head() : ''
+		return (strlen(head) > 0) ? "\ue0a0 " : ''
+	endfunction
+
 	function! MyFugitive()
-		if &ft !~? 'vimfiler\|gundo' && exists("*fugitive#head")
-			let _ = fugitive#head()
-			return strlen(_) ? "\ue0a0 "._ : ''
-		endif
-		return ''
+		return exists("*fugitive#head") ? "\ue0a0 " . fugitive#head() : ''
 	endfunction
 
 	function! MyFileformat()
