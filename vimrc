@@ -132,9 +132,13 @@
 
 	NeoBundle 'vim-scripts/sudo.vim.git'
 	NeoBundle 'Shougo/vimfiler.git'
-	NeoBundle 'Shougo/neocomplete.git'
 	NeoBundle 'tpope/vim-surround'
 	NeoBundle 'mattn/emmet-vim'
+
+	"NeoComplete
+	if has('lua')
+		NeoBundle 'Shougo/neocomplete.git'
+	endif
 
 	NeoBundle 'kana/vim-smartinput.git'
 	NeoBundle 'AndrewRadev/switch.vim'
@@ -240,35 +244,37 @@
 
 
 " neocomplete {{{
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#disable_auto_complete = 0
-	let g:neocomplete#min_syntax_length = 3
-	let g:neocomplete#enable_auto_select = 0
-	let g:neocomplete#enable_smart_case = 0
-	let g:neocomplete#enable_camel_case_completion = 0
-	let g:neocomplete#enable_fuzzy_completion = 0
+	if neobundle#is_installed('neocomplete')
+		let g:neocomplete#enable_at_startup = 1
+		let g:neocomplete#disable_auto_complete = 0
+		let g:neocomplete#min_syntax_length = 3
+		let g:neocomplete#enable_auto_select = 0
+		let g:neocomplete#enable_smart_case = 0
+		let g:neocomplete#enable_camel_case_completion = 0
+		let g:neocomplete#enable_fuzzy_completion = 0
 
-	"上下キーで開かないように
-	inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
-	inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
+		"上下キーで開かないように
+		inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
+		inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
 
-	"改行しようとして候補を入力されないように
-	inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
+		"改行しようとして候補を入力されないように
+		inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
 
-	"Ctrl + Space で表示
-	inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
+		"Ctrl + Space で表示
+		inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
 
-	"Ctrl + 上下キーで候補を移動
-	inoremap <expr><S-Up> pumvisible() ? "\<C-P>" : "\<Up>"
-	inoremap <expr><S-Down> pumvisible() ? "\<C-N>" : "\<Down>"
+		"Ctrl + 上下キーで候補を移動
+		inoremap <expr><S-Up> pumvisible() ? "\<C-P>" : "\<Up>"
+		inoremap <expr><S-Down> pumvisible() ? "\<C-N>" : "\<Down>"
 
-	"Enable omni completion.
-	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+		"Enable omni completion.
+		autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+		autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+		autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
+		autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+		autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+		autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	endif
 " }}}
 
 
@@ -485,8 +491,14 @@
 	inoremap <C-Left> <ESC>:tabp<CR>
 	cnoremap <C-Right> <C-u>tabn
 	cnoremap <C-Left> <C-u>tabp
-	inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
-	inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
+
+	if neobundle#is_installed('neocomplete')
+		inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
+		inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
+	else
+		inoremap <expr><C-Right> "\<ESC>:tabn\<CR>"
+		inoremap <expr><C-Left> "\<ESC>:tabp\<CR>"
+	endif
 
 	"Shift + 上下キーでスクロール
 	noremap <S-Up> <C-Y>
