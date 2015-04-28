@@ -6,5 +6,6 @@ pushd $dotfiles
 git submodule update --init
 popd
 
-rm -f ~/.zcompdump; compinit
+rm -f ~/.zcompdump
+autoload -U compinit; compinit
 
