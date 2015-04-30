@@ -139,6 +139,8 @@
 	if has('lua')
 		NeoBundle 'Shougo/neocomplete.git'
 	endif
+	NeoBundle 'm2mdas/phpcomplete-extended'
+	NeoBundle 'm2mdas/phpcomplete-extended-laravel'
 
 	NeoBundle 'kana/vim-smartinput.git'
 	NeoBundle 'AndrewRadev/switch.vim'
@@ -274,6 +276,7 @@
 		autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 		autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 		autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+		autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 	endif
 " }}}
 
