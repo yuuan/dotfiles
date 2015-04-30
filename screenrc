@@ -4,7 +4,7 @@ altscreen on
 defscrollback 10000
 startup_message off
 autodetach on
-hardstatus alwayslastline "%{= yK} %`%-w%{= dy}%n %t%{-}%+w %-9=%{= yK}%02c:%s"
+hardstatus alwayslastline "%{= yK}%Y.%m.%d %02c:%s   %`%-w%{= dy}%n %t%{-}%+w %-16=%{= yK}[%l]"
 bind w windowlist -
 
 #bindkey "^[[C" next	# Ctrl + Right
