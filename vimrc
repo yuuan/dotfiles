@@ -280,6 +280,14 @@
 	endif
 " }}}
 
+" phpcomplete-extended {{{
+	if executable('composer.phar')
+		let g:phpcomplete_index_composer_command = 'composer.phar'
+	elseif executable('composer')
+		let g:phpcomplete_index_composer_command = 'composer'
+	endif
+" }}}
+
 
 " VimFiler {{{
 	"vimデフォルトのエクスプローラをvimfilerで置き換える
