@@ -139,8 +139,8 @@
 	if has('lua')
 		NeoBundle 'Shougo/neocomplete.git'
 	endif
-	NeoBundle 'm2mdas/phpcomplete-extended'
-	NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+"	NeoBundle 'm2mdas/phpcomplete-extended'
+"	NeoBundle 'm2mdas/phpcomplete-extended-laravel'
 
 	NeoBundle 'kana/vim-smartinput.git'
 	NeoBundle 'AndrewRadev/switch.vim'
