@@ -3,6 +3,7 @@
 		"C-p": "peco.SelectPrevious",
 		"C-n": "peco.SelectNext",
 		"C-c": "peco.Cancel",
+		"C-d": "peco.Cancel",
 		"Tab": "peco.RotateMatcher"
 	},
 	"Style": {
