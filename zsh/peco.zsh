@@ -8,7 +8,7 @@ function peco-select-history() {
 		tac="tail -r"
 	fi
 
-	BUFFER=$(\history -n 1 | eval $tac | peco --query "$LBUFFER")
+	BUFFER=$(\history -n 1 | eval $tac | LANG=ja_JP.UTF-8 peco --query "$LBUFFER")
 	CURSOR=$#BUFFER
 	zle clear-screen
 }
