@@ -1,9 +1,9 @@
 {
 	"Keymap": {
-		"ArrowUp":   "peco.SelectPrevious",
-		"ArrowDown": "peco.SelectNext",
-		"C-p": "peco.SelectPrevious",
-		"C-n": "peco.SelectNext",
+		"ArrowUp":   "peco.SelectUp",
+		"ArrowDown": "peco.SelectDown",
+		"C-p": "peco.SelectUp",
+		"C-n": "peco.SelectDown",
 		"C-c": "peco.Cancel",
 		"C-d": "peco.Cancel",
 		"Tab": "peco.RotateMatcher"
