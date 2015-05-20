@@ -67,7 +67,9 @@
 
 " NeoBundle.vim {{{
 	if has('vim_starting')
-		set nocompatible " Be iMproved
+		if &compatible
+			set nocompatible " Be iMproved
+		endif
 
 		" Required:
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -79,19 +81,6 @@
 	" Let NeoBundle manage NeoBundle
 	" Required:
 	NeoBundleFetch 'Shougo/neobundle.vim'
-
-	call neobundle#end()
-
-	" Required:
-	filetype plugin indent on
-
-	" If there are uninstalled bundles found on startup,
-	" this will conveniently prompt you to install them.
-	NeoBundleCheck
-
-
-	"NeoBundle
-	NeoBundle 'Shougo/neobundle.vim'
 
 	"Unite
 	NeoBundle 'Shougo/unite.vim.git'
@@ -157,6 +146,15 @@
 			\ },
 		\ }
 	endif
+
+	call neobundle#end()
+
+	" Required:
+	filetype plugin indent on
+
+	" If there are uninstalled bundles found on startup,
+	" this will conveniently prompt you to install them.
+	NeoBundleCheck
 " }}}
 
 
