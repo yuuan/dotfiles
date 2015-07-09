@@ -68,6 +68,8 @@ setopt autopushd
 setopt magic_equal_subst
 zstyle ':completion:*' use-cache true
 
+autoload -U zmv
+
 export ZSHHOME="${HOME}/.zsh"
 
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \
