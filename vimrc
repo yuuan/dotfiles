@@ -183,6 +183,9 @@
 
 		"PHPで<>を対応する括弧として認識させない
 		autocmd FileType php set matchpairs-=<:>
+
+		"PHPでタブの代わりにスペースを使う
+		autocmd FileType php set expandtab
 	augroup END
 " }}}
 
