@@ -514,9 +514,11 @@
 		if &number
 			setlocal nonumber
 			setlocal nolist
+			execute ":IndentLinesDisable"
 		else
 			setlocal number
 			setlocal list
+			execute ":IndentLinesEnable"
 		endif
 	endfunction
 
