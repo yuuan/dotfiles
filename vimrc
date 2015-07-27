@@ -119,10 +119,15 @@
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv.git'
 
-	NeoBundle 'vim-scripts/sudo.vim.git'
-	NeoBundle 'Shougo/vimfiler.git'
+	"Edit
 	NeoBundle 'tpope/vim-surround'
 	NeoBundle 'mattn/emmet-vim'
+	NeoBundle 'kana/vim-smartinput.git'
+	NeoBundle 'AndrewRadev/switch.vim'
+	NeoBundle 'tyru/caw.vim.git'
+
+	NeoBundle 'vim-scripts/sudo.vim.git'
+	NeoBundle 'Shougo/vimfiler.git'
 	NeoBundle 'lambdalisue/vim-unified-diff'
 
 	"NeoComplete
@@ -131,10 +136,6 @@
 	endif
 "	NeoBundle 'm2mdas/phpcomplete-extended'
 "	NeoBundle 'm2mdas/phpcomplete-extended-laravel'
-
-	NeoBundle 'kana/vim-smartinput.git'
-	NeoBundle 'AndrewRadev/switch.vim'
-	NeoBundle 'tyru/caw.vim.git'
 
 	NeoBundle 'vim-jp/vimdoc-ja'
 
