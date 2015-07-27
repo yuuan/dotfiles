@@ -3,6 +3,7 @@ defencoding utf8
 escape ^A^A
 altscreen on
 defscrollback 10000
+defmousetrack on
 startup_message off
 autodetach on
 hardstatus alwayslastline "%{= yK}%Y.%m.%d %02c:%s   %`%-w%{= dy}%n %t%{-}%+w %-16=%{= yK}[%l]"
