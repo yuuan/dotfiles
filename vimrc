@@ -612,7 +612,7 @@ vnoremap > >gv
 
 
 " 環境依存設定の読み込み
-if filereadable(expand('~/.vimrc-local'))
-	source ~/.vimrc-local
+if filereadable(expand('~/.vimrc.local'))
+	source ~/.vimrc.local
 endif
 
