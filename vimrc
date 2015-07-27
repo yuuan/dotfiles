@@ -119,6 +119,9 @@
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv.git'
 
+	"Display
+	NeoBundle 'Yggdroot/indentLine'
+
 	"Edit
 	NeoBundle 'tpope/vim-surround'
 	NeoBundle 'mattn/emmet-vim'
@@ -220,6 +223,12 @@
 		set background=light
 		colorscheme solarized
 	endif
+" }}}
+
+
+" indentLine {{{
+	let g:indentLine_color_term = 237
+	let g:indentLine_char = '|' " default '¦'
 " }}}
 
 
