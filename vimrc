@@ -245,6 +245,9 @@
 	if isdirectory($HOME . '/.vim/docs/php-chunked-xhtml')
 		let g:ref_phpmanual_path = $HOME . '/.vim/docs/php-chunked-xhtml'
 	endif
+	let g:ref_detect_filetype={
+		\     'blade': 'phpmanual',
+		\ }
 " }}}
 
 
