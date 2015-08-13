@@ -411,7 +411,9 @@
 
 	let g:switch_custom_definitions = [
 		\     [ 'private', 'protected', 'public' ],
-		\     [ 'self::', 'static::' ]
+		\     [ 'self::', 'static::' ],
+		\     [ '@if', '@unless' ],
+		\     [ '@endif', '@endunless' ],
 		\ ]
 " }}}
 
