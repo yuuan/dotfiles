@@ -96,6 +96,7 @@
 	NeoBundle 'tomasr/molokai'
 	NeoBundle 'vim-scripts/Wombat'
 	NeoBundle 'nanotech/jellybeans.vim'
+	NeoBundle 'morhetz/gruvbox'
 
 	"Lightline
 	NeoBundle 'itchyny/lightline.vim'
