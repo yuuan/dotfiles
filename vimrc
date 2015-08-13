@@ -410,7 +410,8 @@
 	nnoremap - :Switch<cr>
 
 	let g:switch_custom_definitions = [
-		\     [ 'private', 'protected', 'public' ]
+		\     [ 'private', 'protected', 'public' ],
+		\     [ 'self::', 'static::' ]
 		\ ]
 " }}}
 
