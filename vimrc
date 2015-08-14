@@ -414,6 +414,8 @@
 		\     [ 'self::', 'static::' ],
 		\     [ '@if', '@unless' ],
 		\     [ '@endif', '@endunless' ],
+		\     [ "'ASC'", "'DESC'" ],
+		\     [ "'asc'", "'desc'" ],
 		\ ]
 " }}}
 
