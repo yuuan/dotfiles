@@ -89,6 +89,10 @@
 	NeoBundle 'kmnk/vim-unite-giti.git'
 	NeoBundle 'Shougo/unite-session'
 
+	"gf
+	NeoBundle 'kana/vim-gf-user'
+	NeoBundle 'violetyk/vim-phpclass'
+
 	"Colorscheme
 	NeoBundle 'altercation/vim-colors-solarized'
 	NeoBundle 'w0ng/vim-hybrid'
@@ -237,6 +241,12 @@
 	let g:syntastic_perl_lib_path = 'lib'
 " }}}
 
+
+" vim-phpclass {{{
+	let g:phpclass_dir = {
+		\    './vendor/' : 'phpclass#psr0'
+		\ }
+" }}}
 
 " vim-ref {{{
 	if executable('lynx')
