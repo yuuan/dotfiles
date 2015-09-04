@@ -426,6 +426,10 @@
 		\     [ '@endif', '@endunless' ],
 		\     [ "'ASC'", "'DESC'" ],
 		\     [ "'asc'", "'desc'" ],
+		\     [ "yes", "no" ],
+		\     [ "on", "off" ],
+		\     [ "enable", "disable" ],
+		\     [ "enabled", "disabled" ],
 		\ ]
 " }}}
 
