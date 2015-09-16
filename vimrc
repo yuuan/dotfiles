@@ -354,6 +354,7 @@
 	function! s:unite_my_settings()
 		imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 		imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
+		imap <buffer> <C-p> <C-r>0
 		nmap <buffer> <F4> <Plug>(unite_exit)
 		nmap <buffer> <ESC> <Plug>(unite_exit)
 	endfunction
