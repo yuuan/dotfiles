@@ -88,6 +88,7 @@
 	NeoBundle 'ujihisa/unite-colorscheme'
 	NeoBundle 'kmnk/vim-unite-giti.git'
 	NeoBundle 'Shougo/unite-session'
+	NeoBundle 'Shougo/unite-outline'
 
 	"gf
 	NeoBundle 'kana/vim-gf-user'
