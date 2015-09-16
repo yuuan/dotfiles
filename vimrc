@@ -135,6 +135,9 @@
 	NeoBundle 'AndrewRadev/switch.vim'
 	NeoBundle 'tyru/caw.vim.git'
 
+	"Cursor
+	NeoBundle 'Lokaltog/vim-easymotion'
+
 	NeoBundle 'vim-scripts/sudo.vim.git'
 	NeoBundle 'Shougo/vimfiler.git'
 	NeoBundle 'lambdalisue/vim-unified-diff'
@@ -437,6 +440,13 @@
 
 " caw.vim {{{
 	vmap # <Plug>(caw:i:toggle)
+" }}}
+
+
+" vim-easymotion {{{
+	nmap <C-s> <Plug>(easymotion-s)
+	vmap <C-s> <Plug>(easymotion-s)
+	omap <C-s> <Plug>(easymotion-s)
 " }}}
 
 
