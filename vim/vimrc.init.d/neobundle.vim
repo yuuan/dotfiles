@@ -71,6 +71,8 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-smartinput.git'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'tyru/caw.vim.git'
+NeoBundle "kana/vim-textobj-user"
+NeoBundle "osyo-manga/vim-textobj-multiblock"
 
 "Cursor
 NeoBundle 'Lokaltog/vim-easymotion'
