@@ -117,6 +117,7 @@
 	NeoBundle 'kchmck/vim-coffee-script'
 	NeoBundle 'plasticboy/vim-markdown'
 	NeoBundle 'xsbeats/vim-blade'
+	NeoBundle 'elzr/vim-json'
 
 	"vim-ref
 	NeoBundle 'thinca/vim-ref'
@@ -199,6 +200,9 @@
 
 		"PHPでタブの代わりにスペースを使う
 		autocmd FileType php set expandtab
+
+		"JSONでダブルクォーテーションを表示する
+		let g:vim_json_syntax_conceal = 0
 	augroup END
 " }}}
 
