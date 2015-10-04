@@ -3,8 +3,8 @@
 " ----------------------------------------
 
 " HomeとEnd
-map <C-A> <Home>
-map <C-E> <End>
+noremap <C-A> <Home>
+noremap <C-E> <End>
 
 " Ctrl + k で行末まで削除
 inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')

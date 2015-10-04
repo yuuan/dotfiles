@@ -2,7 +2,7 @@
 " キーバインド - 画面操作
 " ----------------------------------------
 
-"Ctrl + 左右キーでタブを切り替え
+" Ctrl + 左右キーでタブを切り替え
 nnoremap <C-Right> :<C-u>tabn<CR>
 nnoremap <C-Left> :<C-u>tabp<CR>
 inoremap <C-Right> <ESC>:tabn<CR>
@@ -18,17 +18,17 @@ else
 	inoremap <expr><C-Left> "\<ESC>:tabp\<CR>"
 endif
 
-"Shift + 上下キーでスクロール
+" Shift + 上下キーでスクロール
 noremap <S-Up> <C-Y>
 noremap <S-Down> <C-E>
 
-"Alt + 上下キーでスクロール
-map <M-Up> <C-Y>
-map <M-Down> <C-E>
+" Alt + 上下キーでスクロール
+noremap <M-Up> <C-Y>
+noremap <M-Down> <C-E>
 
-"PageUp/Downの幅を半分に
-map <PageUp> <C-U>
-map <PageDown> <C-D>
+" PageUp/Downの幅を半分に
+noremap <PageUp> <C-U>
+noremap <PageDown> <C-D>
 
 " 行番号表示切り替え {{{
 	function! SwitchNumber()
