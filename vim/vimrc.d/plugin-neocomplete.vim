@@ -1,0 +1,36 @@
+" ----------------------------------------
+" NeoComplete
+" ----------------------------------------
+
+if neobundle#is_installed('neocomplete')
+	let g:neocomplete#enable_at_startup = 1
+	let g:neocomplete#disable_auto_complete = 0
+	let g:neocomplete#min_syntax_length = 3
+	let g:neocomplete#enable_auto_select = 0
+	let g:neocomplete#enable_smart_case = 0
+	let g:neocomplete#enable_camel_case_completion = 0
+	let g:neocomplete#enable_fuzzy_completion = 0
+
+	"上下キーで開かないように
+	inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
+	inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
+
+	"改行しようとして候補を入力されないように
+	inoremap <expr><CR> pumvisible() ? neocomplete#smart_close_popup() : "\<CR>"
+
+	"Ctrl + Space で表示
+	inoremap <expr><C-Space> pumvisible() ? "\<C-Y>" : "\<C-Space>"
+
+	"Ctrl + 上下キーで候補を移動
+	inoremap <expr><S-Up> pumvisible() ? "\<C-P>" : "\<Up>"
+	inoremap <expr><S-Down> pumvisible() ? "\<C-N>" : "\<Down>"
+
+	"Enable omni completion.
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+endif

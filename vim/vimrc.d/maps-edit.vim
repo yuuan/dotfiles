@@ -1,0 +1,24 @@
+" ----------------------------------------
+" キーバインド - 編集
+" ----------------------------------------
+
+" HomeとEnd
+map <C-A> <Home>
+map <C-E> <End>
+
+" Ctrl + k で行末まで削除
+inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
+cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
+
+" 検索後にESCキーでハイライトを消す
+"nmap <ESC> :nohlsearch<CR>
+
+" コマンドラインモードでCtrl + Pで貼り付け
+cnoremap <C-P> <C-R>"
+
+" 単語を選択
+nnoremap + viw
+
+" インデントした後も範囲選択を残す
+vnoremap < <gv
+vnoremap > >gv

@@ -1,0 +1,29 @@
+" ----------------------------------------
+" ファイルの種類ごとの設定
+" ----------------------------------------
+
+augroup FileTypes
+	"二重に登録されるのを防止する
+	autocmd!
+
+	"php-template
+	autocmd BufNewFile,BufRead *.phtml set filetype=php
+	autocmd BufNewFile,BufRead *.ctp set filetype=php
+
+	"jinja
+	autocmd BufNewFile,BufRead *.tpl set filetype=jinja
+	autocmd BufNewFile,BufRead *.twig set filetype=jinja
+	autocmd BufNewFile,BufRead *.volt set filetype=jinja
+
+	"CoffeeScript
+	autocmd BufNewFile,BufRead,BufReadPre *.coffee set filetype=coffee
+
+	"TT2 syntax
+	autocmd BufNewFile,BufRead *.tmpl set filetype=tt2html
+
+	"Markdown
+	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=mkd
+
+	"`*.t` ファイルをPerlファイルとして認識
+	autocmd BufNewFile,BufRead *.t set filetype=perl
+augroup END
