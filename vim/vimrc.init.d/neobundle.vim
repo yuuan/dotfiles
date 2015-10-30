@@ -54,6 +54,7 @@ NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'yoppi/fluentd.vim'
 
 "vim-ref
 NeoBundle 'thinca/vim-ref'
