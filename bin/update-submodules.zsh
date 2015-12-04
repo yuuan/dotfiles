@@ -6,5 +6,5 @@ pushd $dotfiles
 git submodule foreach git pull origin master
 popd
 
-rm -f ~/.zcompdump
+rm -f $HOME/.zcompdump
 autoload -U compinit; compinit
