@@ -2,29 +2,28 @@
 # Pronpt
 #
 
-if [ ${UID} = 0 ]; then
-	PROMPT="%F{red}[%n@%m]%(!.#.$) %f"
-	PROMPT2="%F{red}%_> %f"
-elif [[ -n `hostname | grep "feoh"` ]]; then
-	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
-	PROMPT2="%F{cyan}%_> %f"
-elif [[ -n `hostname | grep "conoha"` ]]; then
-	PROMPT="%F{yellow}[%n@%m]%(!.#.$) %f"
-	PROMPT2="%F{yellow}%_> %f"
-elif [[ -n `uname -sr | grep "CYGWIN"` ]]; then
-	PROMPT="%F{cyan}[%n@%m]%(!.#.$) %f"
-	PROMPT2="%F{cyan}%_> %f"
-elif [[ -n `hostname | grep "^ip-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}$"` ]];then
-	if [[ -z "$HOST_SCREEN_NAME" ]]; then
-		HOST_SCREEN_NAME="%m"
-	fi
-	PROMPT="%F{green}[%n@$HOST_SCREEN_NAME]%(!.#.$) %f"
-	PROMPT2="%F{green}%_> %f"
-else
-	PROMPT="%F{blue}[%n@%m]%(!.#.$) %f"
-	PROMPT2="%F{blue}%_> %f"
+PROMPT_COLOR="blue"
+
+if [[ -z "$HOST_SCREEN_NAME" ]]; then
+	HOST_SCREEN_NAME="%m"
 fi
 
+if [ ${UID} = 0 ]; then
+	PROMPT_COLOR="red"
+elif [[ -n `hostname | grep "feoh"` ]]; then
+	PROMPT_COLOR="cyan"
+elif [[ -n `hostname | grep "conoha"` ]]; then
+	PROMPT_COLOR="yellow"
+elif [[ -n `hostname | grep "gitlab"` ]]; then
+	PROMPT_COLOR="yellow"
+elif [[ -n `uname -sr | grep "CYGWIN"` ]]; then
+	PROMPT_COLOR="cyan"
+elif [[ -n `hostname | grep "^ip-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}$"` ]];then
+	PROMPT_COLOR="green"
+fi
+
+PROMPT="%F{$PROMPT_COLOR}[%n@$HOST_SCREEN_NAME]%(!.#.$) %f"
+PROMPT2="%F{$PROMPT_COLOR}%_> %f"
 
 #
 # Show branch name in Zsh's right prompt
@@ -92,4 +91,3 @@ setopt prompt_subst
 RPROMPT='[`current-branch`%~]'
 
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
-
