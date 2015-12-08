@@ -13,9 +13,10 @@ case ${OSTYPE} in
 		;;
 esac
 
-alias la='ls -a'
-alias ll='ls -lh'
-alias lal='ls -alh'
+alias la="ls -a"
+alias ll="ls -lh"
+alias lal="ls -alh"
+alias lz="ls -lZ"
+alias laz="ls -laZ"
 
 alias ..='cd ..'
-
