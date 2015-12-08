@@ -38,22 +38,6 @@ setopt COMPLETE_IN_WORD
 autoload -U colors
 colors
 
-
-#
-# History
-#
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
-setopt extended_history
-setopt append_history
-setopt hist_no_store
-setopt hist_verify
-#setopt share_history
-setopt hist_ignore_dups
-#setopt hist_reduce_blanks
-setopt hist_ignore_space
-
 setopt auto_list
 setopt auto_menu
 setopt auto_param_slash
@@ -79,8 +63,6 @@ if [ -d $ZSHHOME -a -r $ZSHHOME -a \
 			[ \( -f $i -o -h $i \) -a -r $i ] && . $i
 	done
 fi
-
-export EDITOR='vim'
 
 #
 # load local setting
