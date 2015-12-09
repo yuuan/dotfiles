@@ -17,5 +17,3 @@
 [tig "bind"]
 	generic = g move-first-line
 	generic = G move-last-line
-[include]
-	path = ~/.gitconfig.local
