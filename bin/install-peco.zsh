@@ -4,8 +4,7 @@ dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 
 source "$dotfiles/bin/lib/functions.zsh"
 
-run "ln -sni $dotfiles/zsh $HOME/.zsh"
-run "ln -si $dotfiles/zshrc $HOME/.zshrc"
+run "ln -sni $dotfiles/peco $HOME/.peco"
 
-ls-dr "$HOME/.zshrc" "$HOME/.zsh"
-ls-a "$HOME/.zsh/"
+ls-d "$HOME/.peco"
+ls-a "$HOME/.peco/"
