@@ -4,6 +4,7 @@ scriptencoding utf-8
 filetype off
 filetype plugin indent off
 
+set runtimepath+=~/.vim/
 runtime! vimrc.init.d/*.vim
 runtime! vimrc.d/*.vim
 
