@@ -12,7 +12,7 @@ else
 	echo-info "Add include setting to '~/.gitconfig'"
 	echo '
 [include]
-	path = ~/.gitconfig.d/*.conf' >> ~/.gitconfig
+	path = ~/.gitconfig.d/index.inc' >> ~/.gitconfig
 fi
 
 ls-d "$HOME/.gitconfig" "$HOME/.gitconfig.d"
