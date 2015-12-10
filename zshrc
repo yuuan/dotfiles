@@ -54,6 +54,8 @@ zstyle ':completion:*' use-cache true
 
 autoload -U zmv
 
+#CURRENT_BRANCH_DISABLED=1
+
 export ZSHHOME="${HOME}/.zsh"
 
 if [ -d $ZSHHOME -a -r $ZSHHOME -a \

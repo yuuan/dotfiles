@@ -50,38 +50,42 @@ zstyle ':vcs_info:bzr:*' use-simple true
 function current-branch () {
 	local repository branch action st color
 
-	STY= LANG=en_US.UTF-8 vcs_info 2> /dev/null
-	if [[ -n "$vcs_info_msg_1_" ]]; then
-		repository="$vcs_info_msg_0_"
-		branch="$vcs_info_msg_2_"
-		if [[ -n "$vcs_info_msg_5_" ]]; then
-			action="($vcs_info_msg_5_)"
-		fi
-
-		if is-at-least 4.3.10; then
-			if [[ -n "$vcs_info_msg_6_" ]]; then
-				color="%F{red}"
-			elif [[ -n "$vcs_info_msg_5_" ]]; then
-				color="%F{yellow}"
-			else
-				color="%F{blue}"
+	if [[ -n "$CURRENT_BRANCH_DISABLED" ]]; then
+		print -n "%f%b"
+	else
+		STY= LANG=en_US.UTF-8 vcs_info 2> /dev/null
+		if [[ -n "$vcs_info_msg_1_" ]]; then
+			repository="$vcs_info_msg_0_"
+			branch="$vcs_info_msg_2_"
+			if [[ -n "$vcs_info_msg_5_" ]]; then
+				action="($vcs_info_msg_5_)"
 			fi
-		else
-			if [[ -z `echo "$PWD" | grep -E -i "/\.git(/.*)?$"` ]]; then
-				st=`git status 2> /dev/null`
-				if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-					color="%F{blue}"
-				elif [[ -n `echo "$st" | grep "^no changes "` ]]; then
-					color="%F{yellow}"
-				elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
-					color="%B%F{red}"
-				else
+
+			if is-at-least 4.3.10; then
+				if [[ -n "$vcs_info_msg_6_" ]]; then
 					color="%F{red}"
+				elif [[ -n "$vcs_info_msg_5_" ]]; then
+					color="%F{yellow}"
+				else
+					color="%F{blue}"
+				fi
+			else
+				if [[ -z `echo "$PWD" | grep -E -i "/\.git(/.*)?$"` ]]; then
+					st=`git status 2> /dev/null`
+					if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+						color="%F{blue}"
+					elif [[ -n `echo "$st" | grep "^no changes "` ]]; then
+						color="%F{yellow}"
+					elif [[ -n `echo "$st" | grep "^# Changes to be committed"` ]]; then
+						color="%B%F{red}"
+					else
+						color="%F{red}"
+					fi
 				fi
 			fi
-		fi
 
-		print -n "$color$branch$action%f%b "
+			print -n "$color$branch$action%f%b "
+		fi
 	fi
 }
 
@@ -89,5 +93,4 @@ function current-branch () {
 setopt prompt_subst
 
 RPROMPT='[`current-branch`%~]'
-
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
