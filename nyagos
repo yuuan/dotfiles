@@ -27,7 +27,8 @@ set {
 alias {
     _cd  = "cd",
     cd   = "pushd",
-    sudo = "elevate"
+    sudo = "elevate",
+    st   = "git status"
 }
 
 colors = {
