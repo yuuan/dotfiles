@@ -50,7 +50,7 @@ zstyle ':vcs_info:bzr:*' use-simple true
 function current-branch () {
 	local repository branch action st color
 
-	if [[ -n "$CURRENT_BRANCH_DISABLED" ]]; then
+	if [[ -n "${CURRENT_BRANCH_DISABLED:+$CURRENT_BRANCH_DISABLED}" ]]; then
 		print -n "%f%b"
 	else
 		STY= LANG=en_US.UTF-8 vcs_info 2> /dev/null
