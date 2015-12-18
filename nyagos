@@ -19,7 +19,7 @@ string.split = function (str, pat)
 end
 
 set {
-    EDITOR = "D:\\Program Files\\EmEditor\\EmEditor.exe",
+    EDITOR = '"D:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
     PROMPT = "[NYAGOS $P]"
 }
 
