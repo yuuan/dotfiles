@@ -1,0 +1,86 @@
+-- code from 'http://lua-users.org/wiki/SplitJoin'
+string.split = function (str, pat)
+    local t = {}
+    local fpat = "(.-)"..pat
+    local last_end = 1
+    local s, e, cap = str:find(fpat, 1)
+    while s do
+        if s ~= 1 or cap ~= "" then
+            table.insert(t,cap)
+        end
+        last_end = e+1
+        s, e, cap = str:find(fpat, last_end)
+    end
+    if last_end <= #str then
+        cap = str:sub(last_end)
+        table.insert(t, cap)
+    end
+    return t
+end
+
+set {
+    EDITOR = "D:\\Program Files\\EmEditor\\EmEditor.exe",
+    PROMPT = "[NYAGOS $P]"
+}
+
+alias {
+    _cd  = "cd",
+    cd   = "pushd",
+    sudo = "elevate"
+}
+
+colors = {
+    black   = "\x1b[30m",
+    red     = "\x1b[31m",
+    green   = "\x1b[32m",
+    yellow  = "\x1b[33m",
+    blue    = "\x1b[34m",
+    magenta = "\x1b[35m",
+    cyan    = "\x1b[36m",
+    white   = "\x1b[37m",
+    reset   = "\x1b[0m"
+}
+
+local get_current_brunch = function ()
+    local gs = {}
+    local color = {}
+
+    gs.is_inside_work_tree = (nyagos.eval("git rev-parse --is-inside-work-tree 2>nul") == "true")
+
+    if not gs.is_inside_work_tree then
+        return ""
+    end
+
+    gs.branch_name = nyagos.eval("git rev-parse --abbrev-ref HEAD 2>nul")
+
+    local status = nyagos.eval("git status --porcelain --branch 2>nul")
+    local lines = status:split("\n")
+
+    gs.modified = false
+    gs.created = false
+
+    for i, line in ipairs(lines) do
+        if line:match("^ *M (.*)") then
+            gs.modified = true
+        elseif line:match("^\\?{2} (.*)") then
+            gs.created = true
+        end
+    end
+
+    if gs.modified then
+        color = "red"
+    elseif gs.created then
+        color = "yellow"
+    else
+        color = "blue"
+    end
+
+    return "(" .. colors[color] .. gs.branch_name .. colors.reset .. ")"
+end
+
+local prompter = nyagos.prompt
+nyagos.prompt = function(this)
+    local branch = get_current_brunch()
+    local prompt = colors.magenta .. this .. colors.reset .. branch .. "$_$$$S"
+    return prompter(prompt)
+end
