@@ -19,7 +19,8 @@ string.split = function (str, pat)
 end
 
 set {
-    EDITOR = '"D:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
+--  EDITOR = '"D:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
+    EDITOR = '"C:\\CLI\\vim74-kaoriya-win64\\gvim.exe"',
     PROMPT = "[NYAGOS $P]"
 }
 
