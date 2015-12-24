@@ -24,8 +24,9 @@ set {
     PROMPT = "[NYAGOS $P]"
 }
 
+local _cd  = nyagos.alias.cd
+
 alias {
-    _cd  = "cd",
     cd   = "pushd",
     sudo = "elevate",
     st   = "git status"
