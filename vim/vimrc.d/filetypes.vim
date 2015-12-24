@@ -26,4 +26,7 @@ augroup FileTypes
 
 	"`*.t` ファイルをPerlファイルとして認識
 	autocmd BufNewFile,BufRead *.t set filetype=perl
+
+	"`nyagos` ファイルをLuaファイルとして認識
+	autocmd BufNewFile,BufRead *nyagos set filetype=lua
 augroup END
