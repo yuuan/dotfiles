@@ -29,6 +29,7 @@ local _cd  = nyagos.alias.cd
 alias {
 --    cd   = "pushd",
     sudo = "elevate",
+    cat  = "type",
     st   = "git status"
 }
 
