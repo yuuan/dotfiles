@@ -18,9 +18,11 @@ else
 	inoremap <expr><C-Left> "\<ESC>:tabp\<CR>"
 endif
 
-" Shift + 上下キーでスクロール
-noremap <S-Up> <C-Y>
-noremap <S-Down> <C-E>
+" Ctrl + 上下キーでスクロール
+noremap <C-Up> <C-Y>
+noremap <C-Down> <C-E>
+inoremap <C-Up> <C-O><C-Y>
+inoremap <C-Down> <C-O><C-E>
 
 " Alt + 上下キーでスクロール
 noremap <M-Up> <C-Y>
