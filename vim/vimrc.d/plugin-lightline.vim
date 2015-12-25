@@ -3,74 +3,123 @@
 " ----------------------------------------
 
 let g:lightline = {
-	\ 'colorscheme': 'powerline',
-	\ 'mode_map': { 'c': 'NORMAL' },
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ], [ 'filename' ] ],
-	\   'right': [
-	\     [ 'lineinfo' ],
-	\     [ 'percent' ],
-	\     [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype', 'fugitiveicon']
-	\   ]
-	\ },
-	\ 'component_function': {
-	\   'modified': 'MyModified',
-	\   'readonly': 'MyReadonly',
-	\   'fugitive': 'MyFugitive',
-	\   'fugitiveicon': 'MyFugitiveicon',
-	\   'filename': 'MyFilename',
-	\   'fileformat': 'MyFileformat',
-	\   'filetype': 'MyFiletype',
-	\   'fileencoding': 'MyFileencoding',
-	\   'mode': 'MyMode',
-	\ },
-	\ 'separator': { 'left': "\ue0b0", 'right': "" },
-	\ 'subseparator': { 'left': "\u00bb", 'right': "\u22ee" },
-	\ 'tabline_separator': { 'left': '', 'right': '' },
-	\ 'tabline_subseparator': { 'left': '', 'right': '' }
+	\     'colorscheme': 'powerline',
+	\     'mode_map': {
+	\         'c': 'NORMAL'
+	\     },
+	\     'active': {
+	\         'left': [ [ 'mode', 'paste' ], [ 'filename', 'unitesource' ], [ 'unitecontext' ] ],
+	\         'right': [
+	\             [ 'lineinfo'],
+	\             [ 'percent' ],
+	\             [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype', 'fugitive'],
+	\         ]
+	\     },
+	\     'component': {
+	\         'charvaluehex': '0x%B'
+	\     },
+	\     'component_function': {
+	\         'modified': 'LightLineModified',
+	\         'readonly': 'LightLineReadOnly',
+	\         'fugitive': 'LightLineFugitive',
+	\         'fugitiveicon': 'LightLineFugitiveicon',
+	\         'filename': 'LightLineFileName',
+	\         'fileformat': 'LightLineFileFormat',
+	\         'filetype': 'LightLineFileType',
+	\         'fileencoding': 'LightLineFileEncoding',
+	\         'mode': 'LightLineMode',
+	\         'unitecontext': 'LightLineUniteContext',
+	\         'unitesource': 'LightLineUniteSource',
+	\     },
+	\     'separator': { 'left': "", 'right': "" },
+	\     'subseparator': { 'left': "\u22ee", 'right': "\u22ee" },
+	\     'tabline_separator': { 'left': '', 'right': '' },
+	\     'tabline_subseparator': { 'left': '', 'right': '' }
 	\ }
 
-function! MyModified()
+" Powerline のセパレータ
+let s:powerline = {
+	\     'separator': {
+	\         'left': "\ue0b0", 'right': "\ue0b2"
+	\     },
+	\     'subseparator': {
+	\         'left': "\u00bb", 'right': "\u00ab"
+	\     }
+	\ }
+
+"let g:lightline.separator = s:powerline.separator
+"let g:lightline.subseparator = s:powerline.subseparator
+
+" Readonly を表す文字
+let s:lockicon = {
+	\     'powerline': "\ue0a2",
+	\     'unicode': "\U1f512",
+	\     'ascii': "RO"
+	\ }
+
+function! LightLineModified()
 	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction
 
-function! MyReadonly()
-	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '⭤' : ''
+function! LightLineReadOnly()
+	return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? s:lockicon.powerline : ''
 endfunction
 
-function! MyFilename()
-	return ('' != MyReadonly() ? MyReadonly() . "\ue0a2" : '') .
-		\ (&ft == 'vimfiler' ? vimfiler#get_status_string() : 
-		\  &ft == 'unite' ? unite#get_status_string() : 
+function! LightLineFileName()
+	return &ft == 'vimfiler' ? vimfiler#get_status_string() :
+		\  &ft =~ 'unite' ? '' :
 		\  &ft == 'vimshell' ? vimshell#get_status_string() :
-		\ '' != expand('%:f') ? expand('%:f') : '[No Name]') .
-		\ ('' != MyModified() ? ' ' . MyModified() : '')
+		\ ('' != LightLineReadOnly() ? LightLineReadOnly() . ' ' : '') .
+		\ ('' != expand('%:t') ? expand('%:f') : '[No Name]') .
+		\ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
 endfunction
 
-function! MyFugitiveicon()
-	let head = exists("*fugitive#head") ? fugitive#head() : ''
-	return (strlen(head) > 0) ? "\ue0a0 " : ''
+function! LightLineFugitiveIcon()
+	let l:head = exists("*fugitive#head") ? fugitive#head() : ''
+	return (strlen(l:head) > 0) ? "\ue0a0 " : ''
 endfunction
 
-function! MyFugitive()
-	return exists("*fugitive#head") ? "\ue0a0 " . fugitive#head() : ''
+function! LightLineFugitive()
+	if winwidth(0) > 70 && exists("*fugitive#head")
+		let l:head = fugitive#head()
+		return strlen(l:head) ? "\ue0a0 " . l:head : ''
+	else
+		return ''
+	endif
 endfunction
 
-function! MyFileformat()
+function! LightLineFileFormat()
 	return winwidth(0) > 70 ? &fileformat : ''
 endfunction
 
-function! MyFiletype()
+function! LightLineFileType()
 	return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
 endfunction
 
-function! MyFileencoding()
+function! LightLineFileEncoding()
 	return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
 endfunction
 
-function! MyMode()
-	return &ft == 'unite' ? 'Unite' : 
-				\ &ft == 'vimfiler' ? 'VimFiler' : 
-				\ &ft == 'vimshell' ? 'VimShell' : 
-				\ winwidth(0) > 60 ? lightline#mode() : ''
+function! LightLineMode()
+	return &ft == 'unite' ? 'Unite' :
+		\  &ft == 'vimfiler' ? 'VimFiler' :
+		\  &ft == 'vimshell' ? 'VimShell' :
+		\  &ft == 'help' ? 'HELP' :
+		\  winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+function! LightLineUniteContext()
+	if &ft == 'unite'
+		let l:list = split(unite#get_status_string(), '|')
+		return l:list[1][1] == '[' && l:list[1][-1:] == ']' ? l:list[1][2:-2] : l:list[1]
+	endif
+	return ''
+endfunction
+
+function! LightLineUniteSource()
+	if &ft == 'unite'
+		let l:list = split(unite#get_status_string(), '|')
+		return l:list[0]
+	endif
+	return ''
 endfunction
