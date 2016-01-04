@@ -1,3 +1,2 @@
 # Load zsh-completions.zsh
-fpath=($ZSHHOME/zsh-completions/src $fpath)
-
+fpath=($ZSHHOME/functions $ZSHHOME/zsh-completions/src $fpath)
