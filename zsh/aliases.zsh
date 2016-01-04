@@ -20,3 +20,6 @@ alias lz="ls -lZ"
 alias laz="ls -laZ"
 
 alias ..='cd ..'
+
+# for Laravel
+alias artisan="php artisan"
