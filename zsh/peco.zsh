@@ -10,7 +10,7 @@ function peco-select-history() {
 
 	BUFFER=$(\history -n 1 | eval $tac | LANG=ja_JP.UTF-8 peco --query "$LBUFFER")
 	CURSOR=$#BUFFER
-	zle clear-screen
+#	zle clear-screen
 }
 
 if which peco &> /dev/null; then
