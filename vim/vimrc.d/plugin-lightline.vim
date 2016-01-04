@@ -10,9 +10,9 @@ let g:lightline = {
 	\     'active': {
 	\         'left': [ [ 'mode', 'paste' ], [ 'filename', 'unitesource' ], [ 'unitecontext' ] ],
 	\         'right': [
-	\             [ 'lineinfo'],
-	\             [ 'percent' ],
-	\             [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype', 'fugitive'],
+	\             [ 'lineinfo', 'percent'],
+	\             [ 'fugitive', 'user' ],
+	\             [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype'],
 	\         ]
 	\     },
 	\     'component': {
@@ -22,7 +22,7 @@ let g:lightline = {
 	\         'modified': 'LightLineModified',
 	\         'readonly': 'LightLineReadOnly',
 	\         'fugitive': 'LightLineFugitive',
-	\         'fugitiveicon': 'LightLineFugitiveicon',
+	\         'fugitiveicon': 'LightLineFugitiveIcon',
 	\         'filename': 'LightLineFileName',
 	\         'fileformat': 'LightLineFileFormat',
 	\         'filetype': 'LightLineFileType',
@@ -30,6 +30,7 @@ let g:lightline = {
 	\         'mode': 'LightLineMode',
 	\         'unitecontext': 'LightLineUniteContext',
 	\         'unitesource': 'LightLineUniteSource',
+	\         'user': 'LightLineUser',
 	\     },
 	\     'separator': { 'left': "", 'right': "" },
 	\     'subseparator': { 'left': "\u22ee", 'right': "\u22ee" },
@@ -122,4 +123,12 @@ function! LightLineUniteSource()
 		return l:list[0]
 	endif
 	return ''
+endfunction
+
+function! LightLineUser()
+	if expand('%') =~ 'sudo:'
+		return 'root'
+	else
+		return $USER
+	endif
 endfunction
