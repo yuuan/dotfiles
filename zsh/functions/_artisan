@@ -1,0 +1,30 @@
+#compdef artisan
+
+function __laravel5_get_command_list() {
+	which php &> /dev/null || return
+	which perl &> /dev/null || return
+
+	if [[ -f artisan ]]; then
+		php artisan list --raw | perl -pe 's/:/\\:/g;s/([a-z\\:-]+)(?:\s+(.*))?/$1:$2/ig;'
+	fi
+}
+
+function __artisan_commands() {
+	local -a cmds
+	cmds=( ${(@f)"$(__laravel5_get_command_list)"} )
+	_describe -t commands "Commands" cmds
+}
+
+function _artisan() {
+	local context curcontext=$curcontext state line
+	declare -A opt_args
+	local ret=1
+
+	_arguments -C \
+		'1: :__artisan_commands' \
+	&& ret=0
+
+	return ret
+}
+
+_artisan "$@"
