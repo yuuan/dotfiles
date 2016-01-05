@@ -112,7 +112,9 @@ endfunction
 function! LightLineUniteContext()
 	if &ft == 'unite'
 		let l:list = split(unite#get_status_string(), '|')
-		return l:list[1][1] == '[' && l:list[1][-1:] == ']' ? l:list[1][2:-2] : l:list[1]
+		if len(l:list) > 1
+			return l:list[1][1] == '[' && l:list[1][-1:] == ']' ? l:list[1][2:-2] : l:list[1]
+		endif
 	endif
 	return ''
 endfunction
