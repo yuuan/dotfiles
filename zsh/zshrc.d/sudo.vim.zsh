@@ -1,6 +1,7 @@
-#
-# sudo.vim
-#
+# ----------------------------------------
+# `sudo.vim` の補完
+# ----------------------------------------
+
 function _vimsudo {
 	local LAST="${words[$#words[*]]}"
 	case "${LAST}" in
@@ -20,4 +21,3 @@ function _vimsudo {
 }
 
 compdef _vimsudo vim
-

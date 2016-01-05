@@ -1,3 +1,7 @@
+# ----------------------------------------
+# `git` コマンドに関する設定
+# ----------------------------------------
+
 function git-hash() {
 	git log --oneline --branches | peco | awk '{print $1}'
 }
@@ -11,4 +15,3 @@ function git-changed-files() {
 
 alias st='git status'
 alias gb='git branch -a'
-

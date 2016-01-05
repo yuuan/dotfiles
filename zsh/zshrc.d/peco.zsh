@@ -1,3 +1,8 @@
+# ----------------------------------------
+# コマンド履歴に `peco` を使う
+# ----------------------------------------
+
+# `peco` でコマンド履歴を表示する関数
 function peco-select-history() {
 	local tac
 	if which tac &> /dev/null; then
@@ -13,8 +18,8 @@ function peco-select-history() {
 #	zle clear-screen
 }
 
+# コマンド履歴の表示に `peco` を使う
 if which peco &> /dev/null; then
 	zle -N peco-select-history
 	bindkey '^r' peco-select-history
 fi
-
