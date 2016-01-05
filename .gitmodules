@@ -1,9 +1,9 @@
-[submodule "zsh/zsh-completions"]
-	path = zsh/zsh-completions
+[submodule "zsh/modules/zsh-completions"]
+	path = zsh/modules/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "zsh/dircolors-solarized"]
-	path = zsh/dircolors-solarized
+[submodule "zsh/modules/dircolors-solarized"]
+	path = zsh/modules/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
-[submodule "zsh/autojump"]
-	path = zsh/autojump
+[submodule "zsh/modules/autojump"]
+	path = zsh/modules/autojump
 	url = git://github.com/joelthelion/autojump.git
