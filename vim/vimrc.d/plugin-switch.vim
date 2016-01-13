@@ -9,6 +9,8 @@ let g:switch_custom_definitions = [
 	\     [ 'self::', 'static::' ],
 	\     [ '@if', '@unless' ],
 	\     [ '@endif', '@endunless' ],
+	\     [ 'if', 'unless' ],
+	\     [ 'while', 'until' ],
 	\     [ "'ASC'", "'DESC'" ],
 	\     [ "'asc'", "'desc'" ],
 	\     [ "yes", "no" ],
