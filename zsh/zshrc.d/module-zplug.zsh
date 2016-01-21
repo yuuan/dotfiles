@@ -12,6 +12,9 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	## zsh-completions
 	zplug "zsh-users/zsh-completions"
 
+	## enhancd
+	zplug "b4b4r07/enhancd", as:plugin, of:enhancd.sh
+
 
 	# インストールしてない項目があればインストールするか訊ねる
 	if ! zplug check --verbose; then
