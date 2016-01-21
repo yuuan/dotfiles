@@ -12,6 +12,12 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	## zsh-completions
 	zplug "zsh-users/zsh-completions"
 
+	## fzf
+	zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+
+	## fzf-tmux
+	zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
+
 	## enhancd
 	zplug "b4b4r07/enhancd", as:plugin, of:enhancd.sh
 
