@@ -3,10 +3,11 @@
 # ----------------------------------------
 
 # Load zsh-completions.zsh
-fpath=($ZSHHOME/functions $ZSHHOME/modules/zsh-completions/src $fpath)
+fpath=($ZSHHOME/functions $fpath)
 
-autoload -U compinit
-compinit
+# compinit は zplug で行うためコメントアウト
+#autoload -U compinit
+#compinit
 
 # カーソルの位置から補完を開始する
 setopt COMPLETE_IN_WORD

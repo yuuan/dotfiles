@@ -9,6 +9,9 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 
 	# plugins
 
+	## zsh-completions
+	zplug "zsh-users/zsh-completions"
+
 
 	# インストールしてない項目があればインストールするか訊ねる
 	if ! zplug check --verbose; then
