@@ -102,10 +102,10 @@ function __link() {
 
 function __ls {
 	if ! $quiet; then
-		local -a options
+		local -a options=("-lhF")
 		local -a targets
 		local -a dialects
-		local result
+		local target
 
 		while (($# > 0)); do
 			case "$1" in
@@ -119,7 +119,7 @@ function __ls {
 			shift
 		done
 
-		case ${OSTYPE} in
+		case ${OSTYPE:-} in
 			darwin*)
 				diarects+=("-G")
 				;;
@@ -128,16 +128,13 @@ function __ls {
 				;;
 		esac
 
-		echo
-		echo "${targets[@]}:"
+		for target in ${targets[@]}; do
+			echo
+			echo "$target:"
 
-		result=$(ls -lhF ${diarects[@]} ${options[@]} ${targets[@]})
-
-		if [[ "${options[@]}" =~ "a" ]]; then
-			echo $result | tail -n +3
-		else
-			echo $result | tail -n +1
-		fi
+			local result=$(ls ${diarects[@]} ${options[@]} "$target" | grep --color=never ":")
+			echo $result
+		done
 	fi
 }
 
