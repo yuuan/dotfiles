@@ -41,7 +41,7 @@ function __help() {
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mgit, peco, screen, tmux, vim, zsh\e[m
+  \e[32mcoffeelint, git, jshint, peco, screen, tmux, vim, zsh\e[m
 HELP
 }
 
@@ -157,11 +157,20 @@ function __install_submodules() {
 
 # インストール処理
 
+function __install_coffeelint() {
+	__installing_caption "coffeelint"
+	__link "$dotfiles/coffeelint.json" "$HOME/.coffeelint.json"
+
+	__ls -a "$HOME/.coffeelint.json"
+
+	echo
+}
+
 function __install_git() {
 	__installing_caption "git"
 	__link "$dotfiles/git/config.d" "$HOME/.gitconfig.d"
 
-	if [[ -n $(cat $HOME/.gitconfig | grep '.gitconfig.d') ]]; then
+	if [[ -n $(cat $HOME/.gitconfig | grep '.gitconfig.d' 2> /dev/null) ]]; then
 		__info "Include setting is exists."
 	else
 		__info "Add include setting to '~/.gitconfig'"
@@ -173,6 +182,15 @@ INCLUDE
 
 	__ls -d "$HOME/.gitconfig" "$HOME/.gitconfig.d"
 	__ls -a "$HOME/.gitconfig.d/"
+
+	echo
+}
+
+function __install_jshint() {
+	__installing_caption "jshint"
+	__link "$dotfiles/jshintrc" "$HOME/.jshintrc"
+
+	__ls -a "$HOME/.jshintrc"
 
 	echo
 }
@@ -261,7 +279,9 @@ function __install() {
 	__install_submodules
 
 	if [[ "$*" =~ "all" ]]; then
+		__install_coffeelint
 		__install_git
+		__install_jshint
 		__install_peco
 		__install_screen
 		__install_tmux
@@ -271,8 +291,14 @@ function __install() {
 	else
 		while (( $# > 0 )); do
 			case "$1" in
+				coffeelint)
+					__install_coffeelint
+					;;
 				git)
 					__install_git
+					;;
+				jshint)
+					__install_jshint
 					;;
 				peco)
 					__install_peco
