@@ -34,10 +34,11 @@ function __help() {
   ./bin/install.zsh [OPTIONS] [TARGETS]
 
 \e[33mOPTIONS:\e[m
-  \e[32m-h, --help    \e[mshow this help message and usage
-  \e[32m-f, --force   \e[mremove existing destination files
-  \e[32m-q, --quiet   \e[mdon't output any message
-  \e[32m-r, --reload  \e[mreload .zshrc after installations
+  \e[32m-h, --help          \e[mshow this help message and usage
+  \e[32m-f, --force         \e[mremove existing destination files
+  \e[32m-q, --quiet         \e[mdon't output any message
+  \e[32m--init              \e[minitialize git's submodules (default)
+  \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
   \e[32mgit, peco, screen, tmux, vim, zsh\e[m
@@ -58,6 +59,10 @@ function __info() {
 
 function __question() {
 	echo -en "\e[32m$*\e[m"
+}
+
+function __initializing_caption() {
+	__caption "# Initializing \`$*\`..."
 }
 
 function __installing_caption() {
@@ -136,6 +141,19 @@ function __ls {
 	fi
 }
 
+
+# 初期化
+
+function __install_submodules() {
+	__initializing_caption "submodules"
+	pushd $dotfiles
+	__exec "git submodule update --init"
+	__exec "git submodule status"
+	popd
+
+	echo "initialized."
+	echo
+}
 
 # インストール処理
 
@@ -240,6 +258,8 @@ function __install_zsh() {
 }
 
 function __install() {
+	__install_submodules
+
 	if [[ "$*" =~ "all" ]]; then
 		__install_git
 		__install_peco
@@ -270,6 +290,8 @@ function __install() {
 					__install_zsh
 					__load_zshrc
 					;;
+				submodules)
+					;;
 				*)
 					__warn "\`$1\` is invalid target."
 					echo
@@ -295,8 +317,12 @@ function __load_zshrc() {
 	if $reloads; then
 		set +eu
 		__exec "source $HOME/.zshrc"
-		echo "loaded."
 		set -eu
+
+		rm -f $HOME/.zcompdump
+		autoload -U compinit; compinit
+
+		echo "loaded."
 	fi
 
 	echo
@@ -320,8 +346,11 @@ while (( $# > 0 )); do
 		-q|--quiet)
 			quiet=true
 			;;
-		-r|--reload)
+		-r|--force-reload)
 			reloads=true
+			;;
+		--init|--initialize)
+			targets+=("submodules")
 			;;
 		-*|--*)
 			__die "$1: Unknown option"
@@ -336,4 +365,6 @@ done
 
 # インストール
 
-__install $targets
+if [[ ${#targets[@]} -gt 0 ]]; then
+	__install $targets
+fi
