@@ -4,7 +4,7 @@
 
 # Load dircolors-solarized
 if which dircolors > /dev/null; then
-	if [[ -n `echo $OS | grep "Windows" 2> /dev/null` ]]; then
+	if [[ -n $(echo ${OS:-} | grep "Windows" 2> /dev/null) ]]; then
 		eval $(dircolors -b $ZSHHOME/modules/dircolors-solarized/dircolors.256dark)
 	else
 		eval $(dircolors $ZSHHOME/modules/dircolors-solarized/dircolors.256dark)
