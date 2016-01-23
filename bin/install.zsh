@@ -2,11 +2,14 @@
 
 # 変数宣言
 
-local dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
-local force=false
-local quiet=false
-local reloads=false
-local -a targets=()
+declare dotfiles force quiet reloads
+declare -a targets
+
+dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
+force=false
+quiet=false
+reloads=false
+targets=()
 
 
 # 共通処理
@@ -74,18 +77,18 @@ function __loading_caption() {
 }
 
 function __exec() {
-	local command=$*
+	local command; command="$*"
 	__info "> $command"
 	eval $command
 }
 
 function __mkdir() {
-	local directory="$*"
+	local directory; directory="$*"
 	[[ ! -d "$directory" ]] && __exec "mkdir -p '$directory'"
 }
 
 function __link() {
-	local -a commands=("ln" "-s" "'$1'" "'$2'")
+	local -a commands; commands=("ln" "-s" "'$1'" "'$2'")
 
 	if $force; then
 		commands[2]+="f"
@@ -102,10 +105,11 @@ function __link() {
 
 function __ls {
 	if ! $quiet; then
-		local -a options=("-lhF")
-		local -a targets
-		local -a dialects
-		local target
+		local -a options targets dialects
+
+		options=("-lhF")
+		targets
+		dialects
 
 		while (($# > 0)); do
 			case "$1" in
@@ -128,12 +132,12 @@ function __ls {
 				;;
 		esac
 
+		local target
 		for target in ${targets[@]}; do
 			echo
 			echo "$target:"
 
-			local result=$(ls ${diarects[@]} ${options[@]} "$target" | grep --color=never ":")
-			echo $result
+			ls ${diarects[@]} ${options[@]} "$target" | grep --color=never ":"
 		done
 	fi
 }
@@ -215,8 +219,10 @@ function __install_tmux() {
 	__installing_caption "tmux"
 	__link "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
 
-	local TMUX_PLUGINS="$HOME/.tmux/plugins"
-	local TMUX_PLUGINS_POWERLINE_DIR="$TMUX_PLUGINS/tmux-powerline"
+	local TMUX_PLUGINS TMUX_PLUGINS_POWERLINE_DIR
+
+	TMUX_PLUGINS="$HOME/.tmux/plugins"
+	TMUX_PLUGINS_POWERLINE_DIR="$TMUX_PLUGINS/tmux-powerline"
 
 	__mkdir "$TMUX_PLUGINS"
 
