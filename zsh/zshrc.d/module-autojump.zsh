@@ -1,8 +1,0 @@
-# ----------------------------------------
-# `autojump` の読み込み
-# ----------------------------------------
-
-[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] \
-	&& source $HOME/.autojump/etc/profile.d/autojump.sh
-
-autoload -U compinit && compinit -u
