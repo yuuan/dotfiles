@@ -20,4 +20,7 @@ function _vimsudo {
 	return 1
 }
 
+autoload -U compinit
+compinit
+
 compdef _vimsudo vim
