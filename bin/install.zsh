@@ -1,12 +1,13 @@
 #!/bin/zsh -u
 
+DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
+
 () {
 	# 変数宣言
 
-	declare dotfiles force quiet reloads
+	declare force quiet reloads
 	declare -a targets
 
-	dotfiles="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 	force=false
 	quiet=false
 	reloads=false
@@ -146,7 +147,7 @@ HELP
 
 	function __install_submodules() {
 		__initializing_caption "submodules"
-		pushd $dotfiles
+		pushd $DOTFILES
 		__exec "git submodule update --init"
 		__exec "git submodule status"
 		popd
@@ -159,7 +160,7 @@ HELP
 
 	function __install_coffeelint() {
 		__installing_caption "coffeelint"
-		__link "$dotfiles/coffeelint.json" "$HOME/.coffeelint.json"
+		__link "$DOTFILES/coffeelint.json" "$HOME/.coffeelint.json"
 
 		__ls -a "$HOME/.coffeelint.json"
 
@@ -168,7 +169,7 @@ HELP
 
 	function __install_git() {
 		__installing_caption "git"
-		__link "$dotfiles/git/config.d" "$HOME/.gitconfig.d"
+		__link "$DOTFILES/git/config.d" "$HOME/.gitconfig.d"
 
 		if [[ -n $(cat $HOME/.gitconfig | grep '.gitconfig.d' 2> /dev/null) ]]; then
 			__info "Include setting is exists."
@@ -188,7 +189,7 @@ INCLUDE
 
 	function __install_jshint() {
 		__installing_caption "jshint"
-		__link "$dotfiles/jshintrc" "$HOME/.jshintrc"
+		__link "$DOTFILES/jshintrc" "$HOME/.jshintrc"
 
 		__ls -a "$HOME/.jshintrc"
 
@@ -197,7 +198,7 @@ INCLUDE
 
 	function __install_peco() {
 		__installing_caption "peco"
-		__link "$dotfiles/peco" "$HOME/.peco"
+		__link "$DOTFILES/peco" "$HOME/.peco"
 
 		__ls -d "$HOME/.peco"
 		__ls -a "$HOME/.peco/"
@@ -207,7 +208,7 @@ INCLUDE
 
 	function __install_screen() {
 		__installing_caption "screen"
-		__link "$dotfiles/screenrc" "$HOME/.screenrc"
+		__link "$DOTFILES/screenrc" "$HOME/.screenrc"
 
 		__ls -dr "$HOME/.screenrc"
 
@@ -216,7 +217,7 @@ INCLUDE
 
 	function __install_tmux() {
 		__installing_caption "tmux"
-		__link "$dotfiles/tmux.conf" "$HOME/.tmux.conf"
+		__link "$DOTFILES/tmux.conf" "$HOME/.tmux.conf"
 
 		local TMUX_PLUGINS TMUX_PLUGINS_POWERLINE_DIR
 
@@ -244,10 +245,10 @@ INCLUDE
 		__mkdir "$HOME/.vim/swp/"
 		__mkdir "$HOME/.vim/undo/"
 
-		__link "$dotfiles/vimrc" "$HOME/.vimrc"
-		__link "$dotfiles/vim/vimrc.init.d" "$HOME/.vim/vimrc.init.d"
-		__link "$dotfiles/vim/vimrc.d" "$HOME/.vim/vimrc.d"
-		__link "$dotfiles/vim/ftplugin" "$HOME/.vim/ftplugin"
+		__link "$DOTFILES/vimrc" "$HOME/.vimrc"
+		__link "$DOTFILES/vim/vimrc.init.d" "$HOME/.vim/vimrc.init.d"
+		__link "$DOTFILES/vim/vimrc.d" "$HOME/.vim/vimrc.d"
+		__link "$DOTFILES/vim/ftplugin" "$HOME/.vim/ftplugin"
 
 		if [ ! -d $HOME/.vim/bundle/ ]; then
 			__exec "mkdir -p $HOME/.vim/bundle/"
@@ -262,8 +263,8 @@ INCLUDE
 
 	function __install_zsh() {
 		__installing_caption "zsh"
-		__link "$dotfiles/zsh" "$HOME/.zsh"
-		__link "$dotfiles/zshrc" "$HOME/.zshrc"
+		__link "$DOTFILES/zsh" "$HOME/.zsh"
+		__link "$DOTFILES/zshrc" "$HOME/.zshrc"
 
 		__mkdir "$HOME/.zplug"
 
