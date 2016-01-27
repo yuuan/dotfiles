@@ -175,8 +175,8 @@ HELP
 		else
 			__info "Add include setting to '~/.gitconfig'"
 			cat <<'INCLUDE' >> $HOME/.gitconfig
-	[include]
-		path = ~/.gitconfig.d/index.inc
+[include]
+	path = ~/.gitconfig.d/index.inc
 INCLUDE
 		fi
 
