@@ -19,7 +19,7 @@ function peco-select-history() {
 }
 
 # コマンド履歴の表示に `peco` を使う
-if which peco &> /dev/null; then
+if which peco &> /dev/null || which $HOME/.zplug/bin/peco &> /dev/null; then
 	zle -N peco-select-history
 	bindkey '^r' peco-select-history
 fi
