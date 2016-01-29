@@ -7,4 +7,4 @@ git submodule foreach git pull origin master
 popd
 
 rm -f $HOME/.zcompdump
-autoload -U compinit; compinit
+autoload -U compinit; compinit -u

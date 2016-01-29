@@ -21,6 +21,6 @@ function _vimsudo {
 }
 
 autoload -U compinit
-compinit
+compinit -u
 
 compdef _vimsudo vim
