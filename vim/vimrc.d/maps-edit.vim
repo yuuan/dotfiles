@@ -26,3 +26,15 @@ vnoremap ; <ESC>vab
 " インデントした後も範囲選択を残す
 vnoremap < <gv
 vnoremap > >gv
+
+" ペーストモード切り替え {{{
+	function! SwitchPaste()
+		if &paste
+			setlocal nopaste
+		else
+			setlocal paste
+		endif
+	endfunction
+
+	nnoremap <silent> "" :<C-u>call SwitchPaste()<CR>
+" }}}
