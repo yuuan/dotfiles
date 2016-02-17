@@ -1,3 +1,19 @@
+-- 環境変数
+set {
+--  EDITOR = '"D:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
+    EDITOR = '"C:\\CLI\\vim74-kaoriya-win64\\gvim.exe"',
+    PROMPT = "[NYAGOS $P]"
+}
+
+-- エイリアス
+alias {
+    _cd  = "cd",
+    cd   = "pushd",
+    sudo = "elevate",
+    st   = "git status"
+}
+
+-- 文字列を区切り文字で区切って配列にする関数
 -- code from 'http://lua-users.org/wiki/SplitJoin'
 string.split = function (str, pat)
     local t = {}
@@ -18,22 +34,11 @@ string.split = function (str, pat)
     return t
 end
 
-set {
---  EDITOR = '"D:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
-    EDITOR = '"C:\\CLI\\vim74-kaoriya-win64\\gvim.exe"',
-    PROMPT = "[NYAGOS $P]"
-}
+-- `string.split` を `share` に入れる
+share.split = string.split
 
-local _cd  = nyagos.alias.cd
-
-alias {
---    cd   = "pushd",
-    sudo = "elevate",
-    cat  = "type",
-    st   = "git status"
-}
-
-colors = {
+-- ターミナルの文字色を変更するためのエスケープシーケンス
+share.colors = {
     black   = "\x1b[30m",
     red     = "\x1b[31m",
     green   = "\x1b[32m",
@@ -45,9 +50,12 @@ colors = {
     reset   = "\x1b[0m"
 }
 
-local get_current_brunch = function ()
+-- ブランチ名を取得する関数
+share.get_current_brunch = function()
     local gs = {}
     local color = {}
+
+    string.split = share.split
 
     gs.is_inside_work_tree = (nyagos.eval("git rev-parse --is-inside-work-tree 2>nul") == "true")
 
@@ -90,12 +98,13 @@ local get_current_brunch = function ()
         color = "cyan"
     end
 
-    return "(" .. colors[color] .. gs.branch_name .. colors.reset .. ")"
+    return "(" .. share.colors[color] .. gs.branch_name .. share.colors.reset .. ")"
 end
 
-local prompter = nyagos.prompt
+-- プロンプトを作成する関数を変更
+share.prompter = nyagos.prompt
 nyagos.prompt = function(this)
-    local branch = get_current_brunch()
-    local prompt = colors.magenta .. this .. colors.reset .. branch .. "$_$$$S"
-    return prompter(prompt)
+    local branch = share.get_current_brunch()
+    local prompt = share.colors.magenta .. this .. share.colors.reset .. branch .. "$_$$$S"
+    return share.prompter(prompt)
 end
