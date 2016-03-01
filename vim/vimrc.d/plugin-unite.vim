@@ -5,6 +5,9 @@
 let g:unite_enable_start_insert = 1
 let g:unite_force_overwrite_statusline = 0
 
+" セッションを自動で保存
+let g:unite_source_session_enable_auto_save = 1
+
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
 	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
