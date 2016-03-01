@@ -10,11 +10,12 @@
 	},
 	"Style": {
 		"Selected": [
-			"black",
-			"on_blue"
+			"on_green",
+			"on_bold",
+			"white"
 		],
 		"Matched": [
-			"red"
+			"yellow"
 		]
 	}
 }
