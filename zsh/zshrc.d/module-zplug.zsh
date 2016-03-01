@@ -3,7 +3,7 @@
 # ----------------------------------------
 
 # `peco` があれば `peco` を使う
-export ZPLUG_FILTER="peco:$ZPLUG_FILTER"
+export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
 
 if [[ -f $HOME/.zplug/zplug ]]; then
 	# zplug を読み込む
