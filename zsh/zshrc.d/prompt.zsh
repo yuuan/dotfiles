@@ -5,7 +5,7 @@
 PROMPT_COLOR="blue"
 
 if [[ -z "$HOST_SCREEN_NAME" ]]; then
-	HOST_SCREEN_NAME="%m"
+	export HOST_SCREEN_NAME=$(hostname | awk 'BEGIN{FS="."}{print $1}')
 fi
 
 if [ ${UID} = 0 ]; then
