@@ -4,7 +4,7 @@
 
 autoload -Uz add-zsh-hook
 
-if [ -n ${STY:-} -o -n ${TMUX_PANE:-} ]; then
+if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
 
 	# screen/tmux のタイトルを取得
 	function get-window-name {
