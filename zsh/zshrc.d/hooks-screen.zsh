@@ -25,8 +25,7 @@ if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
 
 	# カレントディレクトリを切り替えた後に呼ばれる
 	function precmd-function {
-		local shell=$(basename ${SHELL:-idle})
-		set-window-name-to-command $shell
+		set-window-name-to-command
 	}
 
 	# プロンプトを表示する直前に実行
@@ -34,11 +33,18 @@ if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
 
 	# コマンド名を表示
 	function set-window-name-to-command {
-		if [[ -z "$HOST_SCREEN_NAME" ]]; then
-			export HOST_SCREEN_NAME=$(hostname | awk 'BEGIN{FS="."}{print $1}')
+		local directory=${PWD:t}
+
+		# ちょっと強引に `$HOME` を `~` に変換
+		if [[ "_$PWD" = "_$HOME" ]]; then
+			directory='~'
 		fi
 
-		set-window-name "${HOST_SCREEN_NAME}:${PWD:t}:*$1"
+		if [[ -n "$1" ]]; then
+			set-window-name "${directory}(*$1)"
+		else
+			set-window-name "${directory}"
+		fi
 	}
 
 	# コマンドを実行する直前に呼ばれる
