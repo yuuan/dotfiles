@@ -4,11 +4,11 @@
 
 autoload -Uz add-zsh-hook
 
-if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
+if [[ "$STY" ]] || [[ "$TMUX" ]]; then
 
 	# screen/tmux のタイトルを取得
 	function get-window-name {
-		if [[ -n ${TMUX_PANE:-} ]]; then
+		if [[ "$TMUX" ]]; then
 			tmux display -p '#{window_name}'
 		else
 			# screen のタイトルの取得方法が解らない
@@ -18,8 +18,8 @@ if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
 
 	# screen/tmux のタイトルを設定
 	function set-window-name {
-		if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
-			echo -ne "\ek$*\e\\"
+		if [[ "$STY" ]] || [[ "$TMUX" ]]; then
+			echo -ne "\ek$@\e\\"
 		fi
 	}
 
@@ -33,15 +33,14 @@ if [[ -n ${STY:-} ]] || [[ -n ${TMUX_PANE:-} ]]; then
 
 	# コマンド名を表示
 	function set-window-name-to-command {
+		local command=$1
 		local directory=${PWD:t}
 
 		# ちょっと強引に `$HOME` を `~` に変換
-		if [[ "_$PWD" = "_$HOME" ]]; then
-			directory='~'
-		fi
+		[[ "_$PWD" = "_$HOME" ]] && directory='~'
 
-		if [[ -n "$1" ]]; then
-			set-window-name "${directory}(*$1)"
+		if [[ "$command" ]]; then
+			set-window-name "${directory}(*$command)"
 		else
 			set-window-name "${directory}"
 		fi
