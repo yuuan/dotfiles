@@ -17,6 +17,7 @@ call unite#custom#default_action('file', 'tabopen')
 " Unite 内のキー割り当て
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
+	highlight CursorLine ctermbg=31 ctermfg=231
 	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
 	imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
 	imap <buffer> <C-p> <C-r>0
