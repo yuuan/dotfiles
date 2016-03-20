@@ -265,6 +265,7 @@ INCLUDE
 		__installing_caption "zsh"
 		__link "$DOTFILES/zsh" "$HOME/.zsh"
 		__link "$DOTFILES/zshrc" "$HOME/.zshrc"
+		__link "$DOTFILES/zshenv" "$HOME/.zshenv"
 
 		__mkdir "$HOME/.zplug"
 
@@ -272,7 +273,7 @@ INCLUDE
 			__exec "curl -fLo $HOME/.zplug/zplug --create-dirs git.io/zplug"
 		fi
 
-		__ls -dr "$HOME/.zshrc" "$HOME/.zsh"
+		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv" "$HOME/.zsh"
 		__ls -a "$HOME/.zsh/"
 
 		echo
