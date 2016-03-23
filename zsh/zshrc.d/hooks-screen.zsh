@@ -4,7 +4,7 @@
 
 autoload -Uz add-zsh-hook
 
-if [[ "$STY" ]] || [[ "$TMUX" ]]; then
+if [[ -n "$STY$TMUX" ]]; then
 
 	# screen/tmux のタイトルを取得
 	function get-window-name {
@@ -18,7 +18,7 @@ if [[ "$STY" ]] || [[ "$TMUX" ]]; then
 
 	# screen/tmux のタイトルを設定
 	function set-window-name {
-		if [[ "$STY" ]] || [[ "$TMUX" ]]; then
+		if [[ -n "$STY$TMUX" ]]; then
 			echo -ne "\ek$@\e\\"
 		fi
 	}
