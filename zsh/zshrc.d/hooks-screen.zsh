@@ -8,7 +8,7 @@ if [[ -n "$STY$TMUX" ]]; then
 
 	# screen/tmux のタイトルを取得
 	function get-window-name {
-		if [[ "$TMUX" ]]; then
+		if [[ -n "$TMUX" ]]; then
 			tmux display -p '#{window_name}'
 		else
 			# screen のタイトルの取得方法が解らない
@@ -39,7 +39,7 @@ if [[ -n "$STY$TMUX" ]]; then
 		# ちょっと強引に `$HOME` を `~` に変換
 		[[ "_$PWD" = "_$HOME" ]] && directory='~'
 
-		if [[ "$command" ]]; then
+		if [[ -n "$command" ]]; then
 			set-window-name "${directory}(*$command)"
 		else
 			set-window-name "${directory}"
