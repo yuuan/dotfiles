@@ -2,9 +2,6 @@
 # `zplug` の設定
 # ----------------------------------------
 
-# `peco` があれば `peco` を使う
-export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
-
 if [[ -f $HOME/.zplug/zplug ]]; then
 	# zplug を読み込む
 	source $HOME/.zplug/zplug
@@ -40,4 +37,7 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 
 	# プラグインを読み込み、コマンドにパスを通す
 	zplug load --verbose
+
+	# `peco` があれば `peco` を使う
+	export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
 fi
