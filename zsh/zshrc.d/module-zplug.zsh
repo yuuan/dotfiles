@@ -27,10 +27,10 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	zplug "zsh-users/zsh-completions"
 
 	## fzf
-#	zplug "junegunn/fzf-bin", as:command, from:gh-r, file:fzf
+	zplug "junegunn/fzf-bin", as:command, from:gh-r
 
 	## fzf-tmux
-#	zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
+	zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
 
 	## peco
 	zplug "peco/peco", as:command, from:gh-r, of:${__zplug_peco_os:-os}
