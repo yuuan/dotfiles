@@ -3,8 +3,22 @@
 # ----------------------------------------
 
 if [[ -f $HOME/.zplug/zplug ]]; then
+	local zplug_peco_os
+
 	# zplug を読み込む
 	source $HOME/.zplug/zplug
+
+	case ${OSTYPE} in
+		darwin*)
+			__zplug_peco_os="*darwin*amd64*"
+			;;
+		linux*)
+			__zplug_peco_os="*linux*amd64*"
+			;;
+		cygwin*)
+			__zplug_peco_os="*windows*amd64*"
+			;;
+	esac
 
 
 	# plugins
@@ -19,7 +33,7 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 #	zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
 
 	## peco
-	zplug "peco/peco", as:command, from:gh-r, file:peco
+	zplug "peco/peco", as:command, from:gh-r, of:${__zplug_peco_os:-os}
 
 	## enhancd
 	zplug "b4b4r07/enhancd", as:plugin, of:enhancd.sh
