@@ -24,4 +24,5 @@ if which peco &> /dev/null; then
 fi
 
 alias st='git status'
+alias gr='git graph'
 alias gb='git branch -a'
