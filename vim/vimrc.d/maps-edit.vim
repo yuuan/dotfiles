@@ -38,3 +38,6 @@ vnoremap > >gv
 
 	nnoremap <silent> "" :<C-u>call SwitchPaste()<CR>
 " }}}
+
+noremap <kPlus> <C-a>
+noremap <kMinus> <C-x>
