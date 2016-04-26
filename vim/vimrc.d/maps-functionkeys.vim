@@ -8,10 +8,10 @@ noremap <F3> <ESC>:bn<CR>
 noremap <F4> <ESC>:bw<CR>
 
 "F5 F6で位置を記録 F7 F8で記録した位置に戻る
-noremap <F5> <ESC>ma
-noremap <F6> <ESC>mb
-noremap <F7> <ESC>`a
-noremap <F8> <ESC>`b
+"noremap <F5> <ESC>ma
+"noremap <F6> <ESC>mb
+"noremap <F7> <ESC>`a
+"noremap <F8> <ESC>`b
 
 "F9 F10でタブを切り替え
 noremap <F9> <ESC>:tabp<CR>
