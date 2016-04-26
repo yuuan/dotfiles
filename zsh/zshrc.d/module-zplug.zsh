@@ -35,6 +35,9 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	## peco
 	zplug "peco/peco", as:command, from:gh-r, of:${__zplug_peco_os:-os}
 
+	## peco-tmux
+	zplug "yuuan/c24d07d0708e37460e1ede30442251a3", as:command, from:gist, of:peco-tmux
+
 	## enhancd
 	zplug "b4b4r07/enhancd", as:plugin, of:enhancd.sh
 
