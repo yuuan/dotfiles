@@ -2,19 +2,28 @@
 " 特殊キー登録
 " ----------------------------------------
 
+if ! exists("g:enable_maps_for_putty_default")
+	let g:enable_maps_for_putty_default = 0
+endif
+
 let s:maps = []
 
-" Ctrl + Cursor keys (PuTTY default)
-let s:maps += [
-	\   [ "\e[C", '<C-Right>' ],
-	\   [ "\e[D", '<C-Left>' ],
-\ ]
+" デフォルト設定の PuTTY に対応すると副作用が出るので避ける
+if g:enable_maps_for_putty_default
 
-" Shift + Cursor keys (PuTTY default)
-let s:maps += [
-	\   [ "\e[A", '<S-Up>' ],
-	\   [ "\e[B", '<S-Down>' ],
-\ ]
+	" Ctrl + Cursor keys (PuTTY default)
+	let s:maps += [
+		\   [ "\e[C", '<C-Right>' ],
+		\   [ "\e[D", '<C-Left>' ],
+	\ ]
+
+	" Shift + Cursor keys (PuTTY default)
+	let s:maps += [
+		\   [ "\e[A", '<S-Up>' ],
+		\   [ "\e[B", '<S-Down>' ],
+	\ ]
+
+endif
 
 " Ctrl + Cursor keys (Xterm)
 let s:maps += [
