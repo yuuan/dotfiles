@@ -17,4 +17,7 @@ let g:switch_custom_definitions = [
 	\     [ "on", "off" ],
 	\     [ "enable", "disable" ],
 	\     [ "enabled", "disabled" ],
+	\     [ "required", "sometimes", "optional" ],
+	\     [ "var", "let" ],
+	\     [ "my", "our", "local" ],
 	\ ]
