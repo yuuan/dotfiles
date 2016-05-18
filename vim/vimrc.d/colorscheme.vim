@@ -2,20 +2,23 @@
 " カラースキーマ
 " ----------------------------------------
 
-"表示色設定
+" 表示色設定
 set t_Co=256
 
-"solarized
+" solarized
 set background=dark
 let g:solarized_termcolors=16
 "let g:solarized_termtrans=1
 
-"Bad Wolf
+" Bad Wolf
 let g:badwolf_html_link_underline = 0
 let g:badwolf_css_props_highlight = 1
 
-"カラースキーム選択
+" カラースキーム選択
 colorscheme badwolf
+
+" タブの色
+highlight SpecialKey ctermfg=236 ctermbg=16
 
 " 対応する括弧の色
 highlight MatchParen ctermfg=15 ctermbg=124
@@ -25,10 +28,7 @@ if (has("win32") || has("win64"))
 	colorscheme wombat
 endif
 
-"タブの色
-highlight SpecialKey ctermfg=236 ctermbg=16
-
-"GUIでのカラースキーマ
+" GUIでのカラースキーマ
 if has('gui_running')
 	set background=light
 	colorscheme solarized
