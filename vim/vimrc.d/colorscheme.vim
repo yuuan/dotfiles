@@ -21,7 +21,8 @@ colorscheme badwolf
 highlight SpecialKey ctermfg=236 ctermbg=16
 
 " 対応する括弧の色
-highlight MatchParen ctermfg=15 ctermbg=124
+" highlight MatchParen ctermfg=15 ctermbg=124
+highlight MatchParen ctermfg=8 ctermbg=154
 
 " Windows で 256 色表示ができないのでひとまず Wombat にする
 if (has("win32") || has("win64"))
