@@ -5,7 +5,7 @@
 # pageant.exe
 
 if [ -n "$SSH_CLIENT" ]; then
-	local LOCAL_TMP_DIR=$HOME/.ssh-agent
+	local LOCAL_TMP_DIR=$HOME/.ssh/.agents
 
 	if [ ! -d $LOCAL_TMP_DIR ]; then
 		mkdir -p $LOCAL_TMP_DIR
