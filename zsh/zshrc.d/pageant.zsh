@@ -9,6 +9,7 @@ if [ -n "$SSH_CLIENT" ]; then
 
 	if [ ! -d $LOCAL_TMP_DIR ]; then
 		mkdir -p $LOCAL_TMP_DIR
+		echo "'$LOCAL_TMP_DIR/' was created."
 	else
 		find -L $LOCAL_TMP_DIR -xtype l | while read f; do
 			rm "$f"
@@ -21,11 +22,13 @@ if [ -n "$SSH_CLIENT" ]; then
 	if [ -S "$SSH_AUTH_SOCK" ]; then
 		case $SSH_AUTH_SOCK in
 		/tmp/*/agent.[0-9]*)
+			echo "'$SSH_AUTH_SOCK' was linked from '$agent'."
 			ln -snf "$SSH_AUTH_SOCK" $agent && export SSH_AUTH_SOCK=$agent
 		esac
 	elif [ -S $agent ]; then
+		echo "'$SSH_AUTH_SOCK' was changed to '$agent'."
 		export SSH_AUTH_SOCK=$agent
-	#else
-	#	 echo "no ssh-agent"
+	else
+#		echo "no ssh-agent"
 	fi
 fi
