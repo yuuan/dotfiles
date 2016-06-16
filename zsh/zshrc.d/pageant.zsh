@@ -10,7 +10,7 @@ if [ -n "$SSH_CLIENT" ]; then
 	if [ ! -d $LOCAL_TMP_DIR ]; then
 		mkdir -p $LOCAL_TMP_DIR
 	else
-		find -L $LOCAL_TMP_DIR -type l | while read f; do
+		find -L $LOCAL_TMP_DIR -xtype l | while read f; do
 			rm "$f"
 		done
 	fi
