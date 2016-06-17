@@ -270,7 +270,7 @@ INCLUDE
 		__mkdir "$HOME/.zplug"
 
 		if [[ ! -f $HOME/.zplug/zplug ]]; then
-			__exec "curl -fLo $HOME/.zplug/zplug --create-dirs git.io/zplug"
+			__exec "curl -sL get.zplug.sh | zsh"
 		fi
 
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv" "$HOME/.zsh"
