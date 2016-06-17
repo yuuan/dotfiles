@@ -30,16 +30,16 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	zplug "junegunn/fzf-bin", as:command, from:gh-r
 
 	## fzf-tmux
-	zplug "junegunn/fzf", as:command, of:bin/fzf-tmux
+	zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 
 	## peco
-	zplug "peco/peco", as:command, from:gh-r, of:${__zplug_peco_os:-os}
+	zplug "peco/peco", as:command, from:gh-r, use:${__zplug_peco_os:-os}
 
 	## peco-tmux
-	zplug "yuuan/c24d07d0708e37460e1ede30442251a3", as:command, from:gist, of:peco-tmux
+	zplug "yuuan/c24d07d0708e37460e1ede30442251a3", as:command, from:gist, use:peco-tmux
 
 	## enhancd
-	zplug "b4b4r07/enhancd", as:plugin, of:enhancd.sh
+	zplug "b4b4r07/enhancd", as:plugin, use:enhancd.sh
 
 
 	# インストールしてない項目があればインストールするか訊ねる
