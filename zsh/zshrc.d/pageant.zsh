@@ -11,7 +11,7 @@ if [ -n "$SSH_CLIENT" ]; then
 		mkdir -p $LOCAL_TMP_DIR
 		echo "'$LOCAL_TMP_DIR/' was created."
 	else
-		find -L $LOCAL_TMP_DIR -xtype l | while read f; do
+		find $LOCAL_TMP_DIR -xtype l | while read f; do
 			rm "$f"
 		done
 	fi
