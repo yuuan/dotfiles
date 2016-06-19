@@ -10,13 +10,13 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 
 	case ${OSTYPE} in
 		darwin*)
-			__zplug_peco_os="*darwin*amd64*"
+			__zplug_ghr_os="*darwin*amd64*"
 			;;
 		linux*)
-			__zplug_peco_os="*linux*amd64*"
+			__zplug_ghr_os="*linux*amd64*"
 			;;
 		cygwin*)
-			__zplug_peco_os="*windows*amd64*"
+			__zplug_ghr_os="*windows*amd64*"
 			;;
 	esac
 
@@ -27,19 +27,19 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	zplug "zsh-users/zsh-completions"
 
 	## fzf
-	zplug "junegunn/fzf-bin", as:command, from:gh-r
+	zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:${__zplug_ghr_os:-os}
 
 	## fzf-tmux
 	zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 
 	## peco
-	zplug "peco/peco", as:command, from:gh-r, use:${__zplug_peco_os:-os}
+	zplug "peco/peco", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
 
 	## peco-tmux
 	zplug "yuuan/c24d07d0708e37460e1ede30442251a3", as:command, from:gist, use:peco-tmux
 
 	## enhancd
-	zplug "b4b4r07/enhancd", as:plugin, use:enhancd.sh
+	zplug "b4b4r07/enhancd", use:init.sh
 
 
 	# インストールしてない項目があればインストールするか訊ねる
