@@ -271,7 +271,7 @@ INCLUDE
 		__mkdir "$HOME/.zplug"
 
 		if [[ ! -f $HOME/.zplug/zplug ]]; then
-			__exec "curl -sL get.zplug.sh | zsh"
+			__exec "curl -sL zplug.sh/installer | zsh"
 		fi
 
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv" "$HOME/.zsh"
