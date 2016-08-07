@@ -249,6 +249,7 @@ INCLUDE
 		__link "$DOTFILES/vim/vimrc.init.d" "$HOME/.vim/vimrc.init.d"
 		__link "$DOTFILES/vim/vimrc.d" "$HOME/.vim/vimrc.d"
 		__link "$DOTFILES/vim/ftplugin" "$HOME/.vim/ftplugin"
+		__link "$DOTFILES/vim/snippets" "$HOME/.vim/snippets"
 
 		if [ ! -d $HOME/.vim/bundle/ ]; then
 			__exec "mkdir -p $HOME/.vim/bundle/"
