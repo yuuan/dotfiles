@@ -1,0 +1,115 @@
+snippet json_encode
+options word
+    json_encode(${1}, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+
+snippet toJson
+options word
+    toJson(${1:JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})
+
+snippet puf
+options head
+    public function ${1:#:func}(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet prof
+options head
+    protected function ${1:#:func}(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet prif
+options head
+    private function ${1:#:func}(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet pusf
+options head
+    public static function ${1:#:func}(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet prosf
+options head
+    protected static function ${1:#:func}(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet prisf
+options head
+    private static function ${1:#:func}(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet scope
+options head
+    public function scope${1}(Builder $query${2:#:, })
+    {
+        return $query->${3:where}
+    }
+
+snippet getAttribute
+alias geta
+options head
+    public function get${1}Attribute(${2})
+    {
+        ${3:#:// code}
+    }
+
+snippet setAttribute
+alias seta
+options head
+    public function set${1}Attribute(${2:$value})
+    {
+        ${3:#:// code}
+    }
+
+snippet trans
+options word
+    trans('${1:#:lang}')
+
+snippet view
+    view('${1:#:view}');
+
+snippet return_view
+    return view('${1:#:view}');
+
+snippet view_with
+options head
+    view('${1:#:view}')->with(compact('${2:#:variable}'));
+
+snippet return_view_with
+options head
+    return view('${1:#:view}')->with(compact('${2:#:variable}'));
+
+snippet redirect_route
+options head
+    redirect()->route('${1:#:route}');
+
+snippet return_redirect_route
+options head
+    return redirect()->route('${1:#:route}');
+
+snippet redirect_to
+options head
+    redirect()->to('${1:#:uri}');
+
+snippet return_redirect_to
+options head
+    return redirect()->to('${1:#:uri}');
+
+snippet redirect_route_with_messages
+options head
+    redirect()->route('${1:#:route}')->with(compact('messages'));
+
+snippet return_redirect_route_with_messages
+options head
+    return redirect()->route('${1:#:route}')->with(compact('messages'));
+
