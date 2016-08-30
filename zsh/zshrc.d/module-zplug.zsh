@@ -6,7 +6,7 @@ if [[ -f $HOME/.zplug/zplug ]]; then
 	local zplug_peco_os
 
 	# zplug を読み込む
-	source $HOME/.zplug/zplug
+	source $HOME/.zplug/init.zsh
 
 	case ${OSTYPE} in
 		darwin*)
