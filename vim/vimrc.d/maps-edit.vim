@@ -6,6 +6,12 @@
 noremap <C-A> <Home>
 noremap <C-E> <End>
 
+" Ctrl + h, j, k, l でカーソル移動
+inoremap <C-H> <Left>
+inoremap <C-J> <Down>
+inoremap <C-K> <Up>
+inoremap <C-L> <Right>
+
 " Ctrl + k で行末まで削除
 inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
