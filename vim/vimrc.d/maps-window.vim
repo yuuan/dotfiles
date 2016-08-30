@@ -28,7 +28,7 @@ inoremap <C-Down> <C-O><C-E>
 noremap <M-Up> <C-Y>
 noremap <M-Down> <C-E>
 
-" PageUp/Downの幅を半分に
+" PageUp/Down の幅を半分に
 noremap <PageUp> <C-U>
 noremap <PageDown> <C-D>
 

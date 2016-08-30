@@ -19,13 +19,14 @@ autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
 	highlight CursorLine ctermbg=31 ctermfg=231
 	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-	imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
-	imap <buffer> <C-p> <C-r>0
+"	imap <buffer> <C-h> <ESC><Plug>(unite_quick_help)
+	imap <buffer> <F1> <ESC><Plug>(unite_quick_help)
 	nmap <buffer> <F4> <Plug>(unite_exit)
 	nmap <buffer> <ESC> <Plug>(unite_exit)
+	inoremap <buffer> <C-p> <C-r>0
 endfunction
 
-"Unite を呼び出すキー割り当て
+" Unite を呼び出すキー割り当て
 nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
 nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
 nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
