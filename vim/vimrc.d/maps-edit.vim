@@ -10,10 +10,10 @@ noremap <C-E> <End>
 inoremap <expr> <C-k> "\<C-g>u".(col('.') == col('$') ? '<C-o>gJ' : '<C-o>D')
 cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 
-" 検索後にESCキーでハイライトを消す
-"nmap <ESC> :nohlsearch<CR>
+" 検索後に ESC キーでハイライトを消す
+"nnoremap <ESC> :nohlsearch<CR>
 
-" コマンドラインモードでCtrl + Pで貼り付け
+" コマンドラインモードで Ctrl + p で貼り付け
 cnoremap <C-P> <C-R>"
 
 " 単語を選択
