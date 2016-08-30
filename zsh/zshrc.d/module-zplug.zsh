@@ -2,7 +2,7 @@
 # `zplug` の設定
 # ----------------------------------------
 
-if [[ -f $HOME/.zplug/zplug ]]; then
+if [[ -f $HOME/.zplug/init.zsh ]]; then
 	local zplug_peco_os
 
 	# zplug を読み込む
