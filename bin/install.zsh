@@ -269,15 +269,18 @@ INCLUDE
 		__link "$DOTFILES/zshenv" "$HOME/.zshenv"
 
 		__mkdir "$HOME/.zplug"
-
-		if [[ ! -f $HOME/.zplug/zplug ]]; then
-			__exec "curl -sL zplug.sh/installer | zsh"
-		fi
+		__install_zplug
 
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv" "$HOME/.zsh"
 		__ls -a "$HOME/.zsh/"
 
 		echo
+	}
+
+	function __install_zplug() {
+		if [[ ! -f $HOME/.zplug/zplug ]]; then
+			__exec "curl -sL zplug.sh/installer | zsh"
+		fi
 	}
 
 	function __install() {
@@ -320,6 +323,9 @@ INCLUDE
 					zsh)
 						__install_zsh
 						__load_zshrc
+						;;
+					zplug)
+						__install_zplug
 						;;
 					submodules)
 						;;
