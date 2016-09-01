@@ -80,7 +80,7 @@ NeoBundle 'tyru/caw.vim.git'
 NeoBundle "kana/vim-textobj-user"
 NeoBundle "osyo-manga/vim-textobj-multiblock"
 NeoBundle 'Shougo/neosnippet'
-"NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 "Cursor
 NeoBundle 'Lokaltog/vim-easymotion'

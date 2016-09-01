@@ -15,4 +15,9 @@ if has('conceal')
 	set conceallevel=2 concealcursor=niv
 endif
 
+" デフォルトで用意されているスニペットを使わない
+let g:neosnippet#disable_runtime_snippets = {
+\     'php': 1,
+\ }
+
 let g:neosnippet#snippets_directory='~/.vim/snippets/'
