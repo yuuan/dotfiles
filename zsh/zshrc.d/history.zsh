@@ -23,7 +23,7 @@ setopt HIST_VERIFY
 # `history` コマンドは記録しない
 #setopt HIST_NO_STORE
 
-# 他のプロンプトと履歴を共有
+# 履歴を即座に保存し他のプロンプトと共有
 #setopt SHARE_HISTORY
 
 # 直前のコマンドと同じなら記録しない
