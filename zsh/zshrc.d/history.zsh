@@ -39,4 +39,4 @@ setopt HIST_REDUCE_BLANKS
 setopt HIST_IGNORE_SPACE
 
 # 全ての履歴を表示する
-function history-all { history -E 1 }
+function history-all { history -i 1 }
