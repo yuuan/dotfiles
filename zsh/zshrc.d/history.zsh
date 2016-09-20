@@ -21,7 +21,7 @@ setopt APPEND_HISTORY
 setopt HIST_VERIFY
 
 # `history` コマンドは記録しない
-setopt HIST_NO_STORE
+#setopt HIST_NO_STORE
 
 # 他のプロンプトと履歴を共有
 #setopt SHARE_HISTORY
