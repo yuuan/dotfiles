@@ -17,12 +17,13 @@ let g:badwolf_css_props_highlight = 1
 " カラースキーム選択
 colorscheme badwolf
 
-" タブの色
+" タブ文字の色
 highlight SpecialKey ctermfg=236 ctermbg=16
 
-" 対応する括弧の色
+" 対応する括弧の色 (濃い赤:124, 黄緑:154, オレンジ:208)
 " highlight MatchParen ctermfg=15 ctermbg=124
-highlight MatchParen ctermfg=8 ctermbg=154
+" highlight MatchParen ctermfg=8 ctermbg=154
+highlight MatchParen ctermfg=8 ctermbg=208
 
 " Windows で 256 色表示ができないのでひとまず Wombat にする
 if (has("win32") || has("win64"))
