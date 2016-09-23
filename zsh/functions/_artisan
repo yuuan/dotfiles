@@ -9,20 +9,177 @@ function __laravel5_get_command_list() {
 	fi
 }
 
+function __laravel5_get_seeder_list() {
+	local dir="$PWD/database/seeds"
+
+	if [[ -d "$dir" ]]; then
+		\ls "$dir" | \grep '\.php$' | \sed -e 's/\.php$//'
+	fi
+}
+
+function __laravel5_get_migration_list() {
+	local dir="$PWD/database/migrations"
+
+	if [[ -d "$dir" ]]; then
+		\ls "$dir" | perl -pe 's/^\d{4}_\d{2}_\d{2}_\d{6}_//g;s/\.php$//'
+	fi
+}
+
 function __artisan_commands() {
 	local -a cmds
 	cmds=( ${(@f)"$(__laravel5_get_command_list)"} )
-	_describe -t commands "Commands" cmds
+	_describe -t commands "commands" cmds
+}
+
+function __options() {
+	_arguments -C \
+		'(-h --help)'{-h,--help}'[Display help message]' \
+		'(-v -vv -vvv --verbose)'{-q,--quiet}'[Do not output any message]' \
+		{-V,--version}'[Display this application version]' \
+		--ansi'[Force ANSI output]' \
+		--no-ansi'[Disable ANSI output]' \
+		{-n,--no-interaction}'[Do not ask any interactive question]' \
+		'(-v -vv -vvv --verbose)'-v'[Increase the verbosity of messages for normal output]' \
+		'(-v -vv -vvv --verbose)'{-vv,--verbose}'[Increase the verbosity of messages for verbose output]' \
+		'(-v -vv -vvv --verbose)'-vvv'[Increase the verbosity of messages for debug output]' \
+		$* \
+	&& return 0
+}
+
+function __seeders() {
+	local -a seeders
+	seeders=( $(__laravel5_get_seeder_list) )
+	_describe -t seeders 'seeder classes' seeders
+}
+
+function __migrations() {
+	local -a migrations
+	migrations=( $(__laravel5_get_migration_list) )
+	_describe -t migrations 'migrations' migrations
 }
 
 function _artisan() {
 	local context curcontext=$curcontext state line
 	declare -A opt_args
 	local ret=1
+	local dir
 
 	_arguments -C \
+		'(-h --help)'{-h,--help}'[Display help message]' \
 		'1: :__artisan_commands' \
+		'*:: :->args' \
 	&& ret=0
+
+	case $state in
+		(args)
+			case $words[1] in
+				(make:auth)
+					__options \
+						'--views[Only scaffold the authentication views]' \
+					&& ret=0
+					;;
+				(make:console)
+					dir='app/Console/Commands/'
+					__options \
+						'--command=[The terminal command that should be assigned. \[default: "command:name"\]]:: :__artisan_commands' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:controller)
+					dir='app/Http/Controllers/'
+					__options \
+						'--resource[Generate a resource controller class.]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:event)
+					dir='app/Events/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:job)
+					dir='app/Jobs/'
+					__options \
+						'--sync[Indicates that job should be synchronous.]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:listener)
+					dir='app/Listeners/'
+					__options \
+						'--event=[The event class being listened for.]:: :' \
+						'--queued[Indicates the event listener should be queued.]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:middleware)
+					dir='app/Http/Middleware/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:migration)
+					dir=''
+					__options \
+						'--create=[The table to be created.]' \
+						'--table=[The table to migrate.]' \
+						'--path=[The location where the migration file should be created.]' \
+						'*:migrations:__migrations' \
+					&& ret=0
+					;;
+				(make:model)
+					dir='app/'
+					__options \
+						{-m,--migration}'[Create a new migration file for the model]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:policy)
+					dir='app/Policies/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:provider)
+					dir='app/Providers/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:request)
+					dir='app/Http/Requests/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:seeder)
+					dir='database/seeds/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:test)
+					dir='tests/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(db:seed)
+					__options \
+						'--class=[The class name of the root seeder \[default: "DatabaseSeeder"\]]:: :__seeders' \
+						'--database=[The database connection to seed]' \
+						'--force[Force the operation to run when in production.]' \
+					&& ret=0
+					;;
+				(*)
+					__options \
+						'*:files:_files' \
+					&& ret=0
+					;;
+			esac
+			;;
+	esac
 
 	return ret
 }
