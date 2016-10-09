@@ -45,16 +45,16 @@ NeoBundle 'morhetz/gruvbox'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'cocopon/lightline-hybrid.vim'
 
-"Syntacs
+"Syntax
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
-NeoBundle 'Glench/Vim-Jinja2-Syntax'
 NeoBundle 'vim-perl/vim-perl'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'plasticboy/vim-markdown'
 NeoBundle 'xsbeats/vim-blade'
+NeoBundle 'evidens/vim-twig'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'yoppi/fluentd.vim'
 

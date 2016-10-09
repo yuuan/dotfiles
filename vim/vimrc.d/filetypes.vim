@@ -10,10 +10,9 @@ augroup FileTypes
 	autocmd BufNewFile,BufRead *.phtml set filetype=php
 	autocmd BufNewFile,BufRead *.ctp set filetype=php
 
-	"jinja
-	autocmd BufNewFile,BufRead *.tpl set filetype=jinja
-	autocmd BufNewFile,BufRead *.twig set filetype=jinja
-	autocmd BufNewFile,BufRead *.volt set filetype=jinja
+	"Twig
+	autocmd BufNewFile,BufRead *.tpl set filetype=twig
+	autocmd BufNewFile,BufRead *.volt set filetype=twig
 
 	"CoffeeScript
 	autocmd BufNewFile,BufRead,BufReadPre *.coffee set filetype=coffee
