@@ -77,8 +77,8 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'kana/vim-smartinput.git'
 NeoBundle 'AndrewRadev/switch.vim'
 NeoBundle 'tyru/caw.vim.git'
-NeoBundle "kana/vim-textobj-user"
-NeoBundle "osyo-manga/vim-textobj-multiblock"
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 
@@ -93,8 +93,10 @@ NeoBundle 'lambdalisue/vim-unified-diff'
 if has('lua')
 	NeoBundle 'Shougo/neocomplete.git'
 endif
-"	NeoBundle 'm2mdas/phpcomplete-extended'
-"	NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+
+" NeoComplete Extensions
+" NeoBundle 'm2mdas/phpcomplete-extended'
+" NeoBundle 'm2mdas/phpcomplete-extended-laravel'
 
 NeoBundle 'vim-jp/vimdoc-ja'
 
@@ -109,7 +111,6 @@ endif
 
 call neobundle#end()
 
-"`.vimrc` の方に記載しているためコメントアウト
 " Required:
 filetype plugin indent on
 
