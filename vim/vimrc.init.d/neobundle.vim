@@ -59,7 +59,7 @@ NeoBundle 'elzr/vim-json'
 NeoBundle 'yoppi/fluentd.vim'
 
 "Debug
-NeoBundle 'joonty/vdebug'
+"NeoBundle 'joonty/vdebug'
 
 "vim-ref
 NeoBundle 'thinca/vim-ref'
