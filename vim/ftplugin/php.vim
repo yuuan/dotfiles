@@ -17,10 +17,10 @@ let g:php_baselib = 1
 let g:php_noShortTags = 1
 
 " 文字列中の HTML をハイライト
-let g:php_htmlInStrings = 1
+"let g:php_htmlInStrings = 1
 
 " 文字列中の SQL をハイライト
-let g:php_sql_query = 1
+"let g:php_sql_query = 1
 
 " SQL を MySQL とみなしてハイライト
 let g:sql_type_default = 'mysql'
