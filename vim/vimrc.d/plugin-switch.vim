@@ -20,4 +20,8 @@ let g:switch_custom_definitions = [
 	\     [ "required", "sometimes", "optional" ],
 	\     [ "var", "let" ],
 	\     [ "my", "our", "local" ],
+	\     {
+	\         '\<\(\k\+\)->\(\k\+\)\>': '\1[''\2'']',
+	\         '\<\(\k\+\)\[''\(\k\+\)''\]': '\1->\2',
+	\     },
 	\ ]
