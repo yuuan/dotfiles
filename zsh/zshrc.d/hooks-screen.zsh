@@ -48,7 +48,8 @@ if [[ -n "$STY$TMUX" ]]; then
 
 	# コマンドを実行する直前に呼ばれる
 	function preexec-function {
-		local command=(${(s: :)${1}})
+		local -a command;
+		command=(${(s: :)${1}})
 		set-window-name-to-command $command
 	}
 
