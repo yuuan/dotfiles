@@ -18,7 +18,9 @@ elif [[ -n `hostname | grep "gitlab"` ]]; then
 	PROMPT_COLOR="yellow"
 elif [[ -n `uname -sr | grep "CYGWIN"` ]] || [[ -n `uname -sr | grep "MINGW"` ]]; then
 	PROMPT_COLOR="cyan"
-elif [[ -n `hostname | grep "^\(ip\|ec2\)-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}$"` ]];then
+elif [[ -n `hostname | grep "^ip-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}$"` ]]; then
+	PROMPT_COLOR="green"
+elif [[ -n `hostname | grep "\.compute\.amazonaws\.com$"` ]]; then
 	PROMPT_COLOR="green"
 fi
 
