@@ -18,6 +18,8 @@ elif [[ -n `hostname | grep "gitlab"` ]]; then
 	PROMPT_COLOR="yellow"
 elif [[ -n `uname -sr | grep "CYGWIN"` ]] || [[ -n `uname -sr | grep "MINGW"` ]]; then
 	PROMPT_COLOR="cyan"
+elif [[ -n `echo "$HOST_SCREEN_NAME" | grep "\.\(stg\|prd\)"` ]]; then
+	PROMPT_COLOR="red"
 elif [[ -n `hostname | grep "^ip-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}-[0-9]\{1,3\}$"` ]]; then
 	PROMPT_COLOR="green"
 elif [[ -n `hostname | grep "\.compute\.amazonaws\.com$"` ]]; then
