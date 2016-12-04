@@ -23,6 +23,47 @@ if [[ -n "$STY$TMUX" ]]; then
 		fi
 	}
 
+	# sudo 時のコマンド名を取得
+	function get-command-name-in-sudo {
+		shift
+		while (( $# > 0 )); do
+			case "$1" in
+				-[aghpuUcCrt])
+					shift
+					;;
+				-*)
+					;;
+				*)
+					echo "$1" && break
+					;;
+			esac
+			shift
+		done
+	}
+
+	# jobs からコマンド名を取得
+	function get-command-name-from-jobs {
+		get-command-name $(jobs | awk '$2=="+"{for(i=4;i<NF;i++){printf("%s%s",$i,OFS=" ")}print $NF}')
+	}
+
+	# コマンド名を取得
+	function get-command-name {
+		case "$1" in
+			sudo)
+				get-command-name-in-sudo $*
+				;;
+			nohup)
+				echo "$2"
+				;;
+			fg)
+				get-command-name-from-jobs
+				;;
+			*)
+				echo "$1"
+				;;
+		esac
+	}
+
 	# カレントディレクトリを切り替えた後に呼ばれる
 	function precmd-function {
 		set-window-name-to-command
@@ -33,7 +74,7 @@ if [[ -n "$STY$TMUX" ]]; then
 
 	# コマンド名を表示
 	function set-window-name-to-command {
-		local command=$1
+		local command=$(get-command-name $*)
 		local directory=${PWD:t}
 
 		# ちょっと強引に `$HOME` を `~` に変換
