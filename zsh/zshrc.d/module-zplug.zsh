@@ -41,6 +41,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	## enhancd
 	zplug "b4b4r07/enhancd", use:init.sh
 
+	## jid
+	zplug "simeji/jid", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
+
 
 	# インストールしてない項目があればインストールするか訊ねる
 	if ! zplug check --verbose; then
