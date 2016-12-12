@@ -82,6 +82,7 @@ NeoBundle 'osyo-manga/vim-textobj-multiblock'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'junegunn/vim-emoji'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 "Cursor
 NeoBundle 'Lokaltog/vim-easymotion'
