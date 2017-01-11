@@ -3,7 +3,7 @@
 # ----------------------------------------
 
 if [[ -f $HOME/.zplug/init.zsh ]]; then
-	local zplug_peco_os
+	local __zplug_ghr_os
 
 	# zplug を読み込む
 	source $HOME/.zplug/init.zsh
@@ -45,9 +45,16 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "simeji/jid", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
 
 
+	local __zplug_verbose
+
+	# ホスト名が英子文字のみなら詳細表示
+	if [[ -n `hostname | grep "^[a-z]\+$"` ]]; then
+		__zplug_verbose="--verbose"
+	fi
+
 	# インストールしてない項目があればインストールするか訊ねる
-	if ! zplug check --verbose; then
-		printf "Install? [y/N]: "
+	if ! zplug check ${__zplug_verbose}; then
+		printf "Install zplug modules? [y/N]: "
 		if read -q; then
 			echo; zplug install
 		else
@@ -56,7 +63,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	fi
 
 	# プラグインを読み込み、コマンドにパスを通す
-	zplug load --verbose
+	zplug load ${__zplug_verbose}
 
 	# `peco` があれば `peco` を使う
 	export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
