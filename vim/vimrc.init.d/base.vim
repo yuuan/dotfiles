@@ -56,8 +56,8 @@ set ttimeout
 " キーコード待ちの時間
 set ttimeoutlen=75
 
-" バッファを使った複数ファイルの編集を可能にする
-set hidden
+" 放棄されたバッファを隠れ状態にする
+"set hidden
 
 " 括弧を入力した時に一瞬だけカーソルを対応する括弧に移動
 set showmatch
