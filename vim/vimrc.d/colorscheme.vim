@@ -20,6 +20,9 @@ colorscheme badwolf
 " タブ文字の色
 highlight SpecialKey ctermfg=236 ctermbg=16
 
+" 検索結果の色
+" highlight Search ctermfg=16 ctermbg=214
+
 " 対応する括弧の色 (濃い赤:124, 黄緑:154, オレンジ:208)
 " highlight MatchParen ctermfg=15 ctermbg=124
 " highlight MatchParen ctermfg=8 ctermbg=154
