@@ -2,10 +2,20 @@
 	"Keymap": {
 		"ArrowUp":   "peco.SelectUp",
 		"ArrowDown": "peco.SelectDown",
+		"ArrowLeft": "peco.BackwardChar",
+		"ArrowRight": "peco.ForwardChar",
+		"Pgup": "peco.ScrollPageUp",
+		"Pgdn": "peco.ScrollPageDown",
 		"C-p": "peco.SelectUp",
 		"C-n": "peco.SelectDown",
 		"C-c": "peco.Cancel",
 		"C-d": "peco.Cancel",
+		"C-w": "peco.DeleteBackwardWord",
+		"C-u": "peco.DeleteAll",
+		"C-k": "peco.KillEndOfLine",
+		"C-a": "peco.BeginningOfLine",
+		"C-e": "peco.EndOfLine",
+		"C-l": "peco.RefreshScreen",
 		"Tab": "peco.RotateMatcher"
 	},
 	"Style": {
