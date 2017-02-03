@@ -1,115 +1,436 @@
+snippet php_class
+options head
+	<?php
+	
+	namespace App${1};
+	
+	class ${2}${3: extends }
+	{
+		${0://}
+	}
+
+snippet php_trait
+options head
+	<?php
+	
+	namespace App${1};
+	
+	trait ${2}
+	{
+		${0://}
+	}
+
+snippet php_interface
+options head
+	<?php
+	
+	namespace App${1};
+	
+	interface ${2}
+	{
+		${0://}
+	}
+
+snippet php_array
+options head
+	<?php
+	
+	return [
+		${0://}
+	];
+
+snippet php_class_Fluent
+options head
+	<?php
+	
+	namespace Illuminate\Support\Fluent;
+	
+	class ${1} extends Fluent
+	{
+		${0://}
+	}
+
+snippet php_class_Model
+options head
+	<?php
+	
+	namespace App\Support\Model;
+	
+	class ${1} extends Model
+	{
+		${0://}
+	}
+
+snippet php_class_Enum
+options head
+	<?php
+	
+	namespace App\Support\Enum;
+	
+	class ${1} extends Enum
+	{
+		${0://}
+	}
+
 snippet json_encode
 options word
-    json_encode(${1}, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT)
+	json_encode(${0}${1:, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})
 
 snippet toJson
 options word
-    toJson(${1:JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})
+	toJson(${1:JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})
+
+snippet Collection
+options word
+	\Illuminate\Support\Collection${0}
+
+snippet use_Collection
+options head
+	use Illuminate\Support\Collection;${0}
+
+snippet Fluent
+options word
+	\Illuminate\Support\Fluent${0}
+
+snippet use_Fluent
+options head
+	\Illuminate\Support\Fluent${0};
+
+snippet Builder
+options word
+	\Illuminate\Database\Eloquent\Builder${0}
+
+snippet use_Builder
+options head
+	use Illuminate\Database\Eloquent\Builder;${0}
+
+snippet use_Requests
+options head
+	use App\Http\Requests${0};
+
+snippet use_Controller
+options head
+	use App\Http\Controllers${0};
+
+snippet use_Middleware
+options head
+	use App\Http\Middlewares${0};
+
+snippet use_ViewModels
+options head
+	use App\Http\ViewModels${0};
+
+snippet use_Models
+options head
+	use App\Models${0};
+
+snippet use_Entities
+options head
+	use App\Entities${0}
+
+snippet Providers
+options word
+	\App\Providers${0}
+
+snippet use_Providers
+options head
+	use App\Providers${0};
+
+snippet use_Exceptions
+options head
+	use App\Exceptions${0};
+
+snippet use_Console
+options head
+	use App\Console${0};
+
+snippet use_Command
+options head
+	use App\Console\Commands${0};
 
 snippet puf
-options head
-    public function ${1:#:func}(${2})
-    {
-        ${3:// code}
-    }
+options head, indent
+	public function ${1:#:func}(${2})
+	{
+		${3://}
+	}
 
 snippet prof
-options head
-    protected function ${1:#:func}(${2})
-    {
-        ${3:// code}
-    }
+options head, indent
+	protected function ${1:#:func}(${2})
+	{
+		${3://}
+	}
 
 snippet prif
-options head
-    private function ${1:#:func}(${2})
-    {
-        ${3:// code}
-    }
+options head, indent
+	private function ${1:#:func}(${2})
+	{
+		${3://}
+	}
 
 snippet pusf
-options head
-    public static function ${1:#:func}(${2})
-    {
-        ${3:// code}
-    }
+options head, indent
+	public static function ${1:#:func}(${2})
+	{
+		${3://}
+	}
 
 snippet prosf
-options head
-    protected static function ${1:#:func}(${2})
-    {
-        ${3:// code}
-    }
+options head, indent
+	protected static function ${1:#:func}(${2})
+	{
+		${3://}
+	}
 
 snippet prisf
+options head, indent
+	private static function ${1:#:func}(${2})
+	{
+		${3://}
+	}
+
+snippet puv
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:array}
+	 */
+	public $${1:#:var}${2: = []};
+
+snippet prov
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:array}
+	 */
+	protected $${1:#:var}${2: = []};
+
+snippet priv
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:array}
+	 */
+	private $${1:#:var}${2: = []};
+
+snippet pusv
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:array}
+	 */
+	public static $${1:#:var}${2: = []};
+
+snippet prosv
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:array}
+	 */
+	protected static $${1:#:var}${2: = []};
+
+snippet prisv
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:array}
+	 */
+	private static $${1:#:var}${2: = []};
+
+snippet const
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${3:int}
+	 */
+	const $${1:#:var} = ${2:#:value};
+
+snippet docf
 options head
-    private static function ${1:#:func}(${2})
-    {
-        ${3:// code}
-    }
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @param ${1:mixed} ${2:$value}
+	 * @return ${3:void}
+	 */
+
+snippet docv
+options head
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @var ${1:array}
+	 */
+
+snippet belongsTo
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function ${1:#:func}()
+	{
+		return $this->belongsTo(${2:\App}::class${3:, ''}${4:, ''});
+	}
+
+snippet hasOne
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function ${1:#:func}()
+	{
+		return $this->hasOne(${2:\App}::class${3:, ''});
+	}
+
+snippet hasMany
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function ${1:#:func}()
+	{
+		return $this->hasMany(${2:\App}::class${3:, ''});
+	}
+
+snippet belongsToMany
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+	 */
+	public function ${1:#:func}()
+	{
+		return $this->belongsToMany(${2:\App}::class)${3:->withPivot('', '')}${4:->withTimestamps()};
+	}
+
+snippet hasManyThrough
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+	 */
+	public function ${1:#:func}()
+	{
+		return $this->hasManyThrough(${2:\App}::class, ${3:\App}::class${4:, ''}${5:, ''});
+	}
 
 snippet scope
-options head
-    public function scope${1}(Builder $query${2:#:, })
-    {
-        return $query->${3:where}
-    }
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @param \Illuminate\Database\Eloquent\Builder $query
+	 * @return \Illuminate\Database\Eloquent\Builder
+	 */
+	public function scope${1:#:func}(Builder $query${2:, })
+	{
+		return $query->${3:where}
+	}
 
 snippet getAttribute
 alias geta
-options head
-    public function get${1}Attribute(${2})
-    {
-        ${3:// code}
-    }
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function get${1}Attribute(${2:$value})
+	{
+		${3://}
+	}
 
 snippet setAttribute
 alias seta
+options head, indent
+	/**
+	 * ${0:#:comment}
+	 *
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function set${1}Attribute(${2:$value})
+	{
+		${3:$this->attributes[] = $value;}
+	}
+
+snippet try_catch
 options head
-    public function set${1}Attribute(${2:$value})
-    {
-        ${3:// code}
-    }
+	try
+	{
+		${0://}
+	}
+	catch (${1}Exception ${2:$e})
+	{
+		//
+	}
+
+snippet catch
+options head
+	catch (${1}Exception ${2:$e})
+	{
+		${0://}
+	}
 
 snippet trans
 options word
-    trans('${1:#:lang}')
+	trans('${1:#:lang}')
 
 snippet view
-    view('${1:#:view}');
+	view('${1:#:view}');
 
 snippet return_view
-    return view('${1:#:view}');
+	return view('${1:#:view}');
 
 snippet view_with
 options head
-    view('${1:#:view}')->with(compact('${2:#:variable}'));
+	view('${1:#:view}')->with(compact('${2:#:variable}'));
 
 snippet return_view_with
 options head
-    return view('${1:#:view}')->with(compact('${2:#:variable}'));
+	return view('${1:#:view}')->with(compact('${2:#:variable}'));
 
 snippet redirect_route
 options head
-    redirect()->route('${1:#:route}');
+	redirect()->route('${1:#:route}');
 
 snippet return_redirect_route
 options head
-    return redirect()->route('${1:#:route}');
+	return redirect()->route('${1:#:route}');
 
 snippet redirect_to
 options head
-    redirect()->to('${1:#:uri}');
+	redirect()->to('${1:#:uri}');
 
 snippet return_redirect_to
 options head
-    return redirect()->to('${1:#:uri}');
+	return redirect()->to('${1:#:uri}');
 
 snippet redirect_route_with_messages
 options head
-    redirect()->route('${1:#:route}')->with(compact('messages'));
+	redirect()->route('${1:#:route}')->with(compact('messages'));
 
 snippet return_redirect_route_with_messages
 options head
-    return redirect()->route('${1:#:route}')->with(compact('messages'));
+	return redirect()->route('${1:#:route}')->with(compact('messages'));
 
+snippet dump_in_TestCase
+options word
+	;dump($this->response->getContent());$this${0}
