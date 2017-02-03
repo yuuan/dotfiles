@@ -4,5 +4,6 @@
 
 " UTF-8の□や○でカーソル位置がずれないようにする
 if exists("&ambiwidth")
+	" 文字種が曖昧な文字を全角幅で表示する
 	set ambiwidth=double
 endif
