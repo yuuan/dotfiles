@@ -1,6 +1,33 @@
 " ----------------------------------------
 " NeoComplete
 " ----------------------------------------
+"
+" 起動時に有効化"
+let g:neocomplete#enable_at_startup = 1
+
+" 補完を表示する最小文字数 (default: 2)
+let g:neocomplete#min_syntax_length = 3
+
+" 大文字が入力されるまで大文字小文字の区別を無視する
+let g:neocomplete#enable_smart_case = 1
+
+" `_` 区切りの補完を有効化
+let g:neocomplete#enable_underbar_completion = 1
+
+" (default: 0)
+let g:neocomplete#disable_auto_complete = 0
+
+" (default: 0)
+let g:neocomplete#enable_auto_select = 0
+
+" (default: 1)
+"let g:neocomplete#enable_smart_case = 0
+
+" (default: 1)
+"let g:neocomplete#enable_fuzzy_completion = 0
+
+" (default: 0)
+"let g:neocomplete#enable_camel_case = 0
 
 augroup vimrc_plugin_neocomplete
 	autocmd!
@@ -17,15 +44,13 @@ augroup vimrc_plugin_neocomplete
 
 augroup end
 
-if neobundle#is_installed('neocomplete')
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#disable_auto_complete = 0
-	let g:neocomplete#min_syntax_length = 3
-	let g:neocomplete#enable_auto_select = 0
-	let g:neocomplete#enable_smart_case = 0
-	let g:neocomplete#enable_camel_case_completion = 0
-	let g:neocomplete#enable_fuzzy_completion = 0
+if !exists('g:neocomplete#sources')
+	let g:neocomplete#sources = {}
+endif
 
+let g:neocomplete#sources.gitcommit = [ 'buffer', 'dictionary', 'omni' ]
+
+if neobundle#is_installed('neocomplete')
 	"上下キーで開かないように
 	inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
 	inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
