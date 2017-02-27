@@ -40,6 +40,7 @@ NeoBundle 'sickill/vim-monokai'
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'morhetz/gruvbox'
+NeoBundle 'junegunn/seoul256.vim'
 
 "Lightline
 NeoBundle 'itchyny/lightline.vim'
