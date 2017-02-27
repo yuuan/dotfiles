@@ -15,7 +15,7 @@ if has('persistent_undo')
 endif
 
 augroup vimrc_caches
-	augroup!
+	autocmd!
 
 	" ファイルを開いたときカーソル位置を復元
 	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\""
