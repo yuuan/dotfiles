@@ -14,8 +14,14 @@ let g:unite_source_session_enable_auto_save = 1
 "ファイルを開くとき新しいタブで開く
 call unite#custom#default_action('file', 'tabopen')
 
-" Unite 内のキー割り当て
-autocmd FileType unite call s:unite_my_settings()
+augroup vimrc_plugin_unite
+	autocmd!
+
+	" Unite 内のキー割り当て
+	autocmd FileType unite call s:unite_my_settings()
+
+augroup end
+
 function! s:unite_my_settings()
 	highlight CursorLine ctermbg=31 ctermfg=231
 	imap <buffer> <C-w> <Plug>(unite_delete_backward_path)

@@ -20,9 +20,10 @@ let g:vimfiler_edit_action = 'tabopen'
 
 "↓カーソルキーが効かなくなったのでコメントアウト
 "デフォルトのキーマッピングを変更
-" augroup vimrc
+" augroup vimrc_plugin_vimfiler
+" 	autocmd!
 " 	autocmd FileType vimfiler call s:vimfiler_my_settings()
-" augroup END
+" augroup end
 " function! s:vimfiler_my_settings()
 " 	nmap <buffer> q <Plug>(vimfiler_exit)
 " 	nmap <buffer> Q <Plug>(vimfiler_hide)

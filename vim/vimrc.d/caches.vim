@@ -14,5 +14,10 @@ if has('persistent_undo')
 	set undodir=$HOME/.vim/undo
 endif
 
-" ファイルを開いたときカーソル位置を復元
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\""
+augroup vimrc_caches
+	augroup!
+
+	" ファイルを開いたときカーソル位置を復元
+	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\""
+
+augroup end

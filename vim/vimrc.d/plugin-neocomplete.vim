@@ -2,6 +2,21 @@
 " NeoComplete
 " ----------------------------------------
 
+augroup vimrc_plugin_neocomplete
+	autocmd!
+
+	"Enable omni completion.
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+	autocmd FileType gitcommit setlocal omnifunc=emoji#complete
+
+augroup end
+
 if neobundle#is_installed('neocomplete')
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#disable_auto_complete = 0
@@ -24,13 +39,4 @@ if neobundle#is_installed('neocomplete')
 	"Ctrl + 上下キーで候補を移動
 	inoremap <expr><S-Up> pumvisible() ? "\<C-P>" : "\<Up>"
 	inoremap <expr><S-Down> pumvisible() ? "\<C-N>" : "\<Down>"
-
-	"Enable omni completion.
-	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
-	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-	autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 endif
