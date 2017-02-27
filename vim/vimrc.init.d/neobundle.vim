@@ -92,7 +92,9 @@ NeoBundle 'Shougo/vimfiler.git'
 NeoBundle 'lambdalisue/vim-unified-diff'
 
 "NeoComplete
-if has('lua')
+if has('nvim') && has('python3')
+	NeoBundle 'Shougo/deoplete.nvim'
+elseif has('lua')
 	NeoBundle 'Shougo/neocomplete.git'
 endif
 

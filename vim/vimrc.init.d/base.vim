@@ -39,7 +39,9 @@ set listchars=tab:›\ ,trail:~
 
 " マウスを使えるようにする
 set mouse=a
-set ttymouse=xterm2
+if ! has('nvim')
+	set ttymouse=xterm2
+endif
 
 " 高速ターミナル接続
 set ttyfast
