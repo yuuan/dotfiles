@@ -43,9 +43,11 @@ snippet php_class_Fluent
 options head
 	<?php
 	
-	namespace Illuminate\Support\Fluent;
+	namespace App${1};
 	
-	class ${1} extends Fluent
+	use Illuminate\Support\Fluent;
+	
+	class ${2} extends Fluent
 	{
 		${0://}
 	}
@@ -54,9 +56,11 @@ snippet php_class_Model
 options head
 	<?php
 	
-	namespace App\Support\Model;
+	namespace App${1};
 	
-	class ${1} extends Model
+	use App\Support\Model;
+	
+	class ${2} extends Model
 	{
 		${0://}
 	}
@@ -65,9 +69,11 @@ snippet php_class_Enum
 options head
 	<?php
 	
-	namespace App\Support\Enum;
+	namespace App\Entities${1};
 	
-	class ${1} extends Enum
+	use App\Support\Enum;
+	
+	class ${2} extends Enum
 	{
 		${0://}
 	}
@@ -79,6 +85,14 @@ options word
 snippet toJson
 options word
 	toJson(${1:JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})
+
+snippet InvalidArgumentException
+options word
+	InvalidArgumentException
+
+snippet use_InvalidArgumentException
+options head
+	use InvalidArgumentException;{$0}
 
 snippet Collection
 options word
@@ -94,7 +108,7 @@ options word
 
 snippet use_Fluent
 options head
-	\Illuminate\Support\Fluent${0};
+	use Illuminate\Support\Fluent${0};
 
 snippet Builder
 options word
@@ -103,6 +117,10 @@ options word
 snippet use_Builder
 options head
 	use Illuminate\Database\Eloquent\Builder;${0}
+
+snippet use_Facades
+options head
+	use Illuminate\Support\Facades${0};
 
 snippet use_Requests
 options head
@@ -119,6 +137,10 @@ options head
 snippet use_ViewModels
 options head
 	use App\Http\ViewModels${0};
+
+snippet use_ViewComposers
+options head
+	use App\Http\ViewComposers${0};
 
 snippet use_Models
 options head
@@ -315,7 +337,7 @@ options head, indent
 	 */
 	public function ${1:#:func}()
 	{
-		return $this->belongsToMany(${2:\App}::class)${3:->withPivot('', '')}${4:->withTimestamps()};
+		return $this->belongsToMany(${2:\App}::class${3:, 'table_table'}${3:, 'our_id'}${4:, 'their_id'})${5:->withPivot('', '')}${6:->withTimestamps()};
 	}
 
 snippet hasManyThrough
@@ -350,7 +372,7 @@ options head, indent
 	 * ${0:#:comment}
 	 *
 	 * @param mixed $value
-	 * @return void
+	 * @return mixed
 	 */
 	public function get${1}Attribute(${2:$value})
 	{
