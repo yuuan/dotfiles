@@ -26,5 +26,6 @@ alias ll="ls -lh"
 alias lal="ls -alh"
 alias lz="ls -lZ"
 alias laz="ls -laZ"
+alias ssh-config="$EDITOR $HOME/.ssh/config"
 
 alias ..='cd ..'
