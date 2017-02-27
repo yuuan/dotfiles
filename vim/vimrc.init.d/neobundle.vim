@@ -58,6 +58,11 @@ NeoBundle 'xsbeats/vim-blade'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'yoppi/fluentd.vim'
+NeoBundleLazy 'jason0x43/vim-js-indent', {
+	\     'autoload' : {
+	\         'filetypes' : [ 'javascript', 'typescript', 'html' ],
+	\     }
+	\ }
 
 "Debug
 "NeoBundle 'joonty/vdebug'
