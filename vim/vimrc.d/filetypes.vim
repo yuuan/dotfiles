@@ -23,10 +23,13 @@ augroup vimrc_file_types
 	" Markdown
 	autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=mkd
 
-	" `*.t` ファイルをPerlファイルとして認識
+	" `*.t` は Perl
 	autocmd BufNewFile,BufRead *.t set filetype=perl
 
-	" `nyagos` ファイルをLuaファイルとして認識
+	" `nyagos` は Lua
 	autocmd BufNewFile,BufRead *nyagos set filetype=lua
+
+	" `composer.lock` は JSON
+	autocmd BufNewFile,BufRead *composer.lock set filetype=json
 
 augroup end
