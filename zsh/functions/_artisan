@@ -113,6 +113,12 @@ function _artisan() {
 						'*:files ('$dir'):_files -W '"$PWD/$dir" \
 					&& ret=0
 					;;
+				(make:mail)
+					dir='app/Mail/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
 				(make:middleware)
 					dir='app/Http/Middleware/'
 					__options \
