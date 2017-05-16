@@ -39,6 +39,19 @@ options head
 		${0://}
 	];
 
+snippet php_class_Exception
+options head
+	<?php
+	
+	namespace App\Exceptions${1};
+	
+	use Exception;
+	
+	class ${2}Exception extends Exception
+	{
+		${0://}
+	}
+
 snippet php_class_Fluent
 options head
 	<?php
