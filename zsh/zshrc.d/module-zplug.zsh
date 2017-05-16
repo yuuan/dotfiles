@@ -44,6 +44,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	## jid
 	zplug "simeji/jid", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
 
+	## git-foresta
+	zplug "takaaki-kasai/git-foresta", as:command, use:git-foresta
+
 
 	local __zplug_verbose
 
