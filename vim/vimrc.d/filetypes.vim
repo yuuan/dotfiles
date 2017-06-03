@@ -32,4 +32,7 @@ augroup vimrc_file_types
 	" `composer.lock` は JSON
 	autocmd BufNewFile,BufRead *composer.lock set filetype=json
 
+	" `.php_cs` は PHP
+	autocmd BufNewFile,BufRead .php_cs{,.dist} set filetype=php
+
 augroup end
