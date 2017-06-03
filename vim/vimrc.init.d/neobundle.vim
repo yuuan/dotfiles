@@ -84,6 +84,7 @@ NeoBundle 'gregsexton/gitv.git'
 
 "Display
 NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'itchyny/vim-cursorword'
 
 "Edit
 NeoBundle 'tpope/vim-surround'
