@@ -58,6 +58,11 @@ NeoBundle 'jwalton512/vim-blade'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'yoppi/fluentd.vim'
+NeoBundleLazy 'leafgarland/typescript-vim', {
+	\     'autoload' : {
+	\         'filetypes' : [ 'typescript' ],
+	\     }
+	\ }
 NeoBundleLazy 'jason0x43/vim-js-indent', {
 	\     'autoload' : {
 	\         'filetypes' : [ 'javascript', 'typescript', 'html' ],
@@ -107,6 +112,14 @@ endif
 " NeoComplete Extensions
 " NeoBundle 'm2mdas/phpcomplete-extended'
 " NeoBundle 'm2mdas/phpcomplete-extended-laravel'
+
+if executable('tss')
+	NeoBundleLazy 'clausreinke/typescript-tools.vim', {
+		\     'autoload' : {
+		\         'filetypes' : [ 'typescript' ],
+		\     }
+		\ }
+endif
 
 NeoBundle 'vim-jp/vimdoc-ja'
 
