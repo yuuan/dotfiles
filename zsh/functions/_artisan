@@ -1,5 +1,10 @@
 #compdef artisan
 
+function __is_laravel54() {
+	local version=$(cat composer.lock | jq '.packages[] | select(.name == "laravel/framework").version')
+	echo $version | grep 'v5.4.' &> /dev/null
+}
+
 function __laravel5_get_command_list() {
 	which php &> /dev/null || return
 	which perl &> /dev/null || return
@@ -166,10 +171,22 @@ function _artisan() {
 					&& ret=0
 					;;
 				(make:test)
-					dir='tests/'
-					__options \
-						'*:files ('$dir'):_files -W '"$PWD/$dir" \
-					&& ret=0
+					if __is_laravel54 &> /dev/null; then
+						if (( ${words[(I)--unit]} )); then
+							dir='tests/Unit/'
+						else
+							dir='tests/Feature/'
+						fi
+						__options \
+							'--unit[Create a unit test]' \
+							'*:files ('$dir'):_files -W '"$PWD/$dir" \
+						&& ret=0
+					else
+						dir='tests/'
+						__options \
+							'*:files ('$dir'):_files -W '"$PWD/$dir" \
+						&& ret=0
+					fi
 					;;
 				(db:seed)
 					__options \
