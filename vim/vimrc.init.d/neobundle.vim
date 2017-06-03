@@ -69,6 +69,9 @@ NeoBundleLazy 'jason0x43/vim-js-indent', {
 	\     }
 	\ }
 
+"Fixer
+NeoBundle 'stephpy/vim-php-cs-fixer'
+
 "Debug
 "NeoBundle 'joonty/vdebug'
 
