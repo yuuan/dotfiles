@@ -18,8 +18,8 @@ colors
 # 補完候補などで 8bit 文字を通す
 setopt PRINT_EIGHT_BIT
 
-# Ctrl-W で削除する時の区切り文字
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+# Ctrl-W で削除する時に区切りとみなさない文字
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # `cd` 時に自動的に `pushd` する
 setopt AUTOPUSHD
