@@ -66,6 +66,15 @@ HELP
 		echo -en "\e[32m$*\e[m"
 	}
 
+	function __ask() {
+		__question $*
+		if read -q; then
+			echo; return 0
+		else
+			echo; return 1
+		fi
+	}
+
 	function __initializing_caption() {
 		__caption "# Initializing \`$*\`..."
 	}
@@ -87,6 +96,21 @@ HELP
 	function __mkdir() {
 		local directory; directory="$*"
 		[[ ! -d "$directory" ]] && __exec "mkdir -p '$directory'"
+	}
+
+	function __rm() {
+		local target; target="$*"
+		if [ -f "$target" ]; then
+			__info "> rm -f \"$target\""
+			if __ask "remove file '$target'? [y/N]: "; then
+				rm -f "$target"
+			fi
+		elif [ -d "$target" ]; then
+			__info "> rm -rf \"$target\""
+			if __ask "remove directory '$target'? [y/N]: "; then
+				rm -rf "$target"
+			fi
+		fi
 	}
 
 	function __link() {
@@ -243,6 +267,9 @@ INCLUDE
 		__mkdir "$HOME/.vim/backup/"
 		__mkdir "$HOME/.vim/swp/"
 		__mkdir "$HOME/.vim/undo/"
+
+		__rm "$HOME/.vim/vimrc.init.d"
+		__rm "$HOME/.vim/bundle"
 
 		__link "$DOTFILES/vim/vimrc.d" "$HOME/.vim/vimrc.d"
 		__link "$DOTFILES/vim/ftplugin" "$HOME/.vim/ftplugin"
