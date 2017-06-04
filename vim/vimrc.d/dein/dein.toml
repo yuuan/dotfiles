@@ -196,7 +196,7 @@ on_ft = 'php'
 on_i = 1
 
 
-# Neocomplete
+# Deoplete / Neocomplete
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -210,6 +210,24 @@ on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
+on_i = 1
+
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+depends = 'deoplete.nvim'
+on_ft = 'zsh'
+on_i = 1
+
+[[plugins]]
+repo = 'rafaelndev/deoplete-laravel-plugin'
+depends = 'deoplete.nvim'
+on_ft = [ 'php', 'blade' ]
+on_i = 1
+
+[[plugin]]
+repo = 'mhartington/deoplete-typescript'
+depends = 'deoplete.nvim'
+on_ft = 'typescript'
 on_i = 1
 
 [[plugins]]
