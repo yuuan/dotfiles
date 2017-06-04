@@ -43,11 +43,12 @@ function! s:clear_cursor_line()
 	highlight CursorLine term=underline ctermbg=235 guibg=#242321
 endfunction
 
-" Unite を呼び出すキー割り当て
-nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
-nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
-nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
-nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
-"inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
-nnoremap <silent> <C-p> :<C-u>Unite history/yank<CR>
-"inoremap <silent> <C-p> <ESC>:<C-u>Unite history/yank<CR>
+" Unite を呼び出すキー割り当て {{{
+	nnoremap <silent> <C-f> :<C-u>UniteWithBufferDir -buffer-name=files file file/new directory/new<CR>
+	nnoremap <silent> <C-h> :<C-u>Unite buffer file_mru<CR>
+	nnoremap <silent> <C-b> :<C-u>Unite buffer<CR>
+	nnoremap <silent> <C-Space> :<C-u>Unite tab<CR>
+"	inoremap <silent> <C-Space> <ESC>:<C-u>Unite tab<CR>
+	nnoremap <silent> <C-p> :<C-u>Unite history/yank<CR>
+"	inoremap <silent> <C-p> <ESC>:<C-u>Unite history/yank<CR>
+" }}}

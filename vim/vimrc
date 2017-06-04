@@ -5,10 +5,14 @@ filetype off
 filetype plugin indent off
 
 set runtimepath+=~/.vim/
-runtime! vimrc.init.d/*.vim
-runtime! vimrc.d/*.vim
+runtime! vimrc.d/core/*.vim
+runtime! vimrc.d/dein/*.vim
+runtime! vimrc.d/plugins/*.vim
 
 " 環境依存設定の読み込み
 if filereadable(expand('~/.vimrc.local'))
 	source ~/.vimrc.local
 endif
+
+filetype on
+filetype plugin indent on

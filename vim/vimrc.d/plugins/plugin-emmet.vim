@@ -2,6 +2,7 @@
 " Emmet
 " ----------------------------------------
 
+" 出力する lang の設定
 let g:user_emmet_settings = {
 \     'variables': {
 \         'lang' : 'ja'

@@ -58,6 +58,9 @@ let s:lockicon = {
 	\     'ascii': "RO"
 	\ }
 
+
+" 表示項目を出力する関数
+
 function! LightLineModified()
 	return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 endfunction

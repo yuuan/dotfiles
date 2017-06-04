@@ -1,7 +1,7 @@
 " ----------------------------------------
 " NeoComplete
 " ----------------------------------------
-"
+
 " 起動時に有効化"
 let g:neocomplete#enable_at_startup = 1
 
@@ -32,7 +32,7 @@ let g:neocomplete#enable_auto_select = 0
 augroup vimrc_plugin_neocomplete
 	autocmd!
 
-	"Enable omni completion.
+	" Enable omni completion.
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType markdown setlocal omnifunc=htmlcomplete#CompleteTags
@@ -50,7 +50,7 @@ endif
 
 let g:neocomplete#sources.gitcommit = [ 'buffer', 'dictionary', 'omni' ]
 
-if neobundle#is_installed('neocomplete')
+if !has("nvim") && has("lua")
 	"上下キーで開かないように
 	inoremap <expr><Up> neocomplete#smart_close_popup() . "\<Up>"
 	inoremap <expr><Down> neocomplete#smart_close_popup() . "\<Down>"
@@ -64,4 +64,8 @@ if neobundle#is_installed('neocomplete')
 	"Ctrl + 上下キーで候補を移動
 	inoremap <expr><S-Up> pumvisible() ? "\<C-P>" : "\<Up>"
 	inoremap <expr><S-Down> pumvisible() ? "\<C-N>" : "\<Down>"
+
+	" タブを切り替える前に候補を閉じる
+	inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
+	inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
 endif

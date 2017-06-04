@@ -46,7 +46,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, peco, screen, tmux, vim, zsh\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tmux, vim, zsh\e[m
 HELP
 	}
 
@@ -239,24 +239,35 @@ INCLUDE
 		echo
 	}
 
-	function __install_vim() {
-		__installing_caption "vim"
+	function __install_vim_modules() {
 		__mkdir "$HOME/.vim/backup/"
 		__mkdir "$HOME/.vim/swp/"
 		__mkdir "$HOME/.vim/undo/"
 
-		__link "$DOTFILES/vimrc" "$HOME/.vimrc"
-		__link "$DOTFILES/vim/vimrc.init.d" "$HOME/.vim/vimrc.init.d"
 		__link "$DOTFILES/vim/vimrc.d" "$HOME/.vim/vimrc.d"
 		__link "$DOTFILES/vim/ftplugin" "$HOME/.vim/ftplugin"
 		__link "$DOTFILES/vim/snippets" "$HOME/.vim/snippets"
+	}
 
-		if [ ! -d $HOME/.vim/bundle/ ]; then
-			__exec "mkdir -p $HOME/.vim/bundle/"
-			__exec "git clone https://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim"
-		fi
+	function __install_vim() {
+		__installing_caption "vim"
+		__link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
+
+		__install_vim_modules
 
 		__ls -dr "$HOME/.vimrc" "$HOME/.vim"
+		__ls -a "$HOME/.vim/"
+
+		echo
+	}
+
+	function __install_nvim() {
+		__installing_caption "nvim"
+		__link "$DOTFILES/vim/vimrc" "$HOME/.config/nvim/init.vim"
+
+		__install_vim_modules
+
+		__ls -dr "$HOME/.config/nvim/init.vim" "$HOME/.vim"
 		__ls -a "$HOME/.vim/"
 
 		echo
@@ -294,6 +305,7 @@ INCLUDE
 			__install_screen
 			__install_tmux
 			__install_vim
+			__install_nvim
 			__install_zsh
 			__load_zshrc
 		else
@@ -319,6 +331,9 @@ INCLUDE
 						;;
 					vim)
 						__install_vim
+						;;
+					nvim|neovim)
+						__install_nvim
 						;;
 					zsh)
 						__install_zsh

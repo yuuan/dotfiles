@@ -1,0 +1,249 @@
+# Core
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+if = '! has("win32") && ! has("win64")'
+build = 'make'
+
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+
+# Display
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+
+[[plugins]]
+repo = 'itchyny/vim-cursorword'
+
+
+# Edit
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+
+[[plugins]]
+repo = 'kana/vim-smartinput'
+
+[[plugins]]
+repo = 'AndrewRadev/switch.vim'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'osyo-manga/vim-textobj-multiblock'
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+depends = 'neosnippet'
+on_i = 1
+
+[[plugins]]
+repo = 'junegunn/vim-emoji'
+on_i = 1
+
+[[plugins]]
+repo = 'ConradIrwin/vim-bracketed-paste'
+
+
+# Lightline
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'cocopon/lightline-hybrid.vim'
+depends = 'lightline.vim'
+
+
+# Unite
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = 'has("nvim") && has("python3")'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+
+[[plugins]]
+repo = 'kmnk/vim-unite-giti'
+
+[[plugins]]
+repo = 'Shougo/unite-session'
+
+[[plugins]]
+repo = 'Shougo/unite-outline'
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+
+
+# Reference
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
+[[plugins]]
+repo = 'kana/vim-gf-user'
+
+[[plugins]]
+repo = 'violetyk/vim-phpclass'
+depends = 'vim-gf-user'
+on_ft = 'php'
+
+
+# Git
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'gregsexton/gitv'
+
+
+# File
+
+[[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+
+[[plugins]]
+repo = 'lambdalisue/vim-unified-diff'
+
+
+# Syntax
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+
+[[plugins]]
+repo = 'vim-perl/vim-perl'
+on_ft = 'perl'
+
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = 'javascript'
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
+[[plugins]]
+repo = 'jason0x43/vim-js-indent'
+on_ft = [ 'javascript', 'typescript', 'html' ]
+
+[[plugins]]
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = 'json'
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]]
+repo = 'jwalton512/vim-blade'
+on_ft = 'blade'
+
+[[plugins]]
+repo = 'evidens/vim-twig'
+on_ft = 'twig'
+
+[[plugins]]
+repo = 'hail2u/vim-css3-syntax'
+on_ft = [ 'css', 'sass', 'less' ]
+
+[[plugins]]
+repo = 'plasticboy/vim-markdown'
+on_ft = 'markdown'
+
+[[plugins]]
+repo = 'yoppi/fluentd.vim'
+on_ft = 'fluentd'
+
+
+# Fixer
+
+[[plugins]]
+repo = 'stephpy/vim-php-cs-fixer'
+on_ft = 'php'
+on_i = 1
+
+
+# Neocomplete
+
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+if = 'has("nvim") && has("python3")'
+on_i = 1
+	
+[[plugins]]
+repo = 'Shougo/neocomplete'
+if = '! has("nvim") && has("lua")'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neco-syntax'
+on_i = 1
+
+[[plugins]]
+repo = 'clausreinke/typescript-tools.vim'
+if = 'executable("tss")'
+on_ft = 'typescript'
+on_i = 1
+
+
+# Colorschema
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'sjl/badwolf'
+
+[[plugins]]
+repo = 'tomasr/molokai'
+
+[[plugins]]
+repo = 'sickill/vim-monokai'
+
+[[plugins]]
+repo = 'vim-scripts/Wombat'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
+
+[[plugins]]
+repo = 'junegunn/seoul256.vim'

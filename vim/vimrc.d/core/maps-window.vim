@@ -9,14 +9,8 @@ inoremap <C-Right> <ESC>:tabn<CR>
 inoremap <C-Left> <ESC>:tabp<CR>
 cnoremap <C-Right> <C-u>tabn
 cnoremap <C-Left> <C-u>tabp
-
-if neobundle#is_installed('neocomplete')
-	inoremap <expr><C-Right> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabn\<CR>"
-	inoremap <expr><C-Left> pumvisible() ? neocomplete#smart_close_popup() : "\<ESC>:tabp\<CR>"
-else
-	inoremap <expr><C-Right> "\<ESC>:tabn\<CR>"
-	inoremap <expr><C-Left> "\<ESC>:tabp\<CR>"
-endif
+inoremap <expr><C-Right> "\<ESC>:tabn\<CR>"
+inoremap <expr><C-Left> "\<ESC>:tabp\<CR>"
 
 " Ctrl + 上下キーでスクロール
 noremap <C-Up> <C-Y>
