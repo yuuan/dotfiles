@@ -251,7 +251,7 @@ INCLUDE
 		__mkdir "$TMUX_PLUGINS"
 
 		if [ ! -d $TMUX_PLUGINS_POWERLINE_DIR ]; then
-			__exec "git clone git://github.com/erikw/tmux-powerline.git $TMUX_PLUGINS_POWERLINE_DIR"
+			__exec "git clone --depth 1 git://github.com/erikw/tmux-powerline.git $TMUX_PLUGINS_POWERLINE_DIR"
 			cd $TMUX_PLUGINS_POWERLINE_DIR
 			__exec "/bin/sh $TMUX_PLUGINS_POWERLINE_DIR/generate_rc.sh"
 		fi
