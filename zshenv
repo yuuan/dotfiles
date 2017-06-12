@@ -12,3 +12,12 @@ path=(
 	./node_modules/.bin
 	$path
 )
+
+
+# 環境ごとの設定を読み込む
+
+local ZSHENV_LOCAL="${HOME}/.zshenv.local"
+
+if [ -f $ZSHENV_LOCAL ]; then
+	source $ZSHENV_LOCAL
+fi
