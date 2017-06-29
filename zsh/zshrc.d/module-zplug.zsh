@@ -48,15 +48,10 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "takaaki-kasai/git-foresta", as:command, use:git-foresta
 
 
-	local __zplug_verbose
-
-	# ホスト名が英子文字のみなら詳細表示
-	if [[ -n `hostname | grep "^[a-z]\+$"` ]]; then
-		__zplug_verbose="--verbose"
-	fi
+	local ZPLUG_VERBOSE
 
 	# インストールしてない項目があればインストールするか訊ねる
-	if ! zplug check ${__zplug_verbose}; then
+	if ! zplug check ${ZPLUG_VERBOSE:-}; then
 		printf "Install zplug modules? [y/N]: "
 		if read -q; then
 			echo; zplug install
@@ -66,7 +61,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	fi
 
 	# プラグインを読み込み、コマンドにパスを通す
-	zplug load ${__zplug_verbose}
+	zplug load ${ZPLUG_VERBOSE:-}
 
 	# `peco` があれば `peco` を使う
 	export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
