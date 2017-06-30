@@ -83,7 +83,7 @@ function _artisan() {
 						'--views[Only scaffold the authentication views]' \
 					&& ret=0
 					;;
-				(make:console)
+				(make:console|make:command)
 					dir='app/Console/Commands/'
 					__options \
 						'--command=[The terminal command that should be assigned. \[default: "command:name"\]]:: :__artisan_commands' \
