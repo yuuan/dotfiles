@@ -29,6 +29,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	## dircolors-solarized
 	zplug 'joel-porquet/zsh-dircolors-solarized'
 
+	## zsh-syntax-highlighting
+	zplug "zsh-users/zsh-syntax-highlighting"
+
 	## fzf
 	zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:${__zplug_ghr_os:-os}
 
