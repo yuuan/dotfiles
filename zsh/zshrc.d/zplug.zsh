@@ -26,6 +26,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	## zsh-completions
 	zplug "zsh-users/zsh-completions"
 
+	## dircolors-solarized
+	zplug 'joel-porquet/zsh-dircolors-solarized'
+
 	## fzf
 	zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:${__zplug_ghr_os:-os}
 
