@@ -1,3 +1,0 @@
-[submodule "zsh/modules/dircolors-solarized"]
-	path = zsh/modules/dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
