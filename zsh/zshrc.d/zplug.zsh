@@ -42,7 +42,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "peco/peco", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
 
 	## peco-tmux
-	zplug "yuuan/c24d07d0708e37460e1ede30442251a3", as:command, from:gist, use:peco-tmux
+	zplug "b4b4r07/peco-tmux.sh", as:command, use:'(*).sh', rename-to:'$1'
 
 	## enhancd
 	zplug "b4b4r07/enhancd", use:init.sh
