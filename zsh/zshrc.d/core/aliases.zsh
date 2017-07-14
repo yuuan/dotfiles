@@ -23,8 +23,8 @@ esac
 
 alias la="ls -a"
 alias ll="ls -lh"
-alias lal="ls -alh"
-alias lz="ls -lZ"
+alias lal="ls -lah"
+alias lz="ls -lhZ"
 alias laz="ls -laZ"
 alias ssh-config="$EDITOR $HOME/.ssh/config"
 
