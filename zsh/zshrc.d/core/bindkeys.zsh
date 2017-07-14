@@ -9,12 +9,17 @@ bindkey "^U" kill-whole-line
 bindkey "^W" vi-backward-kill-word
 bindkey "^@" quote-region
 bindkey "^_" quote-line
+bindkey "^P" vi-put-after
 
 # Home
 bindkey "^[[1~" beginning-of-line
 
 # End
 bindkey "^[[4~" end-of-line
+
+# Insert
+bindkey -M viins "^[[2~" vi-yank-whole-line
+bindkey -M vicmd "^[[2~" vi-insert
 
 # Delete
 bindkey "^[[3~" delete-char
