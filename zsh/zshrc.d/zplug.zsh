@@ -51,10 +51,8 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "takaaki-kasai/git-foresta", as:command, use:git-foresta
 
 
-	local ZPLUG_VERBOSE
-
 	# インストールしてない項目があればインストールするか訊ねる
-	if ! zplug check ${ZPLUG_VERBOSE:-}; then
+	if ! zplug check ${ZPLUG_VERBOSE:+--verbose}; then
 		printf "Install zplug modules? [y/N]: "
 		if read -q; then
 			echo; zplug install
@@ -64,7 +62,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	fi
 
 	# プラグインを読み込み、コマンドにパスを通す
-	zplug load ${ZPLUG_VERBOSE:-}
+	zplug load ${ZPLUG_VERBOSE:+--verbose}
 
 	# `peco` があれば `peco` を使う
 	export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
