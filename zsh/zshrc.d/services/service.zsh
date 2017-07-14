@@ -3,5 +3,7 @@
 # ----------------------------------------
 
 if [ `groups | tr " " "\n" | grep "^wheel$"` ]; then
-	alias service='sudo /sbin/service'
+	if [ -f /sbin/service ]; then
+		alias service='sudo /sbin/service'
+	fi
 fi

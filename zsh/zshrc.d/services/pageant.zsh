@@ -2,8 +2,6 @@
 # `ssh-agent` と `pageant.exe` のための設定
 # ----------------------------------------
 
-# pageant.exe
-
 function ssh-agent-refresh() {
 	if [ -n "$SSH_CLIENT" ]; then
 		local LOCAL_TMP_DIR=$HOME/.ssh/.agents

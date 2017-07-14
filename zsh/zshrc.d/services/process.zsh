@@ -12,4 +12,6 @@ function process-id {
 
 if which peco &> /dev/null; then
 	alias -g @PID='$(process-id)'
+
+	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} @PID)
 fi

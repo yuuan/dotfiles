@@ -21,9 +21,13 @@ if which peco &> /dev/null; then
 	alias -g @B='$(git-branch)'
 	alias -g @FILE='$(git-changed-files)'
 	alias -g @F='$(git-changed-files)'
+
+	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} @HASH @H @BRANCH @B @FILE @F)
 fi
 
 alias s='git status'
 alias st='git status'
 alias gr='git graph'
 alias gb='git branch -a'
+alias gd='git diff'
+alias gdc='git diff --cached'

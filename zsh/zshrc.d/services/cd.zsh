@@ -5,7 +5,7 @@
 autoload -Uz add-zsh-hook
 
 # カレントディレクトリを変更したときに実行
-function show-current-directory {
+function show-current-directory() {
 	echo ${PWD:-}
 }
 
