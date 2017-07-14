@@ -20,6 +20,7 @@ source "$ZSHHOME/helpers.zsh"
 local ZSHRC_DIR="${ZSHHOME}/zshrc.d"
 
 __zshrc_sources "$ZSHRC_DIR/core"
+__zshrc_sources "$ZSHRC_DIR/plugins.init"
 __zshrc_source  "$ZSHRC_DIR/zplug.zsh"
 __zshrc_sources "$ZSHRC_DIR/services"
 
