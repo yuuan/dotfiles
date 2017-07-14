@@ -303,8 +303,8 @@ INCLUDE
 	function __install_zsh() {
 		__installing_caption "zsh"
 		__link "$DOTFILES/zsh" "$HOME/.zsh"
-		__link "$DOTFILES/zshrc" "$HOME/.zshrc"
-		__link "$DOTFILES/zshenv" "$HOME/.zshenv"
+		__link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
+		__link "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
 
 		__mkdir "$HOME/.zplug"
 		__install_zplug

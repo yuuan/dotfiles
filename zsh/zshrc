@@ -11,6 +11,9 @@ fi
 
 export ZSHHOME="${HOME}/.zsh"
 
+# ヘルパー関数を読み込む
+source "$ZSHHOME/helpers.zsh"
+
 
 # `zshrc.d` 内のファイルを読み込む
 
