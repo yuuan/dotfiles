@@ -2,6 +2,14 @@
 # エイリアスの設定
 # ----------------------------------------
 
+# グローバルエイリアスを記録する変数
+typeset -g -a GLOBAL_ALIASES
+
+# グローバルエイリアスをリスト表示
+function @ {
+	echo "Global Aliases: ${GLOBAL_ALIASES:-}"
+}
+
 # ファイルに変更を加える前に確認する
 
 #alias rm="rm -i"
