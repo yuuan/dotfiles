@@ -37,6 +37,3 @@ setopt HIST_REDUCE_BLANKS
 
 # スペースで始まるコマンド行は記録しない
 setopt HIST_IGNORE_SPACE
-
-# 全ての履歴を表示する
-function history-all { history -i 1 }
