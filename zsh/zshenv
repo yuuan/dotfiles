@@ -7,9 +7,10 @@ autoload -Uz compinit; compinit -u
 # PATH の設定
 
 path=(
-	$HOME/.go/bin
 	./vendor/bin
 	./node_modules/.bin
+	$HOME/.composer/vendor/bin
+	$HOME/.go/bin
 	$path
 )
 
