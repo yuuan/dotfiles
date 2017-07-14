@@ -19,9 +19,9 @@ source "$ZSHHOME/helpers.zsh"
 
 local ZSHRC_DIR="${ZSHHOME}/zshrc.d"
 
-__sources "$ZSHRC_DIR/core"
-__source  "$ZSHRC_DIR/zplug.zsh"
-__sources "$ZSHRC_DIR/services"
+__zshrc_sources "$ZSHRC_DIR/core"
+__zshrc_source  "$ZSHRC_DIR/zplug.zsh"
+__zshrc_sources "$ZSHRC_DIR/services"
 
 
 # 環境ごとの設定を読み込む
