@@ -54,14 +54,19 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "takaaki-kasai/git-foresta", as:command, use:git-foresta
 
 
-	# インストールしてない項目があればインストールするか訊ねる
-	if ! zplug check ${ZPLUG_VERBOSE:+--verbose}; then
-		printf "Install zplug modules? [y/N]: "
-		if read -q; then
-			echo; zplug install
-		else
-			echo
+	# screen/tmux を使っていなければ
+	if [[ -z "$STY$TMUX" ]]; then
+
+		# インストールしてない項目があればインストールするか訊ねる
+		if ! zplug check ${ZPLUG_VERBOSE:+--verbose}; then
+			printf "Install zplug modules? [y/N]: "
+			if read -q; then
+				echo; zplug install
+			else
+				echo
+			fi
 		fi
+
 	fi
 
 	# プラグインを読み込み、コマンドにパスを通す
