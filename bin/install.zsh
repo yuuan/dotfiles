@@ -241,24 +241,28 @@ INCLUDE
 
 	function __install_tmux() {
 		__installing_caption "tmux"
-		__link "$DOTFILES/tmux.conf" "$HOME/.tmux.conf"
 
-		local TMUX_PLUGINS TMUX_PLUGINS_POWERLINE_DIR
+		local TMUX_DIR TMUX_CONF TMUX_CONFIGS TMUX_PLUGINS TMUX_PLUGINS_TPM_DIR
 
-		TMUX_PLUGINS="$HOME/.tmux/plugins"
-		TMUX_PLUGINS_POWERLINE_DIR="$TMUX_PLUGINS/tmux-powerline"
+		TMUX_DIR="$HOME/.tmux"
+		TMUX_CONF="$HOME/.tmux.conf"
+		TMUX_CONFIGS="$TMUX_DIR/conf.d"
+		TMUX_PLUGINS="$TMUX_DIR/plugins"
+		TMUX_PLUGINS_TPM="$TMUX_PLUGINS/tpm"
+
+		__link "$DOTFILES/tmux/tmux.conf" "$TMUX_CONF"
+		__link "$DOTFILES/tmux/conf.d" "$TMUX_CONFIGS"
 
 		__mkdir "$TMUX_PLUGINS"
 
-		if [ ! -d $TMUX_PLUGINS_POWERLINE_DIR ]; then
-			__exec "git clone --depth 1 git://github.com/erikw/tmux-powerline.git $TMUX_PLUGINS_POWERLINE_DIR"
-			cd $TMUX_PLUGINS_POWERLINE_DIR
-			__exec "/bin/sh $TMUX_PLUGINS_POWERLINE_DIR/generate_rc.sh"
+		if [ ! -d "$TMUX_PLUGINS_TPM" ]; then
+			__exec "git clone --depth 1 https://github.com/tmux-plugins/tpm \"$TMUX_PLUGINS_TPM\""
 		fi
 
-		__ls -dr "$HOME/.tmux.conf" "$HOME/.tmux"
-		__ls -a "$HOME/.tmux/"
-		__ls -a "$HOME/.tmux/plugins/"
+		__ls -dr "$TMUX_CONF" "$TMUX_DIR"
+		__ls -a "$TMUX_DIR/"
+		__ls -a "$TMUX_CONFIGS/"
+		__ls -a "$TMUX_PLUGINS/"
 
 		echo
 	}
