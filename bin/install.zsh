@@ -167,19 +167,6 @@ HELP
 	}
 
 
-	# 初期化
-
-	function __install_submodules() {
-		__initializing_caption "submodules"
-		pushd $DOTFILES
-		__exec "git submodule update --init"
-		__exec "git submodule status"
-		popd
-
-		echo "initialized."
-		echo
-	}
-
 	# インストール処理
 
 	function __install_coffeelint() {
@@ -326,8 +313,6 @@ INCLUDE
 	}
 
 	function __install() {
-		__install_submodules
-
 		if [[ "$*" =~ "all" ]]; then
 			__install_coffeelint
 			__install_git
