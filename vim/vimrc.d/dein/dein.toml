@@ -242,18 +242,21 @@ on_i = 1
 
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
+if = 'has("nvim") && has("python3")'
 depends = 'deoplete.nvim'
 on_ft = 'zsh'
 on_i = 1
 
 [[plugins]]
 repo = 'rafaelndev/deoplete-laravel-plugin'
+if = 'has("nvim") && has("python3")'
 depends = 'deoplete.nvim'
 on_ft = [ 'php', 'blade' ]
 on_i = 1
 
 [[plugin]]
 repo = 'mhartington/deoplete-typescript'
+if = 'has("nvim") && has("python3")'
 depends = 'deoplete.nvim'
 on_ft = 'typescript'
 on_i = 1
