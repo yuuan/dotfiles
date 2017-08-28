@@ -308,7 +308,7 @@ INCLUDE
 
 	function __install_zplug() {
 		if [[ ! -f $HOME/.zplug/zplug ]]; then
-			__exec "curl -sL zplug.sh/installer | zsh"
+			__exec "curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh"
 		fi
 	}
 
