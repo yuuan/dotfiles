@@ -130,7 +130,7 @@ repo = 'kana/vim-gf-user'
 [[plugins]]
 repo = 'violetyk/vim-phpclass'
 depends = 'vim-gf-user'
-on_ft = 'php'
+on_ft = [ 'php', 'blade' ]
 
 
 # Git
