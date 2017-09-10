@@ -7,7 +7,7 @@ let s:toml = expand('<sfile>:p:h') . '/dein.toml'
 if !isdirectory(s:dein_repo_dir)
 	call system('\git clone --depth 1 https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
-execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+execute 'set runtimepath^=' . s:dein_repo_dir
 
 " dein.vim の設定 {{{
 	" Git clone で shallow clone を使う
