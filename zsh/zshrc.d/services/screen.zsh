@@ -23,6 +23,12 @@ if [[ -n "$STY$TMUX" ]]; then
 		fi
 	}
 
+	# ssh の引数から一番文字数の多いものを取得
+	function get-host-name-in-ssh {
+		shift
+		echo ${(j:\n:)@} | awk '{print length($0), $0}' | sort -nr | head -n 1 | cut -d' ' -f2-
+	}
+
 	# sudo 時のコマンド名を取得
 	function get-command-name-in-sudo {
 		shift
@@ -76,11 +82,14 @@ if [[ -n "$STY$TMUX" ]]; then
 	function set-window-name-to-command {
 		local command=$(get-command-name $*)
 		local directory=${PWD:t}
+		local host
 
 		# ちょっと強引に `$HOME` を `~` に変換
 		[[ "_$PWD" = "_$HOME" ]] && directory='~'
 
-		if [[ -n "$command" ]]; then
+		if [[ "$command" = "ssh" ]]; then
+			set-window-name "[$(get-host-name-in-ssh $*)]"
+		elif [[ -n "$command" ]]; then
 			set-window-name "${directory}(*$command)"
 		else
 			set-window-name "${directory}"
