@@ -7,3 +7,12 @@ set transparency=10
 set antialias
 set guifont=Ricty\ Regular\ for\ Powerline:h12
 
+" Windows で文字の表示を綺麗にする
+if has("win32") || has("win64")
+	set rop=type:directx,renmode:5
+endif
+
+" 環境依存設定の読み込み
+if filereadable(expand('~/.gvimrc.local'))
+	source ~/.gvimrc.local
+endif
