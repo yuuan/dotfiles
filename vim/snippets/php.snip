@@ -52,6 +52,32 @@ options head
 		${0://}
 	}
 
+snippet php_class_RuntimeException
+options head
+	<?php
+	
+	namespace App\Exceptions${1};
+	
+	use RuntimeException;
+	
+	class ${2}Exception extends RuntimeException
+	{
+		${0://}
+	}
+
+snippet php_class_LogicException
+options head
+	<?php
+	
+	namespace App\Exceptions${1};
+	
+	use LogicException;
+	
+	class ${2}Exception extends LogicException
+	{
+		${0://}
+	}
+
 snippet php_class_Fluent
 options head
 	<?php
@@ -71,7 +97,7 @@ options head
 	
 	namespace App${1};
 	
-	use App\Support\Model;
+	use Polass\Fluent\Model;
 	
 	class ${2} extends Model
 	{
@@ -84,9 +110,52 @@ options head
 	
 	namespace App\Entities${1};
 	
-	use App\Support\Enum;
+	use Polass\Enum\Enum;
 	
 	class ${2} extends Enum
+	{
+		${0://}
+	}
+
+snippet php_class_ViewModel
+options head
+	<?php
+	
+	namespace App\Http\ViewModels${1};
+	
+	use Polass\ViewModel\ViewModel;
+	
+	class ${2}ViewModel extends ViewModel
+	{
+		/**
+		 * ViewModel の属性と\`$attributes\` の属性との対応関係
+		 *
+		 * @var array
+		 */
+		protected $map = [
+			${6:// 'this.key' => 'attributes.key'},
+		];
+	
+		/**
+		 * コンストラクタ
+		 *
+		 * ${5:@param }
+		 */
+		public function __construct(${3})
+		{
+			${4://}
+		}
+	}
+
+snippet php_class_PHPUnit
+options head
+	<?php
+
+	namespace Polass\Tests;
+
+	use PHPUnit\Framework\TestCase;
+
+	class ${2}Test extends TestCase
 	{
 		${0://}
 	}
@@ -108,6 +177,7 @@ options head
 	use InvalidArgumentException;{$0}
 
 snippet Collection
+regexp '\%(\\\)\@<!Collection'
 options word
 	\Illuminate\Support\Collection${0}
 
@@ -116,6 +186,7 @@ options head
 	use Illuminate\Support\Collection;${0}
 
 snippet Fluent
+regexp '\%(\\\)\@<!Fluent'
 options word
 	\Illuminate\Support\Fluent${0}
 
@@ -124,6 +195,7 @@ options head
 	use Illuminate\Support\Fluent${0};
 
 snippet Builder
+regexp '\%(\\\)\@<!Builder'
 options word
 	\Illuminate\Database\Eloquent\Builder${0}
 
@@ -163,7 +235,12 @@ snippet use_Entities
 options head
 	use App\Entities${0}
 
+snippet use_Repositories
+options head
+	use App\Repositories${0}
+
 snippet Providers
+regexp '\%(\\\)\@<!Providers'
 options word
 	\App\Providers${0}
 
@@ -225,6 +302,31 @@ options head, indent
 		${3://}
 	}
 
+snippet __construct
+options head, indent
+	/**
+	 * コンストラクタ
+	 *
+	 * @param ${2:mixed}
+	 * @return void
+	 */
+	public function __construct(${1})
+	{
+	    ${3://}
+	}
+
+snippet __destruct
+options head, indent
+	/**
+	 * デストラクタ
+	 *
+	 * @return void
+	 */
+	public function __destruct()
+	{
+	    ${1://}
+	}
+
 snippet puv
 options head, indent
 	/**
@@ -280,7 +382,7 @@ options head, indent
 	private static $${1:#:var}${2: = []};
 
 snippet const
-options head, indent
+options head, word, indent
 	/**
 	 * ${0:#:comment}
 	 *
@@ -304,6 +406,17 @@ options head
 	 *
 	 * @var ${1:array}
 	 */
+
+snippet test
+options head, word, indent
+	/**
+	 * \`${2}()\` のテスト
+	 *
+	 */
+	public function test${1}()
+	{
+		${3://}
+	}
 
 snippet belongsTo
 options head, indent
@@ -465,7 +578,3 @@ options head
 snippet return_redirect_route_with_messages
 options head
 	return redirect()->route('${1:#:route}')->with(compact('messages'));
-
-snippet dump_in_TestCase
-options word
-	;dump($this->response->getContent());$this${0}
