@@ -1,8 +1,8 @@
 #compdef artisan
 
-function __is_laravel54() {
+function __newer_than_laravel54() {
 	local version=$(cat composer.lock | jq '.packages[] | select(.name == "laravel/framework").version')
-	echo $version | grep 'v5.4.' &> /dev/null
+	echo $version | grep -e 'v5\.[4-9]\.' &> /dev/null
 }
 
 function __laravel5_get_command_list() {
@@ -171,7 +171,7 @@ function _artisan() {
 					&& ret=0
 					;;
 				(make:test)
-					if __is_laravel54 &> /dev/null; then
+					if __newer_than_laravel54 &> /dev/null; then
 						if (( ${words[(I)--unit]} )); then
 							dir='tests/Unit/'
 						else
