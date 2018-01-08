@@ -410,7 +410,7 @@ INCLUDE
 			set -eu
 
 			rm -f $HOME/.zcompdump
-			autoload -U compinit; compinit
+			autoload -U compinit; compinit -u
 
 			echo "loaded."
 		fi
