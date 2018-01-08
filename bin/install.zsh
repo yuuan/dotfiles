@@ -105,7 +105,12 @@ HELP
 
 	function __rm() {
 		local target; target="$*"
-		if [ -f "$target" ]; then
+		if [ -L "$target" ]; then
+			__info "> rm -f \"$target\""
+			if __ask "remove symbolic link '$target'? [y/N]: "; then
+				rm -f "$target"
+			fi
+		elif [ -f "$target" ]; then
 			__info "> rm -f \"$target\""
 			if __ask "remove file '$target'? [y/N]: "; then
 				rm -f "$target"
@@ -298,14 +303,26 @@ INCLUDE
 
 	function __install_zsh() {
 		__installing_caption "zsh"
-		__link "$DOTFILES/zsh" "$HOME/.zsh"
+
+		local ZSHHOME; ZSHHOME="$HOME/.zsh"
+
+		[[ -L "$ZSHHOME" ]] && __rm "$ZSHHOME"
+
+		__mkdir "$ZSHHOME"
+		__link "$DOTFILES/zsh/functions" "$ZSHHOME/functions"
+		__link "$DOTFILES/zsh/zshrc.d" "$ZSHHOME/zshrc.d"
+		__link "$DOTFILES/zsh/helpers.zsh" "$ZSHHOME/helpers.zsh"
+		__link "$DOTFILES/zsh/dircolors.conf" "$ZSHHOME/zshrc.d"
+
 		__link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 		__link "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
+		__touch "$HOME/.zshrc.local"
+		__touch "$HOME/.zshenv.local"
 
 		__mkdir "$HOME/.zplug"
 		__install_zplug
 
-		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv" "$HOME/.zsh"
+		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv"
 		__ls -a "$HOME/.zsh/"
 
 		echo
