@@ -98,6 +98,11 @@ HELP
 		[[ ! -d "$directory" ]] && __exec "mkdir -p '$directory'"
 	}
 
+	function __touch() {
+		local file; file="$*"
+		[[ ! -f "$file" ]] && __exec "touch '$file'"
+	}
+
 	function __rm() {
 		local target; target="$*"
 		if [ -f "$target" ]; then
