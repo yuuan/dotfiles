@@ -312,7 +312,7 @@ INCLUDE
 		__link "$DOTFILES/zsh/functions" "$ZSHHOME/functions"
 		__link "$DOTFILES/zsh/zshrc.d" "$ZSHHOME/zshrc.d"
 		__link "$DOTFILES/zsh/helpers.zsh" "$ZSHHOME/helpers.zsh"
-		__link "$DOTFILES/zsh/dircolors.conf" "$ZSHHOME/zshrc.d"
+		__link "$DOTFILES/zsh/dircolors.conf" "$ZSHHOME/dircolors.conf"
 
 		__link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 		__link "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
