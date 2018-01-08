@@ -2,7 +2,7 @@
 # 補完の設定
 # ----------------------------------------
 
-# Load zsh-completions.zsh
+# 自作した補完ファイルを追加
 fpath=($ZSHHOME/functions $fpath)
 
 # compinit は zplug で行うためコメントアウト
