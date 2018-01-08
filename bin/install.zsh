@@ -319,7 +319,6 @@ INCLUDE
 		__touch "$HOME/.zshrc.local"
 		__touch "$HOME/.zshenv.local"
 
-		__mkdir "$HOME/.zplug"
 		__install_zplug
 
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv"
@@ -329,7 +328,8 @@ INCLUDE
 	}
 
 	function __install_zplug() {
-		if [[ ! -f $HOME/.zplug/zplug ]]; then
+		if [[ ! -d $HOME/.zplug ]]; then
+			__mkdir "$HOME/.zplug"
 			__exec "curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh"
 		fi
 	}
