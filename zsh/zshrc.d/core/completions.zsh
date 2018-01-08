@@ -7,7 +7,7 @@ fpath=($ZSHHOME/functions $fpath)
 
 # compinit は zplug で行うためコメントアウト
 #autoload -U compinit
-#compinit
+#compinit -u
 
 # カーソルの位置から補完を開始する
 setopt COMPLETE_IN_WORD
