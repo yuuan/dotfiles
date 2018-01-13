@@ -34,7 +34,7 @@ alias ll="ls -lh"
 alias lal="ls -lah"
 alias lz="ls -lhZ"
 alias laz="ls -laZ"
-alias ssh-config="$EDITOR $HOME/.ssh/config"
+alias ssh-config="${EDITOR:-vim} ${HOME}/.ssh/config"
 alias sudo-sh="sudo zsh -c"
 
 alias ..='cd ..'
