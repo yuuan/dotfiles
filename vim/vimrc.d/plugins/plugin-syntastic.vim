@@ -2,6 +2,9 @@
 " Syntastic
 " ----------------------------------------
 
+" PHP の構文チェックを行うコマンド
+let g:syntastic_php_checkers = [ 'php' ]
+
 " Perl で `lib/` からモジュールを探す
 "let g:syntastic_perl_lib_path = 'lib'
 
