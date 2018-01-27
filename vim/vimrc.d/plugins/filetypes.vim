@@ -35,4 +35,7 @@ augroup vimrc_file_types
 	" `.php_cs` は PHP
 	autocmd BufNewFile,BufRead .php_cs{,.dist} set filetype=php
 
+	" `.env` は SH
+	autocmd BufNewFile,BufRead .env.* set filetype=sh
+
 augroup end
