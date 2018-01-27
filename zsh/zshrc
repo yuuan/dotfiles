@@ -43,5 +43,12 @@ if [ -f "${ZSHRC_LOCAL}" ]; then
 fi
 
 
-# ブランチ名の表示を無効にする
+#
+# `zshrc.local` での設定例
+#
+
+# ブランチ名の表示を無効化
 #export CURRENT_BRANCH_DISABLED=1
+
+# ブランチ名の表示色を固定化
+#export CURRENT_BRANCH_COLOR_DISABLED=1
