@@ -41,6 +41,7 @@ endfunction
 function! s:clear_cursor_line()
 	highlight clear CursorLine
 	highlight CursorLine term=underline ctermbg=235 guibg=#242321
+	set nocursorline
 endfunction
 
 " Unite を呼び出すキー割り当て {{{
