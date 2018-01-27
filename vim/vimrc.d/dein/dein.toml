@@ -224,10 +224,10 @@ on_ft = 'fluentd'
 # Fixer
 # ------------------------------
 
-[[plugins]]
-repo = 'stephpy/vim-php-cs-fixer'
-on_ft = 'php'
-on_i = 1
+#[[plugins]]
+#repo = 'stephpy/vim-php-cs-fixer'
+#on_ft = 'php'
+#on_i = 1
 
 
 # Deoplete / Neocomplete
