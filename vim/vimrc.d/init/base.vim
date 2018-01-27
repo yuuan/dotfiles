@@ -22,7 +22,7 @@ set noexpandtab
 set fileencodings=utf-8,ucs-bom,euc-jp,sjis,iso-2022-jp
 
 " タブを使えるようにする
-set tabpagemax=30
+set tabpagemax=50
 set showtabline=2
 
 " BSキーで消せる特殊文字
