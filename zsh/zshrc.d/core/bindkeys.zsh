@@ -13,9 +13,11 @@ bindkey "^P" vi-put-after
 
 # Home
 bindkey "^[[1~" beginning-of-line
+bindkey "^[[H" beginning-of-line
 
 # End
 bindkey "^[[4~" end-of-line
+bindkey "^[[F" end-of-line
 
 # Insert
 bindkey -M viins "^[[2~" vi-yank-whole-line
