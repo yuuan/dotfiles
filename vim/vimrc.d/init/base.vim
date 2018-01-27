@@ -65,7 +65,7 @@ set showmatch
 set hlsearch
 
 " コマンド履歴を保存する件数
-set history=500
+set history=1000
 
 " カーソルの位置を表示
 set ruler
