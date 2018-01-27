@@ -5,7 +5,7 @@ filetype off
 filetype plugin indent off
 
 set runtimepath+=~/.vim/
-runtime! vimrc.d/core/*.vim
+runtime! vimrc.d/init/*.vim
 runtime! vimrc.d/dein/*.vim
 runtime! vimrc.d/plugins/*.vim
 
