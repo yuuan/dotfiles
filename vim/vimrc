@@ -4,6 +4,11 @@ scriptencoding utf-8
 filetype off
 filetype plugin indent off
 
+" 先に読ませたい設定の読み込み
+if filereadable(expand('~/.vimrc.init'))
+	source ~/.vimrc.init
+endif
+
 set runtimepath+=~/.vim/
 runtime! vimrc.d/init/*.vim
 runtime! vimrc.d/dein/*.vim
