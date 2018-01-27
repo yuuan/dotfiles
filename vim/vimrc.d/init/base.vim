@@ -56,7 +56,7 @@ set ttimeout
 set ttimeoutlen=75
 
 " 放棄されたバッファを隠れ状態にする
-"set hidden
+set hidden
 
 " 括弧を入力した時に一瞬だけカーソルを対応する括弧に移動
 set showmatch
