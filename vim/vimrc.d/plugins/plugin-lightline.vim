@@ -86,7 +86,7 @@ endfunction
 function! LightLineFugitive()
 	if winwidth(0) > 70 && exists("*fugitive#head")
 		let l:head = fugitive#head()
-		return strlen(l:head) ? "\ue0a0 " . l:head : ''
+		return strlen(l:head) ? "\uf418 " . l:head : ''
 	else
 		return ''
 	endif
