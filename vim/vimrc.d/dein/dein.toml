@@ -64,10 +64,6 @@ depends = 'neosnippet'
 on_i = 1
 
 [[plugins]]
-repo = 'junegunn/vim-emoji'
-on_i = 1
-
-[[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
 
 
