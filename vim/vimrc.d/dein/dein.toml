@@ -165,6 +165,10 @@ repo = 'lambdalisue/vim-unified-diff'
 repo = 'vim-syntastic/syntastic'
 
 [[plugins]]
+repo = 'StanAngeloff/php.vim'
+on_ft = 'php'
+
+[[plugins]]
 repo = 'vim-perl/vim-perl'
 on_ft = 'perl'
 
