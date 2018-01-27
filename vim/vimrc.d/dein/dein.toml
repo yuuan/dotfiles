@@ -79,7 +79,6 @@ repo = 'itchyny/lightline.vim'
 
 [[plugins]]
 repo = 'cocopon/lightline-hybrid.vim'
-depends = 'lightline.vim'
 
 
 # Unite
