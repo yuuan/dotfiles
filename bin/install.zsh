@@ -321,7 +321,7 @@ INCLUDE
 
 		__install_zplug
 
-		__ls -dr "$HOME/.zshrc" "$HOME/.zshenv"
+		__ls -dr "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
 		__ls -a "$HOME/.zsh/"
 
 		echo
