@@ -16,3 +16,6 @@ endif
 
 filetype on
 filetype plugin indent on
+
+" シンタックスハイライトを有効にする
+syntax enable
