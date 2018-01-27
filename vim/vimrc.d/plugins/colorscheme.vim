@@ -21,7 +21,8 @@ set background=dark
 
 
 " カラースキーム選択
-colorscheme badwolf
+"colorscheme badwolf
+colorscheme gruvbox
 
 " タブ文字の色
 highlight SpecialKey ctermfg=236 ctermbg=16
