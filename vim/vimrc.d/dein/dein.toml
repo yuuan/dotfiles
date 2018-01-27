@@ -20,6 +20,10 @@ repo = 'Yggdroot/indentLine'
 [[plugins]]
 repo = 'itchyny/vim-cursorword'
 
+# ステータスラインの下に情報を表示する
+[[plugins]]
+repo = 'Shougo/echodoc.vim'
+
 
 # Edit
 # ------------------------------
