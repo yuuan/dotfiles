@@ -27,7 +27,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "zsh-users/zsh-completions"
 
 	## dircolors-solarized
-	zplug 'joel-porquet/zsh-dircolors-solarized'
+	zplug 'joel-porquet/zsh-dircolors-solarized', if:"[[ $OSTYPE != *darwin* ]]"
 
 	## zsh-syntax-highlighting
 	zplug "zsh-users/zsh-syntax-highlighting"
