@@ -7,7 +7,7 @@
 #
 
 if [[ -z "$HOST_SCREEN_NAME" ]]; then
-	export HOST_SCREEN_NAME=${HOSTNAME:-$(awk 'BEGIN{FS="."}{print $1}')}
+	export HOST_SCREEN_NAME=${HOSTNAME:-$(hostname | awk 'BEGIN{FS="."}{print $1}')}
 fi
 
 #
