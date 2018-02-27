@@ -15,6 +15,8 @@ fi
 #
 
 function prompt-color() {
+	local HASHER=${commands[sha256sum]:-"cat"}
+
 	# 管理者は赤
 	if [ ${UID} = 0 ]; then
 		echo -n "red"
@@ -34,11 +36,11 @@ function prompt-color() {
 		echo -n "green"
 
 	# NAS は ANSI 水色
-	elif [[ $(echo "$HOST_SCREEN_NAME" | sha256sum) =~ "^2158b18755afe74ed3bc8375947effc06b33e9410c64bb02018f347924a7df33" ]]; then
+	elif [[ $(echo "$HOST_SCREEN_NAME" | $HASHER) =~ "^2158b18755afe74ed3bc8375947effc06b33e9410c64bb02018f347924a7df33" ]]; then
 		echo -n "cyan"
 
 	# VPS では黄色
-	elif [[ $(echo "$HOST_SCREEN_NAME" | sha256sum) =~ "^a4dfea152a9c7e27c2fbc44fd0566604675c54a4c3e935a02034520edbc49126" ]]; then
+	elif [[ $(echo "$HOST_SCREEN_NAME" | $HASHER) =~ "^a4dfea152a9c7e27c2fbc44fd0566604675c54a4c3e935a02034520edbc49126" ]]; then
 		echo -n "178"
 
 	# Cygwin/MinGW は ANSI 水色
@@ -46,11 +48,11 @@ function prompt-color() {
 		echo -n "cyan"
 
 	# プライベートは青
-	elif [[ $(echo "$USER" | sha256sum) =~ "^9cec2a69978d16c588d56d037e52891884b91899591022fb15ed20f809af3000" ]]; then
+	elif [[ $(echo "$USER" | $HASHER) =~ "^9cec2a69978d16c588d56d037e52891884b91899591022fb15ed20f809af3000" ]]; then
 		echo -n "039"
 
 	# 仕事用は緑
-	elif [[ $(echo "$USER" | sha256sum) =~ "^7d014540ab9e1e807b98c8ae6dfcb891caff0ef11262937afd792a07516b15a1" ]]; then
+	elif [[ $(echo "$USER" | $HASHER) =~ "^7d014540ab9e1e807b98c8ae6dfcb891caff0ef11262937afd792a07516b15a1" ]]; then
 		echo -n "070"
 
 	# それ以外は青
