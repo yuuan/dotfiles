@@ -15,7 +15,7 @@ fi
 #
 
 function prompt-color() {
-	local HASHER=${commands[sha256sum]:-"cat"}
+	local HASHER=${${commands[shasum]:+"shasum -a 256"}:-"cat"}
 
 	# 管理者は赤
 	if [ ${UID} = 0 ]; then
