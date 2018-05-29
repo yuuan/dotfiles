@@ -18,7 +18,9 @@ if [[ -n "$STY$TMUX" ]]; then
 
 	# screen/tmux のタイトルを設定
 	function set-window-name {
-		if [[ -n "$STY$TMUX" ]]; then
+		if [[ -n "$TMUX" ]]; then
+			tmux rename-window "$@"
+		elif [[ -n "$STY" ]]; then
 			echo -ne "\ek$@\e\\"
 		fi
 	}
