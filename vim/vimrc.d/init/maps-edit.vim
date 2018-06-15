@@ -22,6 +22,9 @@ cnoremap <C-k> <C-\>e getcmdpos() == 1 ? '' : getcmdline()[:getcmdpos()-2]<CR>
 " コマンドラインモードで Ctrl + p で貼り付け
 cnoremap <C-P> <C-R>"
 
+" インサートモードで Ctrl + p で貼り付け
+inoremap <buffer> <C-p> <C-r>0
+
 " 単語を選択
 nnoremap + viw
 
