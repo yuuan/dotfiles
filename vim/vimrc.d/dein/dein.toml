@@ -105,10 +105,6 @@ repo = 'Shougo/unite-session'
 [[plugins]]
 repo = 'Shougo/unite-outline'
 
-# Unite でヤンクしたテキストを扱えるようにする
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-
 
 # Reference
 # ------------------------------
