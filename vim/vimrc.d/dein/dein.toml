@@ -216,6 +216,9 @@ on_ft = 'markdown'
 repo = 'yoppi/fluentd.vim'
 on_ft = 'fluentd'
 
+[[plugins]]
+repo = 'keith/swift.vim'
+
 
 # Fixer
 # ------------------------------
