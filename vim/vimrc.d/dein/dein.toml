@@ -162,59 +162,45 @@ repo = 'vim-syntastic/syntastic'
 
 [[plugins]]
 repo = 'StanAngeloff/php.vim'
-on_ft = 'php'
 
 [[plugins]]
 repo = 'vim-perl/vim-perl'
-on_ft = 'perl'
 
 [[plugins]]
 repo = 'pangloss/vim-javascript'
-on_ft = 'javascript'
 
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
 
 [[plugins]]
 repo = 'jason0x43/vim-js-indent'
-on_ft = [ 'javascript', 'typescript' ]
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
-on_ft = 'coffee'
 
 [[plugins]]
 repo = 'posva/vim-vue'
-on_ft = 'vue'
 
 [[plugins]]
 repo = 'elzr/vim-json'
-on_ft = 'json'
 
 [[plugins]]
 repo = 'cespare/vim-toml'
-on_ft = 'toml'
 
 [[plugins]]
 repo = 'jwalton512/vim-blade'
-on_ft = 'blade'
 
 [[plugins]]
 repo = 'evidens/vim-twig'
-on_ft = 'twig'
 
 [[plugins]]
 repo = 'hail2u/vim-css3-syntax'
-on_ft = [ 'css', 'sass', 'less' ]
 
 [[plugins]]
 repo = 'plasticboy/vim-markdown'
-on_ft = 'markdown'
 
 [[plugins]]
 repo = 'yoppi/fluentd.vim'
-on_ft = 'fluentd'
 
 [[plugins]]
 repo = 'keith/swift.vim'
