@@ -61,6 +61,10 @@ on_i = 1
 [[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
 
+# 表の位置を揃える
+[[plugins]]
+repo = 'godlygeek/tabular'
+
 
 # Lightline
 # ------------------------------
