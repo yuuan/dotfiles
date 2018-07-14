@@ -43,14 +43,9 @@ repo = 'kana/vim-smartinput'
 [[plugins]]
 repo = 'AndrewRadev/switch.vim'
 
+# コメントイン/アウトの切り替え
 [[plugins]]
 repo = 'tyru/caw.vim'
-
-[[plugins]]
-repo = 'kana/vim-textobj-user'
-
-[[plugins]]
-repo = 'osyo-manga/vim-textobj-multiblock'
 
 # スニペットを扱えるようにする
 [[plugins]]
