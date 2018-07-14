@@ -228,12 +228,10 @@ repo = 'keith/swift.vim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim") && has("python3")'
-on_i = 1
-	
+
 [[plugins]]
 repo = 'Shougo/neocomplete'
 if = '! has("nvim") && has("lua")'
-on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
