@@ -5,8 +5,8 @@
 autoload -Uz add-zsh-hook
 
 # カレントディレクトリを変更したときに実行
-function show-current-directory() {
+function __zshrc::services::cd::show-current-directory() {
 	echo ${PWD:-}
 }
 
-add-zsh-hook chpwd show-current-directory
+add-zsh-hook chpwd __zshrc::services::cd::show-current-directory

@@ -7,9 +7,9 @@ autoload -Uz add-zsh-hook
 if [[ -n "$STY$TMUX" ]]; then
 
 	# screen/tmux のタイトルを取得
-	function get-window-name {
+	function __zshrc::services::screen::get-window-name {
 		if [[ -n "$TMUX" ]]; then
-			tmux display -p '#{window_name}'
+			\tmux display -p '#{window_name}'
 		else
 			# screen のタイトルの取得方法が解らない
 			echo -n
@@ -17,22 +17,22 @@ if [[ -n "$STY$TMUX" ]]; then
 	}
 
 	# screen/tmux のタイトルを設定
-	function set-window-name {
+	function __zshrc::services::screen::set-window-name {
 		if [[ -n "$TMUX" ]]; then
-			tmux rename-window "$@"
+			\tmux rename-window "$@"
 		elif [[ -n "$STY" ]]; then
 			echo -ne "\ek$@\e\\"
 		fi
 	}
 
 	# ssh の引数から一番文字数の多いものを取得
-	function get-host-name-in-ssh {
+	function __zshrc::services::screen::get-host-name-in-ssh {
 		shift
 		echo ${(j:\n:)@} | awk '{print length($0), $0}' | sort -nr | head -n 1 | cut -d' ' -f2-
 	}
 
 	# sudo 時のコマンド名を取得
-	function get-command-name-in-sudo {
+	function __zshrc::services::screen::get-command-name-in-sudo {
 		shift
 		while (( $# > 0 )); do
 			case "$1" in
@@ -50,21 +50,21 @@ if [[ -n "$STY$TMUX" ]]; then
 	}
 
 	# jobs からコマンド名を取得
-	function get-command-name-from-jobs {
-		get-command-name $(jobs | awk '$2=="+"{for(i=4;i<NF;i++){printf("%s%s",$i,OFS=" ")}print $NF}')
+	function __zshrc::services::screen::get-command-name-from-jobs {
+		__zshrc::services::screen::get-command-name $(jobs | awk '$2=="+"{for(i=4;i<NF;i++){printf("%s%s",$i,OFS=" ")}print $NF}')
 	}
 
 	# コマンド名を取得
-	function get-command-name {
+	function __zshrc::services::screen::get-command-name {
 		case "$1" in
 			sudo)
-				get-command-name-in-sudo $*
+				__zshrc::services::screen::get-command-name-in-sudo $*
 				;;
 			nohup)
 				echo "$2"
 				;;
 			fg)
-				get-command-name-from-jobs
+				__zshrc::services::screen::get-command-name-from-jobs
 				;;
 			*)
 				echo "$1"
@@ -73,16 +73,16 @@ if [[ -n "$STY$TMUX" ]]; then
 	}
 
 	# カレントディレクトリを切り替えた後に呼ばれる
-	function precmd-function {
-		set-window-name-to-command
+	function __zshrc::services::screen::precmd-function {
+		__zshrc::services::screen::set-window-name-to-command
 	}
 
-	# プロンプトを表示する直前に実行
-	add-zsh-hook precmd precmd-function
+	# プロンプトを表示する直前に実行する関数を登録
+	add-zsh-hook precmd __zshrc::services::screen::precmd-function
 
 	# コマンド名を表示
-	function set-window-name-to-command {
-		local command=$(get-command-name $*)
+	function __zshrc::services::screen::set-window-name-to-command {
+		local command=$(__zshrc::services::screen::get-command-name $*)
 		local directory=${PWD:t}
 		local host
 
@@ -90,21 +90,22 @@ if [[ -n "$STY$TMUX" ]]; then
 		[[ "_$PWD" = "_$HOME" ]] && directory='~'
 
 		if [[ "$command" = "ssh" ]]; then
-			set-window-name "[$(get-host-name-in-ssh $*)]"
+			__zshrc::services::screen::set-window-name "[$(__zshrc::services::screen::get-host-name-in-ssh $*)]"
 		elif [[ -n "$command" ]]; then
-			set-window-name "${directory}(*$command)"
+			__zshrc::services::screen::set-window-name "${directory}(*$command)"
 		else
-			set-window-name "${directory}"
+			__zshrc::services::screen::set-window-name "${directory}"
 		fi
 	}
 
-	# コマンドを実行する直前に呼ばれる
-	function preexec-function {
+	# コマンドを実行する直前に実行
+	function __zshrc::services::screen::preexec-function {
 		local -a command;
 		command=(${(s: :)${1}})
-		set-window-name-to-command $command
+		__zshrc::services::screen::set-window-name-to-command $command
 	}
 
-	add-zsh-hook preexec preexec-function
+	# コマンドを実行する直前に実行する関数を登録
+	add-zsh-hook preexec __zshrc::services::screen::preexec-function
 
 fi
