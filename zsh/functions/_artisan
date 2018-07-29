@@ -83,6 +83,12 @@ function _artisan() {
 						'--views[Only scaffold the authentication views]' \
 					&& ret=0
 					;;
+				(make:channel)
+					dir='app/Broadcasting/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
 				(make:console|make:command)
 					dir='app/Console/Commands/'
 					__options \
@@ -103,6 +109,21 @@ function _artisan() {
 						'*:files ('$dir'):_files -W '"$PWD/$dir" \
 					&& ret=0
 					;;
+				(make:exception)
+					dir='app/Exceptions/'
+					__options \
+						'--render[Create the exception with an empty render method.]' \
+						'--report[Create the exception with an empty report method.]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:factory)
+					dir='database/factories/'
+					__options \
+						{-m=,--model=}'[The name of the model]:: :' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
 				(make:job)
 					dir='app/Jobs/'
 					__options \
@@ -113,7 +134,7 @@ function _artisan() {
 				(make:listener)
 					dir='app/Listeners/'
 					__options \
-						'--event=[The event class being listened for.]:: :' \
+						{-e=,--event=}'[The event class being listened for.]:: :' \
 						'--queued[Indicates the event listener should be queued.]' \
 						'*:files ('$dir'):_files -W '"$PWD/$dir" \
 					&& ret=0
@@ -146,6 +167,21 @@ function _artisan() {
 						'*:files ('$dir'):_files -W '"$PWD/$dir" \
 					&& ret=0
 					;;
+				(make:notification)
+					dir='app/Notifications/'
+					__options \
+						{-f,--force}'[Create the class even if the notification already exists.]' \
+						{-m=,--markdown=}'[Create a new Markdown template for the notification.]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:observer)
+					dir='app/Observers/'
+					__options \
+						{-m=,--model=}'[The model that the observer applies to.]' \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
 				(make:policy)
 					dir='app/Policies/'
 					__options \
@@ -160,6 +196,19 @@ function _artisan() {
 					;;
 				(make:request)
 					dir='app/Http/Requests/'
+					__options \
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:resource)
+					dir='app/Http/Resources/'
+					__options \
+						{-c,--collection}'Create a resource collection.'
+						'*:files ('$dir'):_files -W '"$PWD/$dir" \
+					&& ret=0
+					;;
+				(make:rule)
+					dir='app/Rules/'
 					__options \
 						'*:files ('$dir'):_files -W '"$PWD/$dir" \
 					&& ret=0
