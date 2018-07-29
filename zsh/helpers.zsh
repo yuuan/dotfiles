@@ -21,3 +21,14 @@ function __zshrc::sources() {
 		fi
 	done
 }
+
+# 最終行から逆順に出力
+function __zshrc::tac() {
+	if which tac &> /dev/null; then
+		tac
+	elif which gtac &> /dev/null; then
+		gtac
+	else
+		tail -r
+	fi
+}
