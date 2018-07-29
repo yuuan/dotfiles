@@ -3,4 +3,4 @@
 # ----------------------------------------
 
 # `peco` があれば `peco` を使う
-export ENHANCD_FILTER="peco:${ENAHNCD_FILTER:-}"
+export ENHANCD_FILTER="fzf-tmux:peco:${ENAHNCD_FILTER:-}"
