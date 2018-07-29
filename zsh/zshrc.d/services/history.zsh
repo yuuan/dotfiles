@@ -22,12 +22,23 @@ function history-peco {
 	fi
 }
 
+# `b4b4r07/history` がインストールされているか
+function history-is-installed {
+	which history &> /dev/null
+}
+
 # Ctrl-R で履歴を表示
-if which peco &> /dev/null; then
-	# 履歴の表示に `peco` を使う
-	zle -N history-peco
-	bindkey '^R' history-peco
-else
-	# ZSH が持つインクリメンタルサーチ
-	bindkey '^R' history-incremental-search-backward
+if ! history-is-installed; then
+	if which peco &> /dev/null; then
+		# 履歴の表示に `peco` を使う
+		zle -N history-peco
+		bindkey '^R' history-peco
+	else
+		# ZSH が持つインクリメンタルサーチ
+		bindkey '^R' history-incremental-search-backward
+	fi
 fi
+
+# `b4b4r07/history` のエイリアス
+alias history-b4b4r07="command history"
+alias hist="command history"
