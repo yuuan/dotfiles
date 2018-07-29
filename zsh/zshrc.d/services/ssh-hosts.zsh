@@ -11,10 +11,10 @@ function ssh-hosts() {
 
 # SSH の設定ファイルに設定されたホストを選択
 function ssh-host-select() {
-	ssh-hosts | peco
+	ssh-hosts | fzf-tmux --prompt "host>"
 }
 
-if which peco &> /dev/null; then
+if which fzf-tmux &> /dev/null; then
 	alias -g @HOST='$(ssh-host-select)'
 
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} @HOST)

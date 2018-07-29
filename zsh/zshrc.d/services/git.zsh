@@ -3,18 +3,18 @@
 # ----------------------------------------
 
 function git-hash() {
-	git log --oneline --branches | peco --prompt "GIT COMMIT>" | awk '{print $1}'
+	git log --oneline --branches | fzf-tmux --prompt "commit>" | awk '{print $1}'
 }
 
 function git-branch() {
-	git branch -a | peco --prompt "GIT BRANCH>" | head -n 1 | sed -e "s/^\*\s*//g"
+	git branch -a | fzf-tmux --prompt "branch>" | head -n 1 | sed -e "s/^\*\s*//g"
 }
 
 function git-changed-files() {
-	git status --short | peco --prompt "CHANGES FILES" | awk '{print $2}'
+	git status --short | fzf-tmux --prompt "changes files>" | awk '{print $2}'
 }
 
-if which peco &> /dev/null; then
+if which fzf-tmux &> /dev/null; then
 	alias -g @HASH='$(git-hash)'
 	alias -g @H='$(git-hash)'
 	alias -g @BRANCH='$(git-branch)'
