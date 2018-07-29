@@ -157,5 +157,5 @@ function current-branch() {
 
 setopt prompt_subst
 
-RPROMPT='[$(current-branch)%~]'
+RPROMPT='[$(current-branch)%~ %*]'
 SPROMPT="%F{magenta}correct: %R -> %r [nyae]? %f"
