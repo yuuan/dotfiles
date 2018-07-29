@@ -22,6 +22,9 @@ function history-peco {
 	fi
 }
 
+# Widget を登録
+zle -N history-peco
+
 # `b4b4r07/history` がインストールされているか
 function history-is-installed {
 	which history &> /dev/null
@@ -31,7 +34,6 @@ function history-is-installed {
 if ! history-is-installed; then
 	if which peco &> /dev/null; then
 		# 履歴の表示に `peco` を使う
-		zle -N history-peco
 		bindkey '^R' history-peco
 	else
 		# ZSH が持つインクリメンタルサーチ
