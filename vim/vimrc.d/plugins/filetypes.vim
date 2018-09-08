@@ -39,6 +39,6 @@ augroup vimrc_file_types
 	autocmd BufNewFile,BufRead .env.* set filetype=sh
 
 	" `/etc/td-agent/` 以下にあるのは fluentd
-	autocmd BufNewFile,BufRead /etc/td-agent/*.conf set filetype=fluentd
+	autocmd BufNewFile,BufRead /etc/td-agent/*.conf{,.example} set filetype=fluentd
 
 augroup end
