@@ -207,7 +207,7 @@ repo = 'hail2u/vim-css3-syntax'
 repo = 'plasticboy/vim-markdown'
 
 [[plugins]]
-repo = 'yoppi/fluentd.vim'
+repo = 'itkq/fluentd-vim'
 
 [[plugins]]
 repo = 'keith/swift.vim'
