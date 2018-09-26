@@ -39,15 +39,15 @@ share.split = string.split
 
 -- ターミナルの文字色を変更するためのエスケープシーケンス
 share.colors = {
-    black   = "\x1b[30m",
-    red     = "\x1b[31m",
-    green   = "\x1b[32m",
-    yellow  = "\x1b[33m",
-    blue    = "\x1b[34m",
-    magenta = "\x1b[35m",
-    cyan    = "\x1b[36m",
-    white   = "\x1b[37m",
-    reset   = "\x1b[0m"
+    black   = "\027[30m",
+    red     = "\027[31m",
+    green   = "\027[32m",
+    yellow  = "\027[33m",
+    blue    = "\027[34m",
+    magenta = "\027[35m",
+    cyan    = "\027[36m",
+    white   = "\027[37m",
+    reset   = "\027[0m"
 }
 
 -- ブランチ名を取得する関数
