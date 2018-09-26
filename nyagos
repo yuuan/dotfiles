@@ -1,6 +1,6 @@
 -- 環境変数
 set {
---  EDITOR = '"D:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
+--  EDITOR = '"C:\\Program Files\\EmEditor\\EmEditor.exe" //sp //cp 65001',
     EDITOR = '"C:\\CLI\\vim74-kaoriya-win64\\gvim.exe"',
     PROMPT = "[NYAGOS $P]"
 }
