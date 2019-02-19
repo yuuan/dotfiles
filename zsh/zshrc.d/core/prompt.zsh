@@ -138,7 +138,7 @@ function current-branch() {
 		echo -n "%f%b"
 
 	else
-		STY= LANG=en_US.UTF-8 vcs_info 2> /dev/null
+		STY= LANG=C vcs_info 2> /dev/null
 		if [[ -n "$vcs_info_msg_1_" ]]; then
 			repository="$vcs_info_msg_0_"
 			branch="$vcs_info_msg_2_"
