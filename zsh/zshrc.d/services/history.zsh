@@ -14,7 +14,7 @@ function history-best {
 
 # `peco` でコマンド履歴を表示する関数
 function history-peco {
-	BUFFER=$(\history -n 1 | __zshrc::tac | LANG=ja_JP.UTF-8 peco --query "$LBUFFER")
+	BUFFER=$(\history -n 1 | __zshrc::tac | peco --query "$LBUFFER")
 	CURSOR=$#BUFFER
 
 	if [ -n "${CLEAR_SCREEN_AFTER_SELECTING_HISTORY:-}" ]; then
