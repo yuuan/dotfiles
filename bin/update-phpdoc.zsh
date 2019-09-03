@@ -6,5 +6,7 @@ local VIM_DOCS_DIR="$HOME/.vim/docs"
 mkdir -p $VIM_DOCS_DIR
 
 \wget "${PHP_DOC_URI}" -O "${VIM_DOCS_DIR}/php_manual_ja.tar.gz" \
-	&& \tar xvfz "${VIM_DOCS_DIR}/php_manual_ja.tar.gz" \
-	&& \ls -laF --color=always "${VIM_DOCS_DIR}/php-chunked-xhtml" | \less -R
+	&& pushd "${VIM_DOCS_DIR}" \
+	&& \tar xvfz "php_manual_ja.tar.gz" \
+	&& popd \
+	&& ls -laF "${VIM_DOCS_DIR}/php-chunked-xhtml" | \less -R
