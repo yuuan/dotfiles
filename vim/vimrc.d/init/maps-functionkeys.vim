@@ -5,7 +5,7 @@
 "F2 F3でバッファ切り替え F4でバッファを閉じる
 noremap <F2> <ESC>:bp<CR>
 noremap <F3> <ESC>:bn<CR>
-noremap <F4> <ESC>:bw<CR>
+noremap <F4> <ESC>:bw<CR>:tabp<CR>
 
 "F5 F6で位置を記録 F7 F8で記録した位置に戻る
 "noremap <F5> <ESC>ma
