@@ -247,6 +247,8 @@ INCLUDE
 		TMUX_PLUGINS="$TMUX_DIR/plugins"
 		TMUX_PLUGINS_TPM="$TMUX_PLUGINS/tpm"
 
+		__mkdir "$TMUX_DIR"
+
 		__link "$DOTFILES/tmux/tmux.conf" "$TMUX_CONF"
 		__link "$DOTFILES/tmux/conf.d" "$TMUX_CONFIGS"
 
@@ -290,8 +292,13 @@ INCLUDE
 	}
 
 	function __install_nvim() {
+		local NVIM_CONFIG_DIR; NVIM_CONFIG_DIR="$HOME/.config/nvim"
+		local NVIM_CONFIG; NVIM_CONFIG="$NVIM_CONFIG_DIR/init.vim"
+
+		__mkdir "$NVIM_CONFIG_DIR"
+
 		__installing_caption "nvim"
-		__link "$DOTFILES/vim/vimrc" "$HOME/.config/nvim/init.vim"
+		__link "$DOTFILES/vim/vimrc" "$NVIM_CONFIG"
 
 		__install_vim_modules
 
