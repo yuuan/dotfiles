@@ -1,8 +1,8 @@
 #compdef artisan
 
-function __newer_than_laravel54() {
+function __older_than_laravel54() {
 	local version=$(cat composer.lock | jq '.packages[] | select(.name == "laravel/framework").version')
-	echo $version | grep -e 'v5\.[4-9]\.' &> /dev/null
+	echo $version | grep -e 'v5\.[0-3]\.' &> /dev/null
 }
 
 function __laravel5_get_command_list() {
@@ -220,7 +220,12 @@ function _artisan() {
 					&& ret=0
 					;;
 				(make:test)
-					if __newer_than_laravel54 &> /dev/null; then
+					if __older_than_laravel54 &> /dev/null; then
+						dir='tests/'
+						__options \
+							'*:files ('$dir'):_files -W '"$PWD/$dir" \
+						&& ret=0
+					else
 						if (( ${words[(I)--unit]} )); then
 							dir='tests/Unit/'
 						else
@@ -228,11 +233,6 @@ function _artisan() {
 						fi
 						__options \
 							'--unit[Create a unit test]' \
-							'*:files ('$dir'):_files -W '"$PWD/$dir" \
-						&& ret=0
-					else
-						dir='tests/'
-						__options \
 							'*:files ('$dir'):_files -W '"$PWD/$dir" \
 						&& ret=0
 					fi
