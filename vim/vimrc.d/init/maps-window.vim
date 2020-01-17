@@ -43,3 +43,6 @@ noremap <PageDown> <C-D>
 
 	nnoremap <silent> !! :<C-u>call SwitchNumber()<CR>
 " }}}
+
+" gf を新しいタブで開く
+nnoremap <silent> gf :<C-u>call gf#user#do("<C-v><C-w>gf", "n")<CR>
