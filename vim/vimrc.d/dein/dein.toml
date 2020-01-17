@@ -39,7 +39,7 @@ repo = 'mattn/emmet-vim'
 
 # 閉じ括弧を自動入力
 [[plugins]]
-repo = 'kana/vim-smartinput'
+repo = 'jiangmiao/auto-pairs'
 
 # `true` と `false` を切り替える
 [[plugins]]
