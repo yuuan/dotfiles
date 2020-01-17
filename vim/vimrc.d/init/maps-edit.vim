@@ -4,7 +4,9 @@
 
 " HomeとEnd
 noremap <C-A> <Home>
+inoremap <C-A> <Home>
 noremap <C-E> <End>
+inoremap <C-E> <End>
 
 " Ctrl + h, j, k, l でカーソル移動
 inoremap <C-H> <Left>
