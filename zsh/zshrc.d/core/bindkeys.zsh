@@ -10,6 +10,7 @@ bindkey "^W" vi-backward-kill-word
 bindkey "^@" quote-region
 bindkey "^_" quote-line
 bindkey "^P" vi-put-after
+bindkey "^[." insert-last-word
 
 # Home
 bindkey "^[[1~" beginning-of-line
