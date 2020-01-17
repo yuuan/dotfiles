@@ -32,6 +32,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	## zsh-syntax-highlighting
 	zplug "zsh-users/zsh-syntax-highlighting"
 
+	## zsh-autosuggestions
+	zplug "zsh-users/zsh-autosuggestions", defer:2
+
 	## fzf
 	zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:${__zplug_ghr_os:-os}
 
