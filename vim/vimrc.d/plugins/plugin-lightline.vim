@@ -11,8 +11,8 @@ let g:lightline = {
 	\         'left': [ [ 'mode', 'paste' ], [ 'filename', 'unitesource' ], [ 'unitecontext' ] ],
 	\         'right': [
 	\             [ 'lineinfo', 'percent'],
-	\             [ 'fugitive', 'user' ],
-	\             [ 'charvaluehex', 'fileformat', 'fileencoding', 'filetype'],
+	\             [ 'charvaluehex', ],
+	\             [ 'fileformat', 'fileencoding', 'filetype'],
 	\         ]
 	\     },
 	\     'component': {
