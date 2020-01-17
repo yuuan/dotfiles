@@ -170,50 +170,12 @@ repo = 'lambdalisue/vim-unified-diff'
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
 
+# 色んな Syntax 詰め合わせ
 [[plugins]]
-repo = 'StanAngeloff/php.vim'
-
-[[plugins]]
-repo = 'vim-perl/vim-perl'
-
-[[plugins]]
-repo = 'pangloss/vim-javascript'
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-
-[[plugins]]
-repo = 'jason0x43/vim-js-indent'
-
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
-
-[[plugins]]
-repo = 'posva/vim-vue'
-
-[[plugins]]
-repo = 'elzr/vim-json'
-
-[[plugins]]
-repo = 'cespare/vim-toml'
-
-[[plugins]]
-repo = 'jwalton512/vim-blade'
-
-[[plugins]]
-repo = 'evidens/vim-twig'
-
-[[plugins]]
-repo = 'hail2u/vim-css3-syntax'
-
-[[plugins]]
-repo = 'plasticboy/vim-markdown'
+repo = 'sheerun/vim-polyglot'
 
 [[plugins]]
 repo = 'itkq/fluentd-vim'
-
-[[plugins]]
-repo = 'keith/swift.vim'
 
 
 # Fixer
