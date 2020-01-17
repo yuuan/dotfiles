@@ -25,8 +25,8 @@ if which fzf-tmux &> /dev/null; then
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} @HASH @H @BRANCH @B @FILE @F)
 fi
 
-alias s='git status'
-alias st='git status'
+alias s='git status -u'
+alias st='git status -u'
 alias gr='git graph'
 alias gb='git branch -a'
 alias gd='git diff'
