@@ -209,6 +209,10 @@ snippet use_Collection
 options head
 	use Illuminate\Support\Collection;${0}
 
+snippet use_LazyCollection
+options head
+	use Illuminate\Support\LazyCollection;${0}
+
 snippet Fluent
 regexp '\%(\\\)\@<!Fluent'
 options word
@@ -283,6 +287,10 @@ options head
 snippet use_Command
 options head
 	use App\Console\Commands${0};
+
+snippet use_Carbon
+options head
+	use Carbon\Carbon;${0}
 
 snippet puf
 options head, indent
