@@ -32,10 +32,12 @@ noremap <PageDown> <C-D>
 			setlocal nonumber
 			setlocal nolist
 			execute ":IndentLinesDisable"
+			execute ":GitGutterDisable"
 		else
 			setlocal number
 			setlocal list
 			execute ":IndentLinesEnable"
+			execute ":GitGutterEnable"
 		endif
 	endfunction
 
