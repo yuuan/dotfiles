@@ -44,3 +44,6 @@ fi
 # `b4b4r07/history` のエイリアス
 alias history-b4b4r07="command history"
 alias hist="command history"
+
+# 絞り込み条件を上書き
+export ZSH_HISTORY_FILTER_OPTIONS=
