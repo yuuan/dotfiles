@@ -24,9 +24,9 @@ if [ -f "${ZSHRC_INIT}" ]; then
 fi
 
 
-# `zshrc.d` 内のファイルを読み込む
+# `conf.d` 内のファイルを読み込む
 
-local ZSHRC_DIR="${ZSHHOME}/zshrc.d"
+local ZSHRC_DIR="${ZSHHOME}/conf.d"
 
 __zshrc::sources "${ZSHRC_DIR}/core"
 __zshrc::sources "${ZSHRC_DIR}/plugins.init"

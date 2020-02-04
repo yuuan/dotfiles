@@ -334,8 +334,11 @@ INCLUDE
 		[[ -L "$ZSHHOME" ]] && __rm "$ZSHHOME"
 
 		__mkdir "$ZSHHOME"
+
+		__rm "$ZSHHOME/zshrc.d"
+
 		__link "$DOTFILES/zsh/functions" "$ZSHHOME/functions"
-		__link "$DOTFILES/zsh/zshrc.d" "$ZSHHOME/zshrc.d"
+		__link "$DOTFILES/zsh/conf.d" "$ZSHHOME/conf.d"
 		__link "$DOTFILES/zsh/helpers.zsh" "$ZSHHOME/helpers.zsh"
 		__link "$DOTFILES/zsh/dircolors.conf" "$ZSHHOME/dircolors.conf"
 
