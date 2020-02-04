@@ -82,10 +82,21 @@ HELP
 		__caption "# Loading \`$*\` configurations..."
 	}
 
+	function __br() {
+		if ! $quiet; then
+			echo
+		fi
+	}
+
 	function __exec() {
 		local command; command="$*"
-		__info "> $command"
-		eval $command
+
+		if ! $quiet; then
+			__info "> $command"
+			eval $command
+		else
+			eval $command > /dev/null
+		fi
 	}
 
 	function __mkdir() {
@@ -180,7 +191,7 @@ HELP
 
 		__ls -a "$HOME/.coffeelint.json"
 
-		echo
+		__br
 	}
 
 	function __install_git() {
@@ -200,7 +211,7 @@ INCLUDE
 		__ls -d "$HOME/.gitconfig" "$HOME/.gitconfig.d"
 		__ls -a "$HOME/.gitconfig.d/"
 
-		echo
+		__br
 	}
 
 	function __install_jshint() {
@@ -209,7 +220,7 @@ INCLUDE
 
 		__ls -a "$HOME/.jshintrc"
 
-		echo
+		__br
 	}
 
 	function __install_peco() {
@@ -228,7 +239,7 @@ INCLUDE
 		__ls -d "$PECO_DIR"
 		__ls -a "$PECO_DIR/"
 
-		echo
+		__br
 	}
 
 	function __install_screen() {
@@ -237,7 +248,7 @@ INCLUDE
 
 		__ls -dr "$HOME/.screenrc"
 
-		echo
+		__br
 	}
 
 	function __install_tmux() {
@@ -260,7 +271,7 @@ INCLUDE
 		__ls -a "$TMUX_DIR/"
 		__ls -a "$TMUX_CONFIGS/"
 
-		echo
+		__br
 	}
 
 	function __install_tpm() {
@@ -306,7 +317,7 @@ INCLUDE
 		__ls -dr "$HOME/.vimrc" "$HOME/.vim"
 		__ls -a "$HOME/.vim/"
 
-		echo
+		__br
 	}
 
 	function __install_nvim() {
@@ -323,7 +334,7 @@ INCLUDE
 		__ls -dr "$HOME/.config/nvim/init.vim" "$HOME/.vim"
 		__ls -a "$HOME/.vim/"
 
-		echo
+		__br
 	}
 
 	function __install_zsh() {
@@ -352,7 +363,7 @@ INCLUDE
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
 		__ls -a "$HOME/.zsh/"
 
-		echo
+		__br
 	}
 
 	function __install_zplug() {
@@ -415,7 +426,6 @@ INCLUDE
 						;;
 					*)
 						__warn "\`$1\` is invalid target."
-						echo
 						;;
 				esac
 				shift
@@ -442,11 +452,9 @@ INCLUDE
 
 			rm -f $HOME/.zcompdump
 			autoload -U compinit; compinit -u
-
-			echo "loaded."
 		fi
 
-		echo
+		__br
 	}
 
 
