@@ -461,7 +461,7 @@ INCLUDE
 			-h|--help|help)
 				__help && exit 0
 				;;
-			-y|--yes)
+			-f|--force)
 				force=true
 				;;
 			-q|--quiet)
