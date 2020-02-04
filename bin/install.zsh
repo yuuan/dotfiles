@@ -290,8 +290,9 @@ INCLUDE
 
 		__rm "$HOME/.vim/vimrc.init.d"
 		__rm "$HOME/.vim/bundle"
+		__rm "$HOME/.vim/vimrc.d"
 
-		__link "$DOTFILES/vim/vimrc.d" "$HOME/.vim/vimrc.d"
+		__link "$DOTFILES/vim/conf.d" "$HOME/.vim/conf.d"
 		__link "$DOTFILES/vim/ftplugin" "$HOME/.vim/ftplugin"
 		__link "$DOTFILES/vim/snippets" "$HOME/.vim/snippets"
 	}
