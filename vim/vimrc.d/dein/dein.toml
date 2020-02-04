@@ -9,6 +9,16 @@ build = 'make'
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+# Vim8 の場合に nvim-yarp の動作に必要
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = '! has("nvim") && has("python3")'
+depends = 'nvim-yarp'
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if = '! has("nvim") && has("python3")'
+
 
 # Display
 # ------------------------------
@@ -124,16 +134,6 @@ repo = 'thinca/vim-ref'
 [[plugins]]
 repo = 'vim-jp/vimdoc-ja'
 
-# gf を拡張するためのフレームワーク
-[[plugins]]
-repo = 'kana/vim-gf-user'
-
-# PHP のクラスを gf で探せるようにする
-[[plugins]]
-repo = 'violetyk/vim-phpclass'
-depends = 'vim-gf-user'
-on_ft = [ 'php', 'blade' ]
-
 
 # Git
 # ------------------------------
@@ -188,13 +188,22 @@ repo = 'itkq/fluentd-vim'
 #on_i = 1
 
 
+# Language Server
+# ------------------------------
+
+[[plugins]]
+repo = 'phpactor/phpactor'
+on_ft = ['php']
+build = 'composer install'
+
+
 # Deoplete / Neocomplete
 # ------------------------------
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim") && has("python3")'
-depends = ['deoplete-laravel-plugin', 'deoplete-typescript']
+depends = ['deoplete-phpactor', 'deoplete-laravel-plugin', 'deoplete-typescript']
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
@@ -208,6 +217,12 @@ on_i = 1
 repo = 'zchee/deoplete-zsh'
 if = 'has("nvim") && has("python3")'
 on_ft = 'zsh'
+on_i = 1
+
+# PHP の補完に Phpactor を使う
+[[plugins]]
+repo  = 'kristijanhusak/deoplete-phpactor'
+on_ft = ['php']
 on_i = 1
 
 [[plugins]]
