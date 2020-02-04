@@ -43,11 +43,11 @@ repo = 'cocopon/lightline-hybrid.vim'
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
-if = '! has("nvim") || ! has("python3")'
+# if = '! has("nvim") || ! has("python3")'
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-if = 'has("nvim") && has("python3")'
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# if = 'has("nvim") && has("python3")'
 
 # Unite で最近アクセスしたファイルを扱えるようにする
 [[plugins]]
