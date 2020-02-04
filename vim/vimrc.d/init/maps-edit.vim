@@ -30,10 +30,6 @@ inoremap <buffer> <C-p> <C-r>0
 " 単語を選択
 nnoremap + viw
 
-" 括弧内を選択
-nnoremap ; vib
-vnoremap ; <ESC>vab
-
 " インデントした後も範囲選択を残す
 vnoremap < <gv
 vnoremap > >gv
