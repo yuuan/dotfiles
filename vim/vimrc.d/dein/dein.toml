@@ -96,12 +96,12 @@ repo = 'tyru/caw.vim'
 # スニペットを扱えるようにする
 [[plugins]]
 repo = 'Shougo/neosnippet'
+depends = 'Shougo/neosnippet-snippets'
 on_i = 1
 
 # スニペット集
 [[plugins]]
 repo = 'Shougo/neosnippet-snippets'
-depends = 'neosnippet'
 on_i = 1
 
 # ペースとしたときにペーストモードにする
@@ -194,6 +194,7 @@ repo = 'itkq/fluentd-vim'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim") && has("python3")'
+depends = ['deoplete-laravel-plugin', 'deoplete-typescript']
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
@@ -206,14 +207,12 @@ on_i = 1
 [[plugins]]
 repo = 'zchee/deoplete-zsh'
 if = 'has("nvim") && has("python3")'
-depends = 'deoplete.nvim'
 on_ft = 'zsh'
 on_i = 1
 
 [[plugins]]
 repo = 'rafaelndev/deoplete-laravel-plugin'
 if = 'has("nvim") && has("python3")'
-depends = 'deoplete.nvim'
 on_ft = [ 'php', 'blade' ]
 on_i = 1
 
