@@ -10,9 +10,9 @@ if filereadable(expand('~/.vimrc.init'))
 endif
 
 set runtimepath+=~/.vim/
-runtime! vimrc.d/init/*.vim
-runtime! vimrc.d/dein/*.vim
-runtime! vimrc.d/plugins/*.vim
+runtime! conf.d/init/*.vim
+runtime! conf.d/dein/*.vim
+runtime! conf.d/plugins/*.vim
 
 " 環境依存設定の読み込み
 if filereadable(expand('~/.vimrc.local'))
