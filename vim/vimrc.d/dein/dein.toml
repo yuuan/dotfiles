@@ -26,6 +26,50 @@ repo = 'itchyny/vim-cursorword'
 repo = 'Shougo/echodoc.vim'
 
 
+# Lightline
+# ------------------------------
+
+# ステータスライン
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+# ステータスラインのカラーテーマ
+[[plugins]]
+repo = 'cocopon/lightline-hybrid.vim'
+
+
+# Unite
+# ------------------------------
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+if = '! has("nvim") || ! has("python3")'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+if = 'has("nvim") && has("python3")'
+
+# Unite で最近アクセスしたファイルを扱えるようにする
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+
+# Unite でカラースキーマを変更できるようにする
+[[plugins]]
+repo = 'ujihisa/unite-colorscheme'
+
+# Unite で Git を扱えるようにする
+[[plugins]]
+repo = 'kmnk/vim-unite-giti'
+
+# Unite で開いているファイルを保持できるようにする
+[[plugins]]
+repo = 'Shougo/unite-session'
+
+# Unite でソースのアウトラインを表示する
+[[plugins]]
+repo = 'Shougo/unite-outline'
+
+
 # Edit
 # ------------------------------
 
@@ -67,49 +111,6 @@ repo = 'ConradIrwin/vim-bracketed-paste'
 # 表の位置を揃える
 [[plugins]]
 repo = 'godlygeek/tabular'
-
-
-# Lightline
-# ------------------------------
-
-# ステータスライン
-[[plugins]]
-repo = 'itchyny/lightline.vim'
-
-# ステータスラインのカラーテーマ
-[[plugins]]
-repo = 'cocopon/lightline-hybrid.vim'
-
-
-# Unite
-# ------------------------------
-
-[[plugins]]
-repo = 'Shougo/unite.vim'
-
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-if = 'has("nvim") && has("python3")'
-
-# Unite で最近アクセスしたファイルを扱えるようにする
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-
-# Unite でカラースキーマを変更できるようにする
-[[plugins]]
-repo = 'ujihisa/unite-colorscheme'
-
-# Unite で Git を扱えるようにする
-[[plugins]]
-repo = 'kmnk/vim-unite-giti'
-
-# Unite で開いているファイルを保持できるようにする
-[[plugins]]
-repo = 'Shougo/unite-session'
-
-# Unite でソースのアウトラインを表示する
-[[plugins]]
-repo = 'Shougo/unite-outline'
 
 
 # Reference
