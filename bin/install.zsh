@@ -42,7 +42,6 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-h, --help          \e[mshow this help message and usage
   \e[32m-f, --force         \e[mremove existing destination files
   \e[32m-q, --quiet         \e[mdon't output any message
-  \e[32m--init              \e[minitialize git's submodules (default)
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
@@ -73,10 +72,6 @@ HELP
 		else
 			echo; return 1
 		fi
-	}
-
-	function __initializing_caption() {
-		__caption "# Initializing \`$*\`..."
 	}
 
 	function __installing_caption() {
@@ -387,8 +382,6 @@ INCLUDE
 					zplug)
 						__install_zplug
 						;;
-					submodules)
-						;;
 					*)
 						__warn "\`$1\` is invalid target."
 						echo
@@ -445,9 +438,6 @@ INCLUDE
 				;;
 			-r|--force-reload)
 				reloads=true
-				;;
-			--init|--initialize)
-				targets+=("submodules")
 				;;
 			-*|--*)
 				__die "$1: Unknown option"
