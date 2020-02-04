@@ -163,6 +163,10 @@ repo = 'Shougo/vimfiler'
 [[plugins]]
 repo = 'lambdalisue/vim-unified-diff'
 
+# Ag で検索
+[[plugins]]
+repo = 'rking/ag.vim'
+
 
 # Syntax
 # ------------------------------
@@ -234,13 +238,6 @@ on_i = 1
 [[plugin]]
 repo = 'mhartington/deoplete-typescript'
 if = 'has("nvim") && has("python3")'
-depends = 'deoplete.nvim'
-on_ft = 'typescript'
-on_i = 1
-
-[[plugins]]
-repo = 'clausreinke/typescript-tools.vim'
-if = 'executable("tss")'
 on_ft = 'typescript'
 on_i = 1
 
