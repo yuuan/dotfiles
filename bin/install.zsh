@@ -82,6 +82,10 @@ HELP
 		__caption "# Loading \`$*\` configurations..."
 	}
 
+	function __done_caption() {
+		__caption "# Done."
+	}
+
 	function __br() {
 		if ! $quiet; then
 			echo
@@ -189,8 +193,9 @@ HELP
 		__installing_caption "coffeelint"
 		__link "$DOTFILES/coffeelint.json" "$HOME/.coffeelint.json"
 
-		__ls -a "$HOME/.coffeelint.json"
+		__done_caption
 
+		__ls -a "$HOME/.coffeelint.json"
 		__br
 	}
 
@@ -208,18 +213,21 @@ HELP
 INCLUDE
 		fi
 
+		__done_caption
+
 		__ls -d "$HOME/.gitconfig" "$HOME/.gitconfig.d"
 		__ls -a "$HOME/.gitconfig.d/"
-
 		__br
 	}
 
 	function __install_jshint() {
 		__installing_caption "jshint"
+
 		__link "$DOTFILES/jshintrc" "$HOME/.jshintrc"
 
-		__ls -a "$HOME/.jshintrc"
+		__done_caption
 
+		__ls -a "$HOME/.jshintrc"
 		__br
 	}
 
@@ -236,18 +244,21 @@ INCLUDE
 		__mkdir "$PECO_DIR"
 		__link "$DOTFILES/peco/config.json" "$PECO_DIR/config.json"
 
+		__done_caption
+
 		__ls -d "$PECO_DIR"
 		__ls -a "$PECO_DIR/"
-
 		__br
 	}
 
 	function __install_screen() {
 		__installing_caption "screen"
+
 		__link "$DOTFILES/screenrc" "$HOME/.screenrc"
 
-		__ls -dr "$HOME/.screenrc"
+		__done_caption
 
+		__ls -dr "$HOME/.screenrc"
 		__br
 	}
 
@@ -267,10 +278,11 @@ INCLUDE
 
 		__install_tpm
 
+		__done_caption
+
 		__ls -dr "$TMUX_CONF" "$TMUX_DIR"
 		__ls -a "$TMUX_DIR/"
 		__ls -a "$TMUX_CONFIGS/"
-
 		__br
 	}
 
@@ -314,9 +326,10 @@ INCLUDE
 
 		__install_vim_modules
 
+		__done_caption
+
 		__ls -dr "$HOME/.vimrc" "$HOME/.vim"
 		__ls -a "$HOME/.vim/"
-
 		__br
 	}
 
@@ -331,9 +344,10 @@ INCLUDE
 
 		__install_vim_modules
 
+		__done_caption
+
 		__ls -dr "$HOME/.config/nvim/init.vim" "$HOME/.vim"
 		__ls -a "$HOME/.vim/"
-
 		__br
 	}
 
@@ -360,9 +374,10 @@ INCLUDE
 
 		__install_zplug
 
+		__done_caption
+
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
 		__ls -a "$HOME/.zsh/"
-
 		__br
 	}
 
@@ -452,9 +467,9 @@ INCLUDE
 
 			rm -f $HOME/.zcompdump
 			autoload -U compinit; compinit -u
-		fi
 
-		__br
+			__done_caption
+		fi
 	}
 
 
