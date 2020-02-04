@@ -214,10 +214,19 @@ INCLUDE
 
 	function __install_peco() {
 		__installing_caption "peco"
-		__link "$DOTFILES/peco" "$HOME/.peco"
 
-		__ls -d "$HOME/.peco"
-		__ls -a "$HOME/.peco/"
+		local PECO_DIR PECO_OLD_DIR;
+
+		PECO_DIR="$HOME/.config/peco"
+		PECO_OLD_DIR="$HOME/.peco"
+
+		__rm "$PECO_OLD_DIR"
+
+		__mkdir "$PECO_DIR"
+		__link "$DOTFILES/peco/config.json" "$PECO_DIR/config.json"
+
+		__ls -d "$PECO_DIR"
+		__ls -a "$PECO_DIR/"
 
 		echo
 	}
