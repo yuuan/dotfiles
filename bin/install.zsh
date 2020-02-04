@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tmux, vim, zsh\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tmux, vim, zsh, zplug\e[m
 HELP
 	}
 
