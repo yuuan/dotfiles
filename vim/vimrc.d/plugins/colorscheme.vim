@@ -25,7 +25,8 @@ set background=dark
 colorscheme gruvbox
 
 " タブ文字の色
-highlight SpecialKey ctermfg=236 ctermbg=16
+" highlight SpecialKey ctermfg=236 ctermbg=16
+highlight SpecialKey ctermfg=196 ctermbg=16
 
 " 検索結果の色
 " highlight Search ctermfg=16 ctermbg=214
