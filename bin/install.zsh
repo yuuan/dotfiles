@@ -352,6 +352,8 @@ INCLUDE
 	}
 
 	function __install_zplug() {
+		__installing_caption "zsh - zplug"
+
 		if [[ ! -d $HOME/.zplug ]]; then
 			__mkdir "$HOME/.zplug"
 			__exec "curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh"
