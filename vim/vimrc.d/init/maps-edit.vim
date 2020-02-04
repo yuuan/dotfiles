@@ -11,7 +11,7 @@ inoremap <C-E> <End>
 " Ctrl + h, j, k, l でカーソル移動
 inoremap <C-H> <Left>
 inoremap <C-J> <Down>
-inoremap <C-K> <Up>
+"inoremap <C-K> <Up>
 inoremap <C-L> <Right>
 
 " Ctrl + k で行末まで削除
