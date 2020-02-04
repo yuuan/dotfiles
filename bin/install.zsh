@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tmux, vim, zsh, zplug\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tmux, tpm, vim, zsh, zplug\e[m
 HELP
 	}
 
@@ -248,26 +248,39 @@ INCLUDE
 		TMUX_DIR="$HOME/.tmux"
 		TMUX_CONF="$HOME/.tmux.conf"
 		TMUX_CONFIGS="$TMUX_DIR/conf.d"
-		TMUX_PLUGINS="$TMUX_DIR/plugins"
-		TMUX_PLUGINS_TPM="$TMUX_PLUGINS/tpm"
 
 		__mkdir "$TMUX_DIR"
 
 		__link "$DOTFILES/tmux/tmux.conf" "$TMUX_CONF"
 		__link "$DOTFILES/tmux/conf.d" "$TMUX_CONFIGS"
 
-		__mkdir "$TMUX_PLUGINS"
-
-		if [ ! -d "$TMUX_PLUGINS_TPM" ]; then
-			__exec "git clone --depth 1 https://github.com/tmux-plugins/tpm \"$TMUX_PLUGINS_TPM\""
-		fi
+		__install_tpm
 
 		__ls -dr "$TMUX_CONF" "$TMUX_DIR"
 		__ls -a "$TMUX_DIR/"
 		__ls -a "$TMUX_CONFIGS/"
-		__ls -a "$TMUX_PLUGINS/"
 
 		echo
+	}
+
+	function __install_tpm() {
+		__installing_caption "tmux - TPM"
+
+		local TMUX_DIR TMUX_PLUGINS TMUX_PLUGINS_TPM_DIR
+
+		TMUX_DIR="$HOME/.tmux"
+		TMUX_PLUGINS="$TMUX_DIR/plugins"
+		TMUX_PLUGINS_TPM="$TMUX_PLUGINS/tpm"
+
+		if [[ ! -d "$TMUX_PLUGINS" ]]; then
+			__mkdir "$TMUX_PLUGINS"
+
+			if [ ! -d "$TMUX_PLUGINS_TPM" ]; then
+				__exec "git clone --depth 1 https://github.com/tmux-plugins/tpm \"$TMUX_PLUGINS_TPM\""
+			fi
+		fi
+
+		__exec $TMUX_PLUGINS_TPM/bin/install_plugins
 	}
 
 	function __install_vim_modules() {
@@ -377,6 +390,9 @@ INCLUDE
 						;;
 					tmux)
 						__install_tmux
+						;;
+					tpm)
+						__install_tpm
 						;;
 					vim)
 						__install_vim
