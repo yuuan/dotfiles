@@ -17,9 +17,10 @@ let g:switch_custom_definitions = [
 	\     [ 'yes', 'no' ],
 	\     [ 'on', 'off' ],
 	\     [ 'enable', 'disable' ],
+	\     [ 'Enable', 'Disable' ],
 	\     [ 'allow', 'deny' ],
 	\     [ 'required', 'sometimes', 'optional' ],
-	\     [ 'var', 'let' ],
+	\     [ 'var', 'let', 'const' ],
 	\     [ 'my', 'our', 'local' ],
 	\     {
 	\         '\>->\(\w\{1,}\)\>': '[''\1'']',
