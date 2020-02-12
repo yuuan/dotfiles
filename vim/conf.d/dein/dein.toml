@@ -173,7 +173,12 @@ repo = 'rking/ag.vim'
 
 # 構文チェック
 [[plugins]]
+repo = 'w0rp/ale'
+if = 'has("nvim")'
+
+[[plugins]]
 repo = 'vim-syntastic/syntastic'
+if = '! has("nvim")'
 
 # 色んな Syntax 詰め合わせ
 [[plugins]]
