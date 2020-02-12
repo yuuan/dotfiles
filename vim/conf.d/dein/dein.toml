@@ -184,6 +184,7 @@ if = '! has("nvim")'
 [[plugins]]
 repo = 'sheerun/vim-polyglot'
 
+# fluentd の Syntax
 [[plugins]]
 repo = 'itkq/fluentd-vim'
 
