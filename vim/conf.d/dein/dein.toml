@@ -178,15 +178,6 @@ repo = 'sheerun/vim-polyglot'
 repo = 'itkq/fluentd-vim'
 
 
-# Fixer
-# ------------------------------
-
-#[[plugins]]
-#repo = 'stephpy/vim-php-cs-fixer'
-#on_ft = 'php'
-#on_i = 1
-
-
 # Language Server
 # ------------------------------
 
