@@ -103,17 +103,6 @@ repo = 'AndrewRadev/switch.vim'
 [[plugins]]
 repo = 'tyru/caw.vim'
 
-# スニペットを扱えるようにする
-[[plugins]]
-repo = 'Shougo/neosnippet'
-depends = 'Shougo/neosnippet-snippets'
-on_i = 1
-
-# スニペット集
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-on_i = 1
-
 # ペースとしたときにペーストモードにする
 [[plugins]]
 repo = 'ConradIrwin/vim-bracketed-paste'
@@ -245,6 +234,21 @@ on_i = 1
 repo = 'mhartington/deoplete-typescript'
 if = 'has("nvim") && has("python3")'
 on_ft = 'typescript'
+on_i = 1
+
+
+# Snippet
+# ------------------------------
+
+# スニペットを扱えるようにする
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = 'Shougo/neosnippet-snippets'
+on_i = 1
+
+# スニペット集
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 on_i = 1
 
 
