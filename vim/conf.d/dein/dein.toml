@@ -191,9 +191,15 @@ repo = 'itkq/fluentd-vim'
 # ------------------------------
 
 [[plugins]]
-repo = 'phpactor/phpactor'
-on_ft = ['php']
-build = 'composer install'
+repo = 'prabirshrestha/async.vim'
+depends = ['vim-lsp']
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = ['vim-lsp-settings']
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
 
 
 # Deoplete / Neocomplete
@@ -202,7 +208,12 @@ build = 'composer install'
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim") && has("python3")'
-depends = ['deoplete-phpactor', 'deoplete-laravel-plugin', 'deoplete-typescript']
+depends = [
+	'deoplete-phpactor',
+	'deoplete-laravel-plugin',
+	'deoplete-typescript',
+	'lighttiger2505/deoplete-vim-lsp'
+]
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
@@ -213,15 +224,13 @@ repo = 'Shougo/neco-syntax'
 on_i = 1
 
 [[plugins]]
+repo = 'lighttiger2505/deoplete-vim-lsp'
+if = 'has("nvim")'
+
+[[plugins]]
 repo = 'zchee/deoplete-zsh'
 if = 'has("nvim") && has("python3")'
 on_ft = 'zsh'
-on_i = 1
-
-# PHP の補完に Phpactor を使う
-[[plugins]]
-repo  = 'kristijanhusak/deoplete-phpactor'
-on_ft = ['php']
 on_i = 1
 
 [[plugins]]
