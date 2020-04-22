@@ -7,7 +7,7 @@ augroup vim_cursorword_init
 	autocmd!
 
 	" 変数宣言
-	autocmd BufNewFile,BufRead * let b:cursorword = 0
+	autocmd BufNewFile,BufRead * let b:cursorword = has('nvim')
 augroup end
 
 " `_` キーでオン/オフ設定
