@@ -226,6 +226,15 @@ snippet use_Fluent
 options head
 	use Illuminate\Support\Fluent${0};
 
+snippet QueryBuilder
+regexp '\%(\\\)\@<!Builder'
+options word
+	\Illuminate\Database\Query\Builder${0}
+
+snippet use_QueryBuilder
+options head
+	use Illuminate\Database\Query\Builder;${0}
+
 snippet Builder
 regexp '\%(\\\)\@<!Builder'
 options word
