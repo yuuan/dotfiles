@@ -31,11 +31,13 @@ noremap <PageDown> <C-D>
 		if &number
 			setlocal nonumber
 			setlocal nolist
+			setlocal signcolumn=no
 			execute ":IndentLinesDisable"
 			execute ":GitGutterDisable"
 		else
 			setlocal number
 			setlocal list
+			setlocal signcolumn=auto
 			execute ":IndentLinesEnable"
 			execute ":GitGutterEnable"
 		endif

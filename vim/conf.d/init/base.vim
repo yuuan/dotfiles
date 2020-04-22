@@ -5,6 +5,9 @@
 " 行番号を表示
 set number
 
+" エラーのある行に印を表示
+set signcolumn=auto
+
 " タブ文字が対応するスペースの数
 set tabstop=4
 set softtabstop=4
