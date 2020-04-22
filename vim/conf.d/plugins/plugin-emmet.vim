@@ -16,6 +16,5 @@ augroup vimrc_plugin_emmet
 	autocmd!
 
 	" 次の FileType でのみ有効化
-	autocmd FileType html,css,blade EmmetInstall
-
+	autocmd FileType html,css,blade,javascriptreact,typescriptreact EmmetInstall
 augroup end
