@@ -15,7 +15,7 @@ let g:deoplete#auto_complete_start_length = 1
 let g:deoplete#enable_smart_case = 1
 
 " メニューの幅 (default: 40)
-let g:deoplete#max_menu_width = 60
+let g:deoplete#max_menu_width = 100
 
 " 入力してから候補を出すまでのミリ秒数 (default: 50)
 let g:deoplete#auto_complete_delay = 0
