@@ -10,6 +10,9 @@ augroup vimrc_file_types
 	autocmd BufNewFile,BufRead *.phtml set filetype=php
 	autocmd BufNewFile,BufRead *.ctp set filetype=php
 
+	" .neon は YAML
+	autocmd BufNewFile,BufRead *.neon{,.dist} set filetype=yaml
+
 	" Twig
 	autocmd BufNewFile,BufRead *.tpl set filetype=twig
 	autocmd BufNewFile,BufRead *.volt set filetype=twig
