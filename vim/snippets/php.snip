@@ -518,7 +518,7 @@ options head, indent
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function ${1:#:func}()
+	public function ${1:#:func}(): BelongsTo
 	{
 		return $this->belongsTo(${2:\App}::class${3:, ''}${4:, ''});
 	}
@@ -530,7 +530,7 @@ options head, indent
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
 	 */
-	public function ${1:#:func}()
+	public function ${1:#:func}(): HasOne
 	{
 		return $this->hasOne(${2:\App}::class${3:, ''});
 	}
@@ -542,7 +542,7 @@ options head, indent
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
-	public function ${1:#:func}()
+	public function ${1:#:func}(): HasMany
 	{
 		return $this->hasMany(${2:\App}::class${3:, ''});
 	}
@@ -554,7 +554,7 @@ options head, indent
 	 *
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
 	 */
-	public function ${1:#:func}()
+	public function ${1:#:func}(): BelongsToMany
 	{
 		return $this->belongsToMany(${2:\App}::class${3:, 'table_table'}${3:, 'our_id'}${4:, 'their_id'})${5:->withPivot('', '')}${6:->withTimestamps()};
 	}
