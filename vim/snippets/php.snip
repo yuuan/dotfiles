@@ -184,6 +184,10 @@ options head
 		${0://}
 	}
 
+snippet dec
+options word
+	declare(strict_types=1);${0}
+
 snippet json_encode
 options word
 	json_encode(${0}${1:, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})
