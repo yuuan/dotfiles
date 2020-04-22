@@ -502,10 +502,11 @@ options head
 snippet test
 options head, word, indent
 	/**
-	 * \`${2}()\` のテスト
+	 * ${2}
 	 *
+	 * @return void
 	 */
-	public function test${1}()
+	public function test${1}(): void
 	{
 		${3://}
 	}
