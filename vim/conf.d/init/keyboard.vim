@@ -102,7 +102,7 @@ let s:maps += [
 	\   [ '<Nul>', '<C-Space>' ],
 \ ]
 
-for [s:str, s:code] in s:maps
-	exe 'map '.s:str.' '.s:code
-	exe 'map! '.s:str.' '.s:code
-endfor
+"for [s:str, s:code] in s:maps
+"	exe 'map '.s:str.' '.s:code
+"	exe 'map! '.s:str.' '.s:code
+"endfor
