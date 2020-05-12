@@ -27,6 +27,15 @@ cnoremap <C-P> <C-R>"
 " インサートモードで Ctrl + p で貼り付け
 inoremap <buffer> <C-p> <C-r>0
 
+" x で削除した文字をヤンクしない
+nnoremap x "_x
+
+" s で置換した文字をヤンクしない
+nnoremap s "_s
+
+" ビジュアルモードで貼り付けたときに削除された文字をヤンクしない
+vnoremap p "_dP
+
 " 単語を選択
 nnoremap + viw
 
