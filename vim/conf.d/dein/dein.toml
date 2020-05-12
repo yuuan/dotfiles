@@ -244,12 +244,6 @@ on_i = 1
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = 'Shougo/neosnippet-snippets'
-on_i = 1
-
-# スニペット集
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-on_i = 1
 
 
 # Colorschema
