@@ -67,7 +67,7 @@ function prompt-color() {
 
 function prompt-color-reset() {
 	PROMPT_COLOR="${PROMPT_COLOR:-$(prompt-color)}"
-	PROMPT="%F{$PROMPT_COLOR}[%n@$HOST_SCREEN_NAME %(?.'-'.%F{red}*_*%f%F{$PROMPT_COLOR})]%(!.#.$) %f"
+	PROMPT="%F{$PROMPT_COLOR}[%n@$HOST_SCREEN_NAME]%(!.#.$) %f"
 	PROMPT2="%F{$PROMPT_COLOR}%_> %f"
 }
 
