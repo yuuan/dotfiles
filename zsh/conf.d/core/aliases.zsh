@@ -37,4 +37,7 @@ alias laz="ls -laZ"
 alias ssh-config="${EDITOR:-vim} ${HOME}/.ssh/config"
 alias sudo-sh="sudo zsh -c"
 
+alias dc="docker-compose"
+compdef '_dispatch docker-compose docker-compose' dc
+
 alias ..='cd ..'
