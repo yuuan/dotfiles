@@ -200,7 +200,6 @@ repo = 'mattn/vim-lsp-settings'
 repo = 'Shougo/deoplete.nvim'
 if = 'has("nvim") && has("python3")'
 depends = [
-	'deoplete-phpactor',
 	'deoplete-laravel-plugin',
 	'deoplete-typescript',
 	'lighttiger2505/deoplete-vim-lsp'
