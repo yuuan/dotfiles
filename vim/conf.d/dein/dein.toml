@@ -270,9 +270,6 @@ repo = 'vim-scripts/Wombat'
 repo = 'nanotech/jellybeans.vim'
 
 [[plugins]]
-repo = 'morhetz/gruvbox'
-
-[[plugins]]
 repo = 'junegunn/seoul256.vim'
 
 [[plugins]]
