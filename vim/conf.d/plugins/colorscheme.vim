@@ -35,15 +35,3 @@ highlight SpecialKey ctermfg=196 ctermbg=16
 " highlight MatchParen ctermfg=15 ctermbg=124
 " highlight MatchParen ctermfg=8 ctermbg=154
 highlight MatchParen ctermfg=8 ctermbg=208
-
-
-" Windows で 256 色表示ができないのでひとまず Wombat にする
-if has("win32") || has("win64")
-	colorscheme wombat
-endif
-
-" GUIでのカラースキーマ
-if has('gui_running')
-	set background=light
-	colorscheme solarized
-endif
