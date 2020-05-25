@@ -198,7 +198,7 @@ repo = 'mattn/vim-lsp-settings'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-if = 'has("nvim") && has("python3")'
+if = 'has("python3") && v:version >= 800'
 depends = [
 	'deoplete-laravel-plugin',
 	'deoplete-typescript',
@@ -207,7 +207,7 @@ depends = [
 
 [[plugins]]
 repo = 'Shougo/neocomplete'
-if = '! has("nvim") && has("lua")'
+if = 'has("lua") && v:version < 800'
 
 [[plugins]]
 repo = 'Shougo/neco-syntax'
