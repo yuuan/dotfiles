@@ -11,6 +11,7 @@ path=(
 	./node_modules/.bin
 	$HOME/.composer/vendor/bin
 	$HOME/.go/bin
+	$HOME/.yarn/bin
 	$path
 )
 
