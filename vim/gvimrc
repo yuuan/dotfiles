@@ -5,7 +5,7 @@ set columns=120
 set lines=40
 set transparency=10
 set antialias
-set guifont=Ricty\ Regular\ for\ Powerline:h12
+set guifont=Cica-A:h12
 
 " Windows で文字の表示を綺麗にする
 if has("win32") || has("win64")
