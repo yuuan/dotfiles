@@ -29,33 +29,37 @@ function prompt-color() {
 	elif [[ "$HOST_SCREEN_NAME" =~ "^(conoha|gitlab|redmine)$" ]]; then
 		echo -n "172"
 
-	# AWS では ANCI 緑
+	# AWS では黄色
 	elif [[ "$HOSTNAME" =~ "^ip-[0-9]{1,3}-[0-9]{1,3}-[0-9]{1,3}-[0-9]{1,3}$" ]]; then
-		echo -n "green"
+		echo -n "178"
 	elif [[ "$HOSTNAME" =~ "\.compute\.amazonaws\.com$" ]]; then
-		echo -n "green"
-
-	# NAS は ANSI 水色
-	elif [[ $(echo "$HOST_SCREEN_NAME" | ${=HASHER}) =~ "^2158b18755afe74ed3bc8375947effc06b33e9410c64bb02018f347924a7df33" ]]; then
-		echo -n "cyan"
+		echo -n "178"
 
 	# VPS では黄色
 	elif [[ $(echo "$HOST_SCREEN_NAME" | ${=HASHER}) =~ "^a4dfea152a9c7e27c2fbc44fd0566604675c54a4c3e935a02034520edbc49126" ]]; then
 		echo -n "178"
 
-	# Cygwin/MinGW は ANSI 水色
+	# Cygwin/MinGW は緑
 	elif [[ $(uname -sr) =~ "^(CYGWIN|MINGW)$" ]]; then
-		echo -n "cyan"
+		echo -n "070"
+
+	# macOS は緑
+	elif [[ ${OSTYPE} =~ "darwin*" ]]; then
+		echo -n "070"
+
+	# WSL は緑
+	elif [[ $(uname -sr) =~ "Microsoft" ]]; then
+		echo -n "070"
 
 	# プライベートは青
 	elif [[ $(echo "$USER" | ${=HASHER}) =~ "^9cec2a69978d16c588d56d037e52891884b91899591022fb15ed20f809af3000" ]]; then
 		echo -n "039"
 
-	# 仕事用は緑
+	# 仕事用は黄色
 	elif [[ $(echo "$USER" | ${=HASHER}) =~ "^7d014540ab9e1e807b98c8ae6dfcb891caff0ef11262937afd792a07516b15a1" ]]; then
-		echo -n "070"
+		echo -n "178"
 
-	# それ以外は青
+	# それ以外は ANSI 青
 	else
 		echo -n "blue"
 	fi
