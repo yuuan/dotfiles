@@ -3,22 +3,7 @@
 # ----------------------------------------
 
 if [[ -f $HOME/.zplug/init.zsh ]]; then
-	local __zplug_ghr_os
-
-	# zplug を読み込む
 	source $HOME/.zplug/init.zsh
-
-	case ${OSTYPE} in
-		darwin*)
-			__zplug_ghr_os="*darwin*amd64*"
-			;;
-		linux*)
-			__zplug_ghr_os="*linux*amd64*"
-			;;
-		cygwin*)
-			__zplug_ghr_os="*windows*amd64*"
-			;;
-	esac
 
 
 	# plugins
@@ -26,23 +11,20 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	## zsh-completions
 	zplug "zsh-users/zsh-completions"
 
-	## dircolors-solarized
-	zplug 'joel-porquet/zsh-dircolors-solarized', if:"[[ $OSTYPE != *darwin* ]]"
-
 	## zsh-syntax-highlighting
-	zplug "zsh-users/zsh-syntax-highlighting"
+	zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 	## zsh-autosuggestions
 	zplug "zsh-users/zsh-autosuggestions", defer:2
 
 	## fzf
-	zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf, use:${__zplug_ghr_os:-os}
+	zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
 
 	## fzf-tmux
 	zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
 
 	## peco
-	zplug "peco/peco", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
+	zplug "peco/peco", as:command, from:gh-r
 
 	## peco-tmux
 	zplug "b4b4r07/peco-tmux.sh", as:command, use:'(*).sh', rename-to:'$1'
@@ -55,16 +37,9 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 		zplug "b4b4r07/history", use:misc/zsh/init.zsh
 	fi
 
-	## jid
-	zplug "simeji/jid", as:command, from:gh-r, use:${__zplug_ghr_os:-os}
-
-	## git-foresta
-	zplug "takaaki-kasai/git-foresta", as:command, use:git-foresta
-
 
 	# screen/tmux を使っていなければ
 	if [[ -z "$STY$TMUX" ]]; then
-
 		# インストールしてない項目があればインストールするか訊ねる
 		if ! zplug check ${ZPLUG_VERBOSE:+--verbose}; then
 			printf "Install zplug modules? [y/N]: "
@@ -74,12 +49,8 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 				echo
 			fi
 		fi
-
 	fi
 
 	# プラグインを読み込み、コマンドにパスを通す
 	zplug load ${ZPLUG_VERBOSE:+--verbose}
-
-	# `peco` があれば `peco` を使う
-	export ZPLUG_FILTER="peco:${ZPLUG_FILTER:-}"
 fi

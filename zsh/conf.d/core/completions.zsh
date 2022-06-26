@@ -3,11 +3,10 @@
 # ----------------------------------------
 
 # 自作した補完ファイルを追加
-fpath=($ZSHHOME/functions $fpath)
+fpath=($ZSH_HOME/functions $fpath)
 
-# compinit は zplug で行うためコメントアウト
-#autoload -U compinit
-#compinit -u
+# 補完を有効にする
+autoload -Uz compinit && compinit -u
 
 # カーソルの位置から補完を開始する
 setopt COMPLETE_IN_WORD
@@ -15,7 +14,7 @@ setopt COMPLETE_IN_WORD
 # 補完候補を一覧表示
 setopt AUTO_LIST
 
-# TAB キーで順に補完候補を切り替える
+# Tab キーで順に補完候補を切り替える
 setopt AUTO_MENU
 
 # ディレクトリ名の補完で末尾に `/` を付加し次の補完に備える
@@ -29,9 +28,6 @@ setopt LIST_TYPES
 
 # `--prefix=/usr` などの `=` 以降も補完する
 setopt MAGIC_EQUAL_SUBST
-
-# サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
-setopt AUTO_RESUME
 
 # 補完候補をキャッシュする
 zstyle ':completion:*' use-cache true
@@ -47,3 +43,8 @@ zstyle ':completion:*:warnings' format '%F{red}No matches for: %F{yellow}%d%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}- %d -%f'
 zstyle ':completion:*:corrections' format '%F{yellow}%d %F{red}(errors: %e)%f'
 zstyle ':completion:*:options' description 'yes'
+
+# `ls` コマンドにカラースキーマが設定されていたら補完にも使う
+if [ -n "${LS_COLORS}" ]; then
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+fi

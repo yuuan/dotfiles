@@ -11,33 +11,27 @@ function @ {
 }
 
 # ファイルに変更を加える前に確認する
-
-#alias rm="rm -i"
-#alias cp="cp -i"
-alias mv="mv -i"
+alias cp='cp -i'
+alias mv='mv -i'
 
 
 ## `ls` コマンドの設定
-
 case ${OSTYPE} in
 	darwin*)
 		alias ls='ls -FG'
 		;;
-	linux* | cygwin*)
+	linux*|cygwin*)
 		alias ls='ls -F --time-style=+"%Y/%m/%d %H:%M:%S" --color=auto'
 		;;
 esac
 
+alias la='ls -a'
+alias ll='ls -lh'
+alias lal='ls -lah'
+alias lz='ls -lhZ'
+alias laz='ls -laZ'
 
-alias la="ls -a"
-alias ll="ls -lh"
-alias lal="ls -lah"
-alias lz="ls -lhZ"
-alias laz="ls -laZ"
-alias ssh-config="${EDITOR:-vim} ${HOME}/.ssh/config"
-alias sudo-sh="sudo zsh -c"
-
-alias dc="docker-compose"
-compdef '_dispatch docker-compose docker-compose' dc
-
-alias ..='cd ..'
+# 短縮コマンド
+alias ssh-config="edit ${HOME}/.ssh/config"
+alias dc='docker compose'
+alias s='git status'

@@ -2,14 +2,11 @@
 # 基本設定
 # ----------------------------------------
 
-# バックグラウンドプロセスを高速に
-#setopt NOBGNICE
+# バックグラウンドプロセスを低速にしない
+setopt NOBGNICE
 
-# メールチェックを無効にする
-#MAILCHECK=0
-
-# 終了時に実行中のプロセスに `HUP` シグナルを送る
-#setopt HUP
+# シェル終了時に実行中のプロセスに `HUP` シグナルを送らない
+setopt NO_HUP
 
 # `${fg[white]}` の書式で色指定を利用する
 autoload -U colors
@@ -26,3 +23,6 @@ setopt AUTOPUSHD
 
 # `zmv` コマンドを有効にする
 autoload -U zmv
+
+# サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt AUTO_RESUME

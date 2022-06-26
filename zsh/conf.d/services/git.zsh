@@ -2,32 +2,30 @@
 # `git` コマンドに関する設定
 # ----------------------------------------
 
-function git-hash() {
+function __services::git::commit::select() {
 	git log --oneline --branches | fzf-tmux --prompt "commit>" | awk '{print $1}'
 }
 
-function git-branch() {
-	git branch -a | fzf-tmux --prompt "branch>" | head -n 1 | sed -e "s/^\*\s*//g"
+function __services::git::branch::select() {
+	git branch -a |
+		awk '{print $NF}' |
+		fzf-tmux -- \
+			--layout=reverse --info=hidden --no-multi --prompt="branch> " \
+			--preview="echo {} | xargs git log --color=always --graph --pretty=format:'<%C(red)%h%C(reset)> %s%C(yellow)%d%C(reset) %C(blue)(%an)%C(reset)'" |
+		head -n 1
 }
 
-function git-changed-files() {
-	git status --short | fzf-tmux --prompt "changes files>" | awk '{print $2}'
+function __services::git::changed_files::select() {
+	git status --short | fzf-tmux --prompt "changed file>" | awk '{print $2}'
 }
 
 if which fzf-tmux &> /dev/null; then
-	alias -g @HASH='$(git-hash)'
-	alias -g @H='$(git-hash)'
-	alias -g @BRANCH='$(git-branch)'
-	alias -g @B='$(git-branch)'
-	alias -g @FILE='$(git-changed-files)'
-	alias -g @F='$(git-changed-files)'
+	alias -g @HASH='$(__services::git::commit::select)'
+	alias -g @H='$(__services::git::commit::select)'
+	alias -g @BRANCH='$(__services::git::branch::select)'
+	alias -g @B='$(__services::git::branch::select)'
+	alias -g @FILE='$(__services::git::changed_files::select)'
+	alias -g @F='$(__services::git::changed_files::select)'
 
-	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} @HASH @H @BRANCH @B @FILE @F)
+	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@HASH' '@H' '@BRANCH' '@B' '@FILE' '@F')
 fi
-
-alias s='git status -u'
-alias st='git status -u'
-alias gr='git graph'
-alias gb='git branch -a'
-alias gd='git diff'
-alias gdc='git diff --cached'

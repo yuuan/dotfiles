@@ -1,54 +1,21 @@
-#
-# .zshrc is sourced in interactive shells.
-# It should contain commands to set up aliases,
-# functions, options, key bindings, etc.
-#
-
 # システム全体の設定を読み込む
-if [ -f /etc/zshrc ]; then
-	source /etc/zshrc
-fi
-
-export ZSHHOME="${HOME}/.zsh"
-
-# ヘルパー関数を読み込む
-source "${ZSHHOME}/helpers.zsh"
-
+__helpers::source "/etc/zshrc"
 
 # 先に読ませたい設定を読み込む
-
-local ZSHRC_INIT="${HOME}/.zshrc.init"
-
-if [ -f "${ZSHRC_INIT}" ]; then
-	source ${ZSHRC_INIT}
-fi
+__helpers::source "${HOME}/.zshrc.init"
 
 
 # `conf.d` 内のファイルを読み込む
 
-local ZSHRC_DIR="${ZSHHOME}/conf.d"
+local ZSHRC_DIR="${ZSH_HOME}/conf.d"
 
-__zshrc::sources "${ZSHRC_DIR}/core"
-__zshrc::sources "${ZSHRC_DIR}/plugins.init"
-__zshrc::source  "${ZSHRC_DIR}/zplug.zsh"
-__zshrc::sources "${ZSHRC_DIR}/services"
+__helpers::sources "${ZSHRC_DIR}/core"
+__helpers::sources "${ZSHRC_DIR}/plugins"
+__helpers::source  "${ZSHRC_DIR}/zplug.zsh"
+__helpers::sources "${ZSHRC_DIR}/functions"
+__helpers::sources "${ZSHRC_DIR}/services"
+__helpers::sources "${ZSHRC_DIR}/aliases"
 
 
 # 環境ごとの設定を読み込む
-
-local ZSHRC_LOCAL="${HOME}/.zshrc.local"
-
-if [ -f "${ZSHRC_LOCAL}" ]; then
-	source ${ZSHRC_LOCAL}
-fi
-
-
-#
-# `zshrc.local` での設定例
-#
-
-# ブランチ名の表示を無効化
-#export CURRENT_BRANCH_DISABLED=1
-
-# ブランチ名の表示色を固定化
-#export CURRENT_BRANCH_COLOR_DISABLED=1
+__helpers::source "${HOME}/.zshrc.local"

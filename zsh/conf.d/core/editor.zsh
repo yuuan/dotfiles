@@ -9,3 +9,7 @@ elif which vim &> /dev/null; then
 elif which vi &> /dev/null; then
 	export EDITOR=vi
 fi
+
+function edit() {
+	$(echo ${=EDITOR:-vim}) "$@"
+}
