@@ -11,3 +11,4 @@ alias gdc='git diff --cached'
 
 alias t='tig'
 alias ta='tig --all'
+alias co='__services::git::branch::switch'

@@ -19,6 +19,14 @@ function __services::git::changed_files::select() {
 	git status --short | fzf-tmux --prompt "changed file>" | awk '{print $2}'
 }
 
+function __services::git::branch::switch() {
+	local BRANCH=$(__services::git::branch::select)
+
+	if [ -n "$BRANCH" ]; then
+		git switch "$BRANCH"
+	fi
+}
+
 if which fzf-tmux &> /dev/null; then
 	alias -g @HASH='$(__services::git::commit::select)'
 	alias -g @H='$(__services::git::commit::select)'
