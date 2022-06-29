@@ -8,3 +8,6 @@ alias gr='git graph'
 alias gb='git branch'
 alias gd='git diff'
 alias gdc='git diff --cached'
+
+alias t='tig'
+alias ta='tig --all'
