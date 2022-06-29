@@ -6,11 +6,25 @@ function __older_than_laravel54() {
 }
 
 function __laravel5_get_command_list() {
-	which php &> /dev/null || return
+	local PHP
+	if which php82 &> /dev/null; then
+		PHP=php82
+	elif which php81 &> /dev/null; then
+		PHP=php81
+	elif which php80 &> /dev/null; then
+		PHP=php80
+	elif which php74 &> /dev/null; then
+		PHP=php74
+	elif which php &> /dev/null; then
+		PHP=php
+	else
+		return
+	fi
+
 	which perl &> /dev/null || return
 
 	if [[ -f artisan ]]; then
-		php artisan list --raw | perl -pe 's/:/\\:/g;s/([a-z\\:-]+)(?:\s+(.*))?/$1:$2/ig;'
+		$PHP artisan list --raw | perl -pe 's/:/\\:/g;s/([a-z\\:-]+)(?:\s+(.*))?/$1:$2/ig;'
 	fi
 }
 
