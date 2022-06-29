@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tmux, tpm, vim, zsh, zplug\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, zplug\e[m
 HELP
 	}
 
@@ -262,6 +262,17 @@ INCLUDE
 		__br
 	}
 
+	function __install_tig() {
+		__installing_caption "tig"
+
+		__link "$DOTFILES/tig/tigrc" "$HOME/.tigrc"
+
+		__done_caption
+
+		__ls -a "$HOME/.tigrc"
+		__br
+	}
+
 	function __install_tmux() {
 		__installing_caption "tmux"
 
@@ -397,6 +408,7 @@ INCLUDE
 			__install_jshint
 			__install_peco
 			__install_screen
+			__install_tig
 			__install_tmux
 			__install_vim
 			__install_nvim
@@ -419,6 +431,9 @@ INCLUDE
 						;;
 					screen)
 						__install_screen
+						;;
+					tig)
+						__install_tig
 						;;
 					tmux)
 						__install_tmux
