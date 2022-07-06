@@ -10,6 +10,7 @@ export ZSH_HISTORY_AUTO_SYNC=false
 
 # 絞り込み条件を上書き (値が無いとデフォルトが使われる)
 export ZSH_HISTORY_FILTER_OPTIONS=" "
+export ZSH_HISTORY_FILTER_OPTIONS_BY_DIR=" "
 
 # `b4b4r07/history` のエイリアス
 alias history-b4b4r07="command history"
