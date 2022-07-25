@@ -33,7 +33,7 @@ if [[ -f $HOME/.zplug/init.zsh ]]; then
 	zplug "b4b4r07/enhancd", use:init.sh
 
 	## history
-	zplug "b4b4r07/history", use:misc/zsh/init.zsh, if:"[ -n \"${commands[history]}\" ]"
+	zplug "b4b4r07/history", use:misc/zsh/init.zsh, if:"[ -n \"${commands[history]}\" -a \"$TERM_PROGRAM\" != vscode ]"
 
 
 	# screen/tmux を使っていなければ
