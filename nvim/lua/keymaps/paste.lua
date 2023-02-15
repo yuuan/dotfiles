@@ -1,0 +1,4 @@
+-- "" でペーストモード切り替え
+vim.keymap.set('n', '""', function()
+	vim.opt_local.paste = not vim.opt_local.paste:get()
+end, { noremap = true, silent = true })

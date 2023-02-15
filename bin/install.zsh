@@ -317,7 +317,10 @@ INCLUDE
 		__exec $TMUX_PLUGINS_TPM/bin/install_plugins
 	}
 
-	function __install_vim_modules() {
+	function __install_vim() {
+		__installing_caption "vim"
+		__link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
+
 		__mkdir "$HOME/.vim/backup/"
 		__mkdir "$HOME/.vim/swp/"
 		__mkdir "$HOME/.vim/undo/"
@@ -329,13 +332,6 @@ INCLUDE
 		__link "$DOTFILES/vim/conf.d" "$HOME/.vim/conf.d"
 		__link "$DOTFILES/vim/ftplugin" "$HOME/.vim/ftplugin"
 		__link "$DOTFILES/vim/snippets" "$HOME/.vim/snippets"
-	}
-
-	function __install_vim() {
-		__installing_caption "vim"
-		__link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
-
-		__install_vim_modules
 
 		__done_caption
 
@@ -346,19 +342,21 @@ INCLUDE
 
 	function __install_nvim() {
 		local NVIM_CONFIG_DIR; NVIM_CONFIG_DIR="$HOME/.config/nvim"
-		local NVIM_CONFIG; NVIM_CONFIG="$NVIM_CONFIG_DIR/init.vim"
+		local NVIM_CONFIG; NVIM_CONFIG="$NVIM_CONFIG_DIR/init.lua"
 
 		__mkdir "$NVIM_CONFIG_DIR"
 
 		__installing_caption "nvim"
-		__link "$DOTFILES/vim/vimrc" "$NVIM_CONFIG"
-
-		__install_vim_modules
+		__link "$DOTFILES/nvim/init.lua" "$NVIM_CONFIG"
+		__link "$DOTFILES/nvim/lua" "$NVIM_CONFIG_DIR/lua"
+		__link "$DOTFILES/nvim/ftplugin" "$NVIM_CONFIG_DIR/ftplugin"
+		__link "$DOTFILES/nvim/snippets" "$NVIM_CONFIG_DIR/snippets"
+		__mkdir "$NVIM_CONFIG_DIR/backup/"
 
 		__done_caption
 
-		__ls -dr "$HOME/.config/nvim/init.vim" "$HOME/.vim"
-		__ls -a "$HOME/.vim/"
+		__ls -dr "$NVIM_CONFIG" "$NVIM_CONFIG_DIR/lua" "$NVIM_CONFIG_DIR/ftplugin" "$NVIM_CONFIG_DIR/snippets"
+		__ls -a "$NVIM_CONFIG_DIR"
 		__br
 	}
 
