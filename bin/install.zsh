@@ -344,9 +344,12 @@ INCLUDE
 		local NVIM_CONFIG_DIR; NVIM_CONFIG_DIR="$HOME/.config/nvim"
 		local NVIM_CONFIG; NVIM_CONFIG="$NVIM_CONFIG_DIR/init.lua"
 
+		__installing_caption "nvim"
+
 		__mkdir "$NVIM_CONFIG_DIR"
 
-		__installing_caption "nvim"
+		__rm "$NVIM_CONFIG_DIR/init.vim"
+
 		__link "$DOTFILES/nvim/init.lua" "$NVIM_CONFIG"
 		__link "$DOTFILES/nvim/lua" "$NVIM_CONFIG_DIR/lua"
 		__link "$DOTFILES/nvim/ftplugin" "$NVIM_CONFIG_DIR/ftplugin"
