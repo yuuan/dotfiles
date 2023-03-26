@@ -10,7 +10,16 @@ vim.keymap.set('n', '<C-f>b', builtin.buffers, {})
 vim.keymap.set('n', '<C-f>c', builtin.colorscheme, {})
 vim.keymap.set('n', '<C-f>r', builtin.oldfiles, {})
 vim.keymap.set('n', '<C-f>h', builtin.help_tags, {})
-vim.keymap.set('n', '<C-f>d', builtin.lsp_references, {})
+
+vim.keymap.set('n', 'gr', builtin.lsp_references, {})
+vim.keymap.set('n', 'gd', function() builtin.lsp_definitions({ jump_type = 'tab' }) end, {})
+vim.keymap.set('n', 'gi', function() builtin.lsp_implementations({ jump_type = 'tab' }) end, {})
+vim.keymap.set('n', 'gt', function() builtin.lsp_type_definitions({ jump_type = 'tab' }) end, {})
+vim.keymap.set('n', 'ge', function() builtin.diagnostics({ jump_type = 'tab' }) end, {})
+vim.keymap.set('n', '<C-w>gd', function() builtin.lsp_definitions({ jump_type = 'vsplit' }) end, {})
+vim.keymap.set('n', '<C-w>gi', function() builtin.lsp_implementations({ jump_type = 'vsplit' }) end, {})
+vim.keymap.set('n', '<C-w>gt', function() builtin.lsp_type_definitions({ jump_type = 'vsplit' }) end, {})
+vim.keymap.set('n', '<C-w>ge', function() builtin.diagnostics({ jump_type = 'vsplit' }) end, {})
 
 local actions = require('telescope.actions')
 local fb_actions = telescope.extensions.file_browser.actions
