@@ -213,92 +213,59 @@ return require('packer').startup(function(use)
   -- ------------------------------
 
   use {
-    'Shougo/ddc.vim',
-    event = 'InsertEnter',
+    'hrsh7th/nvim-cmp',
     requires = {
-      -- 補完用のポップアップウィンドウを pum.vim で表示
-      'Shougo/pum.vim',
-      'Shougo/ddc-ui-pum',
+      -- LSP を使った補完
+      'hrsh7th/cmp-nvim-lsp',
 
-      -- 補完候補の詳細情報をポップアップ表示
-      'matsui54/denops-popup-preview.vim',
+      -- バッファ内の単語を補完
+      'hrsh7th/cmp-buffer',
 
-      -- 引数などの情報をポップアップ表示
-      'matsui54/denops-signature_help',
+      -- ファイルパスを補完
+      'hrsh7th/cmp-path',
 
-      -- コマンドモードの補完にポップアップウィンドウを使用
-      'gelguy/wilder.nvim',
+      -- NeoVim の Lua API の補完
+      'hrsh7th/cmp-nvim-lua',
+
+      -- コマンドラインの補完
+      'hrsh7th/cmp-cmdline',
+
+      -- コマンドラインや検索の履歴から補完
+      'dmitmel/cmp-cmdline-history',
+
+      -- Git の Commit や GitHub の PR, Issue などを補完
+      'petertriho/cmp-git',
+
+      -- Snippet を補完
+      'hrsh7th/cmp-vsnip',
     },
     config = function()
-      require('plugins.ddc')
+      require('plugins.completion')
     end,
   }
 
-  -- Source --------
 
-  -- LSP を使って補完する Source
-  use 'Shougo/ddc-source-nvim-lsp'
+  -- ------------------------------
+  -- Snippet
+  -- ------------------------------
 
-  -- スニペット Source
   use {
-    'hrsh7th/vim-vsnip-integ',
-    event = 'InsertEnter',
-    requires = { 'hrsh7th/vim-vsnip' },
+    'hrsh7th/vim-vsnip',
+    requires = {
+      'hrsh7th/vim-vsnip-integ',
+    },
     config = function()
       -- スニペットの保存先
       vim.g.vsnip_snippet_dir = vim.fn.stdpath('config')..'/snippets'
 
-      -- jsx/tsx で JavaScript/TypeScript のスニペットを使う
-      vim.g.vsnip_filetypes = {}
-      vim.g.vsnip_filetypes.javascriptreact = { 'javascript' }
-      vim.g.vsnip_filetypes.typescriptreact = { 'typescript' }
-
-      -- pum.vim 使用時に LSP の testEdit に従いソースコードを修正
-      -- @see https://zenn.dev/matsui54/articles/2021-09-03-ddc-lsp
-      vim.cmd([[autocmd User PumCompleteDone call vsnip_integ#on_complete_done(g:pum#completed_item)]])
+      -- キーバインド
+      local opts = { expr = true, noremap = false }
+      vim.keymap.set('i', '<Tab>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], opts)
+      vim.keymap.set('s', '<Tab>', [[vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>']], opts)
+      vim.keymap.set('i', '<S-Tab>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], opts)
+      vim.keymap.set('s', '<S-Tab>', [[vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>']], opts)
     end,
   }
-
-  -- カーソル周辺の既出単語を補完する Source
-  use 'Shougo/ddc-around'
-
-  -- ファイル名を補完する Source
-  use 'LumaKernel/ddc-source-file'
-
-  -- コマンドの補完 Source
-  use 'Shougo/ddc-source-input'
-
-  -- コマンドモードで補完する Source
-  use 'Shougo/ddc-source-cmdline'
-
-  -- コマンドモードで履歴から補完する Source
-  use 'Shougo/ddc-source-cmdline-history'
-
-  -- ddu で使う補完 Source
-  use 'Shougo/ddc-source-line'
-
-  -- バッファからキーワードを補完する Source
-  use 'matsui54/ddc-buffer'
-
-  -- Lua 用の補完 Source
-  use 'Shougo/ddc-source-nvim-lua'
-
-  -- Zsh 用の補完 Source
-  use 'Shougo/ddc-zsh'
-
-  -- Vim Script の補完
-  use { 'Shougo/neco-vim', ft = {'vim', 'toml', 'markdown'} }
-
-  -- Vim Script の補完候補を Syntax ファイルから追加
-  use 'Shougo/neco-syntax'
-
-  -- Filter --------
-
-  -- 補完候補を入力中の単語で絞り込む Filter
-  use 'Shougo/ddc-matcher_head'
-
-  -- 補完候補を適切にソートする Filter
-  use 'Shougo/ddc-sorter_rank'
 
 
   -- ------------------------------
