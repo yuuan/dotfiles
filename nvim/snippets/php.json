@@ -1,0 +1,673 @@
+{
+  "Class file": {
+    "prefix": "php_class",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\$1;",
+      "",
+      "class $2${3: extends $4}",
+      "{",
+      "\t${5://}$0",
+      "}"
+    ],
+    "description": "Class definition in new file"
+  },
+  "Trait file": {
+    "prefix": "php_trait",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\$1;",
+      "",
+      "trait $2",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Trait definition in new file"
+  },
+  "Interface file": {
+    "prefix": "php_interface",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\$1;",
+      "",
+      "interface $2",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Interface definition in new file"
+  },
+  "Array file": {
+    "prefix": "php_array",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "return [",
+      "\t${1://}$0",
+      "];"
+    ],
+    "description": "Array definition in new file"
+  },
+  "Exception file": {
+    "prefix": "php_class_Exception",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\Exceptions\\\\$1;",
+      "",
+      "use Exception;",
+      "",
+      "class $2Exception extends Exception",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Exception class definition in new file"
+  },
+  "RuntimeException file": {
+    "prefix": "php_class_RuntimeException",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\Exceptions\\\\$1;",
+      "",
+      "use RuntimeException;",
+      "",
+      "class $2Exception extends RuntimeException",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "RuntimeException class definition in new file"
+  },
+  "LogicException file": {
+    "prefix": "php_class_LogicException",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\Exceptions\\\\$1;",
+      "",
+      "use LogicException;",
+      "",
+      "class $2Exception extends LogicException",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "LogicException class definition in new file"
+  },
+  "Enum file": {
+    "prefix": "php_enum",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace App\\\\$1;",
+      "",
+      "enum $2",
+      "{",
+      "\t${3:case $4}$0",
+      "}"
+    ],
+    "description": "Enum definition in new file"
+  },
+  "TestCase file": {
+    "prefix": "php_class_TestCase",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "namespace ${1:Tests};",
+      "",
+      "use PHPUnit\\\\Framework\\\\TestCase;",
+      "",
+      "class $2Test extends TestCase",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "TestCase class definition in new file"
+  },
+  "Strict mode": {
+    "prefix": "dec",
+    "body": [
+      "declare(strict_types=1);$0"
+    ],
+    "description": "Strict mode"
+  },
+  "json_encode": {
+    "prefix": "json_encode",
+    "body": [
+      "json_encode($0${1:, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})"
+    ],
+    "description": "json_encode() with pretty options"
+  },
+  "toJson": {
+    "prefix": "toJson",
+    "body": [
+      "toJson(${1:JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT})$0"
+    ],
+    "description": "toJson() with pretty options"
+  },
+  "Use Collection": {
+    "prefix": "use_Collection",
+    "body": [
+      "use Illuminate\\\\Support\\\\Collection;$0"
+    ],
+    "description": "Use Collection provided by Illuminate"
+  },
+  "Use LazyCollection": {
+    "prefix": "use_LazyCollection",
+    "body": [
+      "use Illuminate\\\\Support\\\\LazyCollection;$0"
+    ],
+    "description": "Use LazyCollection provided by Illuminate"
+  },
+  "use Query Builder": {
+    "prefix": "use_QueryBuilder",
+    "body": [
+      "use Illuminate\\\\Database\\\\Query\\\\Builder;$0"
+    ],
+    "description": "Use Query Builder provided by Illuminate"
+  },
+  "Use Eloquent Builder": {
+    "prefix": "use_Builder",
+    "body": [
+      "use Illuminate\\\\Database\\\\Eloquent\\\\Builder;$0"
+    ],
+    "description": "Use Builder provided by Eloquent"
+  },
+  "Use HasOne": {
+    "prefix": "use_HasOne",
+    "body": [
+      "use Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasOne;$0"
+    ],
+    "description": "Use HasOne provided by Eloquent"
+  },
+  "Use BelongsTo": {
+    "prefix": "use_BelongsTo",
+    "body": [
+      "use Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsTo;$0"
+    ],
+    "description": "Use BelongsTo provided by Eloquent"
+  },
+  "Use BelongsToMany": {
+    "prefix": "use_BelongsToMany",
+    "body": [
+      "use Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToMany;$0"
+    ],
+    "description": "Use BelongsToMany provided by Eloquent"
+  },
+  "Use BelongsToThrough": {
+    "prefix": "use_BelongsToThrough",
+    "body": [
+      "use Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\BelongsToThrough;$0"
+    ],
+    "description": "Use BelongsToThrough provided by Eloquent"
+  },
+  "Use Facade": {
+    "prefix": "use_Facades",
+    "body": [
+      "use Illuminate\\\\Support\\\\Facades\\\\$0"
+    ],
+    "description": "Use Facade provided by Illuminate"
+  },
+  "Use Request": {
+    "prefix": "use_Requests",
+    "body": [
+      "use App\\\\Http\\\\Requests\\\\$0"
+    ],
+    "description": "Use Request in Laravel"
+  },
+  "Use Controller": {
+    "prefix": "use_Controllers",
+    "body": [
+      "use App\\\\Http\\\\Controllers\\\\$0"
+    ],
+    "description": "Use Controller in Laravel"
+  },
+  "Use Middleware": {
+    "prefix": "use_Middlewares",
+    "body": [
+      "use App\\\\Http\\\\Middlewares\\\\$0"
+    ],
+    "description": "Use Middleware in Laravel"
+  },
+  "Use Resource": {
+    "prefix": "use_Resources",
+    "body": [
+      "use App\\\\Http\\\\Resources\\\\$0"
+    ],
+    "description": "Use Resource in Laravel"
+  },
+  "Use ViewComposer": {
+    "prefix": "use_ViewComposers",
+    "body": [
+      "use App\\\\Http\\\\ViewComposers\\\\$0"
+    ],
+    "description": "Use ViewComposer in Laravel"
+  },
+  "Use Model": {
+    "prefix": "use_Models",
+    "body": [
+      "use App\\\\Models\\\\$0"
+    ],
+    "description": "Use Model in Laravel"
+  },
+  "Use Service Provider": {
+    "prefix": "use_Providers",
+    "body": [
+      "use App\\\\Providers\\\\$0"
+    ],
+    "description": "Use Service Provider in Laravel"
+  },
+  "Use Exception": {
+    "prefix": "use_Exceptions",
+    "body": [
+      "use App\\\\Exceptions\\\\$0"
+    ],
+    "description": "Use Exception in Laravel"
+  },
+  "Use Console": {
+    "prefix": "use_Console",
+    "body": [
+      "use App\\\\Console\\\\$0"
+    ],
+    "description": "Use Console in Laravel"
+  },
+  "Use Console Command": {
+    "prefix": "use_Command",
+    "body": [
+      "use App\\\\Console\\\\Commands\\\\$0"
+    ],
+    "description": "Use Console Command in Laravel"
+  },
+  "Use Carbon": {
+    "prefix": "use_Carbon",
+    "body": [
+      "use Carbon\\\\Carbon;$0"
+    ],
+    "description": "Use Carbon"
+  },
+  "Use CarbonImmutable": {
+    "prefix": "use_CarbonImmutable",
+    "body": [
+      "use Carbon\\\\CarbonImmutable;$0"
+    ],
+    "description": "Use CarbonImmutable"
+  },
+  "Public method": {
+    "prefix": "puf",
+    "body": [
+      "public function $1($2)",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Public method"
+  },
+  "Protected method": {
+    "prefix": "prof",
+    "body": [
+      "protected function $1($2)",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Protected method"
+  },
+  "Private method": {
+    "prefix": "prif",
+    "body": [
+      "private function $1($2)",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Private method"
+  },
+  "Public class method": {
+    "prefix": "pusf",
+    "body": [
+      "public static function $1($2)",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Public class method"
+  },
+  "Protected class method": {
+    "prefix": "prosf",
+    "body": [
+      "protected static function $1($2)",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Protected class method"
+  },
+  "Private class method": {
+    "prefix": "prisf",
+    "body": [
+      "private static function $1($2)",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Private class method"
+  },
+  "Constructor": {
+    "prefix": "__construct",
+    "body": [
+      "public function __construct($1)",
+      "{",
+      "\t${2://}$0",
+      "}"
+    ],
+    "description": "Constructor"
+  },
+  "Destructor": {
+    "prefix": "__destruct",
+    "body": [
+      "public function __destruct($1)",
+      "{",
+      "\t${2://}$0",
+      "}"
+    ],
+    "description": "Destructor"
+  },
+  "Invoke method": {
+    "prefix": "__invoke",
+    "body": [
+      "public function __invoke($1)",
+      "{",
+      "\t${2://}$0",
+      "}"
+    ],
+    "description": "Invoke method"
+  },
+  "Public property": {
+    "prefix": "puv",
+    "body": [
+      "public \\$$1${2: = []}$0;"
+    ],
+    "description": "Public property"
+  },
+  "Protected property": {
+    "prefix": "prov",
+    "body": [
+      "protected \\$$1${2: = []}$0;"
+    ],
+    "description": "Protected property"
+  },
+  "Private property": {
+    "prefix": "priv",
+    "body": [
+      "private \\$$1${2: = []}$0;"
+    ],
+    "description": "Private property"
+  },
+  "Public static property": {
+    "prefix": "pusv",
+    "body": [
+      "public static \\$$1${2: = []}#0;"
+    ],
+    "description": "Public static property"
+  },
+  "Protected static property": {
+    "prefix": "prosv",
+    "body": [
+      "protected static \\$$1${2: = []}$0;"
+    ],
+    "description": "Protected static property"
+  },
+  "Private static property": {
+    "prefix": "prisv",
+    "body": [
+      "private static \\$$1${2: = []}$0;"
+    ],
+    "description": "Private static property"
+  },
+  "Constant": {
+    "prefix": "const",
+    "body": [
+      "const $1 = $2$0;"
+    ],
+    "description": "Constant"
+  },
+  "Comment": {
+    "prefix": "doc",
+    "body": [
+      "/**",
+      " * $0",
+      " */"
+    ],
+    "description": "Comment"
+  },
+  "PHPDoc for method": {
+    "prefix": "docf",
+    "body": [
+      "/**",
+      " * $1$0",
+      " *",
+      " * @param  ${2:mixed}  ${3:$value}",
+      " * @return ${4:void}",
+      " */"
+    ],
+    "description": "PHPDoc for method"
+  },
+  "PHPDoc for property": {
+    "prefix": "docv",
+    "body": [
+      "/**",
+      " * $1$0",
+      " *",
+      " * @var  ${2:array  $3}",
+      " */"
+    ],
+    "description": "PHPDoc for property"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "/**",
+      " * ${2:テスト}",
+      " */",
+      "public function test$1(): void",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "Test method"
+  },
+  "BelongsTo method": {
+    "prefix": "belongsTo",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function $1(): BelongsTo",
+      "{",
+      "\treturn $this->belongsTo($2::class${3:, ''${4:, ''}});",
+      "}"
+    ],
+    "description": "BelongsTo relation method for Eloquent"
+  },
+  "BelongsToMany method": {
+    "prefix": "belongsToMany",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function $1(): BelongsToMany",
+      "{",
+      "\treturn $this->belongsToMany($2::class${3:, ''${4:, ''}});",
+      "}"
+    ],
+    "description": "BelongsToMany relation method for Eloquent"
+  },
+  "BelongsToThrough method": {
+    "prefix": "belongsToThrough",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function $1(): BelongsToThrough",
+      "{",
+      "\treturn $this->belongsToThrough($2::class${3:, ''${4:, ''}});",
+      "}"
+    ],
+    "description": "BelongsToThrough relation method for Eloquent"
+  },
+  "HasOne method": {
+    "prefix": "hasOne",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function $1(): HasOne",
+      "{",
+      "\treturn $this->hasOne($2::class${3:, ''${4:, ''}});",
+      "}"
+    ],
+    "description": "HasOne relation method for Eloquent"
+  },
+  "HasMany method": {
+    "prefix": "hasMany",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function $1(): HasMany",
+      "{",
+      "\treturn $this->hasMany($2::class${3:, ''${4:, ''}});",
+      "}"
+    ],
+    "description": "HasMany relation method for Eloquent"
+  },
+  "Scope": {
+    "prefix": "scope",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function scope$1(Builder $query${2:, })",
+      "{",
+      "\treturn $query->${3:where($4)}",
+      "}"
+    ],
+    "description": "Scope method for Eloquent"
+  },
+  "getAttribute": {
+    "prefix": "getAttribute",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function get$1Attribute(${2:$value})",
+      "{",
+      "\t${3://}",
+      "}"
+    ],
+    "description": "Get attribute method"
+  },
+  "setAttribute": {
+    "prefix": "setAttribute",
+    "body": [
+      "/**",
+      " * $0",
+      " */",
+      "public function set$1Attribute(${2:$value})",
+      "{",
+      "\t${3://}",
+      "}"
+    ],
+    "description": "Set attribute method"
+  },
+  "try-catch": {
+    "prefix": "try_catch",
+    "body": [
+      "try",
+      "{",
+      "\t${3://}$0",
+      "}",
+      "catch ($1Exception${2: $e})",
+      "{",
+      "\t//",
+      "}"
+    ],
+    "description": "try-catch block"
+  },
+  "catch": {
+    "prefix": "catch",
+    "body": [
+      "catch ($1Exception${2: $e})",
+      "{",
+      "\t${3://}$0",
+      "}"
+    ],
+    "description": "try-catch block"
+  },
+  "view method": {
+    "prefix": "view",
+    "body": [
+      "view('$0');"
+    ],
+    "description": "view() method"
+  },
+  "Return view": {
+    "prefix": "return_view",
+    "body": [
+      "return view('$0');"
+    ],
+    "description": "Return view"
+  },
+  "view method with variables": {
+    "prefix": "view",
+    "body": [
+      "view('$1')->with(compact('$2'$0));"
+    ],
+    "description": "view() method with variables"
+  },
+  "Return view with variables": {
+    "prefix": "return_view",
+    "body": [
+      "return view('$1')->with(compact('$2'$0));"
+    ],
+    "description": "Return view() method with variables"
+  },
+  "Redirect with route": {
+    "prefix": "redirect_route",
+    "body": [
+      "redirect()->route('$0');"
+    ],
+    "description": "redirect() method with route"
+  },
+  "Return redirect with route": {
+    "prefix": "return_redirect_route",
+    "body": [
+      "return redirect()->route('$0');"
+    ],
+    "description": "return redirect() method with route"
+  }
+}
