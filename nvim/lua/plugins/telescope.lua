@@ -24,6 +24,13 @@ vim.keymap.set('n', '<C-w>ge', function() builtin.diagnostics({ jump_type = 'vsp
 local actions = require('telescope.actions')
 local fb_actions = telescope.extensions.file_browser.actions
 
+local map_to_openin_tab = {
+  i = {
+    ['<CR>'] = actions.select_tab,
+    ['<C-e>'] = actions.select_default,
+  },
+}
+
 telescope.setup({
   defaults = {
     prompt_prefix = '  ',
@@ -31,34 +38,26 @@ telescope.setup({
       i = {
         ['<C-s>'] = actions.select_horizontal,
       },
+      n = {
+        ['<C-c>'] = actions.close,
+        ['<ESC><ESC>'] = actions.close,
+      },
     },
     file_ignore_patterns = {'.git/objects/.*'},
   },
   pickers = {
     find_files = {
       hidden = true, -- 隠しファイルを表示するかどうか
-      mappings = {
-        i = {
-          ['<CR>'] = actions.select_tab,
-          ['<C-e>'] = actions.select_default,
-        },
-      },
+      mappings = map_to_openin_tab,
     },
     live_grep = {
-      mappings = {
-        i = {
-          ['<CR>'] = actions.select_tab,
-          ['<C-e>'] = actions.select_default,
-        },
-      },
+      mappings = map_to_openin_tab,
     },
     oldfiles = {
-      mappings = {
-        i = {
-          ['<CR>'] = actions.select_tab,
-          ['<C-e>'] = actions.select_default,
-        },
-      },
+      mappings = map_to_openin_tab,
+    },
+    lsp_references = {
+      mappings = map_to_openin_tab,
     },
   },
   extensions = {
