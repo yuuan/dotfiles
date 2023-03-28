@@ -199,13 +199,13 @@ return require('packer').startup(function(use)
   use {
     'williamboman/mason.nvim',
     requires = {
-      'mason-org/mason-registry',
       'williamboman/mason-lspconfig.nvim',
       'neovim/nvim-lspconfig',
     },
     config = function()
       require('plugins.lsp')
     end,
+    run = ':MasonUpdate',
   }
 
 
