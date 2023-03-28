@@ -23,7 +23,7 @@ function InstallScoop {
 }
 
 function InstallScoopNeoVim {
-	scoop install wget gzip make cmake gcc ripgrep fd
+	scoop install wget zip unzip gzip make cmake gcc ripgrep fd
 	scoop install fzf
 	scoop install deno
 	scoop install neovim
