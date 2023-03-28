@@ -6,6 +6,9 @@ function IsExecutable($command) {
 }
 
 function InstallPwsh {
+	Install-Module -Name PSFzf
+	Install-Module -Name ZLocation
+
 	New-Item -Force -Type SymbolicLink $Profile.CurrentUserAllHosts -Value ($DotFiles + '\pwsh\CurrentUserAllHosts.ps1')
 	New-Item -Force -Type SymbolicLink $Profile.CurrentUserCurrentHost -Value ($DotFiles + '\pwsh\CurrentUserCurrentHost.ps1')
 }
