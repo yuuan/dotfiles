@@ -1,12 +1,17 @@
 $DotFiles = Split-Path -Parent $PSScriptRoot
 
+function IsExecutable($command) {
+	Get-Command $command -ea SilentlyContinue | Out-Null
+	return $?
+}
+
 function InstallPwsh {
 	New-Item -Force -Type SymbolicLink $Profile.CurrentUserAllHosts -Value ($DotFiles + '\pwsh\CurrentUserAllHosts.ps1')
 	New-Item -Force -Type SymbolicLink $Profile.CurrentUserCurrentHost -Value ($DotFiles + '\pwsh\CurrentUserCurrentHost.ps1')
 }
 
 function InstallScoop {
-	if (Get-Command "scoop") {
+	if (IsExecutable("scoop")) {
 		echo 'Scoop is already installed.'
 		return
 	}
