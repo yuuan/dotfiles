@@ -41,19 +41,19 @@ function InstallNeoVim {
 
 foreach ($Target in $Args) {
 	switch -Regex ($Target) {
-		"pwsh" {
+		"^pwsh$" {
 			InstallPwsh
 			break
 		}
-		"scoop" {
+		"^scoop$" {
 			InstallScoop
 			break
 		}
-		"scoop-(neovim|nvim)" {
+		"^scoop-(neovim|nvim)$" {
 			InstallScoopNeoVim
 			break
 		}
-		"neovim|nvim" {
+		"^neovim|nvim$" {
 			InstallNeoVim
 			break
 		}
