@@ -11,7 +11,7 @@ local ZSHRC_DIR="${ZSH_HOME}/conf.d"
 
 __helpers::sources "${ZSHRC_DIR}/core"
 __helpers::sources "${ZSHRC_DIR}/plugins"
-__helpers::source  "${ZSHRC_DIR}/zplug.zsh"
+__helpers::source  "${ZSHRC_DIR}/zinit.zsh"
 __helpers::sources "${ZSHRC_DIR}/functions"
 __helpers::sources "${ZSHRC_DIR}/services"
 __helpers::sources "${ZSHRC_DIR}/aliases"
