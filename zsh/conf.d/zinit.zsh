@@ -25,6 +25,9 @@ zinit light-mode for \
 # Plugins
 # ----------------------------------------
 
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
 ## zsh-completions
 zinit light zsh-users/zsh-completions
 
