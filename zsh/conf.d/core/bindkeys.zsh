@@ -34,4 +34,4 @@ bindkey "^[[Z" reverse-menu-complete
 setopt NOFLOWCONTROL
 bindkey "^S" history-incremental-search-forward
 bindkey "^Q" push-line-or-edit
-stty stop undef
+stty -ixon <$TTY >$TTY
