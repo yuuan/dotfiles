@@ -384,22 +384,11 @@ INCLUDE
 		__touch "$HOME/.zshrc.local"
 		__touch "$HOME/.zshenv.local"
 
-		__install_zplug
-
 		__done_caption
 
 		__ls -dr "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
 		__ls -a "$HOME/.zsh/"
 		__br
-	}
-
-	function __install_zplug() {
-		__installing_caption "zsh - zplug"
-
-		if [[ ! -d $HOME/.zplug ]]; then
-			__mkdir "$HOME/.zplug"
-			__exec "curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh"
-		fi
 	}
 
 	function __install() {
