@@ -43,8 +43,3 @@ zstyle ':completion:*:warnings' format '%F{red}No matches for: %F{yellow}%d%f'
 zstyle ':completion:*:descriptions' format '%F{yellow}- %d -%f'
 zstyle ':completion:*:corrections' format '%F{yellow}%d %F{red}(errors: %e)%f'
 zstyle ':completion:*:options' description 'yes'
-
-# `ls` コマンドにカラースキーマが設定されていたら補完にも使う
-if [ -n "${LS_COLORS}" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-fi
