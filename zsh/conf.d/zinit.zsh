@@ -54,7 +54,7 @@ zinit ice lucid wait'0c' as="program" mv="peco-tmux.sh -> peco-tmux" pick="peco-
 zinit light b4b4r07/peco-tmux.sh
 
 ## enhancd
-zinit ice lucid wait'0c' pick="init.sh"
+zinit ice lucid wait'0c' atload'zicompinit; zicdreplay' pick="init.sh"
 zinit light b4b4r07/enhancd
 
 ## history
