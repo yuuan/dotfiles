@@ -13,7 +13,7 @@ end
 
 require_all('core')
 require_all('keymaps')
-require('plugins')
+require('lazy.init')
 
 -- 後から読ませたいローカル設定の読み込み
 if vim.fn.filereadable(vim.fn.stdpath('config')..'/lua/local/after.lua') == 1 then

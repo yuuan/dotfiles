@@ -89,3 +89,14 @@ vim.opt.termguicolors = true
 
 -- 背景透過
 vim.opt.winblend = 0
+
+-- diff のアルゴリズムを変更
+vim.opt.diffopt:append({
+  "algorithm:histogram", -- ブロックを適切に扱える
+  "indent-heuristic", -- インデントの違いを無視
+})
+
+-- signcolumn に重要な診断結果を優先的に表示
+vim.diagnostic.config({
+  severity_sort = true,
+})

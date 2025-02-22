@@ -19,6 +19,8 @@ vim.keymap.set('', '<M-Down>', '<C-e>', { noremap = true, silent = true })
 -- PageUp/Down の幅を半分に
 vim.keymap.set('', '<PageUp>', '<C-u>', { noremap = true, silent = true })
 vim.keymap.set('', '<PageDown>', '<C-d>', { noremap = true, silent = true })
+vim.keymap.set('', '<S-PageUp>', '<C-b>', { noremap = true, silent = true })
+vim.keymap.set('', '<S-PageDown>', '<C-f>', { noremap = true, silent = true })
 
 -- Ctrl-b/Ctrl-f によるページ移動を無効化
 vim.keymap.set('n', '<C-b>', '', { noremap = true, silent = true })
