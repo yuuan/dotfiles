@@ -22,7 +22,7 @@ vim.keymap.set('i', '<C-k>', '<C-o>D', { noremap = true, silent = true })
 vim.keymap.set('c', '<C-p>', '<C-r>"', { noremap = true, silent = true })
 
 -- インサートモードで Ctrl + p で貼り付け
-vim.keymap.set('i', '<C-p>', '<C-r>0', { noremap = true, silent = true })
+vim.keymap.set('i', '<C-p>', '<C-r>"', { noremap = true, silent = true })
 
 -- x で削除した文字をヤンクしない
 vim.keymap.set('n', 'x', '"_x', { noremap = true, silent = true })
