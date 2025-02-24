@@ -136,6 +136,7 @@ return {
         {'<C-f>b', function() require('telescope.builtin').buffers() end, desc = 'Select buffer'},
         {'<C-f>c', function() require('telescope.builtin').colorscheme() end, desc = 'Select colorscheme'},
         {'<C-f>j', function() require('telescope.builtin').jumplist() end, desc = 'Jump list'},
+        {'<C-f>p', function() require('telescope.builtin').registers() end, desc = 'Registers (yanks, searches, files, etc.)'},
         {'<C-f>k', function() require('telescope.builtin').keymaps() end, desc = 'Keymaps'},
         {'<C-f>;', function() require('telescope.builtin').commands() end, desc = 'NeoVim commands'},
         {'<C-f>h', function() require('telescope.builtin').help_tags() end, desc = 'Help'},
