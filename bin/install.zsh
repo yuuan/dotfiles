@@ -202,6 +202,7 @@ HELP
 	function __install_git() {
 		__installing_caption "git"
 		__link "$DOTFILES/git/config.d" "$HOME/.gitconfig.d"
+		__link "$DOTFILES/git/gitignore" "$HOME/.gitignore"
 
 		if [[ -n $(cat $HOME/.gitconfig | grep '.gitconfig.d' 2> /dev/null) ]]; then
 			__info "Include setting is exists."
@@ -215,7 +216,8 @@ INCLUDE
 
 		__done_caption
 
-		__ls -d "$HOME/.gitconfig" "$HOME/.gitconfig.d"
+		__ls -a "$HOME/.gitignore" "$HOME/.gitconfig"
+		__ls -d "$HOME/.gitconfig.d"
 		__ls -a "$HOME/.gitconfig.d/"
 		__br
 	}
