@@ -37,7 +37,8 @@ vim.keymap.set('n', 'x', '"_x', { noremap = true, silent = true })
 vim.keymap.set('n', 's', '"_s', { noremap = true, silent = true })
 
 -- ビジュアルモードで貼り付けたときに削除された文字をヤンクしない
-vim.keymap.set('v', 'p', '"_dP', { noremap = true, silent = true })
+vim.keymap.set('v', 'p', '"_dp', { noremap = true, silent = true })
+vim.keymap.set('v', 'P', '"_dP', { noremap = true, silent = true })
 
 -- 単語を選択
 vim.keymap.set('n', '+', 'viw', { noremap = true, silent = true })
