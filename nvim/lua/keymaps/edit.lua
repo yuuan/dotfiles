@@ -24,6 +24,12 @@ vim.keymap.set('c', '<C-p>', '<C-r>"', { noremap = true, silent = true })
 -- インサートモードで Ctrl + p で貼り付け
 vim.keymap.set('i', '<C-p>', '<C-r>"', { noremap = true, silent = true })
 
+-- "0 レジスタを使って明示的にヤンクしたものだけを貼り付ける
+vim.keymap.set("n", "gp", '"0p', { noremap = true, silent = true })
+
+-- "0 レジスタを使って明示的にヤンクしたものだけを貼り付ける
+vim.keymap.set("n", "gP", '"0P', { noremap = true, silent = true })
+
 -- x で削除した文字をヤンクしない
 vim.keymap.set('n', 'x', '"_x', { noremap = true, silent = true })
 
