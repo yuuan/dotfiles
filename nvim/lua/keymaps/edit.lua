@@ -47,3 +47,6 @@ vim.keymap.set('n', '<M-x>', '<C-x>', { noremap = true, silent = true })
 -- テンキーの +/- で数値の増減
 --vim.keymap.set('n', '<kPlus>', '<C-a>', { noremap = true, silent = true })
 --vim.keymap.set('n', '<kMinus>', '<C-x>', { noremap = true, silent = true })
+
+-- M で隠れた Virtual Text をフローティング表示する
+vim.keymap.set('n', 'M', vim.diagnostic.open_float, { noremap = true, silent = true })
