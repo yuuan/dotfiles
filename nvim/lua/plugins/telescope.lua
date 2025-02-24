@@ -133,14 +133,14 @@ return {
         {'<C-w><C-f>s', function() require('telescope.builtin').git_status(ivy) end, desc = 'Git status'},
         {'<C-w><C-f>l', function() require('telescope.builtin').git_bcommits(ivy) end, desc = 'Git log'},
 
+        {'<C-f>t', function() require('telescope-tabs').list_tabs() end, desc = 'Select tab'},
         {'<C-f>b', function() require('telescope.builtin').buffers() end, desc = 'Select buffer'},
-        {'<C-f>c', function() require('telescope.builtin').colorscheme() end, desc = 'Select colorscheme'},
         {'<C-f>j', function() require('telescope.builtin').jumplist() end, desc = 'Jump list'},
         {'<C-f>p', function() require('telescope.builtin').registers() end, desc = 'Registers (yanks, searches, files, etc.)'},
         {'<C-f>k', function() require('telescope.builtin').keymaps() end, desc = 'Keymaps'},
         {'<C-f>;', function() require('telescope.builtin').commands() end, desc = 'NeoVim commands'},
+        {'<C-f>c', function() require('telescope.builtin').colorscheme() end, desc = 'Select colorscheme'},
         {'<C-f>h', function() require('telescope.builtin').help_tags() end, desc = 'Help'},
-        {'<C-f>t', function() require('telescope-tabs').list_tabs() end, desc = 'Select tab'},
 
         {'gr', function() require('telescope.builtin').lsp_references() end, desc = 'LSP References (tab)'},
         {'gd', function() require('telescope.builtin').lsp_definitions({ jump_type = 'tab' }) end, desc = 'LSP Definitions (tab)'},
