@@ -1,8 +1,10 @@
 -- Home と End
 vim.keymap.set('n', '<C-a>', '<Home>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-a>', '<Home>', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-a>', '<Home>', { noremap = true, silent = true })
 vim.keymap.set('n', '<C-e>', '<End>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-e>', '<End>', { noremap = true, silent = true })
+vim.keymap.set('v', '<C-e>', '<End>', { noremap = true, silent = true })
 
 -- Ctrl + h, j, k, l でカーソル移動
 --vim.keymap.set('i', '<C-h>', '<Left>', { noremap = true, silent = true })
