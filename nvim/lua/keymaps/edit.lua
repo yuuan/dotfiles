@@ -40,6 +40,10 @@ vim.keymap.set('n', '+', 'viw', { noremap = true, silent = true })
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 
+-- 数値の増減で Ctrl の代わりに Alt を使う
+vim.keymap.set('n', '<M-a>', '<C-a>', { noremap = true, silent = true })
+vim.keymap.set('n', '<M-x>', '<C-x>', { noremap = true, silent = true })
+
 -- テンキーの +/- で数値の増減
 --vim.keymap.set('n', '<kPlus>', '<C-a>', { noremap = true, silent = true })
 --vim.keymap.set('n', '<kMinus>', '<C-x>', { noremap = true, silent = true })
