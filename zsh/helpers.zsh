@@ -32,3 +32,24 @@ function __helpers::tac() {
 		tail -r
 	fi
 }
+
+# 指定したコマンドがインストールされているかを表示
+function __helpers::need() {
+	local -a cmds; cmds=("$@")
+	local ret=0
+
+	local width=0
+	for cmd in "${cmds[@]}"; do
+		(( ${#cmd} > width )) && width=${#cmd}
+	done
+
+	for cmd in ${cmds[@]}; do
+		printf "%-${width}s | " "$cmd"
+		if ! command -v "$cmd"; then
+			printf "\e[31m%s\e[m\n" "not installed"
+			ret=1
+		fi
+	done
+
+	return $ret
+}

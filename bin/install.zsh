@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, zplug\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx\e[m
 HELP
 	}
 
@@ -389,8 +389,30 @@ INCLUDE
 
 		__done_caption
 
-		__ls -dr "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
+		__ls -d "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
 		__ls -a "$HOME/.zsh/"
+		__br
+	}
+
+	function __install_afx() {
+		__installing_caption "afx"
+
+		local AFX_BIN_DIR; AFX_BIN_DIR="$HOME/.local/bin"
+		local AFX_CONFIG_DIR; AFX_CONFIG_DIR="$HOME/.config/afx"
+
+		if ! command -v afx &>/dev/null; then
+			curl -sL https://raw.githubusercontent.com/babarot/afx/HEAD/hack/install \
+				| AFX_BIN_DIR="$AFX_BIN_DIR" bash
+		fi
+
+		__mkdir "$AFX_CONFIG_DIR"
+
+		__link "$DOTFILES/zsh/addons/plugins.yaml" "$AFX_CONFIG_DIR/plugins.yaml"
+
+		__done_caption
+
+		__ls "$AFX_BIN_DIR/afx"
+		__ls -a "$AFX_CONFIG_DIR"
 		__br
 	}
 
@@ -406,6 +428,7 @@ INCLUDE
 			__install_vim
 			__install_nvim
 			__install_zsh
+			__install_afx
 			__load_zshrc
 		else
 			while (( $# > 0 )); do
@@ -444,8 +467,8 @@ INCLUDE
 						__install_zsh
 						__load_zshrc
 						;;
-					zplug)
-						__install_zplug
+					afx)
+						__install_afx
 						;;
 					*)
 						__warn "\`$1\` is invalid target."
