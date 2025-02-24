@@ -16,7 +16,7 @@ vim.keymap.set('v', '<C-e>', '<End>', { noremap = true, silent = true })
 vim.keymap.set('i', '<C-k>', '<C-o>D', { noremap = true, silent = true })
 
 -- 検索後に ESC キーでハイライトを消す
-vim.keymap.set("n", "<Esc><Esc>", ":<C-u>set nohlsearch<CR>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<Esc><Esc>", ":<C-u>set nohlsearch<CR>", { noremap = true, silent = true })
 
 -- コマンドラインモードで Ctrl + p で貼り付け
 vim.keymap.set('c', '<C-p>', '<C-r>"', { noremap = true, silent = true })
