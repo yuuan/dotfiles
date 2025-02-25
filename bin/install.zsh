@@ -412,7 +412,7 @@ INCLUDE
 	function __install_starship() {
 		__installing_caption "starship"
 
-		local STARSHIP_CONFIG_DIR; STARSHIP_CONFIG_DIR="$HOME/.config/starship"
+		local STARSHIP_CONFIG_DIR; STARSHIP_CONFIG_DIR="$HOME/.config"
 
 		__mkdir "$STARSHIP_CONFIG_DIR"
 
@@ -420,7 +420,7 @@ INCLUDE
 
 		__done_caption
 
-		__ls -a "$STARSHIP_CONFIG_DIR"
+		__ls -a "$STARSHIP_CONFIG_DIR/starship.toml"
 		__br
 	}
 
