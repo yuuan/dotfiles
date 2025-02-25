@@ -2,9 +2,6 @@
 # 補完の設定
 # ----------------------------------------
 
-# 自作した補完ファイルを追加
-fpath=($ZSH_HOME/functions $fpath)
-
 # 補完を有効にする
 autoload -Uz compinit && compinit -u
 
