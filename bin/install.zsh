@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx starship\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx starship atuin\e[m
 HELP
 	}
 
@@ -424,6 +424,23 @@ INCLUDE
 		__br
 	}
 
+	function __install_atuin() {
+		__installing_caption "atuin"
+
+		local ATUIN_CONFIG_DIR; ATUIN_CONFIG_DIR="$HOME/.config/atuin"
+		local ATUIN_CONFIG; ATUIN_CONFIG="$ATUIN_CONFIG_DIR/config.toml"
+
+		__mkdir "$ATUIN_CONFIG_DIR"
+
+		__rm "$ATUIN_CONFIG"
+		__link "$DOTFILES/zsh/addons/atuin.toml" "$ATUIN_CONFIG"
+
+		__done_caption
+
+		__ls -a "$ATUIN_CONFIG_DIR/"
+		__br
+	}
+
 	function __install() {
 		if [[ "$*" =~ "all" ]]; then
 			__install_coffeelint
@@ -438,6 +455,7 @@ INCLUDE
 			__install_zsh
 			__install_afx
 			__install_starship
+			__install_atuin
 			__load_zshrc
 		else
 			while (( $# > 0 )); do
@@ -472,8 +490,15 @@ INCLUDE
 					nvim|neovim)
 						__install_nvim
 						;;
+					zsh-only)
+						__install_zsh
+						__load_zshrc
+						;;
 					zsh)
 						__install_zsh
+						__install_afx
+						__install_starship
+						__install_atuin
 						__load_zshrc
 						;;
 					afx)
@@ -481,6 +506,9 @@ INCLUDE
 						;;
 					starship)
 						__install_starship
+						;;
+					atuin)
+						__install_atuin
 						;;
 					*)
 						__warn "\`$1\` is invalid target."

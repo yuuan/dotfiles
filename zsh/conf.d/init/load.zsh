@@ -14,6 +14,11 @@ if command -v afx &> /dev/null; then
 	source <(afx init)
 fi
 
+# Atuin の設定
+if (( $+commands[atuin] )); then
+	source <(atuin init zsh --disable-up-arrow)
+fi
+
 # `conf.d` 内のファイルを読み込む
 __helpers::sources "${ZSHRC_DIR}/functions"
 __helpers::sources "${ZSHRC_DIR}/services"
