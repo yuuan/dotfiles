@@ -33,6 +33,10 @@ function __services::git::changed_files::select() {
 	git status --short | fzf-tmux --prompt "changed file>" | awk '{print $2}'
 }
 
+function __services::git::branch::current() {
+	git branch --contains | cut -d " " -f 2
+}
+
 function __services::git::branch::switch() {
 	local BRANCH=$(__services::git::branch::select)
 
@@ -46,8 +50,10 @@ if which fzf-tmux &> /dev/null; then
 	alias -g @H='$(__services::git::commit::select)'
 	alias -g @BRANCH='$(__services::git::branch::select)'
 	alias -g @B='$(__services::git::branch::select)'
+	alias -g @CURRENT_BRANCH='$(__services::git::branch::current)'
+	alias -g @CB='$(__services::git::branch::current)'
 	alias -g @FILE='$(__services::git::changed_files::select)'
 	alias -g @F='$(__services::git::changed_files::select)'
 
-	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@HASH' '@H' '@BRANCH' '@B' '@FILE' '@F')
+	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@HASH' '@H' '@BRANCH' '@B' '@CURRENT_BRANCH' '@CB' '@FILE' '@F')
 fi
