@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx starship\e[m
 HELP
 	}
 
@@ -409,6 +409,21 @@ INCLUDE
 		__br
 	}
 
+	function __install_starship() {
+		__installing_caption "starship"
+
+		local STARSHIP_CONFIG_DIR; STARSHIP_CONFIG_DIR="$HOME/.config/starship"
+
+		__mkdir "$STARSHIP_CONFIG_DIR"
+
+		__link "$DOTFILES/zsh/addons/starship.toml" "$STARSHIP_CONFIG_DIR/starship.toml"
+
+		__done_caption
+
+		__ls -a "$STARSHIP_CONFIG_DIR"
+		__br
+	}
+
 	function __install() {
 		if [[ "$*" =~ "all" ]]; then
 			__install_coffeelint
@@ -422,6 +437,7 @@ INCLUDE
 			__install_nvim
 			__install_zsh
 			__install_afx
+			__install_starship
 			__load_zshrc
 		else
 			while (( $# > 0 )); do
@@ -462,6 +478,9 @@ INCLUDE
 						;;
 					afx)
 						__install_afx
+						;;
+					starship)
+						__install_starship
 						;;
 					*)
 						__warn "\`$1\` is invalid target."
