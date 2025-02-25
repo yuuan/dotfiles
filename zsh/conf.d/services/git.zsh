@@ -3,9 +3,11 @@
 # ----------------------------------------
 
 function __services::git::commit::select() {
-	git log --color --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s%C(red)%d%C(reset)' \
-		| fzf-tmux --ansi --prompt 'commit>' \
-		| awk '{print $1}'
+	git log --color --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s%C(red)%d%C(reset)' |
+	fzf-tmux -- \
+		--ansi --exact --no-sort --prompt 'commit>' \
+		--preview="git show --color=always {+1}" |
+	awk '{print $1}'
 }
 
 function __services::git::branch::select() {
