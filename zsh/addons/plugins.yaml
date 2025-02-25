@@ -22,13 +22,6 @@ github:
       ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE: 'fg=13' # Suggestions color
     sources:
     - zsh-autosuggestions.plugin.zsh
-- name: popstas/zsh-command-time
-  description: Show execution time for each command in zsh
-  owner: popstas
-  repo: zsh-command-time
-  plugin:
-    sources:
-    - zsh-command-time.plugin.zsh
 - name: babarot/enhancd
   description: A next-generation cd command with your interactive filter
   owner: babarot
