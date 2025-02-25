@@ -11,12 +11,22 @@ function __services::git::commit::select() {
 }
 
 function __services::git::branch::select() {
-	git branch -a |
-		awk '{print $NF}' |
-		fzf-tmux -- \
-			--layout=reverse --info=hidden --no-multi --prompt="branch> " \
-			--preview="echo {} | xargs git log --color=always --graph --pretty=format:'<%C(red)%h%C(reset)> %s%C(yellow)%d%C(reset) %C(blue)(%an)%C(reset)'" |
-		head -n 1
+	local fmt=$(cat <<- EOF
+		%(if:equals=<$(git config user.email)>)%(authoremail)%(then)%(color:default)%(else)%(color:blue)%(end)%(refname:short)|\
+		%(committerdate:relative)|\
+		%(authorname)
+	EOF
+	)
+
+	{
+		git branch --sort=-committerdate --format=$fmt --color=always
+		git branch --remotes --sort=-committerdate --format=$fmt --color=always
+	} |
+	column -ts'|' |
+	fzf-tmux -- \
+		--ansi --exact --layout=reverse --info=hidden --no-sort --no-hscroll \
+		--preview="git log --color=always --graph --pretty=format:'<%C(red)%h%C(reset)> %s%C(yellow)%d%C(reset) %C(blue)(%an)%C(reset)' -50 {+1}" |
+	awk '{print $1}' \
 }
 
 function __services::git::changed_files::select() {
