@@ -29,10 +29,6 @@ function __services::git::branch::select() {
 	awk '{print $1}' \
 }
 
-function __services::git::changed_files::select() {
-	git status --short | fzf-tmux --prompt "changed file>" | awk '{print $2}'
-}
-
 function __services::git::branch::current() {
 	git branch --contains | cut -d " " -f 2
 }
@@ -44,6 +40,40 @@ function __services::git::branch::switch() {
 		git switch "$BRANCH"
 	fi
 }
+
+function __services::git::changed_files::select() {
+	local files=$(
+		git diff --name-only | awk '{print $0"|\033[33m(changed)\033[0m"}'
+		git ls-files --others --exclude-standard | awk '{print $0"|\033[31m(untracked)\033[0m"}'
+	)
+	if [ -z "$files" ]; then
+		return
+	fi
+
+	column -ts'|' <<< "$files" |
+	fzf-tmux -- \
+		--ansi --exact --info=hidden --no-sort --multi --prompt 'file>' \
+		--preview='[[ "{2}" == *changed* ]] && git diff --color=always -- {1} || bat --style=plain --color always {1}' |
+	awk '{print $1}'
+}
+
+function __services::git::changed_files::add() {
+	for arg in "$@"; do
+		if [[ "$arg" != -* || "$arg" == "-A" ]]; then
+			git add "$@"
+			git status
+			return
+		fi
+	done
+
+	local files=$(__services::git::changed_files::select)
+
+	if [ -n "$files" ]; then
+		git add "$@" -- $files
+		git status
+	fi
+}
+compdef _git-add __services::git::changed_files::add
 
 if which fzf-tmux &> /dev/null; then
 	alias -g @HASH='$(__services::git::commit::select)'
@@ -57,3 +87,5 @@ if which fzf-tmux &> /dev/null; then
 
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@HASH' '@H' '@BRANCH' '@B' '@CURRENT_BRANCH' '@CB' '@FILE' '@F')
 fi
+
+alias ga='__services::git::changed_files::add'
