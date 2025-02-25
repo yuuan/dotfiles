@@ -3,15 +3,15 @@ local ZSHRC_DIR="${ZSH_HOME}/conf.d"
 # Zsh の基本的な設定
 __helpers::sources "${ZSHRC_DIR}/core"
 
-# Starship の設定
-if command -v starship &> /dev/null; then
-	eval "$(starship init zsh)"
-fi
-
 # AFX の設定
-if command -v afx &> /dev/null; then
+if (( $+commands[afx] )); then
 	source <(afx completion zsh); compdef _afx afx
 	source <(afx init)
+fi
+
+# Starship の設定
+if (( $+commands[starship] )); then
+	source <(starship init zsh)
 fi
 
 # Atuin の設定
