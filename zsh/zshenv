@@ -1,23 +1,2 @@
-# EC2 でのエラー対策
-# ref http://qiita.com/ikeisuke/items/3a010e7922795eb79d76
-autoload -Uz compinit; compinit -u
-
-export ZSH_HOME="${HOME}/.zsh"
-
-source "${ZSH_HOME}/helpers.zsh"
-
-# 先に読ませたい設定を読み込む
-__helpers::source "${HOME}/.zshenv.init"
-
-
-# PATH の設定
-path=(
-	$path
-	${GOPATH:-${HOME}/.go}/bin
-	${HOME}/.composer/vendor/bin
-	${HOME}/.yarn/bin
-)
-
-
-# 環境ごとの設定を読み込む
-__helpers::source "${HOME}/.zshenv.local"
+source "$HOME/.config/zsh/conf.d/init/init-ec2.zsh"
+source "$HOME/.config/zsh/conf.d/init/init.zsh"

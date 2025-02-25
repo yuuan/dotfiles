@@ -368,29 +368,22 @@ INCLUDE
 	function __install_zsh() {
 		__installing_caption "zsh"
 
-		local ZSHHOME; ZSHHOME="$HOME/.zsh"
+		local ZSH_CONFIG; ZSH_CONFIG="$HOME/.config/zsh"
 
-		[[ -L "$ZSHHOME" ]] && __rm "$ZSHHOME"
+		__mkdir "$ZSH_CONFIG"
+		__mkdir "$ZSH_CONFIG/functions"
 
-		__mkdir "$ZSHHOME"
-
-		__rm "$ZSHHOME/zshrc.d"
-
-		__link "$DOTFILES/zsh/functions" "$ZSHHOME/functions"
-		__link "$DOTFILES/zsh/conf.d" "$ZSHHOME/conf.d"
-		__link "$DOTFILES/zsh/helpers.zsh" "$ZSHHOME/helpers.zsh"
-		__link "$DOTFILES/zsh/p10k.zsh" "$HOME/.p10k.zsh"
-		__link "$DOTFILES/zsh/dircolors.conf" "$ZSHHOME/dircolors.conf"
+		__link "$DOTFILES/zsh/functions" "$ZSH_CONFIG/functions/shared"
+		__link "$DOTFILES/zsh/conf.d" "$ZSH_CONFIG/conf.d"
+		__link "$DOTFILES/zsh/helpers.zsh" "$ZSH_CONFIG/helpers.zsh"
 
 		__link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 		__link "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
-		__touch "$HOME/.zshrc.local"
-		__touch "$HOME/.zshenv.local"
 
 		__done_caption
 
-		__ls -d "$HOME/.zshrc" "$HOME/.zshrc.local" "$HOME/.zshenv" "$HOME/.zshenv.local"
-		__ls -a "$HOME/.zsh/"
+		__ls -d "$HOME/.zshrc" "$HOME/.zshenv"
+		__ls -a "$ZSH_CONFIG"
 		__br
 	}
 
