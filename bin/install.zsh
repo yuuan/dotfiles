@@ -260,7 +260,7 @@ INCLUDE
 
 		__done_caption
 
-		__ls -dr "$HOME/.screenrc"
+		__ls -d "$HOME/.screenrc"
 		__br
 	}
 
@@ -293,7 +293,7 @@ INCLUDE
 
 		__done_caption
 
-		__ls -dr "$TMUX_CONF" "$TMUX_DIR"
+		__ls -d "$TMUX_CONF" "$TMUX_DIR"
 		__ls -a "$TMUX_DIR/"
 		__ls -a "$TMUX_CONFIGS/"
 		__br
@@ -337,7 +337,7 @@ INCLUDE
 
 		__done_caption
 
-		__ls -dr "$HOME/.vimrc" "$HOME/.vim"
+		__ls -d "$HOME/.vimrc" "$HOME/.vim"
 		__ls -a "$HOME/.vim/"
 		__br
 	}
@@ -360,7 +360,7 @@ INCLUDE
 
 		__done_caption
 
-		__ls -dr "$NVIM_CONFIG" "$NVIM_CONFIG_DIR/lua" "$NVIM_CONFIG_DIR/ftplugin" "$NVIM_CONFIG_DIR/snippets"
+		__ls -d "$NVIM_CONFIG" "$NVIM_CONFIG_DIR/lua" "$NVIM_CONFIG_DIR/ftplugin" "$NVIM_CONFIG_DIR/snippets"
 		__ls -a "$NVIM_CONFIG_DIR"
 		__br
 	}
