@@ -42,9 +42,25 @@ function __services::git::branch::switch() {
 }
 
 function __services::git::changed_files::select() {
-	local files=$(
-		git diff --name-only | awk '{print $0"|\033[33m(changed)\033[0m"}'
-		git ls-files --others --exclude-standard | awk '{print $0"|\033[31m(untracked)\033[0m"}'
+    local files=$(
+		# https://git-scm.com/docs/git-status#_short_format
+		git status --porcelain | awk -v FS="" '
+		{
+			second = substr($0, 2, 1);
+			if (second == " ") next;
+
+			if (second == "?") status = "\x1b[31m(untracked)\x1b[0m";
+			else if (second == "M") status = "\x1b[32m(modified)\x1b[0m";
+			else if (second == "T") status = "\x1b[32m(type changed)\x1b[0m";
+			else if (second == "D") status = "\x1b[35m(deleted)\x1b[0m";
+			else if (second == "A") status = "\x1b[32m(added)\x1b[0m";
+			else if (second == "R") status = "\x1b[32m(renamed)\x1b[0m";
+			else if (second == "C") status = "\x1b[32m(copied)\x1b[0m";
+			else if (second == "U") status = "\x1b[36m(unmerged)\x1b[0m";
+			else status = "\x1b[38m(unknown)\x1b[0m";
+
+			printf "%s|%s\n", substr($0, 4), status;
+		}'
 	)
 	if [ -z "$files" ]; then
 		return
@@ -53,12 +69,13 @@ function __services::git::changed_files::select() {
 	column -ts'|' <<< "$files" |
 	fzf-tmux -- \
 		--ansi --exact --info=hidden --no-sort --multi --prompt 'file>' \
-		--preview='[[ "{2}" == *changed* ]] && git diff --color=always -- {1} || bat --style=plain --color always {1}' |
+		--preview='[[ "{2}" != *untracked* ]] && git diff --color=always -- {1} || bat --style=plain --color always {1}' |
 	awk '{print $1}'
 }
 
 function __services::git::changed_files::add() {
 	for arg in "$@"; do
+		# オプションじゃない引数がひとつでもあれば引数全部 git add して終了
 		if [[ "$arg" != -* || "$arg" == "-A" ]]; then
 			git add "$@"
 			git status
@@ -66,10 +83,52 @@ function __services::git::changed_files::add() {
 		fi
 	done
 
+	local additional = function() {
+		local $files=$1
+		local -a additions
+
+		IFS=$'\n'  # 改行を区切り文字に設定
+		for file in $files; do
+			[ -e "$file" ] && additions+=("$file")
+		done
+		unset IFS
+
+		return additions
+	}
+
+	local deletable = function() {
+		local $files=$1
+		local -a deletions
+
+		IFS=$'\n'  # 改行を区切り文字に設定
+		for file in $files; do
+			[ -e "$file" ] || deletions+=("$file")
+		done
+		unset IFS
+
+		return deletions
+	}
+
 	local files=$(__services::git::changed_files::select)
 
 	if [ -n "$files" ]; then
-		git add "$@" -- $files
+
+		if (( ${#additions[@]} > 0 )); then
+			if ! git add "$@" -- $additions; then
+				echo
+				printf "\e[31m%s\e[m\n" "failed:"
+				echo git add "$@" -- $additions
+			fi
+		fi
+
+		if (( ${#deletions[@]} > 0 )); then
+			if ! git rm -- $deletions; then
+				echo
+				printf "\e[31m%s\e[m\n" "failed:"
+				echo git rm -- $deletions
+			fi
+		fi
+
 		git status
 	fi
 }
