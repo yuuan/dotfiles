@@ -36,18 +36,17 @@ return {
               ['<ESC><ESC>'] = actions.close,
             },
           },
-          file_ignore_patterns = {
-            '.git/objects/.*',
-            '.git/*',
-            'node_modules/*',
-            'vendor/*',
-            '.bundle/*',
-          },
         },
         pickers = {
           find_files = {
             hidden = true, -- 隠しファイルを表示するかどうか
             mappings = default_tab_mappings,
+            file_ignore_patterns = {
+              '[.]git/objects/.*',
+              '[.]git/refs/.*',
+              '[.]git/logs/.*',
+              'node_modules/*',
+            },
           },
           live_grep = {
             mappings = default_tab_mappings,
