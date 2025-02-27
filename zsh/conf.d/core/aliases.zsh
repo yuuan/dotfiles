@@ -9,29 +9,3 @@ typeset -g -a GLOBAL_ALIASES
 function @ {
 	echo "Global Aliases: ${GLOBAL_ALIASES:-}"
 }
-
-# ファイルに変更を加える前に確認する
-alias cp='cp -i'
-alias mv='mv -i'
-
-
-## `ls` コマンドの設定
-case ${OSTYPE} in
-	darwin*)
-		alias ls='ls -FG'
-		;;
-	linux*|cygwin*)
-		alias ls='ls -F --time-style=+"%Y/%m/%d %H:%M:%S" --color=auto'
-		;;
-esac
-
-alias la='ls -a'
-alias ll='ls -lh'
-alias lal='ls -lah'
-alias lz='ls -lhZ'
-alias laz='ls -laZ'
-
-# 短縮コマンド
-alias ssh-config="edit ${HOME}/.ssh/config"
-alias dc='docker compose'
-alias s='git status'

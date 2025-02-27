@@ -2,7 +2,7 @@
 # Vim のためのエイリアスの設定
 # ----------------------------------------
 
-if which nvim &> /dev/null; then
+if (( $+commands[nvim] )); then
 	alias vim='nvim'
 	alias vimdiff='nvim -d'
 fi

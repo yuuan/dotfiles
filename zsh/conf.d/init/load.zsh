@@ -1,4 +1,7 @@
-local ZSHRC_DIR="${ZSH_HOME}/conf.d"
+local ZSHRC_DIR="${ZSH_CONFIG}/conf.d"
+
+# 先に読ませたい環境ごとの設定を読み込む
+__helpers::source "$HOME/.zshrc.init"
 
 # Zsh の基本的な設定
 __helpers::sources "${ZSHRC_DIR}/core"
@@ -20,6 +23,9 @@ if (( $+commands[atuin] )); then
 fi
 
 # `conf.d` 内のファイルを読み込む
-__helpers::sources "${ZSHRC_DIR}/functions"
 __helpers::sources "${ZSHRC_DIR}/services"
+__helpers::sources "${ZSHRC_DIR}/functions"
 __helpers::sources "${ZSHRC_DIR}/aliases"
+
+# 環境ごとの設定を読み込む
+__helpers::source "$HOME/.zshrc.local"

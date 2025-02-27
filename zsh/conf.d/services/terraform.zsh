@@ -69,7 +69,7 @@ function __services::terraform::resources::targets::select() {
 
 alias TF="__services::terraform::resources::targets::show"
 
-if which fzf-tmux &> /dev/null; then
+if (( $+commands[fzf-tmux] )); then
 	alias -g @TF='$(__services::terraform::resources::targets::select)'
 
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@TF')

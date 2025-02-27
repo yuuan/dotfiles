@@ -22,6 +22,36 @@ function __helpers::sources() {
 	done
 }
 
+function __helpers::contains_path() {
+	echo "$PATH" | tr ':' '\n' | grep -Fxq "$1"
+}
+
+# PATH の最初にディレクトリを追加
+function __helpers::unshift_path() {
+	local -a ds
+	for d in "$@"; do
+		[ -d "$d" ] && ! __helpers::contains_path "$d" && ds=($ds $d)
+	done
+
+	path=(
+		$ds
+		$path
+	)
+}
+
+# PATH の最後にディレクトリを追加
+function __helpers::push_path() {
+	local -a ds
+	for d in "$@"; do
+		[ -d "$d" ] && ! __helpers::contains_path "$d" && ds=($ds $d)
+	done
+
+	path=(
+		$path
+		$ds
+	)
+}
+
 # 最終行から逆順に出力
 function __helpers::tac() {
 	if which tac &> /dev/null; then

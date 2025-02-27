@@ -146,5 +146,3 @@ if which fzf-tmux &> /dev/null; then
 
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@HASH' '@H' '@BRANCH' '@B' '@CURRENT_BRANCH' '@CB' '@FILE' '@F')
 fi
-
-alias ga='__services::git::changed_files::add'

@@ -14,7 +14,7 @@ function __services::ssh::host::select() {
 	ssh-hosts | fzf-tmux --prompt "host>"
 }
 
-if which fzf-tmux &> /dev/null; then
+if (( $+commands[fzf-tmux] )) &> /dev/null; then
 	alias -g @HOST='$(__services::ssh::host::select)'
 
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@HOST')

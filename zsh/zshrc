@@ -1,4 +1,5 @@
 # システム全体の設定を読み込む
-source "/etc/zshrc"
+__helpers::source "/etc/zshrc"
 
-source "$HOME/.config/zsh/conf.d/init/load.zsh"
+__helpers::source "${ZSH_CONFIG:-$HOME/.config/zsh}/conf.d/init/load.zsh"
+

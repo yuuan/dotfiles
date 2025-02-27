@@ -11,14 +11,14 @@ function __services::history::select {
 # Widget を登録
 zle -N __services::history::select
 
-# `b4b4r07/history` がインストールされているか
+# Atuin がインストールされているか
 function __services::history::is_installed {
-	which history &> /dev/null
+	(( $+commands[atuin] ))
 }
 
 # Ctrl-R で履歴を表示
 if ! __services::history::is_installed; then
-	if which fzf-tmux &> /dev/null; then
+	if (( $+commands[fzf-tmux] )); then
 		# Zsh の `history` に `fzf` を組み合わせて使う
 		bindkey '^R' __services::history::select
 	else

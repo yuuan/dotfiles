@@ -10,7 +10,7 @@ function process-id {
 	fi
 }
 
-if which fzf-tmux &> /dev/null; then
+if (( $+commands[fzf-tmux] )); then
 	alias -g @PID='$(process-id)'
 
 	GLOBAL_ALIASES=(${GLOBAL_ALIASES:-} '@PID')
