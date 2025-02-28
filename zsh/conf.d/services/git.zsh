@@ -42,8 +42,8 @@ function __services::git::branch::switch() {
 }
 
 function __services::git::changed_files::select() {
+	# https://git-scm.com/docs/git-status#_short_format
     local files=$(
-		# https://git-scm.com/docs/git-status#_short_format
 		git status --porcelain | awk -v FS="" '
 		{
 			second = substr($0, 2, 1);
