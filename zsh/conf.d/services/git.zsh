@@ -20,6 +20,18 @@ function __services::git::commit::select() {
 	awk '{print $1}'
 }
 
+function __services::git::rebase() {
+	__services::git::assert || return $?
+
+	local COMMIT=$(__services::git::commit::select)
+
+	if [ -z "$COMMIT" ]; then
+		return
+	fi
+
+	git rebase -i --autosquash "$COMMIT"
+}
+
 function __services::git::branch::select() {
 	__services::git::assert || return $?
 
