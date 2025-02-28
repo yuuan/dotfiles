@@ -2,7 +2,17 @@
 # `git` コマンドに関する設定
 # ----------------------------------------
 
+function __services::git::assert() {
+	if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+		printf "\e[31m%s\e[m\n" "Error: not a git repository" >&2
+		return 1
+	fi
+	return 0
+}
+
 function __services::git::commit::select() {
+	__services::git::assert || return $?
+
 	git log --color --date=format:'%Y-%m-%d %H:%M' --pretty=format:'%C(yellow)%h%C(reset) %C(blue)%ad%C(reset) %s%C(red)%d%C(reset)' |
 	fzf-tmux -- \
 		--ansi --exact --no-sort --prompt 'commit>' \
@@ -11,6 +21,8 @@ function __services::git::commit::select() {
 }
 
 function __services::git::branch::select() {
+	__services::git::assert || return $?
+
 	local fmt=$(cat <<- EOF
 		%(if:equals=<$(git config user.email)>)%(authoremail)%(then)%(color:default)%(else)%(color:blue)%(end)%(refname:short)|\
 		%(committerdate:relative)|\
@@ -30,6 +42,8 @@ function __services::git::branch::select() {
 }
 
 function __services::git::branch::current() {
+	__services::git::assert || return $?
+
 	git branch --contains | cut -d " " -f 2
 }
 
@@ -42,6 +56,8 @@ function __services::git::branch::switch() {
 }
 
 function __services::git::changed_files::select() {
+	__services::git::assert || return $?
+
 	# https://git-scm.com/docs/git-status#_short_format
     local files=$(
 		git status --porcelain | awk -v FS="" '
@@ -74,6 +90,8 @@ function __services::git::changed_files::select() {
 }
 
 function __services::git::changed_files::add() {
+	__services::git::assert || return $?
+
 	for arg in "$@"; do
 		# オプションじゃない引数がひとつでもあれば引数全部 git add して終了
 		if [[ "$arg" != -* || "$arg" == "-A" ]]; then
