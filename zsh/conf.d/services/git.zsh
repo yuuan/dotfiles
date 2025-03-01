@@ -25,11 +25,15 @@ function __services::git::rebase() {
 
 	local COMMIT BRANCH
 	local TEMPLATE=$( (
-			print -P "%F{blue}1:%f git rebase -i --autosquash %F{red}@COMMIT%f"
-			print -P "%F{blue}2:%f git rebase --continue"
-			print -P "%F{blue}3:%f git rebase --skip"
-			print -P "%F{blue}4:%f git rebase --abort"
-			print -P "%F{blue}5:%f git rebase %F{red}@BRANCH%f"
+			print -P "%F{blue}1:%f git commit --fixup %F{red}@COMMIT%f"
+			print -P "%F{blue}2:%f git commit --amend"
+			print -P "%F{blue}3:%f git rebase -i --autosquash origin/develop"
+			print -P "%F{blue}4:%f git rebase -i --autosquash %F{red}@BRANCH%f"
+			print -P "%F{blue}5:%f git rebase -i --autosquash %F{red}@COMMIT%f"
+			print -P "%F{blue}6:%f git rebase --continue"
+			print -P "%F{blue}7:%f git rebase --skip"
+			print -P "%F{blue}8:%f git rebase --abort"
+			print -P "%F{blue}9:%f git rebase %F{red}@BRANCH%f"
 		) | fzf-tmux -- --ansi --exact --info=hidden --no-sort --prompt 'rebase>' | cut -c4-
 	)
 
