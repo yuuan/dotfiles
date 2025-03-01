@@ -119,18 +119,28 @@ function __services::git::changed_files::select() {
 			else if (second == "U") status = "\x1b[36m(unmerged)\x1b[0m";
 			else status = "\x1b[38m(unknown)\x1b[0m";
 
-			printf "%s|%s\n", substr($0, 4), status;
+			file = substr($0, 4);
+			sub(/^"/, "", file);
+			sub(/"$/, "", file);
+
+			printf "%s|%s\n", file, status;
 		}'
 	)
 	if [ -z "$files" ]; then
 		return
 	fi
 
+	local preview=$(cat <<-'EOF'
+		file=$(sed 's/  *[^ ]*$//' <<< {});
+		[[ {} == *(untracked)* ]] && bat -pp --color always "$file" || git diff --color=always -- "$file"
+	EOF
+	)
+
 	column -ts'|' <<< "$files" |
 	fzf-tmux -- \
 		--ansi --exact --info=hidden --no-sort --multi --prompt 'file>' \
-		--preview='[[ "{2}" != *untracked* ]] && git diff --color=always -- {1} || bat --style=plain --color always {1}' |
-	awk '{print $1}'
+		--preview="$preview" |
+	sed 's/  *[^ ]*$//'
 }
 
 function __services::git::changed_files::add() {
@@ -148,40 +158,20 @@ function __services::git::changed_files::add() {
 	local files=$(__services::git::changed_files::select)
 
 	if [ -n "$files" ]; then
-		local cmd args additions deletions
+		local args
 
 		# 最初に渡された引数
 		for arg in "$@"; do
 			args+=" $(sh-escape "$arg")"
 		done
 
-		# エスケープが必要なファイル名は Git によって "" で囲まれている
-		while IFS="\n" read -r file; do
-			if [[ -e "$file" ]]; then
-				additions+=" $file"
-			else
-				deletions+=" $file"
-			fi
-		done <<< "$files"
+		local additions=$(awk '{printf "\"%s\" ", $0} END {print ""}' <<< "$files")
+		local cmd="git add $args -- $additions"
 
-		if [[ -n "$additions" ]]; then
-			cmd="git add $args --$additions"
+		printf "\e[32m%s\e[m\n" "\$ $cmd"
 
-			printf "\e[32m%s\e[m\n" "\$ $cmd"
-
-			if ! __services::history::eval "$cmd"; then
-				printf "\e[31m%s\e[m\n" "Failed."
-			fi
-		fi
-
-		if [[ -n "$deletions" ]]; then
-			cmd="git rm --$deletions"
-
-			printf "\e[32m%s\e[m\n" "\$ $cmd"
-
-			if ! __services::history::eval "$cmd"; then
-				printf "\e[31m%s\e[m\n" "Failed."
-			fi
+		if ! __services::history::eval "$cmd"; then
+			printf "\e[31m%s\e[m\n" "Failed to stage files."
 		fi
 
 		git status
