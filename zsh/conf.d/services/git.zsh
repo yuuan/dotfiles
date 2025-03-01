@@ -23,13 +23,44 @@ function __services::git::commit::select() {
 function __services::git::rebase() {
 	__services::git::assert || return $?
 
-	local COMMIT=$(__services::git::commit::select)
+	local COMMIT BRANCH
+	local TEMPLATE=$( (
+			print -P "%F{blue}1:%f git rebase -i --autosquash %F{red}@COMMIT%f"
+			print -P "%F{blue}2:%f git rebase --continue"
+			print -P "%F{blue}3:%f git rebase --skip"
+			print -P "%F{blue}4:%f git rebase --abort"
+			print -P "%F{blue}5:%f git rebase %F{red}@BRANCH%f"
+		) | fzf-tmux -- --ansi --exact --info=hidden --no-sort --prompt 'rebase>' | cut -c4-
+	)
 
-	if [ -z "$COMMIT" ]; then
+	if [ -z "$TEMPLATE" ]; then
 		return
 	fi
 
-	git rebase -i --autosquash "$COMMIT"
+	if [[ "$TEMPLATE" == *"@COMMIT"* ]]; then
+		COMMIT=$(__services::git::commit::select)
+		if [ -z "$COMMIT" ]; then
+			return
+		fi
+	fi
+
+	if [[ "$TEMPLATE" == *"@BRANCH"* ]]; then
+		BRANCH=$(__services::git::branch::select)
+		if [ -z "$BRANCH" ]; then
+			return
+		fi
+	fi
+
+	local CMD=$(
+		echo $TEMPLATE | sed \
+			-e "s/@COMMIT/$(print -P "%F{red}\"$COMMIT\"%f")/" \
+			-e "s/@BRANCH/$(print -P "%F{red}\"$BRANCH\"%f")/")
+
+	print -P "%F{green}\$ $CMD%f"
+
+	if [[ "$1" != "--dry-run" ]]; then
+		eval $(nocolor <<< "$CMD")
+	fi
 }
 
 function __services::git::branch::select() {
@@ -165,6 +196,8 @@ function __services::git::changed_files::add() {
 compdef _git-add __services::git::changed_files::add
 
 if which fzf-tmux &> /dev/null; then
+	alias -g @COMMIT='$(__services::git::commit::select)'
+	alias -g @C='$(__services::git::commit::select)'
 	alias -g @HASH='$(__services::git::commit::select)'
 	alias -g @H='$(__services::git::commit::select)'
 	alias -g @BRANCH='$(__services::git::branch::select)'
