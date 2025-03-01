@@ -145,49 +145,42 @@ function __services::git::changed_files::add() {
 		fi
 	done
 
-	local additional = function() {
-		local $files=$1
-		local -a additions
-
-		IFS=$'\n'  # 改行を区切り文字に設定
-		for file in $files; do
-			[ -e "$file" ] && additions+=("$file")
-		done
-		unset IFS
-
-		return additions
-	}
-
-	local deletable = function() {
-		local $files=$1
-		local -a deletions
-
-		IFS=$'\n'  # 改行を区切り文字に設定
-		for file in $files; do
-			[ -e "$file" ] || deletions+=("$file")
-		done
-		unset IFS
-
-		return deletions
-	}
-
 	local files=$(__services::git::changed_files::select)
 
 	if [ -n "$files" ]; then
+		local cmd args additions deletions
 
-		if (( ${#additions[@]} > 0 )); then
-			if ! git add "$@" -- $additions; then
-				echo
-				printf "\e[31m%s\e[m\n" "failed:"
-				echo git add "$@" -- $additions
+		# 最初に渡された引数
+		for arg in "$@"; do
+			args+=" $(sh-escape "$arg")"
+		done
+
+		# エスケープが必要なファイル名は Git によって "" で囲まれている
+		while IFS="\n" read -r file; do
+			if [[ -e "$file" ]]; then
+				additions+=" $file"
+			else
+				deletions+=" $file"
+			fi
+		done <<< "$files"
+
+		if [[ -n "$additions" ]]; then
+			cmd="git add $args --$additions"
+
+			printf "\e[32m%s\e[m\n" "\$ $cmd"
+
+			if ! __services::history::eval "$cmd"; then
+				printf "\e[31m%s\e[m\n" "Failed."
 			fi
 		fi
 
-		if (( ${#deletions[@]} > 0 )); then
-			if ! git rm -- $deletions; then
-				echo
-				printf "\e[31m%s\e[m\n" "failed:"
-				echo git rm -- $deletions
+		if [[ -n "$deletions" ]]; then
+			cmd="git rm --$deletions"
+
+			printf "\e[32m%s\e[m\n" "\$ $cmd"
+
+			if ! __services::history::eval "$cmd"; then
+				printf "\e[31m%s\e[m\n" "Failed."
 			fi
 		fi
 
