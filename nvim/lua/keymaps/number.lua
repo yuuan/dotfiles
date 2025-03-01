@@ -1,17 +1,17 @@
 
 -- 行番号表示切り替え
-vim.keymap.set('n', '!!', function()
-	if vim.opt_local.number:get() then
-		vim.opt_local.number = false
-		vim.opt_local.list = false
-		vim.opt_local.signcolumn = 'no'
-		vim.api.nvim_command('IndentLinesDisable')
-		vim.api.nvim_command('GitGutterDisable')
-	else
-		vim.opt_local.number = true
-		vim.opt_local.list = true
-		vim.opt_local.signcolumn = 'auto'
-		vim.api.nvim_command('IndentLinesEnable')
-		vim.api.nvim_command('GitGutterEnable')
-	end
-end, { noremap = true, silent = true })
+--vim.keymap.set('n', '!!', function()
+--	if vim.opt_local.number:get() then
+--		vim.opt_local.number = false
+--		vim.opt_local.list = false
+--		vim.opt_local.signcolumn = 'no'
+--		vim.api.nvim_command('IndentLinesDisable')
+--		vim.api.nvim_command('GitGutterDisable')
+--	else
+--		vim.opt_local.number = true
+--		vim.opt_local.list = true
+--		vim.opt_local.signcolumn = 'auto'
+--		vim.api.nvim_command('IndentLinesEnable')
+--		vim.api.nvim_command('GitGutterEnable')
+--	end
+--end, { noremap = true, silent = true })
