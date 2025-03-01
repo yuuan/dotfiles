@@ -31,7 +31,7 @@ vim.opt.backspace = 'indent,eol,start'
 vim.opt.list = true
 
 -- タブ文字や末尾のスペースを文字で表示
-vim.opt.listchars = { tab = '» ', trail = '~', extends = '»', precedes = '«' }
+vim.opt.listchars = { tab = '|» ', trail = '~', extends = '»', precedes = '«' }
 
 -- マウスを使えるようにする
 vim.opt.mouse = 'a'
