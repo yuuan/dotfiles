@@ -51,15 +51,16 @@ function __services::git::rebase() {
 		fi
 	fi
 
-	local CMD=$(
+	local DECORATED_CMD=$(
 		echo $TEMPLATE | sed \
-			-e "s/@COMMIT/$(print -P "%F{red}\"$COMMIT\"%f")/" \
-			-e "s/@BRANCH/$(print -P "%F{red}\"$BRANCH\"%f")/")
+			-e "s:@COMMIT:$(print -P "%F{red}\"$COMMIT\"%f"):" \
+			-e "s:@BRANCH:$(print -P "%F{red}\"$BRANCH\"%f"):")
+	local CMD=$(nocolor <<< "$DECORATED_CMD")
 
-	print -P "%F{green}\$ $CMD%f"
+	print -P "%F{green}\$ $DECORATED_CMD%f"
 
 	if [[ "$1" != "--dry-run" ]]; then
-		eval $(nocolor <<< "$CMD")
+		__services::history::eval "$CMD"
 	fi
 }
 
