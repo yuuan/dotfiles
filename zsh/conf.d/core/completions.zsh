@@ -32,11 +32,30 @@ zstyle ':completion:*' use-cache true
 # `sudo` の後に補完するコマンドのパス
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
+# Tab キーでの展開を無効にする代わりに展開結果 (_expand) を候補に含める
+# _expand:      Glob パターンを展開
+# _complete:    通常の補完
+# _correct:     コマンド名のスペルミス修正
+# _approximate: コマンド名だけでなく引数のスペルミスも修正
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+
 # 補完関数の表示を強化する
 zstyle ':completion:*' verbose yes
-#zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
-zstyle ':completion:*:messages' format '%F{yellow}%d%f'
-zstyle ':completion:*:warnings' format '%F{red}No matches for: %F{yellow}%d%f'
-zstyle ':completion:*:descriptions' format '%F{yellow}- %d -%f'
-zstyle ':completion:*:corrections' format '%F{yellow}%d %F{red}(errors: %e)%f'
+zstyle ':completion:*:messages' format '%F{green}%d%f'
+zstyle ':completion:*:warnings' format '%F{red}No matches for: %F{cyan}%d%f'
+zstyle ':completion:*:descriptions' format '%K{blue}%F{232} %d %k%F{blue}%f'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:corrections' format '%K{red} %d (errors: %e)%k%F{red}%f'
 zstyle ':completion:*:options' description 'yes'
+
+# make コマンドの補完候補をターゲットに絞る
+zstyle ':completion:*:*:make:*' tag-order 'targets'
+
+# `ls` コマンドにカラースキーマが設定されていたら補完にも使う
+if [ -n "${LS_COLORS}" ]; then
+	zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+else
+	# Zsh 用に適当な LS_COLORS を設定する
+	ZSH_LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+	zstyle ':completion:*' list-colors ${(s.:.)ZSH_LS_COLORS}
+fi
