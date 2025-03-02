@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx starship atuin\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx, starship, atuin, wezterm\e[m
 HELP
 	}
 
@@ -441,6 +441,23 @@ INCLUDE
 		__br
 	}
 
+	function __install_wezterm() {
+		__installing_caption "wezterm"
+
+		local WEZTERM_CONFIG_DIR; WEZTERM_CONFIG_DIR="$HOME/.config/wezterm"
+		local WEZTERM_CONFIG; WEZTERM_CONFIG="$WEZTERM_CONFIG_DIR/wezterm.lua"
+
+		__mkdir "$WEZTERM_CONFIG_DIR"
+
+		__rm "$WEZTERM_CONFIG"
+		__link "$DOTFILES/wezterm/wezterm.lua" "$WEZTERM_CONFIG"
+
+		__done_caption
+
+		__ls -a "$WEZTERM_CONFIG_DIR/"
+		__br
+	}
+
 	function __install() {
 		if [[ "$*" =~ "all" ]]; then
 			__install_coffeelint
@@ -456,6 +473,7 @@ INCLUDE
 			__install_afx
 			__install_starship
 			__install_atuin
+			__install_wezterm
 			__load_zshrc
 		else
 			while (( $# > 0 )); do
@@ -509,6 +527,9 @@ INCLUDE
 						;;
 					atuin)
 						__install_atuin
+						;;
+					wezterm)
+						__install_wezterm
 						;;
 					*)
 						__warn "\`$1\` is invalid target."
