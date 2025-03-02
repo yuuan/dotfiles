@@ -27,6 +27,9 @@ bindkey -M vicmd "^[[2~" vi-insert
 # Delete
 bindkey "^[[3~" delete-char
 
+# Tab で補完のみして展開はしない
+bindkey '^I' complete-word
+
 # Shift + Tab
 bindkey "^[[Z" reverse-menu-complete
 
