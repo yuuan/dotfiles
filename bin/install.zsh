@@ -412,6 +412,10 @@ INCLUDE
 	function __install_starship() {
 		__installing_caption "starship"
 
+		if (( ! $+commands[starship] )); then
+			curl -sS https://starship.rs/install.sh | sh
+		fi
+
 		local STARSHIP_CONFIG_DIR; STARSHIP_CONFIG_DIR="$HOME/.config"
 
 		__mkdir "$STARSHIP_CONFIG_DIR"
@@ -426,6 +430,11 @@ INCLUDE
 
 	function __install_atuin() {
 		__installing_caption "atuin"
+
+		if (( ! $+commands[atuin] )); then
+			curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh \
+				| ATUIN_INSTALL_DIR="$HOME/.local/bin" sh
+		fi
 
 		local ATUIN_CONFIG_DIR; ATUIN_CONFIG_DIR="$HOME/.config/atuin"
 		local ATUIN_CONFIG; ATUIN_CONFIG="$ATUIN_CONFIG_DIR/config.toml"
