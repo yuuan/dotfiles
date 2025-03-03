@@ -22,8 +22,8 @@ config.colors = {
     inactive_tab_edge = "none",
   },
 }
---config.color_scheme = 'Japanesque'
-config.color_scheme = 'GruvboxDark'
+config.color_scheme = 'Japanesque'
+--config.color_scheme = 'GruvboxDark'
 config.window_background_opacity = 0.8
 config.font = wezterm.font 'HackGen Console NF'
 config.font_size = 17
