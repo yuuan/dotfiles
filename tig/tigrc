@@ -3,7 +3,7 @@ set line-graphics = ascii
 set tab-size = 4
 set main-view = id date:custom,format="%Y-%m-%d %H:%M" author:full commit-title:graph=yes,refs=yes
 
-color cursor white blue
+color cursor default blue bold
 color id red default
 color date blue default
 color author magenta default
