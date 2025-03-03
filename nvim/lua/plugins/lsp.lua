@@ -90,6 +90,9 @@ return {
       -- LSP を使った補完
       'hrsh7th/cmp-nvim-lsp',
 
+      -- 関数の引数を補完
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+
       -- バッファ内の単語を補完
       'hrsh7th/cmp-buffer',
 
@@ -135,6 +138,7 @@ return {
         }),
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
+          { name = 'nvim_lsp_signature_help' },
           { name = 'vsnip' },
         }, {
           { name = 'buffer' },
@@ -186,5 +190,5 @@ return {
         })
       })
     end,
-  }
+  },
 }
