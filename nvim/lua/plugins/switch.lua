@@ -20,6 +20,7 @@ return {
         { "required", "sometimes", "optional" },
         { "var", "let", "const" },
         { "my", "our", "local" },
+        { "NOTE:", "TODO:", "FIXME:", "WARNING:" },
         {
           ["\\>->\\(\\w\\{1,}\\)\\>"] = "['\\1']", -- `->property` -> `['property']`
           ["\\['\\(\\w\\{1,}\\)'\\]"] = "->\\1",   -- `['property']` -> `->property`
