@@ -354,6 +354,7 @@ INCLUDE
 
 		__link "$DOTFILES/nvim/init.lua" "$NVIM_CONFIG"
 		__link "$DOTFILES/nvim/lua" "$NVIM_CONFIG_DIR/lua"
+		__link "$DOTFILES/nvim/after" "$NVIM_CONFIG_DIR/after"
 		__link "$DOTFILES/nvim/ftplugin" "$NVIM_CONFIG_DIR/ftplugin"
 		__link "$DOTFILES/nvim/snippets" "$NVIM_CONFIG_DIR/snippets"
 		__mkdir "$NVIM_CONFIG_DIR/backup/"

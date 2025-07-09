@@ -4,82 +4,46 @@ return {
     lazy = false,
     opts = {},
   },
-  { "williamboman/mason-lspconfig.nvim" },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      automatic_enable = true,
+    },
+  },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       'williamboman/mason.nvim',
       "williamboman/mason-lspconfig.nvim",
     },
+    -- setup() は必要ない
     config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+      -- :LspRename で LSP の rename 機能を使えるようにする
       vim.api.nvim_create_user_command("LspRename", function()
         vim.lsp.buf.rename()
       end, {})
 
-      require("mason-lspconfig").setup_handlers({
-        function(server_name) -- default handler (optional)
-          require("lspconfig")[server_name].setup({
-            on_attach = function()
-              vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
-              vim.keymap.set('n', 'gw', function() vim.lsp.buf.format { async = true } end)
---            vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')  -- use Telescope
---            vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')  -- use Telescope
-              vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
---            vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')  -- use Telescope
---            vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')  -- use Telescope
---            vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')  -- use :LspRename
-              vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
---            vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')  -- use Telescope
---            vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
---            vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-            end,
-            capabilities = capabilities,
-          })
-        end,
-        ["lua_ls"] = function()
-          lspconfig.lua_ls.setup({
-            on_init = function(client)
-              local path = client.workspace_folders[1].name
-              if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-                return
-              end
+      -- LSP が有効なときに設定するキーマップ
+      vim.api.nvim_create_autocmd("LspAttach", {
+        desc = "Attach key mappings for LSP functionalities",
+        callback = function ()
+          vim.keymap.set('n', 'K',  '<cmd>lua vim.lsp.buf.hover()<CR>')
+          vim.keymap.set('n', 'gw', function() vim.lsp.buf.format { async = true } end)
+--        vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')  -- use Telescope
+--        vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')  -- use Telescope
+          vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>')
+--        vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')  -- use Telescope
+--        vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>')  -- use Telescope
+--        vim.keymap.set('n', 'gn', '<cmd>lua vim.lsp.buf.rename()<CR>')  -- use :LspRename
+          vim.keymap.set('n', 'ga', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+--        vim.keymap.set('n', 'ge', '<cmd>lua vim.diagnostic.open_float()<CR>')  -- use Telescope
+--        vim.keymap.set('n', 'g]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+--        vim.keymap.set('n', 'g[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+        end
+      })
 
-              client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-                runtime = {
-                  -- Tell the language server which version of Lua you're using
-                  -- (most likely LuaJIT in the case of Neovim)
-                  version = 'LuaJIT'
-                },
-                -- Make the server aware of Neovim runtime files
-                workspace = {
-                  checkThirdParty = false,
-                  library = {
-                    vim.env.VIMRUNTIME
-                    -- Depending on the usage, you might want to add additional paths here.
-                    -- "${3rd}/luv/library"
-                    -- "${3rd}/busted/library",
-                  }
-                  -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-                  -- library = vim.api.nvim_get_runtime_file("", true)
-                }
-              })
-            end,
-            settings = {
-              Lua = {}
-            }
-          })
-        end,
-        ["typos_lsp"] = function()
-          lspconfig.typos_lsp.setup({
-            init_options = {
-              config = '~/.config/nvim/spell/typos.toml',
-              diagnosticSeverity = "Warning",
-            },
-          })
-        end,
+      vim.lsp.config('*', {
+        capabilities = require("cmp_nvim_lsp").default_capabilities()
       })
     end,
   },
