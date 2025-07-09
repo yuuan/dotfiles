@@ -109,6 +109,7 @@ invert = false
 # ]
 history_filter = [
   '^\s+',
+  '^:wq?$',
 ]
 
 ## prevent commands run with cwd matching any of these regexes from being written
