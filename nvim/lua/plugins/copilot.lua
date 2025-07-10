@@ -9,7 +9,7 @@ return {
       }
     end,
     keys = {
-      { '<Esc>[9;5u', '<Plug>(copilot-accept-word)', mode = 'i', desc = 'Accept Copilot suggestion (word)' },
+      { '<C-Tab>', '<Plug>(copilot-accept-word)', mode = 'i', desc = 'Accept Copilot suggestion (word)' },
     },
   },
 }
