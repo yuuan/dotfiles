@@ -9,7 +9,8 @@ return {
       }
     end,
     keys = {
-      { '<C-Tab>', '<Plug>(copilot-accept-word)', mode = 'i', desc = 'Accept Copilot suggestion (word)' },
+      --{ '<C-Tab>', '<Plug>(copilot-accept-word)', mode = 'i', desc = 'Accept Copilot suggestion (word)' },
+      { '<C-Tab>', '<Plug>(copilot-next)', mode = 'i', desc = 'Cycle to the next suggestion, if one is available' },
     },
   },
 }
