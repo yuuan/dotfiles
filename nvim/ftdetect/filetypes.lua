@@ -4,7 +4,7 @@ vim.filetype.add({
     ["%.env%.[%l]+$"] = "sh",
 
     -- 環境ごとの YAML
-    ["%.yml%.[%l]+"] = "yaml",
+    ["%.yml%.[%l]+$"] = "yaml",
 
     -- `/etc/td-agent/` 以下にあるのは fluentd
     ["/etc/td-agent/.*%.conf"]          = "fluentd",
