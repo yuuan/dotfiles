@@ -8,9 +8,9 @@ local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
 config.window_decorations = "RESIZE"
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
-  left = 2,
-  right = 2,
-  top = 2,
+  left = 8,
+  right = 8,
+  top = 10,
   bottom = 0,
 }
 config.window_frame = {
