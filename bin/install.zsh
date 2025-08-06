@@ -356,12 +356,13 @@ INCLUDE
 		__link "$DOTFILES/nvim/lua" "$NVIM_CONFIG_DIR/lua"
 		__link "$DOTFILES/nvim/after" "$NVIM_CONFIG_DIR/after"
 		__link "$DOTFILES/nvim/ftplugin" "$NVIM_CONFIG_DIR/ftplugin"
+		__link "$DOTFILES/nvim/ftdetect" "$NVIM_CONFIG_DIR/ftdetect"
 		__link "$DOTFILES/nvim/snippets" "$NVIM_CONFIG_DIR/snippets"
 		__mkdir "$NVIM_CONFIG_DIR/backup/"
 
 		__done_caption
 
-		__ls -d "$NVIM_CONFIG" "$NVIM_CONFIG_DIR/lua" "$NVIM_CONFIG_DIR/ftplugin" "$NVIM_CONFIG_DIR/snippets"
+		__ls -d "$NVIM_CONFIG" "$NVIM_CONFIG_DIR/lua" "$NVIM_CONFIG_DIR/ftdetect" "$NVIM_CONFIG_DIR/ftplugin" "$NVIM_CONFIG_DIR/snippets"
 		__ls -a "$NVIM_CONFIG_DIR"
 		__br
 	}
