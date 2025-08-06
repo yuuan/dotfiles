@@ -1,68 +1,38 @@
--- `.env` は SH
 vim.filetype.add({
   pattern = {
-    [".env.[%l]+"] = "sh",
-  }
-})
+    -- `.env` は SH
+    ["%.env%.[%l]+$"] = "sh",
 
--- 環境ごとの YAML
-vim.filetype.add({
-  pattern = {
+    -- 環境ごとの YAML
     ["%.yml%.[%l]+"] = "yaml",
-  }
-})
 
--- `composer.lock` は JSON
-vim.filetype.add({
+    -- `/etc/td-agent/` 以下にあるのは fluentd
+    ["/etc/td-agent/.*%.conf"]          = "fluentd",
+    ["/etc/td-agent/.*%.conf%.example"] = "fluentd",
+  },
   filename = {
+    -- `composer.lock` は JSON
     ["composer.lock"] = "json",
-  }
-})
 
--- `.php_cs` は PHP
-vim.filetype.add({
-  filename = {
+    -- `.php_cs` は PHP
     [".php_cs"]      = "php",
     [".php_cs.dist"] = "php",
-  }
-})
 
--- `.neon` は YAML
-vim.filetype.add({
+    -- `nyagos` は Lua
+    ["nyagos"] = "lua",
+  },
   extension = {
+    -- `.neon` は YAML
     neon  = "yaml",
     neon_dist = "yaml",
-  }
-})
 
--- `*.t` は Perl
-vim.filetype.add({
-  extension = {
+    -- `*.t` は Perl
     t = "perl",
-  }
-})
 
--- Markdown
-vim.filetype.add({
-  extension = {
+    -- Markdown
     md    = "mkd",
     mdwn  = "mkd",
     mkd   = "mkd",
     mkdn  = "mkd",
-  }
-})
-
--- `nyagos` は Lua
-vim.filetype.add({
-  filename = {
-    ["nyagos"] = "lua",
-  }
-})
-
--- `/etc/td-agent/` 以下にあるのは fluentd
-vim.filetype.add({
-  pattern = {
-    ["/etc/td-agent/.*%.conf"]          = "fluentd",
-    ["/etc/td-agent/.*%.conf%.example"] = "fluentd",
   }
 })
