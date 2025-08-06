@@ -7,8 +7,8 @@ vim.filetype.add({
     ["%.yml%.[%l]+$"] = "yaml",
 
     -- `/etc/td-agent/` 以下にあるのは fluentd
-    ["/etc/td-agent/.*%.conf"]          = "fluentd",
     ["/etc/td-agent/.*%.conf%.example"] = "fluentd",
+    ["/etc/td-agent/.*%.conf"]          = "fluentd",
   },
   filename = {
     -- `composer.lock` は JSON
