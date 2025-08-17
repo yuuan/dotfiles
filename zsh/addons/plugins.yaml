@@ -21,7 +21,7 @@ github:
   repo: zsh-autosuggestions
   plugin:
     env:
-      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE: 'fg=13' # Suggestions color
+      ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE: 'fg=245' # Suggestions color
     sources:
     - zsh-autosuggestions.plugin.zsh
 - name: babarot/enhancd
