@@ -13,6 +13,8 @@ github:
   plugin:
     sources:
     - fast-syntax-highlighting.plugin.zsh
+    snippet: |
+      fast-theme -q "${ZSH_CONFIG}/addons/fsh-theme-default-custom.ini"
 - name: zsh-users/zsh-autosuggestions
   description: Fish-like autosuggestions for Zsh
   owner: zsh-users

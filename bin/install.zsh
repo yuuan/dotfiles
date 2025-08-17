@@ -379,6 +379,8 @@ INCLUDE
 		__link "$DOTFILES/zsh/conf.d" "$ZSH_CONFIG/conf.d"
 		__link "$DOTFILES/zsh/helpers.zsh" "$ZSH_CONFIG/helpers.zsh"
 
+		__link "$DOTFILES/zsh/addons" "$ZSH_CONFIG/addons"
+
 		__link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 		__link "$DOTFILES/zsh/zshenv" "$HOME/.zshenv"
 
