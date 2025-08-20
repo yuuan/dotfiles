@@ -13,8 +13,51 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 	reloads=false
 	targets=()
 
+	typeset -A target_group_map=(
+		[all]="git tig vim nvim zsh tmux claude wezterm coffeelint jshint peco screen"
+		[standard]="git tig nvim zsh tmux claude"
+	)
+
+	# ターゲットと関数のマッピング
+	typeset -A target_map=(
+		[afx]="__install_afx"
+		[atuin]="__install_atuin"
+		[claude]="__install_claude"
+		[git]="__install_git"
+		[tig]="__install_tig"
+		[neovim]="__install_nvim"
+		[nvim]="__install_nvim"
+		[starship]="__install_starship"
+		[tmux]="__install_tmux"
+		[tpm]="__install_tpm"
+		[vim]="__install_vim"
+		[wezterm]="__install_wezterm"
+		[zsh-only]="__install_zsh __load_zshrc"
+		[zsh]="__install_zsh __install_afx __install_starship __install_atuin __load_zshrc"
+
+		# Legacy
+		[coffeelint]="__install_coffeelint"
+		[jshint]="__install_jshint"
+		[peco]="__install_peco"
+		[screen]="__install_screen"
+	)
+
 
 	# 共通処理
+
+	function __target_group_keys() {
+		echo "${(k)target_group_map[@]}"
+	}
+
+	function __target_keys() {
+		echo "${(k)target_map[@]}"
+	}
+
+	function __target_installers() {
+		local funcs
+		funcs="${(v)target_map[@]}"
+		echo "$funcs" | tr ' ' '\n' | grep '^__install_' | sort -u | tr '\n' ' ' | sed 's/ $//'
+	}
 
 	function __warn() {
 		echo -e "\e[31m$*\e[m" >&2
@@ -33,10 +76,14 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 		fi
 	}
 
+	function __join() {
+		echo "$*" | sed 's/ /, /g' | sed 's/, $//'
+	}
+
 	function __help() {
 		cat <<HELP | __encode
 \e[33mUSAGE:\e[m
-  ./bin/install.zsh [OPTIONS] [TARGETS]
+  ./bin/install.zsh [OPTIONS] [TARGET_GROUPS|TARGETS]
 
 \e[33mOPTIONS:\e[m
   \e[32m-h, --help          \e[mshow this help message and usage
@@ -44,8 +91,11 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-q, --quiet         \e[mdon't output any message
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
+\e[33mTARGET_GROUPS:\e[m
+  \e[32m$(__join $(__target_group_keys))\e[m
+
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx, starship, atuin, wezterm, claude\e[m
+  \e[32m$(__join $(__target_keys))\e[m
 HELP
 	}
 
@@ -487,92 +537,6 @@ INCLUDE
 		__br
 	}
 
-	function __install() {
-		if [[ "$*" =~ "all" ]]; then
-			__install_coffeelint
-			__install_git
-			__install_jshint
-			__install_peco
-			__install_screen
-			__install_tig
-			__install_tmux
-			__install_vim
-			__install_nvim
-			__install_zsh
-			__install_afx
-			__install_starship
-			__install_atuin
-			__install_wezterm
-			__install_claude
-			__load_zshrc
-		else
-			while (( $# > 0 )); do
-				case "$1" in
-					coffeelint)
-						__install_coffeelint
-						;;
-					git)
-						__install_git
-						;;
-					jshint)
-						__install_jshint
-						;;
-					peco)
-						__install_peco
-						;;
-					screen)
-						__install_screen
-						;;
-					tig)
-						__install_tig
-						;;
-					tmux)
-						__install_tmux
-						;;
-					tpm)
-						__install_tpm
-						;;
-					vim)
-						__install_vim
-						;;
-					nvim|neovim)
-						__install_nvim
-						;;
-					zsh-only)
-						__install_zsh
-						__load_zshrc
-						;;
-					zsh)
-						__install_zsh
-						__install_afx
-						__install_starship
-						__install_atuin
-						__load_zshrc
-						;;
-					afx)
-						__install_afx
-						;;
-					starship)
-						__install_starship
-						;;
-					atuin)
-						__install_atuin
-						;;
-					wezterm)
-						__install_wezterm
-						;;
-					claude)
-						__install_claude
-						;;
-					*)
-						__warn "\`$1\` is invalid target."
-						;;
-				esac
-				shift
-			done
-		fi
-	}
-
 	function __load_zshrc() {
 		__loading_caption "zsh"
 
@@ -595,6 +559,42 @@ INCLUDE
 
 			__done_caption
 		fi
+	}
+
+	function __install() {
+		local -a expanded_targets=()
+		local -a expanded_funcs=()
+		local -a unique_funcs=()
+		
+		while (( $# > 0 )); do
+			local target="$1"
+			
+			if [[ -n "${target_group_map[$target]+x}" ]]; then
+				for expanded_target in ${=target_group_map[$target]}; do
+					expanded_targets+=("$expanded_target")
+				done
+			else
+				expanded_targets+=("$target")
+			fi
+			shift
+		done
+		
+		for target in "${expanded_targets[@]}"; do
+			if [[ -n "${target_map[$target]+x}" ]]; then
+				for expanded_func in ${=target_map[$target]}; do
+					expanded_funcs+=("$expanded_func")
+				done
+			else
+				__warn "\`$target\` is invalid target."
+				exit 1
+			fi
+		done
+		
+		unique_funcs=(${(u)expanded_funcs[@]})
+		
+		for func in "${unique_funcs[@]}"; do
+			eval "$func"
+		done
 	}
 
 
