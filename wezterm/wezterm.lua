@@ -37,6 +37,11 @@ config.keys = {
     action = wezterm.action.SendKey { key = '\\' }
   },
   {
+    key = "¥",
+    mods = 'ALT',
+    action = wezterm.action.SendKey { key = '¥' },
+  },
+  {
     key = "Tab",
     mods = "CTRL",
     action = wezterm.action.SendString("\x1b[9;5u"),
