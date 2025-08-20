@@ -42,6 +42,12 @@ config.keys = {
     action = wezterm.action.SendKey { key = '¥' },
   },
   {
+    -- Shift + Enter で LF (\n) を送信 (Claude code で改行できる)
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = wezterm.action.SendString('^J'),
+  },
+  {
     key = "Tab",
     mods = "CTRL",
     action = wezterm.action.SendString("\x1b[9;5u"),
