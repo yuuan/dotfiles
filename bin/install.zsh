@@ -45,7 +45,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
   \e[32m-r, --force-reload  \e[mreload .zshrc after it's installed
 
 \e[33mTARGETS:\e[m
-  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx, starship, atuin, wezterm\e[m
+  \e[32mcoffeelint, git, jshint, nvim, peco, screen, tig, tmux, tpm, vim, zsh, afx, starship, atuin, wezterm, claude\e[m
 HELP
 	}
 
@@ -471,6 +471,22 @@ INCLUDE
 		__br
 	}
 
+	function __install_claude() {
+		__installing_caption "claude"
+
+		local CLAUDE_CONFIG_DIR; CLAUDE_CONFIG_DIR="$HOME/.claude"
+
+		__mkdir "$CLAUDE_CONFIG_DIR"
+
+		__link "$DOTFILES/claude/settings.json" "$CLAUDE_CONFIG_DIR/settings.json"
+		__link "$DOTFILES/claude/commands" "$CLAUDE_CONFIG_DIR/commands"
+
+		__done_caption
+
+		__ls -a "$CLAUDE_CONFIG_DIR/"
+		__br
+	}
+
 	function __install() {
 		if [[ "$*" =~ "all" ]]; then
 			__install_coffeelint
@@ -487,6 +503,7 @@ INCLUDE
 			__install_starship
 			__install_atuin
 			__install_wezterm
+			__install_claude
 			__load_zshrc
 		else
 			while (( $# > 0 )); do
@@ -543,6 +560,9 @@ INCLUDE
 						;;
 					wezterm)
 						__install_wezterm
+						;;
+					claude)
+						__install_claude
 						;;
 					*)
 						__warn "\`$1\` is invalid target."
