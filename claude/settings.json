@@ -56,5 +56,18 @@
   "statusLine": {
     "type": "command",
     "command": "node ~/.claude/commands/statusline.js"
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zsh ~/.claude/commands/notify.zsh '終わったよ'"
+          }
+        ]
+      }
+    ]
   }
 }
