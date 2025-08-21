@@ -1,5 +1,6 @@
 # システム全体の設定を読み込む
 __helpers::source "/etc/zshrc"
 
-__helpers::source "${ZSH_CONFIG:-$HOME/.config/zsh}/conf.d/init/load.zsh"
-
+if [[ -z "$CLAUDECODE" ]]; then
+	__helpers::source "${ZSH_CONFIG:-$HOME/.config/zsh}/conf.d/init/load.zsh"
+fi
