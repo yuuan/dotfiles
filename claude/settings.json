@@ -68,6 +68,13 @@
           }
         ]
       }
-    ]
+    ],
+    "PostToolUse": [{
+      "matcher": "Bash",
+      "hooks": [{
+        "type": "command",
+        "command": "zsh ~/.claude/commands/log-posttooluse.zsh"
+      }]
+    }]
   }
 }
