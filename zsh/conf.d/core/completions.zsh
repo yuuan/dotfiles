@@ -37,7 +37,7 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/s
 # _complete:    通常の補完
 # _correct:     コマンド名のスペルミス修正
 # _approximate: コマンド名だけでなく引数のスペルミスも修正
-zstyle ':completion:*' completer _expand _complete _correct
+zstyle ':completion:*' completer _expand _complete
 
 # 補完関数の表示を強化する
 zstyle ':completion:*' verbose yes
