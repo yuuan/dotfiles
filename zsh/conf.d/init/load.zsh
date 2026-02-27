@@ -22,6 +22,11 @@ if (( $+commands[atuin] )); then
 	source <(atuin init zsh --disable-up-arrow)
 fi
 
+# zoxide の設定
+if (( $+commands[zoxide] )); then
+	source <(zoxide init zsh)
+fi
+
 # `conf.d` 内のファイルを読み込む
 __helpers::sources "${ZSHRC_DIR}/services"
 __helpers::sources "${ZSHRC_DIR}/functions"
