@@ -64,10 +64,6 @@
       "Bash(ecs-exec:*)"
     ]
   },
-  "statusLine": {
-    "type": "command",
-    "command": "node ~/.claude/commands/statusline.js"
-  },
   "hooks": {
     "Stop": [
       {
@@ -80,12 +76,20 @@
         ]
       }
     ],
-    "PostToolUse": [{
-      "matcher": "Bash",
-      "hooks": [{
-        "type": "command",
-        "command": "zsh ~/.claude/commands/log-posttooluse.zsh"
-      }]
-    }]
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zsh ~/.claude/commands/log-posttooluse.zsh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node ~/.claude/commands/statusline.js"
   }
 }
