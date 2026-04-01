@@ -62,6 +62,14 @@
     ],
     "deny": [
       "Bash(ecs-exec:*)"
+    ],
+    "ask": [
+      "Bash(rm:*)",
+      "Bash(git checkout:*)",
+      "Bash(git co:*)",
+      "Bash(git rm:*)",
+      "Bash(git clean:*)",
+      "Bash(terraform:*)"
     ]
   },
   "hooks": {
