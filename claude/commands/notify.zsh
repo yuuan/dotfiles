@@ -5,7 +5,9 @@ function __notify() {
 
 	if (( $+commands[osascript] )); then
 		osascript -e "display notification \"${message}\" with title \"Claude Code\""
-	elif (( $+commands[notify-send] )); then
+	fi
+
+	if (( $+commands[notify-send] )); then
 		notify-send "Claude Code" "${message}"
 	fi
 }
