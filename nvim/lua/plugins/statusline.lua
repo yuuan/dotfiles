@@ -4,34 +4,47 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'yuuan/lualine-fileencoding',
+      'yuuan/lualine-charvaluehex',
     },
     opts = function()
-      local function charvalue()
-        return require('plenary.strings').strcharpart(
-          vim.fn.getline('.'):sub(vim.fn.col('.')), 0, 1
-        )
-      end
+      local tabs = {
+        'tabs',
+        max_length = vim.o.columns,
+        section_separators   = { left = '', right = '' }, -- around the active tab
+        component_separators = { left = '', right = '' }, -- between inactive tabs
+        mode = 2,
+        show_modified_status = false,
+        tabs_color = {
+          active = { bg = '#458588', fg = '#fbf1c7' },
+        },
+        fmt = function(name, context)
+          -- Show + if buffer is modified in tab
+          local buflist = vim.fn.tabpagebuflist(context.tabnr)
+          local winnr = vim.fn.tabpagewinnr(context.tabnr)
+          local bufnr = buflist[winnr]
+          local mod = vim.fn.getbufvar(bufnr, '&mod')
 
-      local function charvaluehex()
-        local text = charvalue()
-        local length = text:len()
-
-        if length == 0 then
-          return '----'
+          return name .. (mod == 1 and ' 󰐖' or '')
         end
+      }
 
-        local hex = '0x'
+      local lsp_status = {
+        'lsp_status', icon = '', symbols = {
+          spinner = { '', '', '', '', '' },
+          done = '',
+          separator = ' ∷ ',
+        },
+      }
 
-        for i = 1, length do
-          hex = hex .. string.format('%x', text:byte(i))
-        end
-
-        return hex
-      end
-
-      local function filepath()
-        return vim.fn.expand('%')
-      end
+      local filepath = {
+        'filename',
+        path = 1,
+        symbols = {
+          modified = ' ',
+          readonly = '',
+        },
+      }
 
       return {
         options = {
@@ -41,19 +54,27 @@ return {
           component_separators = { left = '∷', right = '∷' },
           section_separators = { left = '', right = '' },
         },
+        tabline = {
+          lualine_a = { tabs },
+          lualine_b = {},
+          lualine_c = {},
+          lualine_x = {},
+          lualine_y = {},
+          lualine_z = {}
+        },
         sections = {
           lualine_a = { 'mode' },
           lualine_b = { filepath },
-          lualine_c = { 'diff', 'diagnostics' },
-          lualine_x = { 'encoding', 'fileformat', 'filetype' },
-          lualine_y = { charvaluehex },
-          lualine_z = { 'progress', 'location' },
+          lualine_c = { 'filesize', 'diff', 'diagnostics' },
+          lualine_x = { lsp_status },
+          lualine_y = { 'filetype', { 'fileencoding', symbols = { unix = '' }, show_bomb = true } },
+          lualine_z = { 'charvaluehex' },
         },
         inactive_sections = {
           lualine_a = {},
-          lualine_b = {},
-          lualine_c = {'filename'},
-          lualine_x = {'location'},
+          lualine_b = { filepath },
+          lualine_c = { 'diff' },
+          lualine_x = { 'filetype' },
           lualine_y = {},
           lualine_z = {},
         },
