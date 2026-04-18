@@ -12,13 +12,27 @@ vim.api.nvim_set_hl(0, "MatchParen", { ctermfg = 8,  ctermbg = 208 })
 
 return {
   {
-    'morhetz/gruvbox',
+    'sainnhe/gruvbox-material',
     lazy = false,
     priority = 999,
     config = function()
-      vim.opt.background = 'dark'
-      vim.cmd.colorscheme("gruvbox")
+      vim.g.gruvbox_material_foreground = 'material' -- material, mix, original
+      vim.cmd.colorscheme('gruvbox-material')
+    end
+  },
+  {
+    'ayu-theme/ayu-vim',
+    lazy = false,
+    priority = 999,
+    init = function()
+      vim.g.ayucolor = 'mirage' -- dark, mirage, light
+      --vim.cmd.colorscheme('ayu')
     end,
+  },
+  {
+    'aereal/vim-colors-japanesque',
+    lazy = false,
+    priority = 999,
   },
   {
     'sjl/badwolf',
@@ -27,15 +41,6 @@ return {
     init = function()
       vim.g.badwolf_html_link_underline = 0
       vim.g.badwolf_css_props_highlight = 1
-    end,
-  },
-  {
-    'altercation/vim-colors-solarized',
-    lazy = false,
-    priority = 999,
-    init = function()
-      vim.g.solarized_termcolors = 16
-      --vim.g.solarized_termtrans = 1
     end,
   },
 }
