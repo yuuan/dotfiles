@@ -33,10 +33,10 @@ return {
 
   -- カラーコードをその色で表示
   {
-    'norcalli/nvim-colorizer.lua',
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
     opts = {
-      -- Enable CSS functions: rgb(), rgba(), hsl(), hsla()
-      css = { css_fn = true; };
+      parsers = { css = true },
     },
   },
 }
