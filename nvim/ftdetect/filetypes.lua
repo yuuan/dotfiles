@@ -28,11 +28,5 @@ vim.filetype.add({
 
     -- `*.t` は Perl
     t = "perl",
-
-    -- Markdown
-    md    = "mkd",
-    mdwn  = "mkd",
-    mkd   = "mkd",
-    mkdn  = "mkd",
   }
 })
