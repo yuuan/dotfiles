@@ -72,6 +72,10 @@
       "Bash(terraform:*)"
     ]
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "hooks": {
     "Stop": [
       {
