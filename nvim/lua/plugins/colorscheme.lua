@@ -30,6 +30,18 @@ return {
     end,
   },
   {
+    'ribru17/bamboo.nvim',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('bamboo').setup {
+        transparent = false, -- Show/hide background (default: false)
+        term_colors = true, -- Change terminal color as per the selected theme style (default: true)
+      }
+      --require('bamboo').load()
+    end,
+  },
+  {
     'aereal/vim-colors-japanesque',
     lazy = false,
     priority = 999,
