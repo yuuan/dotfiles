@@ -67,7 +67,7 @@ return {
           lualine_b = { filepath },
           lualine_c = { 'filesize', 'diff', 'diagnostics' },
           lualine_x = { lsp_status },
-          lualine_y = { 'filetype', { 'fileencoding', symbols = { unix = '' }, show_bomb = true } },
+          lualine_y = { { 'fileencoding', symbols = { unix = '' }, show_bomb = true }, 'filetype' },
           lualine_z = { 'charvaluehex' },
         },
         inactive_sections = {
