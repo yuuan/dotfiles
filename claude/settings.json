@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash(echo:*)",
@@ -71,10 +75,6 @@
       "Bash(git clean:*)",
       "Bash(terraform:*)"
     ]
-  },
-  "attribution": {
-    "commit": "",
-    "pr": ""
   },
   "hooks": {
     "Stop": [
