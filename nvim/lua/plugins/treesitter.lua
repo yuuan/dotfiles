@@ -1,5 +1,6 @@
 return {
   {
+    -- TODO: アーカイブされてしまったので乗り換え先を探す
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     lazy = false,           -- FileType より前に走らせたいので false 推奨
@@ -8,33 +9,43 @@ return {
       local nts = require("nvim-treesitter")
       nts.setup({})
 
-      -- 必要なパーサを必要になったタイミングで自動インストール
+      -- インストール可能なパーサ一覧をキャッシュ (起動時に一度だけ取得)
+      local available = {}
+      for _, lang in ipairs(nts.get_available()) do
+        available[lang] = true
+      end
+
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
           local bufnr = args.buf
           local filetype = args.match
           if filetype == "" then return end
 
-          -- filetype から パーサ名(言語名)を解決
           local lang = vim.treesitter.language.get_lang(filetype)
           if not lang then return end
 
-          -- 既にインストール済みのパーサ一覧
+          -- インストール可能なパーサでなければ諦める
+          if not available[lang] then return end
+
+          -- パーサがインストールされていたらそれを使う
           local installed = nts.get_installed("parsers")
           if vim.tbl_contains(installed, lang) then
-            -- あればすぐ start
             pcall(vim.treesitter.start, bufnr)
-            vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            pcall(function()
+              vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            end)
             return
           end
 
-          -- なければインストールしてから start
-          nts.install({ lang }):await(function()
-            -- バッファがまだ生きてるか確認
+          -- パーサがインストールされていなければインストールしてから使う
+          nts.install({ lang }):await(function(err)
+            if err then return end  -- インストール失敗時は静かに諦める
             if not vim.api.nvim_buf_is_valid(bufnr) then return end
             vim.schedule(function()
               pcall(vim.treesitter.start, bufnr)
-              vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+              pcall(function()
+                vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+              end)
             end)
           end)
         end,
