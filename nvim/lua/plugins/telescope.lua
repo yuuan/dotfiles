@@ -79,6 +79,7 @@ return {
             hidden = true,
             grouped = true,
             path = "%:p:h",
+            follow_symlinks = true,
             respect_gitignore = false,
             mappings = {
               i = {
