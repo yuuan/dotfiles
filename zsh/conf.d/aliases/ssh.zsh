@@ -3,6 +3,3 @@
 # ----------------------------------------
 
 alias ssh-config="edit ${HOME}/.ssh/config"
-
-# セッション切断時にマウス操作が文字で表示されるのをリセット
-alias fixterm='tput rmcup; printf "\e[?1000l\e[?1002l\e[?1003l\e[?1006l\e[?1015l"'
