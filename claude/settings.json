@@ -30,6 +30,8 @@
       "Bash(git show:*)",
       "Bash(git ls-files:*)",
       "Bash(git grap:*)",
+      "Bash(git switch:*)",
+      "Bash(git checkout -b:*)",
       "Bash(docker ps:*)",
       "Bash(docker logs:*)",
       "Bash(docker compose ps:*)",
@@ -69,8 +71,6 @@
     ],
     "ask": [
       "Bash(rm:*)",
-      "Bash(git checkout:*)",
-      "Bash(git co:*)",
       "Bash(git rm:*)",
       "Bash(git clean:*)",
       "Bash(terraform:*)"
