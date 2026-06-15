@@ -55,4 +55,11 @@ return {
       vim.g.badwolf_css_props_highlight = 1
     end,
   },
+  {
+    "terkelg/north-sea.nvim",
+    config = function()
+      require("northsea").setup({})
+      --vim.cmd.colorscheme("north-sea")
+    end,
+  }
 }
