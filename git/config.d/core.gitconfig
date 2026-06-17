@@ -1,5 +1,3 @@
-[core]
-	excludesfile = ~/.gitignore
 [pull]
 	rebase = false
 	ff = only
