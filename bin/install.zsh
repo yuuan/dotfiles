@@ -251,24 +251,41 @@ HELP
 
 	function __install_git() {
 		__installing_caption "git"
-		__link "$DOTFILES/git/config.d" "$HOME/.gitconfig.d"
-		__link "$DOTFILES/git/gitignore" "$HOME/.gitignore"
 
-		if [[ -n $(cat $HOME/.gitconfig | grep '.gitconfig.d' 2> /dev/null) ]]; then
-			__info "Include setting is exists."
+		local GIT_OLD_CONFIG_DIR="$HOME/.gitconfig.d"
+		local GIT_OLD_IGNOREFILE="$HOME/.gitignore"
+
+		__rm "$GIT_OLD_CONFIG_DIR"
+		__rm "$GIT_OLD_IGNOREFILE"
+
+		if [[ -n $(cat "$HOME/.gitconfig" | grep '.gitconfig.d' 2> /dev/null) ]]; then
+			__warn "error: stale gitconfig include detected: .gitconfig.d"
+			__warn "Please remove or update the include setting in ~/.gitconfig."
+		fi
+
+		local GIT_DIR="$HOME/.config/git"
+		local GIT_CONFIG_DIR="$GIT_DIR/config.d"
+
+		__mkdir "$GIT_DIR"
+		__link "$DOTFILES/git/ignore" "$GIT_DIR/ignore"
+		__link "$DOTFILES/git/shared.gitconfig" "$GIT_DIR/shared.gitconfig"
+		__link "$DOTFILES/git/config.d" "$GIT_CONFIG_DIR"
+
+		if [[ -n $(cat "$HOME/.gitconfig" "$GIT_DIR/config" | grep 'shared.gitconfig' 2> /dev/null) ]]; then
+			__info "include already configured, skipping: shared.gitconfig"
 		else
-			__info "Add include setting to '~/.gitconfig'"
-			cat <<'INCLUDE' >> $HOME/.gitconfig
+			cat <<'INCLUDE' >> $GIT_DIR/config
 [include]
-	path = ~/.gitconfig.d/index.inc
+	path = ~/.config/git/shared.gitconfig
 INCLUDE
+			__info "configured gitconfig include: shared.gitconfig"
 		fi
 
 		__done_caption
 
-		__ls -a "$HOME/.gitignore" "$HOME/.gitconfig"
-		__ls -d "$HOME/.gitconfig.d"
-		__ls -a "$HOME/.gitconfig.d/"
+		__ls -a "$GIT_DIR/"
+		__ls -d "$GIT_DIR/config.d"
+		__ls -a "$GIT_DIR/config.d/"
 		__br
 	}
 

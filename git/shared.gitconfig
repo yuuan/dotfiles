@@ -1,0 +1,5 @@
+[include]
+	path = ~/.config/git/config.d/core.gitconfig
+	path = ~/.config/git/config.d/aliases.gitconfig
+	path = ~/.config/git/config.d/hooks.gitconfig
+	path = ~/.config/git/config.d/tig.gitconfig
