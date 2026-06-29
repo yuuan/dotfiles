@@ -10,24 +10,10 @@ $hostname\
 $directory\
 [](fg:color_yellow bg:color_aqua)\
 $git_branch\
-$git_status\
 [](fg:color_aqua bg:color_blue)\
-$golang\
-$rust\
-$php\
-$ruby\
-$lua\
-$c\
-$kotlin\
-$java\
-$haskell\
-$python\
-$nodejs\
-$terraform\
+$git_status\
 [](fg:color_blue bg:color_bg3)\
-$docker_context\
-$conda\
-$aws\
+$git_state\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 $cmd_duration\
@@ -107,16 +93,17 @@ style = "bg:color_aqua"
 format = '[[ $symbol $branch ](fg:color_fg0 bg:color_aqua)]($style)'
 
 [git_status]
-style = "bg:color_aqua"
-format = '[[($all_status$ahead_behind )](fg:color_fg0 bg:color_aqua)]($style)'
+style = "bg:color_blue"
+format = '[[ ($all_status$ahead_behind )](fg:color_fg0 bg:color_blue)]($style)'
 conflicted = " "
 modified = " "
 staged = "󰋕 "
 untracked = " "
 deleted = " "
 renamed = " "
-ahead = ""
-behind = ""
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
 stashed = ""
 
 
