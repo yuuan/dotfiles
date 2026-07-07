@@ -14,7 +14,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 	targets=()
 
 	typeset -A target_group_map=(
-		[all]="git tig vim nvim zsh tmux claude wezterm coffeelint jshint peco screen"
+		[all]="git tig vim nvim zsh tmux herdr claude wezterm coffeelint jshint peco screen"
 		[standard]="git tig nvim zsh tmux claude"
 	)
 
@@ -24,6 +24,7 @@ DOTFILES="$(cd "$(dirname "$(dirname "${BASH_SOURCE:-${(%):-%N}}")")"; pwd)"
 		[atuin]="__install_atuin"
 		[claude]="__install_claude"
 		[git]="__install_git"
+		[herdr]="__install_herdr"
 		[tig]="__install_tig"
 		[neovim]="__install_nvim"
 		[nvim]="__install_nvim"
@@ -384,6 +385,22 @@ INCLUDE
 		fi
 
 		__exec $TMUX_PLUGINS_TPM/bin/install_plugins
+	}
+
+	function __install_herdr() {
+		__installing_caption "herdr"
+
+		local HERDR_CONFIG_DIR="$HOME/.config/herdr"
+
+		__mkdir "$HERDR_CONFIG_DIR"
+
+		__link "$DOTFILES/herdr/config.toml" "$HERDR_CONFIG_DIR/config.toml"
+
+		__done_caption
+
+		__ls -d "$HERDR_CONFIG_DIR"
+		__ls -a "$HERDR_CONFIG_DIR"
+		__br
 	}
 
 	function __install_vim() {
