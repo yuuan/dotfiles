@@ -38,8 +38,11 @@ function InstallNeoVim {
 	New-Item -Force -ItemType Directory $Config
 	New-Item -Force -Type SymbolicLink ($Config + '\init.lua') -Value ($DotFiles + '\nvim\init.lua')
 	New-Item -Force -Type SymbolicLink ($Config + '\lua') -Value ($DotFiles + '\nvim\lua')
+	New-Item -Force -Type SymbolicLink ($Config + '\after') -Value ($DotFiles + '\nvim\after')
 	New-Item -Force -Type SymbolicLink ($Config + '\ftplugin') -Value ($DotFiles + '\nvim\ftplugin')
+	New-Item -Force -Type SymbolicLink ($Config + '\ftdetect') -Value ($DotFiles + '\nvim\ftdetect')
 	New-Item -Force -Type SymbolicLink ($Config + '\snippets') -Value ($DotFiles + '\nvim\snippets')
+	New-Item -Force -ItemType Directory ($Config + '\backup')
 }
 
 foreach ($Target in $Args) {
