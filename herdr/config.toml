@@ -1,5 +1,7 @@
 [keys]
 prefix = "alt+a"
+previous_workspace = ["prefix+shift+left", "alt+up"]
+next_workspace = ["prefix+shift+right", "alt+down"]
 new_tab = ["prefix+c", "alt+n"]
 next_tab = ["prefix+n", "alt+right"]
 previous_tab = ["prefix+p", "alt+left"]
