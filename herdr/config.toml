@@ -14,8 +14,10 @@ split_vertical = ["prefix+v", "prefix+|"]
 [theme]
 name = "gruvbox"
 
+[theme.custom]
+accent = "#458588"
+
 [ui]
 pane_borders = true
 pane_gaps = false
 mobile_width_threshold = 80
-
