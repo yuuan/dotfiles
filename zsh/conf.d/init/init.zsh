@@ -13,6 +13,7 @@ GOPATH="${GOPATH:-${HOME}/.go}"
 __helpers::unshift_path \
 	"${HOME}/.local/bin" \
 	"${GOPATH}/bin" \
+	"${HOME}/.cargo/bin" \
 	"${HOME}/.composer/vendor/bin" \
 	"${HOME}/.yarn/bin"
 
