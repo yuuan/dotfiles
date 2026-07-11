@@ -45,6 +45,12 @@ function InstallNeoVim {
 	New-Item -Force -ItemType Directory ($Config + '\backup')
 }
 
+function InstallHerdr {
+	$Config = $env:APPDATA + '\herdr'
+	New-Item -Force -ItemType Directory $Config
+	New-Item -Force -Type SymbolicLink ($Config + '\config.toml') -Value ($DotFiles + '\herdr\config.toml')
+}
+
 foreach ($Target in $Args) {
 	switch -Regex ($Target) {
 		"^pwsh$" {
@@ -61,6 +67,10 @@ foreach ($Target in $Args) {
 		}
 		"^neovim|nvim$" {
 			InstallNeoVim
+			break
+		}
+		"^herdr$" {
+			InstallHerdr
 			break
 		}
 	}
