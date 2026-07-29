@@ -84,7 +84,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "zsh ~/.claude/commands/notify.zsh '終わったよ'"
+            "command": "zsh ~/.claude/hooks/notify.zsh '終わったよ'"
           }
         ]
       }
@@ -95,7 +95,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "zsh ~/.claude/commands/log-posttooluse.zsh"
+            "command": "zsh ~/.claude/hooks/log-posttooluse.zsh"
           }
         ]
       }
@@ -103,7 +103,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "node ~/.claude/commands/statusline.js"
+    "command": "node ~/.claude/statusline.js"
   },
   "enabledPlugins": {
     "ruby-lsp@claude-plugins-official": true,

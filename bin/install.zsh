@@ -561,9 +561,14 @@ INCLUDE
 		local CLAUDE_CONFIG_DIR; CLAUDE_CONFIG_DIR="$HOME/.claude"
 
 		__mkdir "$CLAUDE_CONFIG_DIR"
+		# hooks/ は herdr 等が生成するスクリプトも同居するので、ディレクトリごとではなくファイル単位で張る
+		__mkdir "$CLAUDE_CONFIG_DIR/hooks"
 
 		__link "$DOTFILES/claude/settings.json" "$CLAUDE_CONFIG_DIR/settings.json"
+		__link "$DOTFILES/claude/statusline.js" "$CLAUDE_CONFIG_DIR/statusline.js"
 		__link "$DOTFILES/claude/commands" "$CLAUDE_CONFIG_DIR/commands"
+		__link "$DOTFILES/claude/hooks/log-posttooluse.zsh" "$CLAUDE_CONFIG_DIR/hooks/log-posttooluse.zsh"
+		__link "$DOTFILES/claude/hooks/notify.zsh" "$CLAUDE_CONFIG_DIR/hooks/notify.zsh"
 
 		__done_caption
 
