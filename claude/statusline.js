@@ -3,7 +3,7 @@
 // Claude Code status line.
 // Reads session JSON from stdin and prints two rows:
 //   [Model] 📁 dir 🌿 branch
-//   ██████░░░░ 42% (420K/1M) | $1.23 | ⏱️ 5m 3s
+//   🧠 42% (424K/1M) | 5h 23% ↻14:30 | 7d 41% | $1.23 | ⏱️ 5m 3s
 // Schema: https://code.claude.com/docs/en/statusline
 
 const { execFileSync } = require('child_process');
@@ -15,8 +15,6 @@ const YELLOW = '\x1b[33m';
 const RED = '\x1b[31m';
 const DIM = '\x1b[2m';
 const RESET = '\x1b[0m';
-
-const BAR_WIDTH = 10;
 
 let input = '';
 process.stdin.on('data', chunk => (input += chunk));
@@ -35,10 +33,6 @@ process.stdin.on('end', () => {
         const cost = data.cost?.total_cost_usd || 0;
         const durationMs = data.cost?.total_duration_ms || 0;
 
-        const barColor = pct >= 90 ? RED : pct >= 70 ? YELLOW : GREEN;
-        const filled = Math.min(BAR_WIDTH, Math.floor((pct / 100) * BAR_WIDTH));
-        const bar = '█'.repeat(filled) + '░'.repeat(BAR_WIDTH - filled);
-
         const mins = Math.floor(durationMs / 60000);
         const secs = Math.floor((durationMs % 60000) / 1000);
 
@@ -48,13 +42,16 @@ process.stdin.on('end', () => {
             gitBranch(dir),
         ].filter(Boolean).join(' ');
 
-        const tokens = size ? `${DIM}(${formatTokens(used)}/${formatTokens(size)})${RESET}` : '';
+        const tokens = size ? ` ${DIM}(${formatTokens(used)}/${formatTokens(size)})${RESET}` : '';
         const second = [
-            `${barColor}${bar}${RESET} ${pct}%`,
-            tokens,
+            `🧠 ${percentage(pct)}${tokens}`,
+            // rate_limits は Claude.ai のサブスクリプション、かつ最初の API 応答以降でのみ現れる。
+            // 5h / 7d はそれぞれ独立に欠けうるので、無い枠は丸ごと落とす
+            rateLimit('5h', data.rate_limits?.five_hour, true),
+            rateLimit('7d', data.rate_limits?.seven_day, false),
             `${YELLOW}$${cost.toFixed(2)}${RESET}`,
             `⏱️ ${mins}m ${secs}s`,
-        ].filter(Boolean).join(' ');
+        ].filter(Boolean).join(' | ');
 
         console.log(first);
         console.log(second);
@@ -62,6 +59,27 @@ process.stdin.on('end', () => {
         console.log(`${RED}[statusline error]${RESET} ${error.message}`);
     }
 });
+
+function rateLimit(label, window, showsReset) {
+    if (window?.used_percentage == null) return '';
+
+    let text = `${label} ${percentage(Math.round(window.used_percentage))}`;
+    if (showsReset && window.resets_at) {
+        text += ` ${DIM}↻${formatTime(window.resets_at)}${RESET}`;
+    }
+    return text;
+}
+
+function percentage(pct) {
+    const color = pct >= 90 ? RED : pct >= 70 ? YELLOW : GREEN;
+    return `${color}${pct}%${RESET}`;
+}
+
+// resets_at is Unix epoch seconds; render it in local time.
+function formatTime(epochSeconds) {
+    const at = new Date(epochSeconds * 1000);
+    return `${String(at.getHours()).padStart(2, '0')}:${String(at.getMinutes()).padStart(2, '0')}`;
+}
 
 function gitBranch(cwd) {
     try {
