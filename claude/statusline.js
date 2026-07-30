@@ -2,7 +2,7 @@
 
 // Claude Code status line.
 // Reads session JSON from stdin and prints one row:
-//   📁 dir / 🌿 branch | 🔥 7d 41% / 5h 23% ↻14:30 | 🧠 42% (424K/1M) [Model]
+//   📁 dir / branch | 🔥 7d 41% / 5h 23% ↻14:30 | 🧠 42% (424K/1M) [Model]
 // Schema: https://code.claude.com/docs/en/statusline
 
 const { execFileSync } = require('child_process');
@@ -76,7 +76,7 @@ function gitBranch(cwd) {
             encoding: 'utf8',
             stdio: ['pipe', 'pipe', 'ignore'],
         }).trim();
-        return branch ? `🌿 ${branch}` : '';
+        return branch;
     } catch {
         return '';
     }
