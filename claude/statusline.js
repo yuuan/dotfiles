@@ -2,7 +2,7 @@
 
 // Claude Code status line.
 // Reads session JSON from stdin and prints one row:
-//   📁 dir 🌿 branch | 5h 23% ↻14:30 | 7d 41% | 🧠 42% (424K/1M) | [Model]
+//   📁 dir ∷ 🌿 branch | 5h 23% ↻14:30 | 7d 41% | 🧠 42% (424K/1M) | [Model]
 // Schema: https://code.claude.com/docs/en/statusline
 
 const { execFileSync } = require('child_process');
@@ -32,7 +32,7 @@ process.stdin.on('end', () => {
 
         const tokens = size ? ` ${DIM}(${formatTokens(used)}/${formatTokens(size)})${RESET}` : '';
         const line = [
-            [`📁 ${path.basename(dir)}`, gitBranch(dir)].filter(Boolean).join(' '),
+            [`📁 ${path.basename(dir)}`, gitBranch(dir)].filter(Boolean).join(' ∷ '),
             // rate_limits は Claude.ai のサブスクリプション、かつ最初の API 応答以降でのみ現れる。
             // 5h / 7d はそれぞれ独立に欠けうるので、無い枠は丸ごと落とす
             rateLimit('5h', data.rate_limits?.five_hour, true),
