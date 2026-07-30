@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
 // Claude Code status line.
-// Reads session JSON from stdin and prints two rows:
-//   [Model] 📁 dir 🌿 branch
-//   🧠 42% (424K/1M) | 5h 23% ↻14:30 | 7d 41% | $1.23 | ⏱️ 5m 3s
+// Reads session JSON from stdin and prints one row:
+//   📁 dir 🌿 branch | 5h 23% ↻14:30 | 7d 41% | 🧠 42% (424K/1M) | [Model]
 // Schema: https://code.claude.com/docs/en/statusline
 
 const { execFileSync } = require('child_process');
@@ -30,31 +29,19 @@ process.stdin.on('end', () => {
         const pct = Math.floor(ctx.used_percentage || 0);
         const used = ctx.total_input_tokens || 0;
         const size = ctx.context_window_size || 0;
-        const cost = data.cost?.total_cost_usd || 0;
-        const durationMs = data.cost?.total_duration_ms || 0;
-
-        const mins = Math.floor(durationMs / 60000);
-        const secs = Math.floor((durationMs % 60000) / 1000);
-
-        const first = [
-            `${CYAN}[${model}]${RESET}`,
-            `📁 ${path.basename(dir)}`,
-            gitBranch(dir),
-        ].filter(Boolean).join(' ');
 
         const tokens = size ? ` ${DIM}(${formatTokens(used)}/${formatTokens(size)})${RESET}` : '';
-        const second = [
-            `🧠 ${percentage(pct)}${tokens}`,
+        const line = [
+            [`📁 ${path.basename(dir)}`, gitBranch(dir)].filter(Boolean).join(' '),
             // rate_limits は Claude.ai のサブスクリプション、かつ最初の API 応答以降でのみ現れる。
             // 5h / 7d はそれぞれ独立に欠けうるので、無い枠は丸ごと落とす
             rateLimit('5h', data.rate_limits?.five_hour, true),
             rateLimit('7d', data.rate_limits?.seven_day, false),
-            `${YELLOW}$${cost.toFixed(2)}${RESET}`,
-            `⏱️ ${mins}m ${secs}s`,
+            `🧠 ${percentage(pct)}${tokens}`,
+            `${CYAN}[${model}]${RESET}`,
         ].filter(Boolean).join(' | ');
 
-        console.log(first);
-        console.log(second);
+        console.log(line);
     } catch (error) {
         console.log(`${RED}[statusline error]${RESET} ${error.message}`);
     }
