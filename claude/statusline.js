@@ -30,15 +30,17 @@ process.stdin.on('end', () => {
         const used = ctx.total_input_tokens || 0;
         const size = ctx.context_window_size || 0;
 
+        // rate_limits は Claude.ai のサブスクリプション、かつ最初の API 応答以降でのみ現れる。
+        // 5h / 7d はそれぞれ独立に欠けうるので、無い枠は丸ごと落とす
+        const limits = [
+            rateLimit('7d', data.rate_limits?.seven_day, false),
+            rateLimit('5h', data.rate_limits?.five_hour, true),
+        ].filter(Boolean).join(' / ');
+
         const tokens = size ? ` ${DIM}(${formatTokens(used)}/${formatTokens(size)})${RESET}` : '';
         const line = [
             [`📁 ${path.basename(dir)}`, gitBranch(dir)].filter(Boolean).join(' / '),
-            // rate_limits は Claude.ai のサブスクリプション、かつ最初の API 応答以降でのみ現れる。
-            // 5h / 7d はそれぞれ独立に欠けうるので、無い枠は丸ごと落とす
-            [
-                rateLimit('🔥 7d', data.rate_limits?.seven_day, false),
-                rateLimit('5h', data.rate_limits?.five_hour, true),
-            ].filter(Boolean).join(' / '),
+            limits && `🔥 ${limits}`,
             `🧠 ${percentage(pct)}${tokens} ${CYAN}[${model}]${RESET}`,
         ].filter(Boolean).join(' | ');
 
