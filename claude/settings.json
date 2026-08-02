@@ -5,6 +5,7 @@
     "sessionUrl": false
   },
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
       "Bash(echo:*)",
       "Bash(printf:*)",
