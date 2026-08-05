@@ -5,7 +5,6 @@
     "sessionUrl": false
   },
   "permissions": {
-    "defaultMode": "auto",
     "allow": [
       "Bash(echo:*)",
       "Bash(printf:*)",
@@ -77,7 +76,8 @@
       "Bash(git rm:*)",
       "Bash(git clean:*)",
       "Bash(terraform:*)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "hooks": {
     "Stop": [
