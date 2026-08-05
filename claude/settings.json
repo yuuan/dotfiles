@@ -107,12 +107,21 @@
   "enabledPlugins": {
     "claude-md-management@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
+    "evolutionary-naming@kawasima-skills": true,
     "frontend-design@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "kotlin-lsp@claude-plugins-official": true,
     "ruby-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
+  },
+  "extraKnownMarketplaces": {
+    "kawasima-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kawasima/evolutionary-naming"
+      }
+    },
   },
   "effortLevel": "xhigh",
   "tui": "fullscreen",
