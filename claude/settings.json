@@ -72,9 +72,6 @@
       "Bash(ecs-exec:*)"
     ],
     "ask": [
-      "Bash(rm:*)",
-      "Bash(git rm:*)",
-      "Bash(git clean:*)",
       "Bash(terraform:*)"
     ],
     "defaultMode": "auto"
