@@ -77,17 +77,6 @@
     "defaultMode": "auto"
   },
   "hooks": {
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "zsh ~/.claude/hooks/notify.zsh '終わったよ'"
-          }
-        ]
-      }
-    ],
     "PostToolUse": [
       {
         "matcher": "Bash",
@@ -95,6 +84,17 @@
           {
             "type": "command",
             "command": "zsh ~/.claude/hooks/log-posttooluse.zsh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zsh ~/.claude/hooks/notify.zsh '終わったよ'"
           }
         ]
       }
