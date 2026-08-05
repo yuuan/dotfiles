@@ -115,6 +115,7 @@
     "security-guidance@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "winui@win-dev-skills": true,
+    "cloudflare@cloudflare": true
   },
   "extraKnownMarketplaces": {
     "kawasima-skills": {
@@ -127,6 +128,12 @@
       "source": {
         "source": "github",
         "repo": "microsoft/win-dev-skills"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
       }
     }
   },
