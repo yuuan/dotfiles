@@ -94,7 +94,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/Users/abesuke/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "if [ -x ~/.claude/hooks/herdr-agent-state.sh ]; then bash ~/.claude/hooks/herdr-agent-state.sh session; fi",
             "timeout": 10
           }
         ]
@@ -114,7 +114,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "node ~/.claude/statusline.js"
+    "command": "command -v node >/dev/null 2>&1 && node ~/.claude/statusline.js"
   },
   "enabledPlugins": {
     "claude-md-management@claude-plugins-official": true,

@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# jq が無いマシンではログを諦める (notify.zsh と同じく機能単位で degrade させる)
+(( $+commands[jq] )) || exit 0
+
 INPUT=$(cat)
 
 LOG_DIR="$HOME/.claude/history"
