@@ -2,3 +2,4 @@
 /.containers.json
 **/.claude/settings.local.json
 **/.serena/*
+*:Zone.Identifier
