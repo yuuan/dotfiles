@@ -88,6 +88,18 @@
         ]
       }
     ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Users/abesuke/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
     "Stop": [
       {
         "matcher": "",
@@ -115,7 +127,8 @@
     "security-guidance@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "winui@win-dev-skills": true,
-    "cloudflare@cloudflare": true
+    "cloudflare@cloudflare": true,
+    "claude-code-wakatime@wakatime": true
   },
   "extraKnownMarketplaces": {
     "kawasima-skills": {
@@ -134,6 +147,12 @@
       "source": {
         "source": "github",
         "repo": "cloudflare/skills"
+      }
+    },
+    "wakatime": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/wakatime/claude-code-wakatime.git"
       }
     }
   },
