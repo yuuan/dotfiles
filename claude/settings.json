@@ -83,7 +83,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "zsh ~/.claude/hooks/log-posttooluse.zsh"
+            "command": "zsh -f ~/.claude/hooks/log-posttooluse.zsh"
           }
         ]
       }

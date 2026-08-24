@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/zsh -f
 
 # jq が無いマシンではログを諦める (notify.zsh と同じく機能単位で degrade させる)
 (( $+commands[jq] )) || exit 0
