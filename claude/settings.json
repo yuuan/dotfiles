@@ -67,6 +67,8 @@
       "Bash(go test:*)",
       "Bash(golangci-lint:*)",
       "Bash(code --list-extensions)",
+      "Read(//home/yuuan/go/bin/**)",
+      "Read(//home/yuuan/.local/bin/**)",
       "WebSearch"
     ],
     "deny": [
