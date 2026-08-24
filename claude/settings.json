@@ -66,6 +66,7 @@
       "Bash(go bug:*)",
       "Bash(go test:*)",
       "Bash(golangci-lint:*)",
+      "Bash(code --list-extensions)",
       "WebSearch"
     ],
     "deny": [
