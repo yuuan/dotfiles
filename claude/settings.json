@@ -114,7 +114,7 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "command -v node >/dev/null 2>&1 && node ~/.claude/statusline.js"
+    "command": "zsh -f ~/.claude/statusline.zsh"
   },
   "enabledPlugins": {
     "claude-md-management@claude-plugins-official": true,
