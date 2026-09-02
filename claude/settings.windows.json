@@ -30,7 +30,7 @@
       "Bash(git blame:*)",
       "Bash(git show:*)",
       "Bash(git ls-files:*)",
-      "Bash(git grap:*)",
+      "Bash(git grep:*)",
       "Bash(git switch:*)",
       "Bash(git checkout -b:*)",
       "Bash(docker ps:*)",
