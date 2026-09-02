@@ -567,8 +567,8 @@ INCLUDE
 		__link "$DOTFILES/claude/settings.json" "$CLAUDE_CONFIG_DIR/settings.json"
 		__link "$DOTFILES/claude/statusline.zsh" "$CLAUDE_CONFIG_DIR/statusline.zsh"
 		__link "$DOTFILES/claude/commands" "$CLAUDE_CONFIG_DIR/commands"
-		__link "$DOTFILES/claude/hooks/log-posttooluse.zsh" "$CLAUDE_CONFIG_DIR/hooks/log-posttooluse.zsh"
-		__link "$DOTFILES/claude/hooks/notify.zsh" "$CLAUDE_CONFIG_DIR/hooks/notify.zsh"
+		__link "$DOTFILES/claude/hooks/log-posttooluse.sh" "$CLAUDE_CONFIG_DIR/hooks/log-posttooluse.sh"
+		__link "$DOTFILES/claude/hooks/notify.sh" "$CLAUDE_CONFIG_DIR/hooks/notify.sh"
 
 		__done_caption
 

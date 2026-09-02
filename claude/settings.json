@@ -86,7 +86,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "zsh -f ~/.claude/hooks/log-posttooluse.zsh"
+            "command": "sh ~/.claude/hooks/log-posttooluse.sh"
           }
         ]
       }
@@ -109,7 +109,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "zsh ~/.claude/hooks/notify.zsh '終わったよ'"
+            "command": "sh ~/.claude/hooks/notify.sh '終わったよ'"
           }
         ]
       }
