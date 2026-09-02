@@ -1,0 +1,164 @@
+{
+  "attribution": {
+    "commit": "Assisted-by: Claude",
+    "pr": "",
+    "sessionUrl": false
+  },
+  "permissions": {
+    "allow": [
+      "Bash(echo:*)",
+      "Bash(printf:*)",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(tail:*)",
+      "Bash(less:*)",
+      "Bash(wc:*)",
+      "Bash(sort:*)",
+      "Bash(uniq:*)",
+      "Bash(awk:*)",
+      "Bash(ls)",
+      "Bash(tree)",
+      "Bash(find:*)",
+      "Bash(fd:*)",
+      "Bash(ag:*)",
+      "Bash(rg:*)",
+      "Bash(date:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git blame:*)",
+      "Bash(git show:*)",
+      "Bash(git ls-files:*)",
+      "Bash(git grap:*)",
+      "Bash(git switch:*)",
+      "Bash(git checkout -b:*)",
+      "Bash(docker ps:*)",
+      "Bash(docker logs:*)",
+      "Bash(docker compose ps:*)",
+      "Bash(docker compose logs:*)",
+      "Bash(pwd:*)",
+      "Bash(df:*)",
+      "Bash(du:*)",
+      "Bash(ps:*)",
+      "Bash(which:*)",
+      "mcp__serena__find_referencing_symbols",
+      "mcp__serena__find_file",
+      "mcp__serena__find_symbol",
+      "mcp__serena__get_symbols_overview",
+      "mcp__serena__list_dir",
+      "mcp__serena__list_memories",
+      "mcp__serena__read_file",
+      "mcp__serena__read_memory",
+      "mcp__serena__search_for_pattern",
+      "mcp__serena__think_about_collected_information",
+      "mcp__serena__think_about_task_adherence",
+      "mcp__serena__think_about_whether_you_are_done",
+      "Read(~/go/pkg/mod/**)",
+      "Bash(go version:*)",
+      "Bash(go help:*)",
+      "Bash(go doc:*)",
+      "Bash(go list:*)",
+      "Bash(go mod graph:*)",
+      "Bash(go mod why:*)",
+      "Bash(go mod verify:*)",
+      "Bash(go bug:*)",
+      "Bash(go test:*)",
+      "Bash(golangci-lint:*)",
+      "Bash(code --list-extensions)",
+      "Read(~/go/bin/**)",
+      "WebSearch"
+    ],
+    "deny": [],
+    "ask": [
+      "Bash(terraform:*)"
+    ],
+    "defaultMode": "auto"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ~/.claude/hooks/log-posttooluse.sh"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f ~/.claude/hooks/herdr-agent-state.ps1 ]; then pwsh -NoProfile -ExecutionPolicy Bypass -File ~/.claude/hooks/herdr-agent-state.ps1 session; fi",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh ~/.claude/hooks/notify.sh '終わったよ'"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File ~/.claude/statusline.ps1"
+  },
+  "enabledPlugins": {
+    "claude-md-management@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "evolutionary-naming@kawasima-skills": true,
+    "frontend-design@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "winui@win-dev-skills": true,
+    "cloudflare@cloudflare": true,
+    "claude-code-wakatime@wakatime": true
+  },
+  "extraKnownMarketplaces": {
+    "kawasima-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kawasima/evolutionary-naming"
+      }
+    },
+    "win-dev-skills": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/win-dev-skills"
+      }
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      }
+    },
+    "wakatime": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/wakatime/claude-code-wakatime.git"
+      }
+    }
+  },
+  "effortLevel": "xhigh",
+  "tui": "fullscreen",
+  "theme": "dark-daltonized",
+  "remoteControlAtStartup": true,
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
+  "language": "日本語の丁寧語"
+}

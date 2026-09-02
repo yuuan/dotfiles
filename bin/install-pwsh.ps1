@@ -51,6 +51,19 @@ function InstallHerdr {
 	New-Item -Force -Type SymbolicLink ($Config + '\config.toml') -Value ($DotFiles + '\herdr\config.toml')
 }
 
+function InstallClaude {
+	$Config = $env:USERPROFILE + '\.claude'
+	New-Item -Force -ItemType Directory $Config
+	# hooks\ は herdr 等が生成するスクリプトも同居するので、ディレクトリごとではなくファイル単位で張る
+	New-Item -Force -ItemType Directory ($Config + '\hooks')
+
+	New-Item -Force -Type SymbolicLink ($Config + '\settings.json') -Value ($DotFiles + '\claude\settings.windows.json')
+	New-Item -Force -Type SymbolicLink ($Config + '\statusline.ps1') -Value ($DotFiles + '\claude\statusline.ps1')
+	New-Item -Force -Type SymbolicLink ($Config + '\commands') -Value ($DotFiles + '\claude\commands')
+	New-Item -Force -Type SymbolicLink ($Config + '\hooks\log-posttooluse.sh') -Value ($DotFiles + '\claude\hooks\log-posttooluse.sh')
+	New-Item -Force -Type SymbolicLink ($Config + '\hooks\notify.sh') -Value ($DotFiles + '\claude\hooks\notify.sh')
+}
+
 foreach ($Target in $Args) {
 	switch -Regex ($Target) {
 		"^pwsh$" {
@@ -71,6 +84,10 @@ foreach ($Target in $Args) {
 		}
 		"^herdr$" {
 			InstallHerdr
+			break
+		}
+		"^claude$" {
+			InstallClaude
 			break
 		}
 	}
