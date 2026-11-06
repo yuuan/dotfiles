@@ -7,6 +7,7 @@ if (( $+commands[nvim] )); then
 	alias vimdiff='nvim -d'
 fi
 
-function viag() {
-	vim -p $(ag -l "$@")
+function virg() {
+	vim -p $(rg -l "$@")
 }
+alias viag='virg'
