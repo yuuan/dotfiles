@@ -7,7 +7,11 @@ if (( $+commands[nvim] )); then
 	alias vimdiff='nvim -d'
 fi
 
+# 検索にヒットしたファイルを vim のタブで開く
 function virg() {
-	vim -p $(rg -l "$@")
+	local -a files
+	files=(${(0)"$(rg -l0 "$@")"})
+	(( ${#files} )) || return 1
+	vim -p -- "${files[@]}"
 }
 alias viag='virg'
